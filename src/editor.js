@@ -50,8 +50,10 @@
     composerClassName:    "wysihtml5-editor",
     // Class name to add to the body when the wysihtml5 editor is supported
     bodyClassName:        "wysihtml5-supported",
-    // By default wysihtml5 will insert a <br> for line breaks, set this to false to use <p>
-    useLineBreaks:        true,
+    // By default wysihtml5 will insert a <p> for line breaks, set this to true to use <br>
+    useLineBreaks:        false,
+    // By default wysihtml5 will insert a <br> for line breaks when you press shift Enter, set this to false to use remove this option
+    useShiftEnterLineBreaks: true,
     // Array (or single string) of stylesheet urls to be loaded in the editor's iframe
     stylesheets:          [],
     // Placeholder text to use, defaults to the placeholder attribute on the textarea element
@@ -59,7 +61,9 @@
     // Whether the rich text editor should be rendered on touch devices (wysihtml5 >= 0.3.0 comes with basic support for iOS 5)
     supportTouchDevices:  true,
     // Whether senseless <span> elements (empty or without attributes) should be removed/replaced with their content
-    cleanUp:              true
+    cleanUp:              true,
+    // credit display in console.log "Heya! This page is using wysihtml5 for rich text editing. Check out https://github.com/xing/wysihtml5
+    credit:               true
   };
   
   wysihtml5.Editor = wysihtml5.lang.Dispatcher.extend(
@@ -95,9 +99,11 @@
         }
       });
       
-      try {
-        console.log("Heya! This page is using wysihtml5 for rich text editing. Check out https://github.com/xing/wysihtml5");
-      } catch(e) {}
+      if (this.config.credit == true) { //  default si set to true
+          try {
+            console.log("Heya! This page is using wysihtml5 for rich text editing. Check out https://github.com/xing/wysihtml5");
+          } catch(e) {}
+      }
     },
     
     isCompatible: function() {

@@ -209,6 +209,7 @@
     },
 
     _updateLinkStates: function() {
+
       var commandMapping    = this.commandMapping,
           actionMapping     = this.actionMapping,
           i,

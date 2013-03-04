@@ -367,6 +367,11 @@
       dom.observe(this.doc, "keydown", function(event) {
         var keyCode = event.keyCode;
         
+        if (!that.config.useLineBreaks && that.config.useShiftEnterLineBreaks && event.shiftKey && keyCode === wysihtml5.ENTER_KEY && !wysihtml5.browser.insertsLineBreaksOnReturn() ) {
+          that.commands.exec("insertLineBreak");
+          event.preventDefault();
+        }
+        
         if (event.shiftKey) {
           return;
         }

@@ -1,6 +1,6 @@
 VERSION = $(shell cat version.txt)
 
-JS_OUTPUT = "dist/wysihtml5-${VERSION}.js"
+JS_OUTPUT = "dist/wysihtml5-predictive-${VERSION}.js"
 
 OPEN = $(shell which xdg-open || which gnome-open || which open)
 
@@ -73,6 +73,7 @@ JS_FILES = src/wysihtml5.js \
   src/toolbar/dialog.js \
   src/toolbar/speech.js \
   src/toolbar/toolbar.js \
+  src/predictive.js \
   src/editor.js
 
 all: bundle minify

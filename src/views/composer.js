@@ -143,6 +143,9 @@
       // Make sure commands dispatcher is ready
       this.commands  = new wysihtml5.Commands(this.parent);
       
+      // Make sure predictive dispatcher is ready
+      this.predictive  = new wysihtml5.Predictive(this.parent);
+      
       dom.copyAttributes([
         "className", "spellcheck", "title", "lang", "dir", "accessKey"
       ]).from(this.textarea.element).to(this.element);
@@ -401,7 +404,9 @@
 
             if (keyCode === wysihtml5.ENTER_KEY && blockElement.nodeName.match(/^H[1-6]$/)) {
               adjust(selectedNode);
+              if (that.config.predictive) that.predictive.heading(blockElement.nodeName);
             }
+            
           }, 0);
           return;
         }

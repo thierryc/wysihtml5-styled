@@ -63,7 +63,9 @@
     // Whether senseless <span> elements (empty or without attributes) should be removed/replaced with their content
     cleanUp:              true,
     // credit display in console.log "Heya! This page is using wysihtml5 for rich text editing. Check out https://github.com/xing/wysihtml5
-    credit:               true
+    credit:               true,
+    // enable predictive heading 
+    predictive:           true
   };
   
   wysihtml5.Editor = wysihtml5.lang.Dispatcher.extend(

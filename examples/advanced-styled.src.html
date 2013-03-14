@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>wysihtml5</title>
+	<style>
+  body {
+    font-family: Verdana;
+    font-size: 11px;
+  }
+  
+  h2 {
+    margin-bottom: 0;
+  }
+  
+  small {
+    display: block;
+    margin-top: 40px;
+    font-size: 9px;
+  }
+  
+  small,
+  small a {
+    color: #666;
+  }
+  
+  a {
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  #toolbar [data-wysihtml5-action] {
+    float: right;
+  }
+  
+  #toolbar,
+  textarea {
+    width: 920px;
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  textarea {
+    height: 280px;
+    border: 2px solid green;
+    font-family: Verdana;
+    font-size: 11px;
+  }
+  
+  textarea:focus {
+    color: black;
+    border: 2px solid black;
+  }
+  
+  .wysihtml5-command-active {
+    font-weight: bold;
+  }
+  
+  [data-wysihtml5-dialog] {
+    margin: 5px 0 0;
+    padding: 5px;
+    border: 1px solid #666;
+  }
+  
+  a[data-wysihtml5-command-value="red"] {
+    color: red;
+  }
+  
+  a[data-wysihtml5-command-value="green"] {
+    color: green;
+  }
+  
+  a[data-wysihtml5-command-value="blue"] {
+    color: blue;
+  }
+  
+  /******************/
+  
+  /* @override
+	http://127.0.0.1/svn/www.autreplanete.com/trunk/media/js/ap-jquery-plugins/jquery-ap-richtexteditor/css/apRichTextEditor.css 
+ */
+
+#rte1 {
+	width: 600px;
+	height: 150px;
+}
+
+.apRichTextEditor {
+	position: relative;
+}
+
+.apRichTextEditor iframe {
+
+}
+
+.apRichTextEditorBody {
+	margin: 0;
+	padding: 0;
+}
+
+/*
+ul.apRichTextEditorToolbar {
+	position: absolute;
+	top: -38px;
+	left: 0;
+	list-style: none;
+	height: 38px;
+	margin: 0;
+	padding: 0 3px;
+	background: url(image/tools-bt.png) repeat-x 0 -256px;
+}
+*/
+
+ul.apRichTextEditorToolbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	list-style: none;
+	height: 38px;
+	margin: 0;
+	padding: 0 3px;
+	background: url(image/tools-bt.png) repeat-x 0 -256px;
+	width: 100%;
+}
+
+li.apRichTextEditorButton {
+	width: 32px;
+	float: left;
+	overflow: hidden;
+	font-size: .3em;
+	background-image: url(image/tools-bt.png);
+	background-repeat: no-repeat;
+	margin-top: 4px;
+}
+
+li.apRichTextEditorSp {
+	width: 5px;
+	float: left;
+	overflow: hidden;
+	margin-top: 4px;
+}
+
+li.apRichTextEditorButton span {	
+	width: 100%;
+	height: 32px;
+	display: block;
+	background-position-y: -96px;
+	background-image: url(image/tools-bt.png);
+	text-indent: -150px;
+}
+
+li.apRichTextEditorButton:hover {
+	background-position-y: -32px;
+}
+
+li.apRichTextEditorButton:active {
+	background-position-y: -64px;
+}
+
+ul.apRichTextEditorToolbar li.wysihtml5-command-active,
+ul.apRichTextEditorToolbar li.apRichTextEditorButton.selected {
+	background-position-y: -64px;
+}
+
+li.boldBt {
+	background-position: -32px 0;
+	width: 33px;
+}
+
+li.boldBt span {
+	background-position: -127px -96px;
+}
+
+li.italicBt {
+	background-position: -96px 0;
+}
+
+li.italicBt span {
+	background-position: -161px -96px;
+}
+
+li.justifyLeftBt {
+	background-position: -32px 0;
+	width: 33px;
+}
+
+li.justifyLeftBt span {
+	background-position: 1px -96px;
+}
+
+li.justifyCenterBt  {
+	background-position: -64px 0;
+	width: 33px;
+}
+
+li.justifyCenterBt span {
+	background-position: -31px -96px;
+}
+
+li.justifyRightBt {
+	background-position: -64px 0;
+	width: 33px;
+}
+
+li.justifyRightBt span {
+	background-position: -64px -96px;
+}
+
+li.justifyFullBt {
+	background-position: -96px 0;
+	width: 32px;
+}
+
+li.justifyFullBt span {
+	background-position: -96px -96px;
+}
+
+
+li.outdentBt {
+	background-position: -32px 0;
+	width: 33px;
+}
+
+li.outdentBt span {
+	background-position: -256px -96px;
+}
+
+
+li.indentBt {
+	background-position: -96px 0;
+}
+
+li.indentBt span {
+	background-position: -289px -96px;
+}
+
+li.undoBt {
+	background-position: -32px 0;
+	width: 33px;
+}
+
+li.undoBt span {
+	background-position: -318px -96px;
+}
+
+li.redoBt {
+	background-position: -96px 0;
+}
+
+li.redoBt span {
+	background-position: -353px -96px;
+}
+
+li.insertOrderedListBt {
+	background-position: -32px 0;
+	width: 33px;
+}
+
+li.insertOrderedListBt span {
+	background-position: -223px -128px;
+}
+
+li.insertUnorderedListBt {
+	background-position: -96px 0;
+}
+
+li.insertUnorderedListBt span {
+	background-position: -224px -96px;
+}
+
+li.createLinkBt {
+	background-position: -32px 0;
+	width: 33px;
+}
+
+li.createLinkBt span {
+	background-position: -382px -96px;
+}
+
+li.unlinkBt {
+	background-position: -96px 0;
+}
+
+li.unlinkBt span {
+	background-position: -417px -96px;
+}
+
+
+li.H1Bt {
+	background-position: -32px 0;
+	width: 33px;
+	
+}
+
+li.H1Bt span {
+	background-position: -94px -160px;
+}
+
+
+li.H2Bt {
+	background-position: -64px 0;
+	width: 33px;
+}
+
+li.H2Bt span {
+	background-position: -127px -160px;
+}
+
+
+li.H3Bt {
+	background-position: -64px 0;
+	width: 33px;
+}
+
+li.H3Bt span {
+	background-position: -159px -160px;
+}
+
+
+li.H4Bt {
+
+}
+
+  
+</style>
+    
+    <script src="../parser_rules/advanced.js"></script>
+    
+	<script src="../src/wysihtml5.js"></script>
+	<script src="../lib/rangy/rangy-core.js"></script>
+	<script src="../lib/base/base.js"></script>
+	<script src="../src/browser.js"></script>
+	<script src="../src/lang/array.js"></script>
+	<script src="../src/lang/dispatcher.js"></script>
+	<script src="../src/lang/object.js"></script>
+	<script src="../src/lang/string.js"></script>
+	<script src="../src/dom/auto_link.js"></script>
+	<script src="../src/dom/class.js"></script>
+	<script src="../src/dom/contains.js"></script>
+	<script src="../src/dom/convert_to_list.js"></script>
+	<script src="../src/dom/copy_attributes.js"></script>
+	<script src="../src/dom/copy_styles.js"></script>
+	<script src="../src/dom/delegate.js"></script>
+	<script src="../src/dom/get_as_dom.js"></script>
+	<script src="../src/dom/get_parent_element.js"></script>
+	<script src="../src/dom/get_style.js"></script>
+	<script src="../src/dom/has_element_with_tag_name.js"></script>
+	<script src="../src/dom/has_element_with_class_name.js"></script>
+	<script src="../src/dom/insert.js"></script>
+	<script src="../src/dom/insert_css.js"></script>
+	<script src="../src/dom/observe.js"></script>
+	<script src="../src/dom/parse.js"></script>
+	<script src="../src/dom/remove_empty_text_nodes.js"></script>
+	<script src="../src/dom/rename_element.js"></script>
+	<script src="../src/dom/replace_with_child_nodes.js"></script>
+	<script src="../src/dom/resolve_list.js"></script>
+	<script src="../src/dom/sandbox.js"></script>
+	<script src="../src/dom/set_attributes.js"></script>
+	<script src="../src/dom/set_styles.js"></script>
+	<script src="../src/dom/simulate_placeholder.js"></script>
+	<script src="../src/dom/text_content.js"></script>
+	<script src="../src/quirks/clean_pasted_html.js"></script>
+	<script src="../src/quirks/ensure_proper_clearing.js"></script>
+	<script src="../src/quirks/get_correct_inner_html.js"></script>
+	<script src="../src/quirks/redraw.js"></script>
+	<script src="../src/selection/selection.js"></script>
+	<script src="../src/selection/html_applier.js"></script>
+	<script src="../src/commands.js"></script>
+	<script src="../src/commands/bold.js"></script>
+	<script src="../src/commands/createLink.js"></script>
+	<script src="../src/commands/fontSize.js"></script>
+	<script src="../src/commands/foreColor.js"></script>
+	<script src="../src/commands/formatBlock.js"></script>
+	<script src="../src/commands/formatInline.js"></script>
+	<script src="../src/commands/insertHTML.js"></script>
+	<script src="../src/commands/insertImage.js"></script>
+	<script src="../src/commands/insertLineBreak.js"></script>
+	<script src="../src/commands/insertOrderedList.js"></script>
+	<script src="../src/commands/insertUnorderedList.js"></script>
+	<script src="../src/commands/italic.js"></script>
+	<script src="../src/commands/justifyCenter.js"></script>
+	<script src="../src/commands/justifyLeft.js"></script>
+	<script src="../src/commands/justifyRight.js"></script>
+	<script src="../src/commands/justifyFull.js"></script>
+	<script src="../src/commands/redo.js"></script>
+	<script src="../src/commands/underline.js"></script>
+	<script src="../src/commands/undo.js"></script>
+	
+	<script src="../src/undo_manager.js"></script>
+	<script src="../src/views/view.js"></script>
+	<script src="../src/views/composer.js"></script>
+	<script src="../src/views/composer.style.js"></script>
+	<script src="../src/views/composer.observe.js"></script>
+	<script src="../src/views/synchronizer.js"></script>
+	<script src="../src/views/textarea.js"></script>
+	<script src="../src/toolbar/dialog.js"></script>
+	<script src="../src/toolbar/speech.js"></script>
+	<script src="../src/toolbar/toolbar.js"></script>
+	<script src="../src/editor.js"></script>
+	
+	<script src="../src/predictive.js"></script>
+	
+</head>
+<body>
+
+<h1>wysihtml5 - Advanced Editor Example</h1>
+
+<form>
+
+<div id="toolbar" style="display: none;">
+<ul class="apRichTextEditorToolbar">
+	<li class="apRichTextEditorButton H1Bt" title="H1"><span>H1</span></li>
+	<li class="apRichTextEditorButton H2Bt" title="H2"><span>H2</span></li>
+	<li class="apRichTextEditorButton H3Bt" title="H3"><span>H3</span></li>
+	<li class="apRichTextEditorButton H4Bt" title="H4"><span>H4</span></li>
+	<li class="apRichTextEditorButton paragraphBt" title="paragraph"><span>paragraph</span></li>
+	<li class="apRichTextEditorSp">&nbsp;</li>
+	<li class="apRichTextEditorButton boldBt" data-wysihtml5-command="bold" title="CTRL+B"><span>bold</span></li>
+	<li class="apRichTextEditorButton italicBt" title="italic"><span>italic</span></li>
+	<li class="apRichTextEditorSp">&nbsp;</li>
+	<li class="apRichTextEditorButton justifyLeftBt" title="justifyLeft"><span>justifyLeft</span></li>
+	<li class="apRichTextEditorButton justifyCenterBt" title="justifyCenter"><span>justifyCenter</span></li>
+	<li class="apRichTextEditorButton justifyRightBt" title="justifyRight"><span>justifyRight</span></li>
+	<li class="apRichTextEditorButton justifyFullBt" title="justifyFull"><span>justifyFull</span></li>
+	<li class="apRichTextEditorSp">&nbsp;</li>
+	<li class="apRichTextEditorButton outdentBt" title="outdent"><span>outdent</span></li>
+	<li class="apRichTextEditorButton indentBt" title="indent"><span>indent</span></li>
+	<li class="apRichTextEditorSp">&nbsp;</li>
+	<li class="apRichTextEditorButton insertOrderedListBt" title="insertOrderedList"><span>insertOrderedList</span></li>
+	<li class="apRichTextEditorButton insertUnorderedListBt" title="insertUnorderedList"><span>insertUnorderedList</span></li>
+	<li class="apRichTextEditorSp">&nbsp;</li>
+	<li class="apRichTextEditorButton undoBt" title="undo"><span>undo</span></li>
+	<li class="apRichTextEditorButton redoBt" title="redo"><span>redo</span></li>
+	<li class="apRichTextEditorSp">&nbsp;</li>
+	<li class="apRichTextEditorButton createLinkBt" title="createLink"><span>createLink</span></li>
+	<li class="apRichTextEditorButton unlinkBt" title="unlink"><span>unlink</span></li>
+	<li class="apRichTextEditorSp">&nbsp;</li>
+	<li class="apRichTextEditorButton removeFormatBt" title="removeFormat"><span>removeFormat</span></li>
+	<li class="apRichTextEditorButton Stylise BlockquoteBt" title="Stylise Blockquote"><span>Stylise Blockquote</span></li>
+</ul>
+
+  
+     |
+    <a data-wysihtml5-command="italic" title="CTRL+I">italic</a> |
+    <a data-wysihtml5-command="createLink">insert link</a> |
+    <a data-wysihtml5-command="insertImage">insert image</a> |
+    <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1">h1</a> |
+    <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2">h2</a> |
+    <a data-wysihtml5-command="insertUnorderedList">insertUnorderedList</a> |
+    <a data-wysihtml5-command="insertOrderedList">insertOrderedList</a> |
+    <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="red">red</a> |
+    <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="green">green</a> |
+    <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="blue">blue</a> |
+    <a data-wysihtml5-command="undo">undo</a> |
+    <a data-wysihtml5-command="redo">redo</a> |
+    <a data-wysihtml5-command="insertSpeech">speech</a>
+    <a data-wysihtml5-action="change_view">switch to html view</a>
+    
+    <div data-wysihtml5-dialog="createLink" style="display: none;">
+      <label>
+        Link:
+        <input data-wysihtml5-dialog-field="href" value="http://">
+      </label>
+      <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+    </div>
+    
+    <div data-wysihtml5-dialog="insertImage" style="display: none;">
+      <label>
+        Image:
+        <input data-wysihtml5-dialog-field="src" value="http://">
+      </label>
+      <label>
+        Align:
+        <select data-wysihtml5-dialog-field="className">
+          <option value="">default</option>
+          <option value="wysiwyg-float-left">left</option>
+          <option value="wysiwyg-float-right">right</option>
+        </select>
+      </label>
+      <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+    </div>
+    
+  </div>
+  <textarea id="textarea" placeholder="Enter text ..."></textarea>
+  <br><input type="reset" value="Reset form!">
+</form>
+
+<p onclick="commands.exec('bold');">Bold</p>
+
+<p onclick="console.log(wysihtml5.dom);">Dom</p>
+
+
+<h2>Events:</h2>
+<div id="log"></div>
+
+<small>powered by <a href="https://github.com/xing/wysihtml5" target="_blank">wysihtml5</a>.</small>
+
+<script>
+  var editor = new wysihtml5.Editor("textarea", {
+    toolbar:        "toolbar",
+    stylesheets:    "css/stylesheet.css",
+    parserRules:    wysihtml5ParserRules,
+    credit:         false,
+    predictive:     true
+  });
+  
+  var log = document.getElementById("log");
+  
+  editor
+    .on("load", function() {
+      log.innerHTML += "<div>load</div>";
+    })
+    .on("focus", function() {
+      log.innerHTML += "<div>focus</div>";
+    })
+    .on("blur", function() {
+      log.innerHTML += "<div>blur</div>";
+    })
+    .on("change", function() {
+      log.innerHTML += "<div>change</div>";
+    })
+    .on("paste", function() {
+      log.innerHTML += "<div>paste</div>";
+    })
+    .on("newword:composer", function() {
+      log.innerHTML += "<div>newword:composer</div>";
+    })
+    .on("undo:composer", function() {
+      log.innerHTML += "<div>undo:composer</div>";
+    })
+    .on("redo:composer", function() {
+      log.innerHTML += "<div>redo:composer</div>";
+    });
+    
+    var commands = new wysihtml5.Commands(editor);
+    
+    
+    
+</script>
+
+</body>
+</html>

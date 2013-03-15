@@ -1927,10 +1927,10 @@ input[type="submit"].btn.btn-mini {
 .ap-small-icon-align-left {
   background-position: -163px -43px;
 }
-.ap-small-icon-align-center {
+.ap-small-icon-align-right {
   background-position: -183px -43px;
 }
-.ap-small-icon-align-right {
+.ap-small-icon-align-center {
   background-position: -203px -43px;
 }
 .ap-small-icon-align-justify {

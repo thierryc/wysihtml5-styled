@@ -1,5 +1,5 @@
 wysihtml5.commands.insertUnorderedList = {
-  exec: function(composer, command) {
+  exec: function(composer, command, type) {
     var doc           = composer.doc,
         selectedNode  = composer.selection.getSelectedNode(),
         list          = wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL" }),
@@ -8,14 +8,12 @@ wysihtml5.commands.insertUnorderedList = {
         isEmpty,
         tempElement;
     
-    if (!list && !otherList && composer.commands.support(command)) {
+    if (!otherList && composer.commands.support(command)) {
       doc.execCommand(command, false, null);
-      
       var selectedNode = composer.selection.getSelectedNode();
       composer.selection.executeAndRestore(function() {
         if (type) wysihtml5.dom.addClass(selectedNode, "wysiwyg-ul-" + type);
       });
-      
       return;
     }
     
@@ -33,7 +31,9 @@ wysihtml5.commands.insertUnorderedList = {
       // becomes:
       // <ul><li>foo</li><li>bar</li></ul>
       composer.selection.executeAndRestore(function() {
-        wysihtml5.dom.renameElement(otherList, "ul");
+        list = wysihtml5.dom.renameElement(otherList, "ul");
+        wysihtml5.dom.removeClassByPrefix(list, "wysiwyg-ol-");
+        if (type) wysihtml5.dom.addClass(list, "wysiwyg-ul-" + type);
       });
     } else {
       // Create list
@@ -42,6 +42,7 @@ wysihtml5.commands.insertUnorderedList = {
       isEmpty = tempElement.innerHTML === "" || tempElement.innerHTML === wysihtml5.INVISIBLE_SPACE || tempElement.innerHTML === "<br>";
       composer.selection.executeAndRestore(function() {
         list = wysihtml5.dom.convertToList(tempElement, "ul");
+        if (type) wysihtml5.dom.addClass(list, "wysiwyg-ul-" + type);
       });
       if (isEmpty) {
         composer.selection.selectNode(list.querySelector("li"), true);
@@ -49,8 +50,10 @@ wysihtml5.commands.insertUnorderedList = {
     }
   },
   
-  state: function(composer) {
+  state: function(composer, command, type) {
     var selectedNode = composer.selection.getSelectedNode();
-    return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL" });
+    if (!type)
+        return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL" });
+    return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL", className: "wysiwyg-ul-" + type });
   }
 };

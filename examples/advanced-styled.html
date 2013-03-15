@@ -85,7 +85,7 @@
 
 <form>
   <div id="toolbar" style="display: none;">
-    <a data-wysihtml5-command="bold" title="CTRL+B">bold</a> |
+    <a data-wysihtml5-command="bold" title="CTRL+B">Bold</a> |
     <a data-wysihtml5-command="italic" title="CTRL+I">italic</a> |
     <a data-wysihtml5-command="createLink">insert link</a> |
     <a data-wysihtml5-command="insertImage">insert image</a> |
@@ -93,11 +93,15 @@
     <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2">h2</a> |
     <a data-wysihtml5-command="insertUnorderedList">insertUnorderedList</a> |
     <a data-wysihtml5-command="insertOrderedList">insertOrderedList</a> |
+    <a data-wysihtml5-command="insertOrderedList" data-wysihtml5-command-value="upper-roman">upper-roman List</a> |
+    <a data-wysihtml5-command="insertOrderedList" data-wysihtml5-command-value="harvard">harvard List</a> |
     <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="red">red</a> |
     <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="green">green</a> |
     <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="blue">blue</a> |
     <a data-wysihtml5-command="undo">undo</a> |
     <a data-wysihtml5-command="redo">redo</a> |
+    <a data-wysihtml5-command="indent">indent</a> |
+    <a data-wysihtml5-command="outdent">outdent</a> |
     <a data-wysihtml5-command="insertSpeech">speech</a>
     <a data-wysihtml5-action="change_view">switch to html view</a>
     
@@ -141,7 +145,7 @@
 <small>powered by <a href="https://github.com/xing/wysihtml5" target="_blank">wysihtml5</a>.</small>
 
 <script src="../parser_rules/advanced.js"></script>
-<script src="../dist/wysihtml5-0.4.0pre.js"></script>
+<script src="../dist/wysihtml5-predictive-0.5.0pre.js"></script>
 <script>
   var editor = new wysihtml5.Editor("textarea", {
     toolbar:        "toolbar",

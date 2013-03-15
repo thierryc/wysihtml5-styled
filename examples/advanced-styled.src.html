@@ -363,6 +363,9 @@ li.H4Bt {
 	<script src="../src/dom/set_styles.js"></script>
 	<script src="../src/dom/simulate_placeholder.js"></script>
 	<script src="../src/dom/text_content.js"></script>
+	
+	<script src="../src/dom/style.js"></script>
+	
 	<script src="../src/quirks/clean_pasted_html.js"></script>
 	<script src="../src/quirks/ensure_proper_clearing.js"></script>
 	<script src="../src/quirks/get_correct_inner_html.js"></script>
@@ -379,8 +382,10 @@ li.H4Bt {
 	<script src="../src/commands/insertHTML.js"></script>
 	<script src="../src/commands/insertImage.js"></script>
 	<script src="../src/commands/insertLineBreak.js"></script>
-	<script src="../src/commands/insertOrderedList.js"></script>
-	<script src="../src/commands/insertUnorderedList.js"></script>
+		
+	<script src="../src/commands/insertOrderedListHtml5.js"></script>
+	<script src="../src/commands/insertUnorderedListHtml5.js"></script>	
+	
 	<script src="../src/commands/italic.js"></script>
 	<script src="../src/commands/justifyCenter.js"></script>
 	<script src="../src/commands/justifyLeft.js"></script>
@@ -389,6 +394,9 @@ li.H4Bt {
 	<script src="../src/commands/redo.js"></script>
 	<script src="../src/commands/underline.js"></script>
 	<script src="../src/commands/undo.js"></script>
+	
+	<script src="../src/commands/indent.js"></script>
+	<script src="../src/commands/outdent.js"></script>
 	
 	<script src="../src/undo_manager.js"></script>
 	<script src="../src/views/view.js"></script>
@@ -410,81 +418,52 @@ li.H4Bt {
 <h1>wysihtml5 - Advanced Editor Example</h1>
 
 <form>
-
-<div id="toolbar" style="display: none;">
-<ul class="apRichTextEditorToolbar">
-	<li class="apRichTextEditorButton H1Bt" title="H1"><span>H1</span></li>
-	<li class="apRichTextEditorButton H2Bt" title="H2"><span>H2</span></li>
-	<li class="apRichTextEditorButton H3Bt" title="H3"><span>H3</span></li>
-	<li class="apRichTextEditorButton H4Bt" title="H4"><span>H4</span></li>
-	<li class="apRichTextEditorButton paragraphBt" title="paragraph"><span>paragraph</span></li>
-	<li class="apRichTextEditorSp">&nbsp;</li>
-	<li class="apRichTextEditorButton boldBt" data-wysihtml5-command="bold" title="CTRL+B"><span>bold</span></li>
-	<li class="apRichTextEditorButton italicBt" title="italic"><span>italic</span></li>
-	<li class="apRichTextEditorSp">&nbsp;</li>
-	<li class="apRichTextEditorButton justifyLeftBt" title="justifyLeft"><span>justifyLeft</span></li>
-	<li class="apRichTextEditorButton justifyCenterBt" title="justifyCenter"><span>justifyCenter</span></li>
-	<li class="apRichTextEditorButton justifyRightBt" title="justifyRight"><span>justifyRight</span></li>
-	<li class="apRichTextEditorButton justifyFullBt" title="justifyFull"><span>justifyFull</span></li>
-	<li class="apRichTextEditorSp">&nbsp;</li>
-	<li class="apRichTextEditorButton outdentBt" title="outdent"><span>outdent</span></li>
-	<li class="apRichTextEditorButton indentBt" title="indent"><span>indent</span></li>
-	<li class="apRichTextEditorSp">&nbsp;</li>
-	<li class="apRichTextEditorButton insertOrderedListBt" title="insertOrderedList"><span>insertOrderedList</span></li>
-	<li class="apRichTextEditorButton insertUnorderedListBt" title="insertUnorderedList"><span>insertUnorderedList</span></li>
-	<li class="apRichTextEditorSp">&nbsp;</li>
-	<li class="apRichTextEditorButton undoBt" title="undo"><span>undo</span></li>
-	<li class="apRichTextEditorButton redoBt" title="redo"><span>redo</span></li>
-	<li class="apRichTextEditorSp">&nbsp;</li>
-	<li class="apRichTextEditorButton createLinkBt" title="createLink"><span>createLink</span></li>
-	<li class="apRichTextEditorButton unlinkBt" title="unlink"><span>unlink</span></li>
-	<li class="apRichTextEditorSp">&nbsp;</li>
-	<li class="apRichTextEditorButton removeFormatBt" title="removeFormat"><span>removeFormat</span></li>
-	<li class="apRichTextEditorButton Stylise BlockquoteBt" title="Stylise Blockquote"><span>Stylise Blockquote</span></li>
-</ul>
-
-  
-     |
-    <a data-wysihtml5-command="italic" title="CTRL+I">italic</a> |
-    <a data-wysihtml5-command="createLink">insert link</a> |
-    <a data-wysihtml5-command="insertImage">insert image</a> |
-    <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1">h1</a> |
-    <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2">h2</a> |
-    <a data-wysihtml5-command="insertUnorderedList">insertUnorderedList</a> |
-    <a data-wysihtml5-command="insertOrderedList">insertOrderedList</a> |
-    <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="red">red</a> |
-    <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="green">green</a> |
-    <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="blue">blue</a> |
-    <a data-wysihtml5-command="undo">undo</a> |
-    <a data-wysihtml5-command="redo">redo</a> |
-    <a data-wysihtml5-command="insertSpeech">speech</a>
-    <a data-wysihtml5-action="change_view">switch to html view</a>
+    <div id="toolbar" style="display: none;">
+        <a data-wysihtml5-command="bold" title="CTRL+B">Bold</a> |
+        <a data-wysihtml5-command="italic" title="CTRL+I">italic</a> |
+        <a data-wysihtml5-command="createLink">insert link</a> |
+        <a data-wysihtml5-command="insertImage">insert image</a> |
+        <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1">h1</a> |
+        <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2">h2</a> |
+        <a data-wysihtml5-command="insertUnorderedList">insertUnorderedList</a> |
+        <a data-wysihtml5-command="insertOrderedList">insertOrderedList</a> |
+        <a data-wysihtml5-command="insertOrderedList" data-wysihtml5-command-value="upper-roman">upper-roman List</a> |
+        <a data-wysihtml5-command="insertOrderedList" data-wysihtml5-command-value="harvard">harvard List</a> |
+        <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="red">red</a> |
+        <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="green">green</a> |
+        <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="blue">blue</a> |
+        <a data-wysihtml5-command="undo">undo</a> |
+        <a data-wysihtml5-command="redo">redo</a> |
+        <a data-wysihtml5-command="indent">indent</a> |
+        <a data-wysihtml5-command="outdent">outdent</a> |
+        <a data-wysihtml5-command="insertSpeech">speech</a>
+        <a data-wysihtml5-action="change_view">switch to html view</a>
     
-    <div data-wysihtml5-dialog="createLink" style="display: none;">
-      <label>
-        Link:
-        <input data-wysihtml5-dialog-field="href" value="http://">
-      </label>
-      <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+        <div data-wysihtml5-dialog="createLink" style="display: none;">
+          <label>
+            Link:
+            <input data-wysihtml5-dialog-field="href" value="http://">
+          </label>
+          <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+        </div>
+    
+        <div data-wysihtml5-dialog="insertImage" style="display: none;">
+          <label>
+            Image:
+            <input data-wysihtml5-dialog-field="src" value="http://">
+          </label>
+          <label>
+            Align:
+            <select data-wysihtml5-dialog-field="className">
+              <option value="">default</option>
+              <option value="wysiwyg-float-left">left</option>
+              <option value="wysiwyg-float-right">right</option>
+            </select>
+          </label>
+          <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+        </div>
+    
     </div>
-    
-    <div data-wysihtml5-dialog="insertImage" style="display: none;">
-      <label>
-        Image:
-        <input data-wysihtml5-dialog-field="src" value="http://">
-      </label>
-      <label>
-        Align:
-        <select data-wysihtml5-dialog-field="className">
-          <option value="">default</option>
-          <option value="wysiwyg-float-left">left</option>
-          <option value="wysiwyg-float-right">right</option>
-        </select>
-      </label>
-      <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
-    </div>
-    
-  </div>
   <textarea id="textarea" placeholder="Enter text ..."></textarea>
   <br><input type="reset" value="Reset form!">
 </form>

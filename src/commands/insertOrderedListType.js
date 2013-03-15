@@ -1,47 +1,50 @@
-wysihtml5.commands.insertUnorderedList = {
-  exec: function(composer, command) {
+wysihtml5.commands.insertOrderedListType = {
+  exec: function(composer, command, type) {
     var doc           = composer.doc,
         selectedNode  = composer.selection.getSelectedNode(),
-        list          = wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL" }),
-        otherList     = wysihtml5.dom.getParentElement(selectedNode, { nodeName: "OL" }),
+        list          = wysihtml5.dom.getParentElement(selectedNode, { nodeName: "OL" }),
+        otherList     = wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL" }),
         tempClassName =  "_wysihtml5-temp-" + new Date().getTime(),
         isEmpty,
         tempElement;
     
-    if (!list && !otherList && composer.commands.support(command)) {
-      doc.execCommand(command, false, null);
-      
-      var selectedNode = composer.selection.getSelectedNode();
-      composer.selection.executeAndRestore(function() {
-        if (type) wysihtml5.dom.addClass(selectedNode, "wysiwyg-ul-" + type);
-      });
-      
-      return;
-    }
+    
     
     if (list) {
       // Unwrap list
-      // <ul><li>foo</li><li>bar</li></ul>
+      // <ol><li>foo</li><li>bar</li></ol>
       // becomes:
       // foo<br>bar<br>
       composer.selection.executeAndRestore(function() {
         wysihtml5.dom.resolveList(list, composer.config.useLineBreaks);
       });
     } else if (otherList) {
-      // Turn an ordered list into an unordered list
-      // <ol><li>foo</li><li>bar</li></ol>
-      // becomes:
+      // Turn an unordered list into an ordered list
       // <ul><li>foo</li><li>bar</li></ul>
+      // becomes:
+      // <ol><li>foo</li><li>bar</li></ol>
       composer.selection.executeAndRestore(function() {
-        wysihtml5.dom.renameElement(otherList, "ul");
+        wysihtml5.dom.renameElement(otherList, "ol");
+        wysihtml5.dom.addClass(otherList, "wysiwyg-ol-" + type);
       });
     } else {
       // Create list
+      
+      
+      
       composer.commands.exec("formatBlock", "div", tempClassName);
       tempElement = doc.querySelector("." + tempClassName);
+      
+      console.log(tempElement);
+      
       isEmpty = tempElement.innerHTML === "" || tempElement.innerHTML === wysihtml5.INVISIBLE_SPACE || tempElement.innerHTML === "<br>";
+      
+      console.log(isEmpty);
+      
       composer.selection.executeAndRestore(function() {
-        list = wysihtml5.dom.convertToList(tempElement, "ul");
+        list = wysihtml5.dom.convertToList(tempElement, "ol");
+        console.log(list);
+        console.log(wysihtml5.dom.addClass(list, "wysiwyg-ol-" + type));
       });
       if (isEmpty) {
         composer.selection.selectNode(list.querySelector("li"), true);
@@ -49,8 +52,8 @@ wysihtml5.commands.insertUnorderedList = {
     }
   },
   
-  state: function(composer) {
+  state: function(composer, command, type) {
     var selectedNode = composer.selection.getSelectedNode();
-    return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL" });
+    return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "OL", className: "wysiwyg-ol-" + type });
   }
 };

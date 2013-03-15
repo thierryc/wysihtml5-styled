@@ -205,7 +205,7 @@ textarea {
 }
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "DroidSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #333333;
@@ -873,7 +873,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "DroidSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 label {
   display: block;
@@ -3725,7 +3725,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-search .search-query {
   margin-bottom: 0;
   padding: 4px 14px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "DroidSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
   line-height: 1;
@@ -6778,6 +6778,20 @@ a.badge:hover {
 }
 .apico-fingers5-spread {
   background-position: -550px -300px;
+}
+@font-face {
+  font-family: 'DroidSans';
+  src: url('DroidSans-webfont.eot');
+  src: url('DroidSans-webfont.eot?#iefix') format('embedded-opentype'), url('DroidSans-webfont.woff') format('woff'), url('DroidSans-webfont.ttf') format('truetype'), url('DroidSans-webfont.svg#DroidSansRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'DroidSans';
+  src: url('DroidSans-Bold-webfont.eot');
+  src: url('DroidSans-Bold-webfont.eot?#iefix') format('embedded-opentype'), url('DroidSans-Bold-webfont.woff') format('woff'), url('DroidSans-Bold-webfont.ttf') format('truetype'), url('DroidSans-Bold-webfont.svg#DroidSansBold') format('svg');
+  font-weight: bold;
+  font-style: normal;
 }
 body {
   font-weight: 300;

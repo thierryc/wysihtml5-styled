@@ -26,8 +26,8 @@ The rich text editing interface is supported in IE8+, FF 3.5+, Safari 4+, Safari
 
 h2. Demos
 
-* "Simple Editor with italic and bold buttons":http://xing.github.com/wysihtml5/examples/simple.html
-* "Editor with advanced functionality":http://xing.github.com/wysihtml5/examples/advanced-styled.html
+* "Simple Editor with italic and bold buttons":http://thierryc.github.com/wysihtml5/examples/simple.html
+* "Editor with advanced functionality":http://thierryc.github.com/wysihtml5/examples/advanced-styled.html
 
 h2. Companies using wysihtml5 (original)
 
@@ -35,6 +35,13 @@ h2. Companies using wysihtml5 (original)
 * "XING":https://www.xing.com - Business Social Network with more than 12 million members
 * "Qype":http://www.qype.com - Largest user-generated local review site in Europe
 * and many more ...
+
+h2. Companies using wysihtml5 (styled)
+
+* "Pikock":http://Pikock.com - Pikock web site
+* "Autre Planete":https://www.autreplanete.com.com - Graphic and Interactive User Interfaces Design Studio
+* and many more I hope ;-)...
+
 
 h2. Wiki
 

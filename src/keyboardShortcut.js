@@ -31,13 +31,9 @@
     constructor: function(editor) {
       this.editor     = editor;
       this.composer   = editor.composer;
-      
       var that = this;
-      console.log("keydown");
-
       // toolbar.execCommand("formatBlock", "blockquote");
       dom.observe(this.composer.element, "keydown", function(event) {
-      
         var key = event.keyCode || event.which;
         var modKeys = keys;
         if (event.ctrlKey || event.metaKey) {
@@ -48,14 +44,9 @@
         } else if (event.shiftKey) {
             modKeys = modKeys['shift'];
         }
-        
-        console.log(event.ctrlKey, event.metaKey, key, modKeys);
-        
         if (modKeys[key]) {
             event.preventDefault();
-            
             that.editor.toolbar.execCommand(modKeys[key].command, modKeys[key].option);
-            //that.toolbar.execCommand(modKeys[key].command, modKeys[key].option);
         }
       });
  

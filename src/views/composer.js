@@ -146,6 +146,9 @@
       // Make sure predictive dispatcher is ready
       this.predictive  = new wysihtml5.Predictive(this.parent);
       
+      // Make sure predictive dispatcher is ready
+      this.keyboardShortcut  = new wysihtml5.KeyboardShortcut(this.parent);
+      
       dom.copyAttributes([
         "className", "spellcheck", "title", "lang", "dir", "accessKey"
       ]).from(this.textarea.element).to(this.element);

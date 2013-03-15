@@ -12,13 +12,14 @@ var wysihtml5 = {
   version: "@VERSION",
   
   // namespaces
-  commands:   {},
-  dom:        {},
-  quirks:     {},
-  toolbar:    {},
-  lang:       {},
-  selection:  {},
-  views:      {},
+  commands:             {},
+  dom:                  {},
+  quirks:               {},
+  toolbar:              {},
+  lang:                 {},
+  selection:            {},
+  views:                {},
+  KeyboardShortcut:     {},
   
   INVISIBLE_SPACE: "\uFEFF",
   

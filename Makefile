@@ -73,6 +73,7 @@ JS_FILES = src/wysihtml5.js \
   src/toolbar/dialog.js \
   src/toolbar/speech.js \
   src/toolbar/toolbar.js \
+  src/keyboardShortcut.js \
   src/predictive.js \
   src/editor.js
 

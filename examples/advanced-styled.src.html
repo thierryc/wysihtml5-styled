@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>wysihtml5</title>
+	<link rel="stylesheet" href="css/pi.bootstrap3.css"/>
 	<style>
   body {
     font-family: Verdana;
@@ -418,51 +419,60 @@ li.H4Bt {
 <h1>wysihtml5 - Advanced Editor Example</h1>
 
 <form>
-    <div id="toolbar" style="display: none;">
-        <a data-wysihtml5-command="bold" title="CTRL+B">Bold</a> |
-        <a data-wysihtml5-command="italic" title="CTRL+I">italic</a> |
-        <a data-wysihtml5-command="createLink">insert link</a> |
-        <a data-wysihtml5-command="insertImage">insert image</a> |
-        <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1">h1</a> |
-        <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2">h2</a> |
-        <a data-wysihtml5-command="insertUnorderedList">insertUnorderedList</a> |
-        <a data-wysihtml5-command="insertOrderedList">insertOrderedList</a> |
-        <a data-wysihtml5-command="insertOrderedList" data-wysihtml5-command-value="upper-roman">upper-roman List</a> |
-        <a data-wysihtml5-command="insertOrderedList" data-wysihtml5-command-value="harvard">harvard List</a> |
-        <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="red">red</a> |
-        <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="green">green</a> |
-        <a data-wysihtml5-command="foreColor" data-wysihtml5-command-value="blue">blue</a> |
-        <a data-wysihtml5-command="undo">undo</a> |
-        <a data-wysihtml5-command="redo">redo</a> |
-        <a data-wysihtml5-command="indent">indent</a> |
-        <a data-wysihtml5-command="outdent">outdent</a> |
-        <a data-wysihtml5-command="insertSpeech">speech</a>
-        <a data-wysihtml5-action="change_view">switch to html view</a>
-    
-        <div data-wysihtml5-dialog="createLink" style="display: none;">
-          <label>
-            Link:
-            <input data-wysihtml5-dialog-field="href" value="http://">
-          </label>
-          <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+    <div id="toolbar" class="btn-toolbar" style="display: none;">
+        <div class="btn-group">
+            <a class="btn btn-mini" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1"><span class="apico interface apico-h1"></span></a>
+            <a class="btn btn-mini" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2"><span class="apico interface apico-h2"></span></a>
+            <a class="btn btn-mini" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3"><span class="apico interface apico-h3"></span></a>
         </div>
-    
-        <div data-wysihtml5-dialog="insertImage" style="display: none;">
-          <label>
-            Image:
-            <input data-wysihtml5-dialog-field="src" value="http://">
-          </label>
-          <label>
+        <div class="btn-group">
+            <a class="btn btn-mini" data-wysihtml5-command="bold" title="CTRL+B"><span class="apico interface apico-bold"></span></a>
+            <a class="btn btn-mini" data-wysihtml5-command="italic" title="CTRL+I"><span class="apico interface apico-italic"></span></a>
+        </div>
+        <div class="btn-group">
+            <a class="btn btn-mini" data-wysihtml5-command="justifyLeft"><span class="apico interface apico-align-left"></span></a>
+            <a class="btn btn-mini" data-wysihtml5-command="justifyRight"><span class="apico interface apico-align-right"></span></a>
+            <a class="btn btn-mini" data-wysihtml5-command="justifyCenter"><span class="apico interface apico-align-center"></span></a>
+        </div>
+        <div class="btn-group">
+            <a class="btn btn-mini" data-wysihtml5-command="insertUnorderedList"><span class="apico interface apico-bullet-list"></span></a>
+            <a class="btn btn-mini" data-wysihtml5-command="insertOrderedList">insertOrderedList</a>
+        </div>
+        <a class="btn btn-mini" data-wysihtml5-command="createLink"><span class="apico interface apico-link"></span></a>
+        <a class="btn btn-mini" data-wysihtml5-command="insertImage"><span class="apico interface apico-picture"></span></a>
+        <div class="btn-group">
+            <a class="btn btn-mini" data-wysihtml5-command="undo"><span class="apico media apico-previous"></span></a>
+            <a class="btn btn-mini" data-wysihtml5-command="redo"><span class="apico media apico-next"></span></a>
+        </div>
+        <!--<a class="btn btn-mini" data-wysihtml5-command="insertSpeech">Speech</a>
+        <a class="btn btn-mini" data-wysihtml5-action="change_view">HTML</a>-->
+
+        <div data-wysihtml5-dialog="createLink" class="well" style="display: none;">
+            <label>
+            Link:
+            <input data-wysihtml5-dialog-field="href" type="text" value="http://">
+            </label>
+            <a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
+            <a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
+        </div>
+
+        <div data-wysihtml5-dialog="insertImage" class="well" style="display: none;">
+            <label>
+                Image:
+                <input type="text" data-wysihtml5-dialog-field="src" value="http://">
+            </label>
+            <label>
             Align:
             <select data-wysihtml5-dialog-field="className">
-              <option value="">default</option>
-              <option value="wysiwyg-float-left">left</option>
-              <option value="wysiwyg-float-right">right</option>
+            <option value="">default</option>
+            <option value="wysiwyg-float-left">left</option>
+            <option value="wysiwyg-float-right">right</option>
             </select>
-          </label>
-          <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
+            </label>
+        <a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
+        <a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
         </div>
-    
+
     </div>
   <textarea id="textarea" placeholder="Enter text ..."></textarea>
   <br><input type="reset" value="Reset form!">

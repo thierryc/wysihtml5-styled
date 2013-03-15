@@ -1,3 +1,8 @@
+.wysiwyg-text-align-center { text-align: center; }
+.wysiwyg-text-align-left { text-align: left; }
+.wysiwyg-text-align-right { text-align: right; }
+.wysiwyg-text-align-justify { text-align: justify; }
+
 .wysiwyg-ol-upper-roman,
 .wysiwyg-ol-upper-roman ol { list-style-type: upper-roman; }
 .wysiwyg-ol-upper-latin,

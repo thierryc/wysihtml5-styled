@@ -1,4 +1,4 @@
-h1. wysihtml5 predictive 0.5.0Pre
+h1. wysihtml5-styled Predictive 0.5.0Pre
 
 wysihtml5 is an open source rich text editor based on HTML5 technology and the progressive-enhancement approach.
 It uses a sophisticated security concept and aims to generate fully valid HTML5 markup by preventing unmaintainable tag soups and inline styles.
@@ -62,3 +62,4 @@ h2. Contributors wysihtml5 (original)
 h2. Contributors wysihtml5  (styled)
 
 * "@thierryc":https://github.com/thierryc
+* "@pikock":https://github.com/pikock

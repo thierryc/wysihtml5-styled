@@ -15,9 +15,9 @@
  *    </script>
  */
 (function(wysihtml5) {
-  var CLASS_NAME_COMMAND_DISABLED   = "wysihtml5-command-disabled",
+  var CLASS_NAME_COMMAND_DISABLED   = "disabled",
       CLASS_NAME_COMMANDS_DISABLED  = "wysihtml5-commands-disabled",
-      CLASS_NAME_COMMAND_ACTIVE     = "wysihtml5-command-active",
+      CLASS_NAME_COMMAND_ACTIVE     = "active",
       CLASS_NAME_ACTION_ACTIVE      = "wysihtml5-action-active",
       dom                           = wysihtml5.dom;
   

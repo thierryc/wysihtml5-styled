@@ -6803,8 +6803,12 @@ body {
   margin-top: 30px;
 }
 .bgSection {
-  margin-top: 30px;
+  padding: 60px 0px;
   text-align: center;
+  background-image: url(../img/lined_paper.png);
+}
+.bgSection h1 {
+  text-shadow: 0 2px 1px #eeeeee;
 }
 .bgSection h1 em {
   color: #672267;

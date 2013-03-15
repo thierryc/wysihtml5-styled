@@ -1,4 +1,4 @@
-h1. wysihtml5 0.3.0
+h1. wysihtml5 predictive 0.5.0Pre
 
 wysihtml5 is an open source rich text editor based on HTML5 technology and the progressive-enhancement approach.
 It uses a sophisticated security concept and aims to generate fully valid HTML5 markup by preventing unmaintainable tag soups and inline styles.
@@ -27,9 +27,9 @@ The rich text editing interface is supported in IE8+, FF 3.5+, Safari 4+, Safari
 h2. Demos
 
 * "Simple Editor with italic and bold buttons":http://xing.github.com/wysihtml5/examples/simple.html
-* "Editor with advanced functionality":http://xing.github.com/wysihtml5/examples/advanced.html
+* "Editor with advanced functionality":http://xing.github.com/wysihtml5/examples/advanced-styled.html
 
-h2. Companies using wysihtml5
+h2. Companies using wysihtml5 (original)
 
 * "Basecamp":http://basecamp.com - Leading web-based project management and collaboration tool
 * "XING":https://www.xing.com - Business Social Network with more than 12 million members
@@ -53,8 +53,12 @@ A compatibility table for rich text query commands can be found here:
 A pure native rich text editor with HTML validator and live source preview is here:
 "http://tifftiff.de/contenteditable/editor.html":http://tifftiff.de/contenteditable/editor.html
 
-h2. Contributors
+h2. Contributors wysihtml5 (original)
 
 * "@tiff":https://github.com/tiff
 * "@ingochao":https://github.com/ingochao
 * "@uwe":https://github.com/uwe
+
+h2. Contributors wysihtml5  (styled)
+
+* "@thierryc":https://github.com/thierryc

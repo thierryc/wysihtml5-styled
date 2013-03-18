@@ -84,8 +84,14 @@
         return;
       }
       
+      //  add default class name to textarea element
+      wysihtml5.dom.addClass(this.textareaElement, 'wysihtml5-textarea');
+      
       // Add class name to body, to indicate that the editor is supported
       wysihtml5.dom.addClass(document.body, this.config.bodyClassName);
+      
+      //  add default class name to body element
+      wysihtml5.dom.addClass(document.body, 'wysihtml5-body');
       
       this.composer = new wysihtml5.views.Composer(this, this.textareaElement, this.config);
       this.currentView = this.composer;

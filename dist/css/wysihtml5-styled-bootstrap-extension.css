@@ -34,3 +34,46 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+textarea {
+  width: 100%;
+  height: 400px;
+}
+.wysihtml5-command-active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.btn-toolbar.inverse {
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #555555;
+  background-image: -moz-linear-gradient(top, #555555, #555555);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), to(#555555));
+  background-image: -webkit-linear-gradient(top, #555555, #555555);
+  background-image: -o-linear-gradient(top, #555555, #555555);
+  background-image: linear-gradient(to bottom, #555555, #555555);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff555555', endColorstr='#ff555555', GradientType=0);
+  border-color: #555555 #555555 #2f2f2f;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #555555;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-toolbar.inverse:hover,
+.btn-toolbar.inverse:focus,
+.btn-toolbar.inverse:active,
+.btn-toolbar.inverse.active,
+.btn-toolbar.inverse.disabled,
+.btn-toolbar.inverse[disabled] {
+  color: #333333;
+  background-color: #555555;
+  *background-color: #484848;
+}
+.btn-toolbar.inverse:active,
+.btn-toolbar.inverse.active {
+  background-color: #3b3b3b \9;
+}

@@ -212,12 +212,12 @@ body {
   background-color: #ffffff;
 }
 a {
-  color: #0088cc;
+  color: #672267;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #005580;
+  color: #2d0f2d;
   text-decoration: underline;
 }
 .img-rounded {
@@ -2477,14 +2477,14 @@ table th[class*="span"],
 .dropdown-submenu:focus > a {
   text-decoration: none;
   color: #ffffff;
-  background-color: #0081c2;
-  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
-  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
-  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
-  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-color: #5f1f5f;
+  background-image: -moz-linear-gradient(top, #672267, #541c54);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#672267), to(#541c54));
+  background-image: -webkit-linear-gradient(top, #672267, #541c54);
+  background-image: -o-linear-gradient(top, #672267, #541c54);
+  background-image: linear-gradient(to bottom, #672267, #541c54);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff672267', endColorstr='#ff541c54', GradientType=0);
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -2492,14 +2492,14 @@ table th[class*="span"],
   color: #ffffff;
   text-decoration: none;
   outline: 0;
-  background-color: #0081c2;
-  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
-  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
-  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
-  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-color: #5f1f5f;
+  background-image: -moz-linear-gradient(top, #672267, #541c54);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#672267), to(#541c54));
+  background-image: -webkit-linear-gradient(top, #672267, #541c54);
+  background-image: -o-linear-gradient(top, #672267, #541c54);
+  background-image: linear-gradient(to bottom, #672267, #541c54);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff672267', endColorstr='#ff541c54', GradientType=0);
 }
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
@@ -2824,17 +2824,17 @@ input[type="button"].btn-block {
 .btn-primary {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #006dcc;
-  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
-  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
-  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
-  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-color: #672267;
+  background-image: -moz-linear-gradient(top, #672267, #672267);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#672267), to(#672267));
+  background-image: -webkit-linear-gradient(top, #672267, #672267);
+  background-image: -o-linear-gradient(top, #672267, #672267);
+  background-image: linear-gradient(to bottom, #672267, #672267);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
-  border-color: #0044cc #0044cc #002a80;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff672267', endColorstr='#ff672267', GradientType=0);
+  border-color: #672267 #672267 #2d0f2d;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #0044cc;
+  *background-color: #672267;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -2846,12 +2846,12 @@ input[type="button"].btn-block {
 .btn-primary.disabled,
 .btn-primary[disabled] {
   color: #ffffff;
-  background-color: #0044cc;
-  *background-color: #003bb3;
+  background-color: #672267;
+  *background-color: #541c54;
 }
 .btn-primary:active,
 .btn-primary.active {
-  background-color: #003399 \9;
+  background-color: #411541 \9;
 }
 .btn-warning {
   color: #ffffff;
@@ -3050,14 +3050,14 @@ input[type="submit"].btn.btn-mini {
 .btn-link {
   border-color: transparent;
   cursor: pointer;
-  color: #0088cc;
+  color: #672267;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: #005580;
+  color: #2d0f2d;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -3198,7 +3198,7 @@ input[type="submit"].btn.btn-mini {
   background-color: #e6e6e6;
 }
 .btn-group.open .btn-primary.dropdown-toggle {
-  background-color: #0044cc;
+  background-color: #672267;
 }
 .btn-group.open .btn-warning.dropdown-toggle {
   background-color: #f89406;
@@ -3393,7 +3393,7 @@ input[type="submit"].btn.btn-mini {
 .nav-list > .active > a:focus {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
-  background-color: #0088cc;
+  background-color: #672267;
 }
 .nav-list [class^="icon-"],
 .nav-list [class*=" icon-"] {
@@ -3476,7 +3476,7 @@ input[type="submit"].btn.btn-mini {
 .nav-pills > .active > a:hover,
 .nav-pills > .active > a:focus {
   color: #ffffff;
-  background-color: #0088cc;
+  background-color: #672267;
 }
 .nav-stacked > li {
   float: none;
@@ -3531,14 +3531,14 @@ input[type="submit"].btn.btn-mini {
   border-radius: 6px;
 }
 .nav .dropdown-toggle .caret {
-  border-top-color: #0088cc;
-  border-bottom-color: #0088cc;
+  border-top-color: #672267;
+  border-bottom-color: #672267;
   margin-top: 6px;
 }
 .nav .dropdown-toggle:hover .caret,
 .nav .dropdown-toggle:focus .caret {
-  border-top-color: #005580;
-  border-bottom-color: #005580;
+  border-top-color: #2d0f2d;
+  border-bottom-color: #2d0f2d;
 }
 /* move down carets for tabs */
 .nav-tabs .dropdown-toggle .caret {
@@ -3695,7 +3695,7 @@ input[type="submit"].btn.btn-mini {
   *z-index: 2;
 }
 .navbar-inner {
-  min-height: 40px;
+  min-height: 30px;
   padding-left: 20px;
   padding-right: 20px;
   background-color: #fafafa;
@@ -3734,7 +3734,7 @@ input[type="submit"].btn.btn-mini {
 .navbar .brand {
   float: left;
   display: block;
-  padding: 10px 20px 10px;
+  padding: 5px 20px 5px;
   margin-left: -20px;
   font-size: 20px;
   font-weight: 200;
@@ -3747,7 +3747,7 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar-text {
   margin-bottom: 0;
-  line-height: 40px;
+  line-height: 30px;
   color: #777777;
 }
 .navbar-link {
@@ -3758,14 +3758,14 @@ input[type="submit"].btn.btn-mini {
   color: #333333;
 }
 .navbar .divider-vertical {
-  height: 40px;
+  height: 30px;
   margin: 0 9px;
   border-left: 1px solid #f2f2f2;
   border-right: 1px solid #ffffff;
 }
 .navbar .btn,
 .navbar .btn-group {
-  margin-top: 5px;
+  margin-top: 0px;
 }
 .navbar .btn-group .btn,
 .navbar .input-prepend .btn,
@@ -3791,7 +3791,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-form select,
 .navbar-form .radio,
 .navbar-form .checkbox {
-  margin-top: 5px;
+  margin-top: 0px;
 }
 .navbar-form input,
 .navbar-form select,
@@ -3816,7 +3816,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-search {
   position: relative;
   float: left;
-  margin-top: 5px;
+  margin-top: 0px;
   margin-bottom: 0;
 }
 .navbar-search .search-query {
@@ -3900,7 +3900,7 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar .nav > li > a {
   float: none;
-  padding: 10px 15px 10px;
+  padding: 5px 15px 5px;
   color: #777777;
   text-decoration: none;
   text-shadow: 0 1px 0 #ffffff;
@@ -4743,7 +4743,7 @@ input[type="submit"].btn.btn-mini {
 }
 a.thumbnail:hover,
 a.thumbnail:focus {
-  border-color: #0088cc;
+  border-color: #672267;
   -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
@@ -5277,4 +5277,522 @@ a.badge:focus {
 }
 .affix {
   position: fixed;
+}
+textarea {
+  width: 100%;
+  height: 400px;
+}
+.wysihtml5-command-active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.btn-toolbar.inverse .btn {
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #555555;
+  background-image: -moz-linear-gradient(top, #555555, #555555);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), to(#555555));
+  background-image: -webkit-linear-gradient(top, #555555, #555555);
+  background-image: -o-linear-gradient(top, #555555, #555555);
+  background-image: linear-gradient(to bottom, #555555, #555555);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff555555', endColorstr='#ff555555', GradientType=0);
+  border-color: #555555 #555555 #2f2f2f;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #555555;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-toolbar.inverse .btn:hover,
+.btn-toolbar.inverse .btn:focus,
+.btn-toolbar.inverse .btn:active,
+.btn-toolbar.inverse .btn.active,
+.btn-toolbar.inverse .btn.disabled,
+.btn-toolbar.inverse .btn[disabled] {
+  color: #333333;
+  background-color: #555555;
+  *background-color: #484848;
+}
+.btn-toolbar.inverse .btn:active,
+.btn-toolbar.inverse .btn.active {
+  background-color: #3b3b3b \9;
+}
+[class^="ap-small-icon-"],
+[class*="ap-small-icon-"] {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
+  *margin-right: .3em;
+  line-height: 16px;
+  vertical-align: text-top;
+  background-image: url("../img/sprite-ap-small-icons.png");
+  background-position: 16px 16px;
+  background-repeat: no-repeat;
+}
+.ap-small-icon-user {
+  background-position: -3px -3px;
+}
+.ap-small-icon-time {
+  background-position: -23px -3px;
+}
+.ap-small-icon-calendar {
+  background-position: -43px -3px;
+}
+.ap-small-icon-folder {
+  background-position: -63px -3px;
+}
+.ap-small-icon-folder-open {
+  background-position: -83px -3px;
+}
+.ap-small-icon-bookmark {
+  background-position: -103px -3px;
+}
+.ap-small-icon-favorite {
+  background-position: -123px -3px;
+}
+.ap-small-icon-file {
+  background-position: -143px -3px;
+}
+.ap-small-icon-file-pdf {
+  background-position: -163px -3px;
+}
+.ap-small-icon-file-img {
+  background-position: -183px -3px;
+}
+.ap-small-icon-picture {
+  background-position: -203px -3px;
+}
+.ap-small-icon-file-zip {
+  background-position: -223px -3px;
+}
+.ap-small-icon-email {
+  background-position: -243px -3px;
+}
+.ap-small-icon-email-in {
+  background-position: -263px -3px;
+}
+.ap-small-icon-email-out {
+  background-position: -283px -3px;
+}
+.ap-small-icon-logout {
+  background-position: -303px -3px;
+}
+.ap-small-icon-post-more {
+  background-position: -323px -3px;
+}
+.ap-small-icon-post-less {
+  background-position: -343px -3px;
+}
+.ap-small-icon-crop {
+  background-position: -363px -3px;
+}
+.ap-small-icon-pen {
+  background-position: -383px -3px;
+}
+.ap-small-icon-file-plus {
+  background-position: -403px -3px;
+}
+.ap-small-icon-flie-minus {
+  background-position: -423px -3px;
+}
+.ap-small-icon-file-text {
+  background-position: -443px -3px;
+}
+.ap-small-icon-2col {
+  background-position: -2px -22px;
+}
+.ap-small-icon-1col {
+  background-position: -22px -22px;
+}
+.ap-small-icon-list-puce {
+  background-position: -42px -22px;
+}
+.ap-small-icon-4box {
+  background-position: -62px -22px;
+}
+.ap-small-icon-console {
+  background-position: -82px -23px;
+}
+.ap-small-icon-erase {
+  background-position: -103px -23px;
+}
+.ap-small-icon-light-full {
+  background-position: -123px -23px;
+}
+.ap-small-icon-crop-text {
+  background-position: -143px -23px;
+}
+.ap-small-icon-h1 {
+  background-position: -3px -43px;
+}
+.ap-small-icon-h2 {
+  background-position: -23px -43px;
+}
+.ap-small-icon-h3 {
+  background-position: -43px -43px;
+}
+.ap-small-icon-font {
+  background-position: -63px -43px;
+}
+.ap-small-icon-bold {
+  background-position: -83px -43px;
+}
+.ap-small-icon-italic {
+  background-position: -103px -43px;
+}
+.ap-small-icon-text-height {
+  background-position: -123px -43px;
+}
+.ap-small-icon-text-width {
+  background-position: -143px -43px;
+}
+.ap-small-icon-align-left {
+  background-position: -163px -43px;
+}
+.ap-small-icon-align-right {
+  background-position: -183px -43px;
+}
+.ap-small-icon-align-center {
+  background-position: -203px -43px;
+}
+.ap-small-icon-align-justify {
+  background-position: -223px -43px;
+}
+.ap-small-icon-align-justify-left {
+  background-position: -243px -43px;
+}
+.ap-small-icon-align-justify-right {
+  background-position: -263px -43px;
+}
+.ap-small-icon-list {
+  background-position: -283px -43px;
+}
+.ap-small-icon-list-number {
+  background-position: -303px -43px;
+}
+.ap-small-icon-indent-left {
+  background-position: -323px -43px;
+}
+.ap-small-icon-indent-right {
+  background-position: -343px -43px;
+}
+.ap-small-icon-citation {
+  background-position: -363px -43px;
+}
+.ap-small-icon-link {
+  background-position: -383px -43px;
+}
+.ap-small-icon-attachement {
+  background-position: -403px -42px;
+}
+.ap-small-icon-pencil {
+  background-position: -423px -43px;
+}
+.ap-small-icon-suppr {
+  background-position: -323px -143px;
+}
+.ap-small-icon-suppr-color {
+  background-position: -363px -143px;
+}
+.ap-small-icon-trash {
+  background-position: -463px -43px;
+}
+.ap-small-icon-comment {
+  background-position: -483px -43px;
+}
+.ap-small-icon-cut {
+  background-position: -3px -63px;
+}
+.ap-small-icon-copy {
+  background-position: -23px -63px;
+}
+.ap-small-icon-paste {
+  background-position: -43px -63px;
+}
+.ap-small-icon-eye-open {
+  background-position: -62px -63px;
+}
+.ap-small-icon-eye-close {
+  background-position: -82px -63px;
+}
+.ap-small-icon-filter {
+  background-position: -103px -63px;
+}
+.ap-small-icon-ok-circle {
+  background-position: -123px -63px;
+}
+.ap-small-icon-ko-circle {
+  background-position: -143px -63px;
+}
+.ap-small-icon-warning-circle {
+  background-position: -163px -63px;
+}
+.ap-small-icon-warning-sign {
+  background-position: -183px -63px;
+}
+.ap-small-icon-info-circle {
+  background-position: -203px -63px;
+}
+.ap-small-icon-question-circle {
+  background-position: -223px -63px;
+}
+.ap-small-icon-add-circle {
+  background-position: -243px -63px;
+}
+.ap-small-icon-subtract-circle {
+  background-position: -263px -63px;
+}
+.ap-small-icon-color-wheel {
+  background-position: -283px -63px;
+}
+.ap-small-icon-tint {
+  background-position: -303px -63px;
+}
+.ap-small-icon-print {
+  background-position: -323px -63px;
+}
+.ap-small-icon-refresh {
+  background-position: -343px -63px;
+}
+.ap-small-icon-newmessage {
+  background-position: -362px -63px;
+}
+.ap-small-icon-zoom {
+  background-position: -382px -63px;
+}
+.ap-small-icon-zoom-plus {
+  background-position: -403px -63px;
+}
+.ap-small-icon-zoom-minus {
+  background-position: -422px -63px;
+}
+.ap-small-icon-table {
+  background-position: -442px -63px;
+}
+.ap-small-icon-responsive {
+  background-position: -463px -63px;
+}
+.ap-small-icon-light {
+  background-position: -482px -63px;
+}
+.ap-small-icon-map-marker {
+  background-position: -2px -103px;
+}
+.ap-small-icon-move {
+  background-position: -23px -103px;
+}
+.ap-small-icon-resize-vertical {
+  background-position: -42px -103px;
+}
+.ap-small-icon-resize-horizontal {
+  background-position: -62px -103px;
+}
+.ap-small-icon-resize-full {
+  background-position: -83px -103px;
+}
+.ap-small-icon-fullscreen {
+  background-position: -103px -103px;
+}
+.ap-small-icon-share {
+  background-position: -123px -103px;
+}
+.ap-small-icon-twitter {
+  background-position: -142px -103px;
+}
+.ap-small-icon-facebook {
+  background-position: -163px -103px;
+}
+.ap-small-icon-googleplus {
+  background-position: -182px -103px;
+}
+.ap-small-icon-linkedin {
+  background-position: -203px -103px;
+}
+.ap-small-icon-pinterest {
+  background-position: -223px -103px;
+}
+.ap-small-icon-flickr {
+  background-position: -242px -103px;
+}
+.ap-small-icon-flux-rss {
+  background-position: -263px -103px;
+}
+.ap-small-icon-vimeo {
+  background-position: -283px -103px;
+}
+.ap-small-icon-skype {
+  background-position: -302px -103px;
+}
+.ap-small-icon-picasa {
+  background-position: -322px -103px;
+}
+.ap-small-icon-like {
+  background-position: -343px -103px;
+}
+.ap-small-icon-dislike {
+  background-position: -363px -103px;
+}
+.ap-small-icon-video {
+  background-position: -3px -143px;
+}
+.ap-small-icon-sound {
+  background-position: -23px -143px;
+}
+.ap-small-icon-music-note {
+  background-position: -43px -143px;
+}
+.ap-small-icon-music {
+  background-position: -63px -143px;
+}
+.ap-small-icon-volume-off {
+  background-position: -83px -143px;
+}
+.ap-small-icon-volume-down {
+  background-position: -103px -143px;
+}
+.ap-small-icon-volume-up {
+  background-position: -123px -143px;
+}
+.ap-small-icon-step-backward {
+  background-position: -143px -143px;
+}
+.ap-small-icon-fast-backward {
+  background-position: -163px -143px;
+}
+.ap-small-icon-backward {
+  background-position: -183px -143px;
+}
+.ap-small-icon-play {
+  background-position: -203px -143px;
+}
+.ap-small-icon-pause {
+  background-position: -223px -143px;
+}
+.ap-small-icon-stop {
+  background-position: -243px -143px;
+}
+.ap-small-icon-forward {
+  background-position: -263px -143px;
+}
+.ap-small-icon-fast-forward {
+  background-position: -283px -143px;
+}
+.ap-small-icon-check {
+  background-position: -303px -143px;
+}
+.ap-small-icon-check-color {
+  background-position: -343px -143px;
+}
+.ap-small-icon-chevron-left {
+  background-position: -3px -183px;
+}
+.ap-small-icon-chevron-right {
+  background-position: -23px -183px;
+}
+.ap-small-icon-chevron-up {
+  background-position: -43px -183px;
+}
+.ap-small-icon-chevron-down {
+  background-position: -63px -183px;
+}
+.ap-small-icon-arrow-left {
+  background-position: -83px -183px;
+}
+.ap-small-icon-arrow-right {
+  background-position: -103px -183px;
+}
+.ap-small-icon-arrow-up {
+  background-position: -123px -183px;
+}
+.ap-small-icon-arrow-down {
+  background-position: -143px -183px;
+}
+.ap-small-icon-arrow-share {
+  background-position: -163px -183px;
+}
+.ap-small-icon-wrench {
+  background-position: -3px -223px;
+}
+.ap-small-icon-tasks {
+  background-position: -23px -223px;
+}
+.ap-small-icon-gear-wheel {
+  background-position: -43px -223px;
+}
+.ap-small-icon-cloud {
+  background-position: -63px -223px;
+}
+.ap-small-icon-qrcode {
+  background-position: -3px -263px;
+}
+.ap-small-icon-barcode {
+  background-position: -23px -263px;
+}
+.ap-small-icon-tag {
+  background-position: -43px -263px;
+}
+.ap-small-icon-tags {
+  background-position: -63px -263px;
+}
+.ap-small-icon-book {
+  background-position: -83px -263px;
+}
+.ap-small-icon-certificate {
+  background-position: -103px -263px;
+}
+.ap-small-icon-bell {
+  background-position: -123px -263px;
+}
+.ap-small-icon-shopping-cart {
+  background-position: -143px -263px;
+}
+.ap-small-icon-lock-close {
+  background-position: -163px -263px;
+}
+.ap-small-icon-lock-open {
+  background-position: -183px -263px;
+}
+.ap-small-icon-love-money-dollar {
+  background-position: -2px -303px;
+}
+.ap-small-icon-love-money-euro {
+  background-position: -22px -303px;
+}
+.ap-small-icon-love-money-yen {
+  background-position: -42px -303px;
+}
+.ap-small-icon-heart {
+  background-position: -62px -303px;
+}
+.ap-small-icon-earth {
+  background-position: -83px -303px;
+}
+.ap-small-icon-paris {
+  background-position: -103px -303px;
+}
+.ap-small-icon-moon {
+  background-position: -123px -303px;
+}
+.ap-small-icon-screen {
+  background-position: -2px -343px;
+}
+.ap-small-icon-iphone {
+  background-position: -23px -343px;
+}
+.ap-small-icon-ipad {
+  background-position: -43px -343px;
+}
+.ap-small-icon-ipod {
+  background-position: -63px -343px;
+}
+.ap-small-icon-ipod-nano {
+  background-position: -83px -343px;
+}
+.ap-small-icon-screen-little {
+  background-position: -103px -343px;
 }

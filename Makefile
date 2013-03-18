@@ -91,6 +91,18 @@ minify:
 	@@echo "Minifying... (this requires node.js)"
 	@@node build/minify.js ${JS_OUTPUT}
 	@@echo "Done."
+	
+style:
+	@@echo "Generate CSS... "
+	@@lessc src/less/bootstrap-wysihtml5-styled.less dist/css/bootstrap-wysihtml5-styled.css
+	@@lessc src/less/wysihtml5-styled-bootstrap-extension.less dist/css/wysihtml5-styled-bootstrap-extension.css
+	@@lessc src/less/wysihtml5-styled.less dist/css/wysihtml5-styled.css
+	@@echo "Done."
+
+styleminify:
+	@@echo "Minifying... (this requires node.js)"
+	@@node build/minify.js ${JS_OUTPUT}
+	@@echo "Done."
 
 unittest:
 	@@${OPEN} test/index.html

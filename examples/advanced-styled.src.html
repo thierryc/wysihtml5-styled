@@ -86,6 +86,7 @@
 	<script src="../src/views/synchronizer.js"></script>
 	<script src="../src/views/textarea.js"></script>
 	<script src="../src/toolbar/dialog.js"></script>
+	<script src="../src/toolbar/modal.js"></script>
 	<script src="../src/toolbar/speech.js"></script>
 	<script src="../src/toolbar/toolbar.js"></script>
 	
@@ -132,68 +133,71 @@
 			            <a class="btn" data-wysihtml5-command="insertOrderedList"><span class="ap-small-icon-list-number"></span></a>
 			        </div>
 			        
-			        <a class="btn" data-wysihtml5-command="createLink"><span class="ap-small-icon-link"></span></a>
-			        <a class="btn" data-wysihtml5-command="insertImage"><span class="ap-small-icon-picture"></span></a>
+			        <div class="btn-group">
+			            <a class="btn" data-wysihtml5-command="createLinkHtml5"><span class="ap-small-icon-link"></span></a>
+			            <a class="disabled btn" data-wysihtml5-command="unLinkHtml5"><span class="ap-small-icon-link"></span></a>
+			        </div>
+			        
+			        <div class="btn-group">
+			            <a class="btn btn-info" data-wysihtml5-command="insertImageHtml5"><span class="ap-small-icon-picture"></span></a>
+			            <a class="disabled btn" data-wysihtml5-command="removeImageHtml5"><span class="ap-small-icon-picture"></span></a>
+			        </div>
+			        
 			        <div class="btn-group">
 			            <a class="btn" data-wysihtml5-command="undo"><span class="ap-small-icon-arrow-left"></span></a>
 			            <a class="btn" data-wysihtml5-command="redo"><span class="ap-small-icon-arrow-right"></span></a>
 			            <a class="btn" data-wysihtml5-action="change_view">HTML</a>
 			        </div>
 			        
-			        <div data-wysihtml5-dialog="createLink" class="well" style="display: none;">
-			        	<form class="form-horizontal">
-			        		<div class="control-group">
-								<label class="control-label" for="link">Link</label>
-							<div class="controls">
-								<input type="text" id="link" data-wysihtml5-dialog-field="href" type="text" value="http://">
-							</div>
-							</div>
-						    <a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
-						    <a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
-					    </form>
-			        </div>
-
 					<!-- Button to trigger modal -->
-					<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+					<a href="#wysihtml5ModalLink" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+                    <a href="#wysihtml5ModalImage" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
 
-					<!-- Modal -->
-					<div data-wysihtml5-dialog="createLink" id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<!-- Modal createLink -->
+					<div data-wysihtml5-modal="createLink" id="wysihtml5ModalLink" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h3 id="myModalLabel">Modal header</h3>
+							<h3 id="myModalLabel">Insert Link</h3>
 						</div>
 						<div class="modal-body">
 							<form class="form-horizontal">
 				        		<div class="control-group">
 									<label class="control-label" for="link">Link</label>
 									<div class="controls">
-										<input type="text" id="link" data-wysihtml5-dialog-field="href" type="text" value="http://">
+										<input type="text" data-wysihtml5-modal-field="href" type="text" value="http://">
 									</div>
 								</div>
 						    </form>
 						</div>
 						<div class="modal-footer">
-							<button class="btn"  data-wysihtml5-dialog-action="cancel" data-dismiss="modal" aria-hidden="true">Close</button>
-							<button class="btn btn-primary" data-wysihtml5-dialog-action="save">Save changes</button>
+							<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
+							<button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
+							</div>
+					</div>
+					
+					<!-- Modal insertImage -->
+					<div data-wysihtml5-modal="insertImage" id="wysihtml5ModalImage" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h3 id="myModalLabel">Insert Image</h3>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+				        		<div class="control-group">
+									<label class="control-label" for="src">Link</label>
+									<div class="controls">
+										<input type="text" id="src" data-wysihtml5-modal-field="href" type="text" value="http://">
+									</div>
+								</div>
+						    </form>
+						</div>
+						<div class="modal-footer">
+							<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
+							<button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
 							</div>
 					</div>
 
-			        <div data-wysihtml5-dialog="insertImage" class="well" style="display: none;">
-			            <label>
-			                Image:
-			                <input type="text" data-wysihtml5-dialog-field="src" value="http://">
-			            </label>
-			            <label>
-			            Align:
-			            <select data-wysihtml5-dialog-field="className">
-			            <option value="">default</option>
-			            <option value="wysiwyg-float-left">left</option>
-			            <option value="wysiwyg-float-right">right</option>
-			            </select>
-			            </label>
-			        <a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
-			        <a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
-			        </div>
+			        
 
 			    </div>
 			  <textarea id="textarea" placeholder="Enter text ..."></textarea>
@@ -217,7 +221,14 @@
     parserRules:    wysihtml5ParserRules,
     credit:         false,
     predictive:     true,
-    codeMirror:     true
+    codeMirror:     true,
+    urlCallBack:    function(composer){
+        alert('toto');
+    },
+    linkCallBack:   function(composer){
+        alert('tutu');
+        wysihtml5.commands.insertImage.exec(composer, "insertImage", { src: "http://www.google.com/images/srpr/logo4w.png", title: "foo" });
+    }
   });
   
   var log = document.getElementById("log");

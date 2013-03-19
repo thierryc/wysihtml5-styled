@@ -15,7 +15,7 @@
  *    </script>
  */
 (function(wysihtml5) {
-  var CLASS_NAME_COMMAND_DISABLED   = "disabled",
+  var CLASS_NAME_COMMAND_DISABLED   = "wysihtml5-command-disabled",
       CLASS_NAME_COMMANDS_DISABLED  = "wysihtml5-commands-disabled",
       CLASS_NAME_COMMAND_ACTIVE     = "active",
       CLASS_NAME_ACTION_ACTIVE      = "wysihtml5-action-active",
@@ -58,6 +58,7 @@
         value   = link.getAttribute("data-wysihtml5-" + type + "-value");
         group   = this.container.querySelector("[data-wysihtml5-" + type + "-group='" + name + "']");
         dialog  = this._getDialog(link, name);
+        modal  = this._getModal(link, name);
         
         mapping[name + ":" + value] = {
           link:   link,
@@ -65,6 +66,7 @@
           name:   name,
           value:  value,
           dialog: dialog,
+          modal: modal,
           state:  false
         };
       }
@@ -101,6 +103,37 @@
       }
       return dialog;
     },
+    
+    _getModal: function(link, command) {
+      var that          = this,
+          modalElement = this.container.querySelector("[data-wysihtml5-modal='" + command + "']"),
+          modal,
+          caretBookmark;
+      
+      if (modalElement) {
+        modal = new wysihtml5.toolbar.Modal(link, modalElement);
+
+        modal.on("show", function() {
+          caretBookmark = that.composer.selection.getBookmark();
+          that.editor.fire("show:modal", { command: command, modalContainer: modalElement, commandLink: link });
+        });
+
+        modal.on("save", function(attributes) {
+          if (caretBookmark) {
+            that.composer.selection.setBookmark(caretBookmark);
+          }
+          that._execCommand(command, attributes);
+          
+          that.editor.fire("save:modal", { command: command, modalContainer: modalElement, commandLink: link });
+        });
+
+        modal.on("cancel", function() {
+          that.editor.focus(false);
+          that.editor.fire("cancel:modal", { command: command, modalContainer: modalElement, commandLink: link });
+        });
+      }
+      return modal;
+    },
 
     /**
      * @example
@@ -118,6 +151,8 @@
       // Show dialog when available
       if (commandObj && commandObj.dialog && !commandObj.state) {
         commandObj.dialog.show();
+      } else if (commandObj && commandObj.modal && !commandObj.state) {
+        commandObj.modal.show();
       } else {
         this._execCommand(command, commandValue);
       }

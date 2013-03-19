@@ -1,11 +1,21 @@
 .btn-toolbar.inverse {
 	// Change the color of inverse toolbar buttons
-	@btnBackground:                     @gray;
-	@btnBackgroundHighlight:            @gray;
+	@btnBackground:                     @grayDarker;
+	@btnBackgroundHighlight:            @grayDarker;
 	@btnBorder:                         @grayDark;
 	.btn{
-		.buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
+		.buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDarker, 0 1px 1px rgba(255,255,255,.75));
+    	color: @white;
     }
+    .btn.active, .btn:hover{
+		background-color: lighten(@btnBackground,10%);
+		background-position: 0 -30px;
+    }
+
+    [class^="ap-small-icon-"],
+	[class*="ap-small-icon-"] {
+		background-image: url("../img/sprite-ap-small-icons-white.png");
+	}
 }
 
 textarea.wysihtml5-textarea {

@@ -5278,34 +5278,24 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
-textarea {
-  width: 100%;
-  height: 400px;
-}
-.wysihtml5-command-active {
-  background-image: none;
-  outline: 0;
-  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-}
 .btn-toolbar.inverse .btn {
-  color: #333333;
+  color: #222222;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  background-color: #555555;
-  background-image: -moz-linear-gradient(top, #555555, #555555);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#555555), to(#555555));
-  background-image: -webkit-linear-gradient(top, #555555, #555555);
-  background-image: -o-linear-gradient(top, #555555, #555555);
-  background-image: linear-gradient(to bottom, #555555, #555555);
+  background-color: #222222;
+  background-image: -moz-linear-gradient(top, #222222, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#222222));
+  background-image: -webkit-linear-gradient(top, #222222, #222222);
+  background-image: -o-linear-gradient(top, #222222, #222222);
+  background-image: linear-gradient(to bottom, #222222, #222222);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff555555', endColorstr='#ff555555', GradientType=0);
-  border-color: #555555 #555555 #2f2f2f;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff222222', GradientType=0);
+  border-color: #222222 #222222 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #555555;
+  *background-color: #222222;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  color: #ffffff;
 }
 .btn-toolbar.inverse .btn:hover,
 .btn-toolbar.inverse .btn:focus,
@@ -5313,13 +5303,30 @@ textarea {
 .btn-toolbar.inverse .btn.active,
 .btn-toolbar.inverse .btn.disabled,
 .btn-toolbar.inverse .btn[disabled] {
-  color: #333333;
-  background-color: #555555;
-  *background-color: #484848;
+  color: #222222;
+  background-color: #222222;
+  *background-color: #151515;
 }
 .btn-toolbar.inverse .btn:active,
 .btn-toolbar.inverse .btn.active {
-  background-color: #3b3b3b \9;
+  background-color: #080808 \9;
+}
+.btn-toolbar.inverse .btn.active,
+.btn-toolbar.inverse .btn:hover {
+  background-color: #3c3c3c;
+  background-position: 0 -30px;
+}
+.btn-toolbar.inverse [class^="ap-small-icon-"],
+.btn-toolbar.inverse [class*="ap-small-icon-"] {
+  background-image: url("../img/sprite-ap-small-icons-white.png");
+}
+textarea.wysihtml5-textarea {
+  line-height: auto;
+  font-size: 14px;
+  color: #333333;
+  width: 100%;
+  height: 400px;
+  font-family: monospace;
 }
 [class^="ap-small-icon-"],
 [class*="ap-small-icon-"] {

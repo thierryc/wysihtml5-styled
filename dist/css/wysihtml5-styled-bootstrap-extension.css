@@ -34,18 +34,7 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-textarea {
-  width: 100%;
-  height: 400px;
-}
-.wysihtml5-command-active {
-  background-image: none;
-  outline: 0;
-  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-.btn-toolbar.inverse {
+.btn-toolbar.inverse .btn {
   color: #333333;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   background-color: #555555;
@@ -63,17 +52,29 @@ textarea {
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.btn-toolbar.inverse:hover,
-.btn-toolbar.inverse:focus,
-.btn-toolbar.inverse:active,
-.btn-toolbar.inverse.active,
-.btn-toolbar.inverse.disabled,
-.btn-toolbar.inverse[disabled] {
+.btn-toolbar.inverse .btn:hover,
+.btn-toolbar.inverse .btn:focus,
+.btn-toolbar.inverse .btn:active,
+.btn-toolbar.inverse .btn.active,
+.btn-toolbar.inverse .btn.disabled,
+.btn-toolbar.inverse .btn[disabled] {
   color: #333333;
   background-color: #555555;
   *background-color: #484848;
 }
-.btn-toolbar.inverse:active,
-.btn-toolbar.inverse.active {
+.btn-toolbar.inverse .btn:active,
+.btn-toolbar.inverse .btn.active {
   background-color: #3b3b3b \9;
+}
+.btn-toolbar.inverse [class^="ap-small-icon-"],
+.btn-toolbar.inverse [class*="ap-small-icon-"] {
+  background-image: url("../img/sprite-ap-small-icons-white.png");
+}
+textarea.wysihtml5-textarea {
+  line-height: auto;
+  font-size: 14px;
+  color: #333333;
+  width: 100%;
+  height: 400px;
+  font-family: monospace;
 }

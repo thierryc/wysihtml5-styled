@@ -60,7 +60,7 @@
             event.preventDefault();
             event.stopPropagation();
           };
-
+          
       dom.observe(that.link, "click", function() {
         if (dom.hasClass(that.link, CLASS_NAME_OPENED)) {
           setTimeout(function() { that.hide(); }, 0);
@@ -170,24 +170,29 @@
       var that        = this,
           firstField  = this.container.querySelector(SELECTOR_FORM_ELEMENTS);
       this.elementToChange = elementToChange;
-      
-      this._observe();
-      this._interpolate();
-      if (elementToChange) {
-        this.interval = setInterval(function() { that._interpolate(true); }, 500);
-      }
+
       dom.addClass(this.link, CLASS_NAME_OPENED);
-      if($ && $('#'+this.container.id)){
-        $('#'+this.container.id).modal('show');
+      if($ && $('#'+this.container.id)) {
+        $('#'+this.container.id).modal('show')
+        .on('show', function(){
+        
+        })
+        .on('shown', function(){
+            that._observe();
+            that._interpolate();
+            if (elementToChange) {
+                that.interval = setInterval(function() { that._interpolate(true); }, 500);
+            }
+            if (firstField && !elementToChange) {
+                try {
+                  firstField.focus();
+                } catch(e) {}
+            }
+        });
       } else {
         console.log('add jquery dependance');
       }
       this.fire("show");
-      if (firstField && !elementToChange) {
-        try {
-          firstField.focus();
-        } catch(e) {}
-      }
     },
     
     /**

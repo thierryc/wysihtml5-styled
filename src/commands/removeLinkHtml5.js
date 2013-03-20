@@ -24,47 +24,6 @@
       }
     }
   }
-
-  function _format(composer, attributes) {
-    var doc             = composer.doc,
-        tempClass       = "_wysihtml5-temp-" + (+new Date()),
-        tempClassRegExp = /non-matching-class/g,
-        i               = 0,
-        length,
-        anchors,
-        anchor,
-        hasElementChild,
-        isEmpty,
-        elementToSetCaretAfter,
-        textContent,
-        whiteSpace,
-        j;
-    wysihtml5.commands.formatInline.exec(composer, undef, NODE_NAME, tempClass, tempClassRegExp);
-    anchors = doc.querySelectorAll(NODE_NAME + "." + tempClass);
-    length  = anchors.length;
-    for (; i<length; i++) {
-      anchor = anchors[i];
-      anchor.removeAttribute("class");
-      for (j in attributes) {
-        anchor.setAttribute(j, attributes[j]);
-      }
-    }
-
-    elementToSetCaretAfter = anchor;
-    if (length === 1) {
-      textContent = dom.getTextContent(anchor);
-      hasElementChild = !!anchor.querySelector("*");
-      isEmpty = textContent === "" || textContent === wysihtml5.INVISIBLE_SPACE;
-      if (!hasElementChild && isEmpty) {
-        dom.setTextContent(anchor, attributes.text || anchor.href);
-        whiteSpace = doc.createTextNode(" ");
-        composer.selection.setAfter(anchor);
-        dom.insert(whiteSpace).after(anchor);
-        elementToSetCaretAfter = whiteSpace;
-      }
-    }
-    composer.selection.setAfter(elementToSetCaretAfter);
-  }
   
   wysihtml5.commands.removeLinkHtml5 = {
     /**
@@ -83,23 +42,16 @@
     exec: function(composer, command, value) {
       var anchors = this.state(composer, command);
       
-      console.log(composer, command, value);
-      console.log(anchors);
-      
       if (anchors) {
         // Selection contains links
         composer.selection.executeAndRestore(function() {
           _removeFormat(composer, anchors);
         });
-      } else {
-        // Create links
-        value = typeof(value) === "object" ? value : { href: value };
-        _format(composer, value);
-      }
+      } 
     },
 
     state: function(composer, command) {
-      return wysihtml5.commands.formatInline.state(composer, command, "A");
+      return false;
     }
   };
 })(wysihtml5);

@@ -85,7 +85,6 @@
 
         dialog.on("show", function() {
           caretBookmark = that.composer.selection.getBookmark();
-
           that.editor.fire("show:dialog", { command: command, dialogContainer: dialogElement, commandLink: link });
         });
 
@@ -147,14 +146,28 @@
       if (this.commandsDisabled) {
         return;
       }
-
-      var commandObj = this.commandMapping[command + ":" + commandValue];
-
+      
+      var commandObj = this.commandMapping[command + ":" + commandValue],
+          state;
+      
       // Show dialog when available
       if (commandObj && commandObj.dialog && !commandObj.state) {
         commandObj.dialog.show();
       } else if (commandObj && commandObj.modal) {
-        commandObj.modal.show();
+        state = this.composer.commands.state(commandObj.name, commandObj.value);
+        if (wysihtml5.lang.object(state).isArray()) {
+            // Grab first and only object/element in state array, otherwise convert state into boolean
+            // to avoid showing a dialog for multiple selected elements which may have different attributes
+            // eg. when two links with different href are selected, the state will be an array consisting of both link elements
+            // but the dialog interface can only update one
+            state = state.length === 1 ? state[0] : true;
+        }
+        if (typeof(state) === "object") {
+          commandObj.modal.show(state);
+        } else {
+          commandObj.modal.show();
+        }
+        
       } else {
         this._execCommand(command, commandValue);
       }
@@ -302,12 +315,12 @@
             } else {
               command.dialog.hide();
             }
-          }
+          } 
         } else {
           dom.removeClass(command.link, commandActiveClass);
           if (command.group) {
             dom.removeClass(command.group, commandActiveClass);
-          }
+          } 
           if (command.dialog) {
             command.dialog.hide();
           }

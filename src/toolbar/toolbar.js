@@ -15,10 +15,10 @@
  *    </script>
  */
 (function(wysihtml5) {
-  var CLASS_NAME_COMMAND_DISABLED   = "wysihtml5-command-disabled",
-      CLASS_NAME_COMMANDS_DISABLED  = "wysihtml5-commands-disabled",
+  var CLASS_NAME_COMMAND_DISABLED   = "disabled",
+      CLASS_NAME_COMMANDS_DISABLED  = "disabled",
       CLASS_NAME_COMMAND_ACTIVE     = "active",
-      CLASS_NAME_ACTION_ACTIVE      = "wysihtml5-action-active",
+      CLASS_NAME_ACTION_ACTIVE      = "active",
       dom                           = wysihtml5.dom;
   
   wysihtml5.toolbar.Toolbar = Base.extend(

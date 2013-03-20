@@ -153,7 +153,7 @@
       // Show dialog when available
       if (commandObj && commandObj.dialog && !commandObj.state) {
         commandObj.dialog.show();
-      } else if (commandObj && commandObj.modal && !commandObj.state) {
+      } else if (commandObj && commandObj.modal) {
         commandObj.modal.show();
       } else {
         this._execCommand(command, commandValue);
@@ -256,12 +256,13 @@
       // every millisecond counts... this is executed quite often
       for (i in commandMapping) {
         command = commandMapping[i];
+        var commandActiveClass = (command.activeClass) ? command.activeClass : CLASS_NAME_COMMAND_ACTIVE;
+        
         if (this.commandsDisabled) {
           state = false;
-          dom.removeClass(command.link, CLASS_NAME_COMMAND_ACTIVE);
-          if (command.activeClass) dom.removeClass(command.link, command.activeClass);
+          dom.removeClass(command.link, commandActiveClass);
           if (command.group) {
-            dom.removeClass(command.group, CLASS_NAME_COMMAND_ACTIVE);
+            dom.removeClass(command.group, commandActiveClass);
           }
           if (command.dialog) {
             command.dialog.hide();
@@ -271,6 +272,7 @@
           }
         } else {
           state = this.composer.commands.state(command.name, command.value);
+          
           if (wysihtml5.lang.object(state).isArray()) {
             // Grab first and only object/element in state array, otherwise convert state into boolean
             // to avoid showing a dialog for multiple selected elements which may have different attributes
@@ -279,7 +281,6 @@
             state = state.length === 1 ? state[0] : true;
           }
           dom.removeClass(command.link, CLASS_NAME_COMMAND_DISABLED);
-          if (command.activeClass) dom.removeClass(command.link, command.activeClass);
           if (command.group) {
             dom.removeClass(command.group, CLASS_NAME_COMMAND_DISABLED);
           }
@@ -291,10 +292,9 @@
 
         command.state = state;
         if (state) {
-          dom.addClass(command.link, CLASS_NAME_COMMAND_ACTIVE);
-          if (command.activeClass) dom.addClass(command.link, command.activeClass);
+          dom.addClass(command.link, commandActiveClass);
           if (command.group) {
-            dom.addClass(command.group, CLASS_NAME_COMMAND_ACTIVE);
+            dom.addClass(command.group, commandActiveClass);
           }
           if (command.dialog) {
             if (typeof(state) === "object") {
@@ -304,10 +304,9 @@
             }
           }
         } else {
-          dom.removeClass(command.link, CLASS_NAME_COMMAND_ACTIVE);
-          if (command.activeClass) dom.removeClass(command.link, command.activeClass);
+          dom.removeClass(command.link, commandActiveClass);
           if (command.group) {
-            dom.removeClass(command.group, CLASS_NAME_COMMAND_ACTIVE);
+            dom.removeClass(command.group, commandActiveClass);
           }
           if (command.dialog) {
             command.dialog.hide();
@@ -317,15 +316,14 @@
       
       for (i in actionMapping) {
         action = actionMapping[i];
+        var actionActiveClass = (action.activeClass) ? action.activeClass : CLASS_NAME_ACTION_ACTIVE;
         
         if (action.name === "change_view") {
           action.state = this.editor.currentView === this.editor.textarea;
           if (action.state) {
-            dom.addClass(action.link, CLASS_NAME_ACTION_ACTIVE);
-            if (action.activeClass) dom.addClass(action.link, command.activeClass);
+            dom.addClass(action.link, actionActiveClass);
           } else {
-            dom.removeClass(action.link, CLASS_NAME_ACTION_ACTIVE);
-            if (action.activeClass) dom.removeClass(action.link, command.activeClass);
+            dom.removeClass(action.link, actionActiveClass);
           }
         }
       }

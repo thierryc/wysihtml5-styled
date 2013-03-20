@@ -120,6 +120,7 @@
 			            <a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1"><span class="icon-small ap-small-icon-h1"></span></a>
 			            <a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2"><span class="icon-small ap-small-icon-h2"></span></a>
 			            <a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3"><span class="icon-small ap-small-icon-h3"></span></a>
+			            <a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="p"><span class="ap-small-icon-align-left"></span></a>
 			        </div>
 			        <div class="btn-group">
 			            <a class="btn" data-wysihtml5-command="bold" title="CTRL+B"><span class="ap-small-icon-bold"></span></a>
@@ -143,12 +144,17 @@
 			        </div>
 			        
 			        <div class="btn-group">
+<<<<<<< HEAD
 			            <a class="btn" data-wysihtml5-command="createLinkHtml5"><span class="ap-small-icon-link"></span></a>
 			            <a class="btn" data-wysihtml5-command="removeLinkHtml5" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-unlink"></span></a>
+=======
+			            <a class="btn" data-wysihtml5-command="createLinkHtml5" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-link"></span></a>
+			            <a class="btn" data-wysihtml5-command="removeLinkHtml5" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-link"></span></a>
+>>>>>>> image and link update
 			        </div>
 			        
 			        <div class="btn-group">
-			            <a class="btn" data-wysihtml5-command="insertImageHtml5"><span class="ap-small-icon-picture"></span></a>
+			            <a class="btn" data-wysihtml5-command="insertImageHtml5" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-picture"></span></a>
 			            <a class="btn" data-wysihtml5-command="removeImageHtml5" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-picture"></span></a>
 			        </div>
 			        
@@ -189,21 +195,27 @@
 						<div class="modal-body">
 							<form class="form-horizontal">
 				        		<div class="control-group">
-									<label class="control-label" for="src">Link</label>
+									<label class="control-label" for="wysihtml5ModalSrc">Image src:</label>
 									<div class="controls">
-										<input type="text" id="src" data-wysihtml5-modal-field="href" type="text" value="http://">
+										<input type="text" id="wysihtml5ModalSrc" data-wysihtml5-modal-field="src" type="text" value="http://">
 									</div>
+									<label class="control-label" for="wysihtml5ModalAlign">Image Align:</label>
+									<div class="controls">
+										<select id="wysihtml5ModalAlign" data-wysihtml5-dialog-field="className">
+                                            <option value="">default</option>
+                                            <option value="wysiwyg-float-left">left</option>
+                                            <option value="wysiwyg-float-right">right</option>
+                                        </select>
+									</div>
+									<label>
 								</div>
 						    </form>
 						</div>
 						<div class="modal-footer">
 							<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
 							<button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
-							</div>
+						</div>
 					</div>
-
-			        
-
 			    </div>
 			  <textarea id="textarea" placeholder="Enter text ..."></textarea>
 			  <br><input class="btn" type="reset" value="Reset form">

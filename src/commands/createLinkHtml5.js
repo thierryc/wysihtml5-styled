@@ -66,7 +66,7 @@
     composer.selection.setAfter(elementToSetCaretAfter);
   }
   
-  wysihtml5.commands.createLink = {
+  wysihtml5.commands.createLinkHtml5 = {
     /**
      * TODO: Use HTMLApplier or formatInline here
      *

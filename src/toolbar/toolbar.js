@@ -16,7 +16,7 @@
  */
 (function(wysihtml5) {
   var CLASS_NAME_COMMAND_DISABLED   = "disabled",
-      CLASS_NAME_COMMANDS_DISABLED  = "disabled",
+      CLASS_NAME_COMMANDS_DISABLED  = "wysihtml5-disabled",
       CLASS_NAME_COMMAND_ACTIVE     = "active",
       CLASS_NAME_ACTION_ACTIVE      = "active",
       dom                           = wysihtml5.dom;
@@ -53,12 +53,13 @@
           value,
           dialog;
       for (; i<length; i++) {
-        link    = links[i];
-        name    = link.getAttribute("data-wysihtml5-" + type);
-        value   = link.getAttribute("data-wysihtml5-" + type + "-value");
-        group   = this.container.querySelector("[data-wysihtml5-" + type + "-group='" + name + "']");
-        dialog  = this._getDialog(link, name);
-        modal  = this._getModal(link, name);
+        link        = links[i];
+        name        = link.getAttribute("data-wysihtml5-" + type);
+        value       = link.getAttribute("data-wysihtml5-" + type + "-value");
+        activeClass = link.getAttribute("data-wysihtml5-" + type + "-class");
+        group       = this.container.querySelector("[data-wysihtml5-" + type + "-group='" + name + "']");
+        dialog      = this._getDialog(link, name);
+        modal       = this._getModal(link, name);
         
         mapping[name + ":" + value] = {
           link:   link,
@@ -67,6 +68,7 @@
           value:  value,
           dialog: dialog,
           modal: modal,
+          activeClass: activeClass,
           state:  false
         };
       }
@@ -257,11 +259,15 @@
         if (this.commandsDisabled) {
           state = false;
           dom.removeClass(command.link, CLASS_NAME_COMMAND_ACTIVE);
+          if (command.activeClass) dom.removeClass(command.link, command.activeClass);
           if (command.group) {
             dom.removeClass(command.group, CLASS_NAME_COMMAND_ACTIVE);
           }
           if (command.dialog) {
             command.dialog.hide();
+          }
+          if (command.modal) {
+            command.modal.hide();
           }
         } else {
           state = this.composer.commands.state(command.name, command.value);
@@ -273,6 +279,7 @@
             state = state.length === 1 ? state[0] : true;
           }
           dom.removeClass(command.link, CLASS_NAME_COMMAND_DISABLED);
+          if (command.activeClass) dom.removeClass(command.link, command.activeClass);
           if (command.group) {
             dom.removeClass(command.group, CLASS_NAME_COMMAND_DISABLED);
           }
@@ -285,6 +292,7 @@
         command.state = state;
         if (state) {
           dom.addClass(command.link, CLASS_NAME_COMMAND_ACTIVE);
+          if (command.activeClass) dom.addClass(command.link, command.activeClass);
           if (command.group) {
             dom.addClass(command.group, CLASS_NAME_COMMAND_ACTIVE);
           }
@@ -297,6 +305,7 @@
           }
         } else {
           dom.removeClass(command.link, CLASS_NAME_COMMAND_ACTIVE);
+          if (command.activeClass) dom.removeClass(command.link, command.activeClass);
           if (command.group) {
             dom.removeClass(command.group, CLASS_NAME_COMMAND_ACTIVE);
           }
@@ -313,8 +322,10 @@
           action.state = this.editor.currentView === this.editor.textarea;
           if (action.state) {
             dom.addClass(action.link, CLASS_NAME_ACTION_ACTIVE);
+            if (action.activeClass) dom.addClass(action.link, command.activeClass);
           } else {
             dom.removeClass(action.link, CLASS_NAME_ACTION_ACTIVE);
+            if (action.activeClass) dom.removeClass(action.link, command.activeClass);
           }
         }
       }

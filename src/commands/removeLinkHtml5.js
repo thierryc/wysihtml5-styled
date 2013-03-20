@@ -66,7 +66,7 @@
     composer.selection.setAfter(elementToSetCaretAfter);
   }
   
-  wysihtml5.commands.createLink = {
+  wysihtml5.commands.removeLinkHtml5 = {
     /**
      * TODO: Use HTMLApplier or formatInline here
      *
@@ -76,9 +76,9 @@
      * 
      * @example
      *    // either ...
-     *    wysihtml5.commands.createLink.exec(composer, "createLink", "http://www.google.de");
+     *    wysihtml5.commands.removeLinkHtml5.exec(composer, "removeLinkHtml5", "http://www.google.de");
      *    // ... or ...
-     *    wysihtml5.commands.createLink.exec(composer, "createLink", { href: "http://www.google.de", target: "_blank" });
+     *    wysihtml5.commands.removeLinkHtml5.exec(composer, "removeLinkHtml5", { href: "http://www.google.de", target: "_blank" });
      */
     exec: function(composer, command, value) {
       var anchors = this.state(composer, command);

@@ -92,6 +92,9 @@ minify:
 	@@node build/minify.js ${JS_OUTPUT}
 	@@echo "Done."
 	
+
+css: style img
+
 style:
 	@@echo "Generate CSS... "
 	@@lessc src/less/bootstrap-wysihtml5-styled.less dist/css/bootstrap-wysihtml5-styled.css
@@ -99,6 +102,13 @@ style:
 	@@lessc src/less/wysihtml5-styled.less dist/css/wysihtml5-styled.css
 	@@lessc src/less/wysihtml5-styled-editor.less dist/css/wysihtml5-styled-editor.css
 	@@echo "Done."
+	
+img:
+	@@echo "Move IMG for CSS... "
+	@@cp lib/sprite-ap-small/img/sprite-ap-small-icons.png dist/img/sprite-ap-small-icons.png
+	@@cp lib/sprite-ap-small/img/sprite-ap-small-icons-white.png dist/img/sprite-ap-small-icons-white.png
+	@@echo "Done."
+
 
 styleminify:
 	@@echo "Minifying... (this requires node.js)"

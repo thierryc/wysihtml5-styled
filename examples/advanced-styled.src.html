@@ -144,13 +144,13 @@
 			        </div>
 			        
 			        <div class="btn-group">
-			            <a class="btn" data-wysihtml5-command="createLinkHtml5" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-link"></span></a>
+			            <a class="btn" data-wysihtml5-command="createLink" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-link"></span></a>
 			            <a class="btn" data-wysihtml5-command="removeLinkHtml5" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-unlink"></span></a>
 
 			        </div>
 			        
 			        <div class="btn-group">
-			            <a class="btn" data-wysihtml5-command="insertImageHtml5" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-picture"></span></a>
+			            <a class="btn" data-wysihtml5-command="insertImage" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-picture"></span></a>
 			        </div>
 			        
 			        <div class="btn-group">
@@ -165,71 +165,32 @@
 				        	<span class="slide"></span>
 			        	</a>
 			        </div>
-			        
 
-					<div data-wysihtml5-dialog="createLink" class="well" style="display: none;">
-						<label>
-						Link:
+					<div data-wysihtml5-dialog="createLink" class="dialog-wysihtml5" style="display: none;">
+						<label>Link : </label>
 						<input data-wysihtml5-dialog-field="href" type="text" value="http://">
-						</label>
-						<a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
-						<a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
+						<div class="btn-toolbar">
+							<a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
+							<a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
+						</div>
 					</div>
 					
-					<div data-wysihtml5-dialog="insertImage" class="well" style="display: none;">
-						<label>
-							Image:
-							<input type="text" data-wysihtml5-dialog-field="src" value="http://">
-						</label>
-						<label>
-						Align:
+					<div data-wysihtml5-dialog="insertImage" class="dialog-wysihtml5" style="display: none;">
+						<label>Image:</label>
+						<input type="text" data-wysihtml5-dialog-field="src" value="http://">
+						<label>Align:</label>
 						<select data-wysihtml5-dialog-field="className">
-						<option value="">default</option>
-						<option value="wysiwyg-float-left">left</option>
-						<option value="wysiwyg-float-right">right</option>
+							<option value="">default</option>
+							<option value="wysiwyg-float-left">left</option>
+							<option value="wysiwyg-float-right">right</option>
 						</select>
-						</label>
-					<a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
-					<a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
+						<div class="btn-toolbar">
+							<a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
+							<a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
+						</div>
 					</div>
+
 					
-					<!-- Modal createLink -->
-					<div data-wysihtml5-modal="createLinkHtml5" id="wysihtml5ModalLink" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h3 id="myModalLabel">Insert Link</h3>
-						</div>
-						<div class="modal-body">
-							<label for="link">Link</label>
-    						<input id="link" type="text" data-wysihtml5-modal-field="href" value="http://">
-						</div>
-						<div class="modal-footer">
-							<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
-							<button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
-						</div>
-					</div>
-					
-					<!-- Modal insertImage -->
-					<div data-wysihtml5-modal="insertImageHtml5" id="wysihtml5ModalImage" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h3 id="myModalLabel">Insert Image</h3>
-						</div>
-						<div class="modal-body">
-							<label for="wysihtml5ModalSrc">Image Src:</label>
-							<input type="text" id="wysihtml5ModalSrc" data-wysihtml5-modal-field="src" type="text" value="http://">
-							<label class="control-label" for="wysihtml5ModalAlign">Image Align:</label>
-							<select id="wysihtml5ModalAlign" data-wysihtml5-dialog-field="className">
-                                <option value="">Default</option>
-                                <option value="wysiwyg-float-left">Left</option>
-                                <option value="wysiwyg-float-right">Right</option>
-                            </select>
-						</div>
-						<div class="modal-footer">
-							<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
-							<button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
-						</div>
-					</div>
 			    </div>
 			  <textarea id="textarea" placeholder="Enter text ..."></textarea>
 			  <br><input class="btn" type="reset" value="Reset form">

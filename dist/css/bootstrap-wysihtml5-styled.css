@@ -5564,19 +5564,6 @@ a.badge:focus {
   width: 50%;
   color: #333333;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-<<<<<<< HEAD
-  background-color: #0495d1;
-  background-image: -moz-linear-gradient(top, #049cdb, #048ac2);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#049cdb), to(#048ac2));
-  background-image: -webkit-linear-gradient(top, #049cdb, #048ac2);
-  background-image: -o-linear-gradient(top, #049cdb, #048ac2);
-  background-image: linear-gradient(to bottom, #049cdb, #048ac2);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff049cdb', endColorstr='#ff048ac2', GradientType=0);
-  border-color: #048ac2 #048ac2 #025577;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #048ac2;
-=======
   background-color: #f5f5f5;
   background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
@@ -5588,7 +5575,6 @@ a.badge:focus {
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #e6e6e6;
->>>>>>> update css button
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -5617,21 +5603,12 @@ a.badge:focus {
 .switchon .slide.disabled,
 .switchon .slide[disabled] {
   color: #333333;
-<<<<<<< HEAD
-  background-color: #048ac2;
-  *background-color: #0378a9;
-}
-.switchon .slide:active,
-.switchon .slide.active {
-  background-color: #036690 \9;
-=======
   background-color: #e6e6e6;
   *background-color: #d9d9d9;
 }
 .switchon .slide:active,
 .switchon .slide.active {
   background-color: #cccccc \9;
->>>>>>> update css button
 }
 .switchon .on,
 .switchon .off {

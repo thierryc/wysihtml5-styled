@@ -76,6 +76,140 @@
 .btn-toolbar.inverse [class*="ap-small-icon-"] {
   background-image: url("../img/sprite-ap-small-icons-white.png");
 }
+.switchon {
+  text-shadow: 0px 1px 2px #ffffff;
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  margin-bottom: 0;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  border: 1px solid #cccccc;
+  *border: 0;
+  border-bottom-color: #b3b3b3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  *margin-left: .3em;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  position: relative;
+  height: 28px;
+  width: 60px;
+}
+.switchon:hover,
+.switchon:focus,
+.switchon:active,
+.switchon.active,
+.switchon.disabled,
+.switchon[disabled] {
+  color: #333333;
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+}
+.switchon:active,
+.switchon.active {
+  background-color: #cccccc \9;
+}
+.switchon:first-child {
+  *margin-left: 0;
+}
+.switchon:hover {
+  text-decoration: none;
+}
+.switchon .slide {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  position: absolute;
+  width: 50%;
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #49afcd;
+  background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
+  background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
+  border-color: #2f96b4 #2f96b4 #1f6377;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #2f96b4;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+}
+.switchon .slide:hover,
+.switchon .slide:focus,
+.switchon .slide:active,
+.switchon .slide.active,
+.switchon .slide.disabled,
+.switchon .slide[disabled] {
+  color: #333333;
+  background-color: #2f96b4;
+  *background-color: #2a85a0;
+}
+.switchon .slide:active,
+.switchon .slide.active {
+  background-color: #24748c \9;
+}
+.switchon .on,
+.switchon .off {
+  line-height: 28px;
+  text-align: center;
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+}
+.switchon .on {
+  left: 0;
+}
+.switchon .off {
+  right: 0;
+  position: absolute;
+}
+.switchon.active .slide {
+  -webkit-transition: left 0.3s ease-in;
+  -moz-transition: left 0.3s ease-in;
+  -o-transition: left 0.3s ease-in;
+  transition: left 0.3s ease-in;
+  left: 50%;
+}
 textarea.wysihtml5-textarea {
   line-height: auto;
   font-size: 14px;
@@ -191,6 +325,9 @@ textarea.wysihtml5-textarea {
 .ap-small-icon-crop-text {
   background-position: -143px -23px;
 }
+.ap-small-icon-html {
+  background-position: -162px -23px;
+}
 .ap-small-icon-h1 {
   background-position: -3px -43px;
 }
@@ -218,10 +355,10 @@ textarea.wysihtml5-textarea {
 .ap-small-icon-align-left {
   background-position: -163px -43px;
 }
-.ap-small-icon-align-center {
+.ap-small-icon-align-right {
   background-position: -183px -43px;
 }
-.ap-small-icon-align-right {
+.ap-small-icon-align-center {
   background-position: -203px -43px;
 }
 .ap-small-icon-align-justify {

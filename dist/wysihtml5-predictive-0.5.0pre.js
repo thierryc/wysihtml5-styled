@@ -6936,6 +6936,7 @@ wysihtml5.commands.bold = {
      */
     exec: function(composer, command, value) {
       var anchors = this.state(composer, command);
+      
       if (anchors) {
         // Selection contains links
         composer.selection.executeAndRestore(function() {
@@ -9218,9 +9219,9 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
  */
 (function(wysihtml5) {
   var CLASS_NAME_COMMAND_DISABLED   = "disabled",
-      CLASS_NAME_COMMANDS_DISABLED  = "wysihtml5-commands-disabled",
+      CLASS_NAME_COMMANDS_DISABLED  = "wysihtml5-disabled",
       CLASS_NAME_COMMAND_ACTIVE     = "active",
-      CLASS_NAME_ACTION_ACTIVE      = "wysihtml5-action-active",
+      CLASS_NAME_ACTION_ACTIVE      = "active",
       dom                           = wysihtml5.dom;
   
   wysihtml5.toolbar.Toolbar = Base.extend(
@@ -9255,11 +9256,13 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
           value,
           dialog;
       for (; i<length; i++) {
-        link    = links[i];
-        name    = link.getAttribute("data-wysihtml5-" + type);
-        value   = link.getAttribute("data-wysihtml5-" + type + "-value");
-        group   = this.container.querySelector("[data-wysihtml5-" + type + "-group='" + name + "']");
-        dialog  = this._getDialog(link, name);
+        link        = links[i];
+        name        = link.getAttribute("data-wysihtml5-" + type);
+        value       = link.getAttribute("data-wysihtml5-" + type + "-value");
+        activeClass = link.getAttribute("data-wysihtml5-" + type + "-class");
+        group       = this.container.querySelector("[data-wysihtml5-" + type + "-group='" + name + "']");
+        dialog      = this._getDialog(link, name);
+        modal       = this._getModal(link, name);
         
         mapping[name + ":" + value] = {
           link:   link,
@@ -9267,6 +9270,8 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
           name:   name,
           value:  value,
           dialog: dialog,
+          modal: modal,
+          activeClass: activeClass,
           state:  false
         };
       }
@@ -9283,7 +9288,6 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
 
         dialog.on("show", function() {
           caretBookmark = that.composer.selection.getBookmark();
-
           that.editor.fire("show:dialog", { command: command, dialogContainer: dialogElement, commandLink: link });
         });
 
@@ -9303,6 +9307,37 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
       }
       return dialog;
     },
+    
+    _getModal: function(link, command) {
+      var that          = this,
+          modalElement = this.container.querySelector("[data-wysihtml5-modal='" + command + "']"),
+          modal,
+          caretBookmark;
+      
+      if (modalElement) {
+        modal = new wysihtml5.toolbar.Modal(link, modalElement);
+
+        modal.on("show", function() {
+          caretBookmark = that.composer.selection.getBookmark();
+          that.editor.fire("show:modal", { command: command, modalContainer: modalElement, commandLink: link });
+        });
+
+        modal.on("save", function(attributes) {
+          if (caretBookmark) {
+            that.composer.selection.setBookmark(caretBookmark);
+          }
+          that._execCommand(command, attributes);
+          
+          that.editor.fire("save:modal", { command: command, modalContainer: modalElement, commandLink: link });
+        });
+
+        modal.on("cancel", function() {
+          that.editor.focus(false);
+          that.editor.fire("cancel:modal", { command: command, modalContainer: modalElement, commandLink: link });
+        });
+      }
+      return modal;
+    },
 
     /**
      * @example
@@ -9314,12 +9349,28 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
       if (this.commandsDisabled) {
         return;
       }
-
-      var commandObj = this.commandMapping[command + ":" + commandValue];
-
+      
+      var commandObj = this.commandMapping[command + ":" + commandValue],
+          state;
+      
       // Show dialog when available
       if (commandObj && commandObj.dialog && !commandObj.state) {
         commandObj.dialog.show();
+      } else if (commandObj && commandObj.modal) {
+        state = this.composer.commands.state(commandObj.name, commandObj.value);
+        if (wysihtml5.lang.object(state).isArray()) {
+            // Grab first and only object/element in state array, otherwise convert state into boolean
+            // to avoid showing a dialog for multiple selected elements which may have different attributes
+            // eg. when two links with different href are selected, the state will be an array consisting of both link elements
+            // but the dialog interface can only update one
+            state = state.length === 1 ? state[0] : true;
+        }
+        if (typeof(state) === "object") {
+          commandObj.modal.show(state);
+        } else {
+          commandObj.modal.show();
+        }
+        
       } else {
         this._execCommand(command, commandValue);
       }
@@ -9421,17 +9472,23 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
       // every millisecond counts... this is executed quite often
       for (i in commandMapping) {
         command = commandMapping[i];
+        var commandActiveClass = (command.activeClass) ? command.activeClass : CLASS_NAME_COMMAND_ACTIVE;
+        
         if (this.commandsDisabled) {
           state = false;
-          dom.removeClass(command.link, CLASS_NAME_COMMAND_ACTIVE);
+          dom.removeClass(command.link, commandActiveClass);
           if (command.group) {
-            dom.removeClass(command.group, CLASS_NAME_COMMAND_ACTIVE);
+            dom.removeClass(command.group, commandActiveClass);
           }
           if (command.dialog) {
             command.dialog.hide();
           }
+          if (command.modal) {
+            command.modal.hide();
+          }
         } else {
           state = this.composer.commands.state(command.name, command.value);
+          
           if (wysihtml5.lang.object(state).isArray()) {
             // Grab first and only object/element in state array, otherwise convert state into boolean
             // to avoid showing a dialog for multiple selected elements which may have different attributes
@@ -9451,9 +9508,9 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
 
         command.state = state;
         if (state) {
-          dom.addClass(command.link, CLASS_NAME_COMMAND_ACTIVE);
+          dom.addClass(command.link, commandActiveClass);
           if (command.group) {
-            dom.addClass(command.group, CLASS_NAME_COMMAND_ACTIVE);
+            dom.addClass(command.group, commandActiveClass);
           }
           if (command.dialog) {
             if (typeof(state) === "object") {
@@ -9461,12 +9518,12 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
             } else {
               command.dialog.hide();
             }
-          }
+          } 
         } else {
-          dom.removeClass(command.link, CLASS_NAME_COMMAND_ACTIVE);
+          dom.removeClass(command.link, commandActiveClass);
           if (command.group) {
-            dom.removeClass(command.group, CLASS_NAME_COMMAND_ACTIVE);
-          }
+            dom.removeClass(command.group, commandActiveClass);
+          } 
           if (command.dialog) {
             command.dialog.hide();
           }
@@ -9475,13 +9532,14 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
       
       for (i in actionMapping) {
         action = actionMapping[i];
+        var actionActiveClass = (action.activeClass) ? action.activeClass : CLASS_NAME_ACTION_ACTIVE;
         
         if (action.name === "change_view") {
           action.state = this.editor.currentView === this.editor.textarea;
           if (action.state) {
-            dom.addClass(action.link, CLASS_NAME_ACTION_ACTIVE);
+            dom.addClass(action.link, actionActiveClass);
           } else {
-            dom.removeClass(action.link, CLASS_NAME_ACTION_ACTIVE);
+            dom.removeClass(action.link, actionActiveClass);
           }
         }
       }
@@ -9530,13 +9588,9 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
     constructor: function(editor) {
       this.editor     = editor;
       this.composer   = editor.composer;
-      
       var that = this;
-      console.log("keydown");
-
       // toolbar.execCommand("formatBlock", "blockquote");
       dom.observe(this.composer.element, "keydown", function(event) {
-      
         var key = event.keyCode || event.which;
         var modKeys = keys;
         if (event.ctrlKey || event.metaKey) {
@@ -9547,14 +9601,9 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
         } else if (event.shiftKey) {
             modKeys = modKeys['shift'];
         }
-        
-        console.log(event.ctrlKey, event.metaKey, key, modKeys);
-        
         if (modKeys[key]) {
             event.preventDefault();
-            
             that.editor.toolbar.execCommand(modKeys[key].command, modKeys[key].option);
-            //that.toolbar.execCommand(modKeys[key].command, modKeys[key].option);
         }
       });
  
@@ -9702,8 +9751,14 @@ wysihtml5.Predictive = Base.extend(
         return;
       }
       
+      //  add default class name to textarea element
+      wysihtml5.dom.addClass(this.textareaElement, 'wysihtml5-textarea');
+      
       // Add class name to body, to indicate that the editor is supported
       wysihtml5.dom.addClass(document.body, this.config.bodyClassName);
+      
+      //  add default class name to body element
+      wysihtml5.dom.addClass(document.body, 'wysihtml5-body');
       
       this.composer = new wysihtml5.views.Composer(this, this.textareaElement, this.config);
       this.currentView = this.composer;

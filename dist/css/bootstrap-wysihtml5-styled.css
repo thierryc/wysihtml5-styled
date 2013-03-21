@@ -5391,17 +5391,17 @@ a.badge:focus {
   width: 50%;
   color: #333333;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  background-color: #49afcd;
-  background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
-  background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);
-  background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
-  background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
+  background-color: #363636;
+  background-image: -moz-linear-gradient(top, #444444, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
+  background-image: -webkit-linear-gradient(top, #444444, #222222);
+  background-image: -o-linear-gradient(top, #444444, #222222);
+  background-image: linear-gradient(to bottom, #444444, #222222);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
-  border-color: #2f96b4 #2f96b4 #1f6377;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+  border-color: #222222 #222222 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #2f96b4;
+  *background-color: #222222;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -5413,6 +5413,10 @@ a.badge:focus {
   /* IE7 inline-block hack */
 
   *zoom: 1;
+  -webkit-transition: left 0.3s ease-in;
+  -moz-transition: left 0.3s ease-in;
+  -o-transition: left 0.3s ease-in;
+  transition: left 0.3s ease-in;
 }
 .switchon .slide:hover,
 .switchon .slide:focus,
@@ -5421,12 +5425,12 @@ a.badge:focus {
 .switchon .slide.disabled,
 .switchon .slide[disabled] {
   color: #333333;
-  background-color: #2f96b4;
-  *background-color: #2a85a0;
+  background-color: #222222;
+  *background-color: #151515;
 }
 .switchon .slide:active,
 .switchon .slide.active {
-  background-color: #24748c \9;
+  background-color: #080808 \9;
 }
 .switchon .on,
 .switchon .off {
@@ -5442,9 +5446,11 @@ a.badge:focus {
 }
 .switchon .on {
   left: 0;
+  color: #468847;
 }
 .switchon .off {
   right: 0;
+  color: #b94a48;
   position: absolute;
 }
 .switchon.active .slide {
@@ -5599,10 +5605,10 @@ textarea.wysihtml5-textarea {
 .ap-small-icon-align-left {
   background-position: -163px -43px;
 }
-.ap-small-icon-align-center {
+.ap-small-icon-align-right {
   background-position: -183px -43px;
 }
-.ap-small-icon-align-right {
+.ap-small-icon-align-center {
   background-position: -203px -43px;
 }
 .ap-small-icon-align-justify {

@@ -46,12 +46,15 @@ JS_FILES = src/wysihtml5.js \
   src/commands.js \
   src/commands/bold.js \
   src/commands/createLink.js \
+  src/commands/createLinkHtml5.js \
+  src/commands/removeLinkHtml5.js \
   src/commands/fontSize.js \
   src/commands/foreColor.js \
   src/commands/formatBlock.js \
   src/commands/formatInline.js \
   src/commands/insertHTML.js \
   src/commands/insertImage.js \
+  src/commands/insertImageHtml5.js \
   src/commands/insertLineBreak.js \
   src/commands/insertOrderedListHtml5.js \
   src/commands/insertUnorderedListHtml5.js \

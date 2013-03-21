@@ -41,7 +41,6 @@
      */
     exec: function(composer, command, value) {
       var anchors = this.state(composer, command);
-      
       if (anchors) {
         // Selection contains links
         composer.selection.executeAndRestore(function() {
@@ -51,7 +50,7 @@
     },
 
     state: function(composer, command) {
-      return false;
+      return wysihtml5.commands.formatInline.state(composer, command, "A");
     }
   };
 })(wysihtml5);

@@ -18,6 +18,60 @@
 	}
 }
 
+.switchon {
+	color: @textColor;
+	text-shadow:0px 1px 2px @white;
+	display: inline-block;
+	.ie7-inline-block();
+	margin-bottom: 0; // For input.btn
+	font-size: @baseFontSize;
+	cursor: pointer;
+	.buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
+	border: 1px solid @btnBorder;
+	*border: 0; // Remove the border to prevent IE7's black border on input:focus
+	border-bottom-color: darken(@btnBorder, 10%);
+	.border-radius(@baseBorderRadius);
+	.ie7-restore-left-whitespace(); // Give IE7 some love
+	.box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
+	position: relative;
+	height: 28px;
+	width: 60px;
+	&:hover{
+		text-decoration: none;
+	}
+
+	.slide{
+		.border-radius(@baseBorderRadius);
+		.box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
+		position: absolute;
+		width: 50%;
+		.buttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
+		top:0;
+		left:0;
+		height:100%;
+		display: inline-block;
+		.ie7-inline-block();
+	}
+	.on,.off{
+		line-height: 28px;
+		text-align: center;
+		width:50%;
+		height:100%;
+		display: inline-block;
+		.ie7-inline-block();
+	}
+	.on{left:0;}
+	.off{right:0;position:absolute;}
+	
+}
+
+.switchon.active{
+	.slide{
+		.transition(left 0.3s ease-in);  
+		left:50%;
+	}
+}
+
 textarea.wysihtml5-textarea {
     line-height: auto;
     font-size: @baseFontSize;

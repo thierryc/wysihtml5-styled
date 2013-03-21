@@ -52,6 +52,22 @@
     padding: 4px 8px;
 }
 
+.btn-toolbar-small .btn span {
+    .transition(opacity .7s ease-in);
+    opacity: 1;
+}
+
+
+.wysihtml5-disabled .btn span {
+    opacity: 0.5;
+}
+
+
+.wysihtml5-disabled .btn span {
+    .transition(background .7s ease-in);
+    opacity: 0.5;
+}
+
 .switchon {
     .transition(background .7s ease-in);
 	color: @textColor;
@@ -98,7 +114,7 @@
 	}
 	.on{
 		left:0;
-		color: @successText;
+		color: darken(@successText, 10%);
 	}
 	.off{
 		right:0;

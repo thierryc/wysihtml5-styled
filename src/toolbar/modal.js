@@ -79,7 +79,7 @@
       });
 
       dom.delegate(this.container, "[data-wysihtml5-modal-action=save]", "click", callbackWrapper);
-
+      
       dom.delegate(this.container, "[data-wysihtml5-modal-action=cancel]", "click", function(event) {
         that.fire("cancel");
         that.hide();
@@ -163,33 +163,42 @@
      * Show the modal opener element
      */
     show: function(elementToChange) {
-      
       if (dom.hasClass(this.link, CLASS_NAME_OPENED)) {
         return;
       }
+      
       var that        = this,
-          firstField  = this.container.querySelector(SELECTOR_FORM_ELEMENTS);
+          thisModal,
+          firstField; //  = this.container.querySelector(SELECTOR_FORM_ELEMENTS);
+          
+      console.log(this.container);
       this.elementToChange = elementToChange;
-
+      this._observe();
+      this._interpolate();
+      if (elementToChange) {
+        this.interval = setInterval(function() { that._interpolate(true); }, 500);
+      }
       dom.addClass(this.link, CLASS_NAME_OPENED);
+      
       if($ && $('#'+this.container.id)) {
-        $('#'+this.container.id).modal('show')
-        .on('show', function(){
-        
-        })
-        .on('shown', function(){
-            that._observe();
-            that._interpolate();
-            if (elementToChange) {
-                that._interpolate(true);
-                // that.interval = setInterval(function() { that._interpolate(true); }, 500);
-            }
+        thisModal = $('#'+this.container.id);
+        /*
+        thisModal.on('show', function(){
+            
+        });
+        */
+        thisModal.on('shown', function(){
+            firstField  = that.container.querySelector(SELECTOR_FORM_ELEMENTS);
+            //that._observe();
+            /* TODO remove for IE
             if (firstField && !elementToChange) {
                 try {
                   firstField.focus();
                 } catch(e) {}
             }
+            */
         });
+        thisModal.modal('show');
       } else {
         console.log('add jquery dependance');
       }
@@ -212,6 +221,5 @@
       }
       this.fire("hide");
     }
-    
   });
 })(wysihtml5);

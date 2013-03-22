@@ -82,10 +82,11 @@
      */
     exec: function(composer, command, value) {
       var anchors = this.state(composer, command);
+      
       if (anchors) {
         // Selection contains links
         composer.selection.executeAndRestore(function() {
-          _removeFormat(composer, anchors);
+            _removeFormat(composer, anchors);
         });
       } else {
         // Create links

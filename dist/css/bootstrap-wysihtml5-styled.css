@@ -5737,12 +5737,15 @@ textarea.wysihtml5-textarea {
 .dialog-wysihtml5 .btn-toolbar {
   display: inline-block;
 }
+.help {
+  margin-left: 5px;
+}
 #helpModal .dl-horizontal dt {
-  width: 130px;
+  width: 125px;
   text-align: left;
 }
 #helpModal .dl-horizontal dd {
-  margin-left: 150px;
+  margin-left: 145px;
 }
 [class^="ap-small-icon-"],
 [class*="ap-small-icon-"] {

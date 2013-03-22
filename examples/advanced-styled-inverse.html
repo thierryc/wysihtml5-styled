@@ -84,7 +84,7 @@
 			        	</a>
 			        </div>
 
-			         <a class="btn" href="#helpModal" role="button" class="btn" data-toggle="modal"><span class="ap-small-icon-info-circle"></span></a>
+			         <a class="help" href="#helpModal" role="button" data-toggle="modal"><span class="ap-small-icon-info-circle"></span></a>
 			         
 					<!-- Modal -->
 					<div id="helpModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -135,6 +135,9 @@
 										<dt>
 											<span class="label">⌘ or Ctrl + Shift + Z</span></dt>
 										<dd>Redo</dd>
+										<dt>
+											<span class="label label-inverse">⌘ or Ctrl + L</span></dt>
+										<dd>Sup</dd>
 									</dl>
 								</div>
 							</section>
@@ -194,10 +197,19 @@
 							<label for="wysihtml5ModalSrc">Image Src:</label>
 							<input type="text" id="wysihtml5ModalSrc" data-wysihtml5-modal-field="src" type="text" value="http://">
 							<label class="control-label" for="wysihtml5ModalAlign">Image Align:</label>
-							<select id="wysihtml5ModalAlign" data-wysihtml5-dialog-field="className">
+							<select id="wysihtml5ModalAlign" data-wysihtml5-modal-field="className">
 					            <option value="">Default</option>
 					            <option value="wysiwyg-float-left">Left</option>
 					            <option value="wysiwyg-float-right">Right</option>
+					            <option value="img-rounded">Rounded</option>
+					            <option value="img-rounded wysiwyg-float-left">Rounded Left</option>
+					            <option value="img-rounded wysiwyg-float-right">Rounded Right</option>
+					            <option value="img-polaroid">Polaroid</option>
+					            <option value="img-polaroid wysiwyg-float-left">Polaroid Left</option>
+					            <option value="img-polaroid wysiwyg-float-right">Polaroid Right</option>
+					            <option value="img-circle">Circle</option>
+					            <option value="img-circle wysiwyg-float-left">Circle Left</option>
+					            <option value="img-circle wysiwyg-float-right">Circle Right</option>
 					        </select>
 						</div>
 						<div class="modal-footer">

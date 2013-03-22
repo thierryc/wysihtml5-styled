@@ -5562,16 +5562,7 @@ a.badge:focus {
   text-shadow: 0px 1px 1px #555555;
 }
 .btn-toolbar.inverse .modal {
-  background-color: #444444;
-}
-.btn-toolbar.inverse .modal .modal-header {
-  background-color: #262626;
-  border-bottom: 1px solid #333333;
-}
-.btn-toolbar.inverse .modal .modal-footer {
-  background-color: #262626;
-  border-top: 1px solid #333333;
-  box-shadow: none;
+  color: #333333;
 }
 .btn-toolbar-small .btn {
   padding: 4px 8px;
@@ -6019,7 +6010,7 @@ textarea.wysihtml5-textarea {
   background-position: -23px -83px;
 }
 .ap-small-icon-line-break {
-  background-position: -63px -83px;
+  background-position: -43px -83px;
 }
 .ap-small-icon-map-marker {
   background-position: -2px -103px;

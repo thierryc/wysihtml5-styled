@@ -18,7 +18,7 @@
             //73: { command: 'italic', value: false }, // Ctrl + i
             74: { command: 'insertUnorderedList', value: false }, // Ctrl + j
             75: { command: 'insertOrderedList', value: false }, // Ctrl + k
-            76: { command: 'superscript', value: false }, // Ctrl + k
+            76: { command: 'superscript', value: false }, // Ctrl + l
             'shift': {
                 //90: { command: 'redo', value: false } // Ctrl + Shift + z
             } 

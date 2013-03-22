@@ -5522,6 +5522,57 @@ a.badge:focus {
   background-color: #444444;
   color: #ffffff;
 }
+.btn-toolbar.inverse .switchon {
+  border: 1px solid #444444;
+}
+.btn-toolbar.inverse .switchon .slide {
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #444444;
+  background-image: -moz-linear-gradient(top, #444444, #444444);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#444444));
+  background-image: -webkit-linear-gradient(top, #444444, #444444);
+  background-image: -o-linear-gradient(top, #444444, #444444);
+  background-image: linear-gradient(to bottom, #444444, #444444);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff444444', GradientType=0);
+  border-color: #444444 #444444 #1e1e1e;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #444444;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-toolbar.inverse .switchon .slide:hover,
+.btn-toolbar.inverse .switchon .slide:focus,
+.btn-toolbar.inverse .switchon .slide:active,
+.btn-toolbar.inverse .switchon .slide.active,
+.btn-toolbar.inverse .switchon .slide.disabled,
+.btn-toolbar.inverse .switchon .slide[disabled] {
+  color: #333333;
+  background-color: #444444;
+  *background-color: #373737;
+}
+.btn-toolbar.inverse .switchon .slide:active,
+.btn-toolbar.inverse .switchon .slide.active {
+  background-color: #2b2b2b \9;
+}
+.btn-toolbar.inverse .switchon.active {
+  background-color: #6a6a6a;
+  text-shadow: 0px 1px 1px #555555;
+}
+.btn-toolbar.inverse .modal {
+  background-color: #444444;
+}
+.btn-toolbar.inverse .modal .modal-header {
+  background-color: #262626;
+  border-bottom: 1px solid #333333;
+}
+.btn-toolbar.inverse .modal .modal-footer {
+  background-color: #262626;
+  border-top: 1px solid #333333;
+  box-shadow: none;
+}
 .btn-toolbar-small .btn {
   padding: 4px 8px;
 }
@@ -5966,6 +6017,9 @@ textarea.wysihtml5-textarea {
 }
 .ap-small-icon-unlink {
   background-position: -23px -83px;
+}
+.ap-small-icon-line-break {
+  background-position: -63px -83px;
 }
 .ap-small-icon-map-marker {
   background-position: -2px -103px;

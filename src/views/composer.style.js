@@ -6,13 +6,18 @@
       /**
        * Styles to copy from textarea to the composer element
        */
-      TEXT_FORMATTING = [
+      TEXT_FORMATTING_old = [
         "background-color",
         "color", "cursor",
         "font-family", "font-size", "font-style", "font-variant", "font-weight",
         "line-height", "letter-spacing",
         "text-align", "text-decoration", "text-indent", "text-rendering",
         "word-break", "word-wrap", "word-spacing"
+      ],
+      // remove "line-height" to improve html display in editor
+      TEXT_FORMATTING = [
+        "background-color",
+        "cursor"
       ],
       /**
        * Styles to copy from textarea to the iframe

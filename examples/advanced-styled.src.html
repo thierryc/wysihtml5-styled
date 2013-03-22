@@ -294,18 +294,12 @@
 <script>
   var editor = new wysihtml5.Editor("textarea", {
     toolbar:        "toolbar",
-    stylesheets:    "css/stylesheet.css",
+    style:          true,
+    stylesheets:    "css/wysihtml5-styled-editor-body.css",
     parserRules:    wysihtml5ParserRules,
     credit:         false,
     predictive:     true,
-    codeMirror:     true,
-    urlCallBack:    function(composer){
-        alert('toto');
-    },
-    linkCallBack:   function(composer){
-        alert('tutu');
-        wysihtml5.commands.insertImage.exec(composer, "insertImage", { src: "http://www.google.com/images/srpr/logo4w.png", title: "foo" });
-    }
+    codeMirror:     true
   });
 </script>
 

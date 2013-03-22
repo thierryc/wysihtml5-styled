@@ -154,8 +154,8 @@
       ]).from(this.textarea.element).to(this.element);
       
       dom.addClass(this.element, this.config.composerClassName);
-      // 
-      // // Make the editor look like the original textarea, by syncing styles
+      
+      // Make the editor look like the original textarea, by syncing styles
       if (this.config.style) {
         this.style();
       }

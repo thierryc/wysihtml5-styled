@@ -105,6 +105,8 @@ style:
 	@@lessc src/less/wysihtml5-styled-bootstrap-extension.less dist/css/wysihtml5-styled-bootstrap-extension.css
 	@@lessc src/less/wysihtml5-styled.less dist/css/wysihtml5-styled.css
 	@@lessc src/less/wysihtml5-styled-editor.less dist/css/wysihtml5-styled-editor.css
+	@@lessc src/less/wysihtml5-styled-editor-body.less dist/css/wysihtml5-styled-editor-body.css
+	@@lessc src/less/wysihtml5-styled-editor-body.less examples/css/wysihtml5-styled-editor-body.css
 	@@echo "Done."
 	
 img:

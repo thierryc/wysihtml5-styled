@@ -297,23 +297,34 @@
 						</div>
 					</div>
 			    </div>
-			  <textarea id="textarea"></textarea>
+			  <textarea id="textarea"  placeholder="Enter text..."></textarea>
 			</form>
+			<h3>Events:</h3>
+            <div id="log"></div>
 			<p><small>Powered by <a href="https://github.com/xing/wysihtml5" target="_blank">Wysihtml5</a> and <a href="https://github.com/xing/wysihtml5" target="_blank">Wysihtml5 Styled</a></small></p>
 		</div>
 	</section>
 </div>
 
 <script>
-  var editor = new wysihtml5.Editor("textarea", {
-    toolbar:        "toolbar",
-    style:          true,
-    stylesheets:    "css/wysihtml5-styled-editor-body.css",
-    parserRules:    wysihtml5ParserRules,
-    credit:         false,
-    predictive:     true,
-    codeMirror:     true
-  });
+    
+    var editor = new wysihtml5.Editor("textarea", {
+        toolbar:        "toolbar",
+        style:          true,
+        stylesheets:    "css/wysihtml5-styled-editor-body.css",
+        parserRules:    wysihtml5ParserRules,
+        credit:         false,
+        predictive:     true,
+        codeMirror:     true
+    });
+    
+    var log = document.getElementById("log");
+    editor.on("load", function() {
+        log.innerHTML += "<div>load</div>";
+    });
+    
+    
+    
 </script>
 
 </body>

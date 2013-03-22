@@ -1,3 +1,7 @@
+// Show text in modal called from toolbar
+.btn-toolbar{
+	font-size: @baseFontSize;
+}
 .btn-toolbar.inverse {
 	// Change the color of inverse toolbar buttons
 	@btnBackground:                     #444;
@@ -50,18 +54,11 @@
 
 .btn-toolbar-small .btn {
     padding: 4px 8px;
+    span {
+	    .transition(opacity .7s ease-in);
+	    opacity: 1;
+	}
 }
-
-.btn-toolbar-small .btn span {
-    .transition(opacity .7s ease-in);
-    opacity: 1;
-}
-
-
-.wysihtml5-disabled .btn span {
-    opacity: 0.5;
-}
-
 
 .wysihtml5-disabled .btn span {
     .transition(background .7s ease-in);
@@ -168,3 +165,13 @@ textarea.wysihtml5-textarea {
 	}
 }
 
+#helpModal{
+	.dl-horizontal dt{
+		width: 130px;
+		text-align: left;
+	}
+
+	.dl-horizontal dd {
+		margin-left: 150px;
+	}
+}

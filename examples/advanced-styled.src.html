@@ -103,17 +103,12 @@
 	<script src="../src/editor.js"></script>
 	
 	<script src="../src/predictive.js"></script>
-	
 </head>
 <body>
 <div class="container">
 	<section class="row">
 		<div class="span12">
-			<h1>Fresh and Clean theme :  Wsihtml5 <em>Styled</em></h1>
-			<hr>
-			<p>Try out the Wishtml5 <em>Styled </em>with the Fresh and Clean theme made with Twitter Bootstrap.</p>
-			<p>Try Shift + Enter and you'd get <code>br</code> instead of <code>p</code>. Add class <code>.inverse</code> to <code>.btn-toolbar</code> and you'd get the Dark side of the Force.</p>
-			<hr>
+			<h3>Fresh and Clean theme :  Wysihtml5 <em>Styled</em></h3>
 			<form>
 			    <div id="toolbar" class="btn-toolbar btn-toolbar-small" style="display: none;">
 			        <div class="btn-group">
@@ -158,7 +153,7 @@
 			            <a class="btn" data-wysihtml5-command="redo"><span class="ap-small-icon-redo"></span></a>
 			        </div>
 			        
-		            <a class="btn" data-wysihtml5-command="insertSpeech"><span class="ap-small-icon-speech"></span></a>
+		            <a class="btn" data-wysihtml5-command="insertSpeech"><span class="ap-small-icon-mic"></span></a>
 			        
 			        <div class="btn-group">
 			            <a class="switchon" data-wysihtml5-action="change_view">
@@ -168,21 +163,63 @@
 			        	</a>
 			        </div>
 
-			         <a class="btn" href="#myModal" role="button" class="btn" data-toggle="modal"><span class="ap-small-icon-info-circle"></span></a>
+			         <a class="btn" href="#helpModal" role="button" class="btn" data-toggle="modal"><span class="ap-small-icon-info-circle"></span></a>
 			         
- 
 					<!-- Modal -->
-					<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div id="helpModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h3 id="myModalLabel">Modal header</h3>
+							<h3 id="myModalLabel">Help </h3>
 						</div>
 						<div class="modal-body">
-							<p>One fine body…</p>
+							<section class="row-fluid">
+								<div class="span4">
+									<h5>Speech functions</h5>
+									<p>Speak and it will magically write into the editor.</p>
+									<p>Only work on Mac and with Safari or Chrome. Enable it in your system preferences in "Speech" and select your language.</p>
+								</div>
+								<div class="span8">
+									<h5>Keybord shortcuts</h5>
+									<dl class="dl-horizontal">
+										<dt>
+											<span class="label label-inverse">Shift + Enter</span></dt>
+										<dd>Line break using br instead of p</dd>
+										<dt>
+											<span class="label label-inverse">Tab</span></dt>
+										<dd>Indent</dd>
+										<dt>
+											<span class="label label-inverse">Shift + Tab</span></dt>
+										<dd>Outdent</dd>
+										<dt>
+											<span class="label label-inverse">⌘ or Ctrl + M</span></dt>
+										<dd>Remove Format</dd>
+										<dt>
+											<span class="label label-inverse">⌘ or Ctrl + B</span></dt>
+										<dd>Bold</dd>
+										<dt>
+											<span class="label label-inverse">⌘ or Ctrl + I</span></dt>
+										<dd>Italic</dd>
+										<dt>
+											<span class="label label-inverse">⌘ or Ctrl + U</span></dt>
+										<dd>Underline</dd>
+										<dt>
+											<span class="label label-inverse">⌘ or Ctrl + J</span></dt>
+										<dd>Unordered list</dd>
+										<dt>
+											<span class="label label-inverse">⌘ or Ctrl + K</span></dt>
+										<dd>Ordered list</dd>
+										<dt>
+											<span class="label label-inverse">⌘ or Ctrl + Z</span></dt>
+										<dd>Undo</dd>
+										<dt>
+											<span class="label label-inverse">⌘ or Ctrl + Shift + Z</span></dt>
+										<dd>Redo</dd>
+									</dl>
+								</div>
+							</section>
 						</div>
 						<div class="modal-footer">
 							<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-							<button class="btn btn-primary">Save changes</button>
 						</div>
 					</div>
 
@@ -244,24 +281,15 @@
 						</div>
 						<div class="modal-footer">
 							<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
-							<button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
 						</div>
 					</div>
-					
 			    </div>
 			  <textarea id="textarea" placeholder="Enter text ..."></textarea>
-			  <br><input class="btn" type="reset" value="Reset form">
 			</form>
-
-			<h2>Events:</h2>
-			<div id="log"></div>
-
 			<p><small>Powered by <a href="https://github.com/xing/wysihtml5" target="_blank">Wysihtml5</a> and <a href="https://github.com/xing/wysihtml5" target="_blank">Wysihtml5 Styled</a></small></p>
-
 		</div>
 	</section>
 </div>
-
 
 <script>
   var editor = new wysihtml5.Editor("textarea", {
@@ -279,37 +307,10 @@
         wysihtml5.commands.insertImage.exec(composer, "insertImage", { src: "http://www.google.com/images/srpr/logo4w.png", title: "foo" });
     }
   });
-  
-  var log = document.getElementById("log");
-  
-  editor
-    .on("load", function() {
-      log.innerHTML += "<div>load</div>";
-    })
-    .on("focus", function() {
-      log.innerHTML += "<div>focus</div>";
-    })
-    .on("blur", function() {
-      log.innerHTML += "<div>blur</div>";
-    })
-    .on("change", function() {
-      log.innerHTML += "<div>change</div>";
-    })
-    .on("paste", function() {
-      log.innerHTML += "<div>paste</div>";
-    })
-    .on("newword:composer", function() {
-      log.innerHTML += "<div>newword:composer</div>";
-    })
-    .on("undo:composer", function() {
-      log.innerHTML += "<div>undo:composer</div>";
-    })
-    .on("redo:composer", function() {
-      log.innerHTML += "<div>redo:composer</div>";
-    });
-    
-    var commands = new wysihtml5.Commands(editor);
-
 </script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> icons+ modal short cut keyboard
 </body>
 </html>

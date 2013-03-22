@@ -5278,6 +5278,9 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+.btn-toolbar {
+  font-size: 14px;
+}
 .btn-toolbar.inverse .btn {
   color: #222222;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
@@ -5530,9 +5533,6 @@ a.badge:focus {
   opacity: 1;
 }
 .wysihtml5-disabled .btn span {
-  opacity: 0.5;
-}
-.wysihtml5-disabled .btn span {
   -webkit-transition: background 0.7s ease-in;
   -moz-transition: background 0.7s ease-in;
   -o-transition: background 0.7s ease-in;
@@ -5694,6 +5694,13 @@ textarea.wysihtml5-textarea {
 }
 .dialog-wysihtml5 .btn-toolbar {
   display: inline-block;
+}
+#helpModal .dl-horizontal dt {
+  width: 130px;
+  text-align: left;
+}
+#helpModal .dl-horizontal dd {
+  margin-left: 150px;
 }
 [class^="ap-small-icon-"],
 [class*="ap-small-icon-"] {
@@ -5872,9 +5879,6 @@ textarea.wysihtml5-textarea {
 }
 .ap-small-icon-suppr {
   background-position: -323px -143px;
-}
-.ap-small-icon-suppr-color {
-  background-position: -363px -143px;
 }
 .ap-small-icon-trash {
   background-position: -463px -43px;
@@ -6070,6 +6074,9 @@ textarea.wysihtml5-textarea {
 }
 .ap-small-icon-check-color {
   background-position: -343px -143px;
+}
+.ap-small-icon-mic {
+  background-position: -363px -143px;
 }
 .ap-small-icon-chevron-left {
   background-position: -3px -183px;

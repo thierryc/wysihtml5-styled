@@ -194,6 +194,12 @@ textarea {
     page-break-after: avoid;
   }
 }
+/* reset bootstrap textarea for wysihtml5 */
+.wysihtml5-textarea {
+  line-height: auto;
+  font-size: 14px;
+  color: #333333;
+}
 p {
   margin: 0 0 10px;
 }

@@ -43,7 +43,7 @@
       for (var i in value) {
         image.setAttribute(i === "className" ? "class" : i, value[i]);
       }
-
+      
       composer.selection.insertNode(image);
       if (wysihtml5.browser.hasProblemsSettingCaretAfterImg()) {
         textNode = doc.createTextNode(wysihtml5.INVISIBLE_SPACE);

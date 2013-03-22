@@ -181,7 +181,8 @@
             that._observe();
             that._interpolate();
             if (elementToChange) {
-                that.interval = setInterval(function() { that._interpolate(true); }, 500);
+                that._interpolate(true);
+                // that.interval = setInterval(function() { that._interpolate(true); }, 500);
             }
             if (firstField && !elementToChange) {
                 try {

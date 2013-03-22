@@ -7609,7 +7609,7 @@ wysihtml5.commands.bold = {
       for (var i in value) {
         image.setAttribute(i === "className" ? "class" : i, value[i]);
       }
-
+      
       composer.selection.insertNode(image);
       if (wysihtml5.browser.hasProblemsSettingCaretAfterImg()) {
         textNode = doc.createTextNode(wysihtml5.INVISIBLE_SPACE);
@@ -9552,7 +9552,8 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
             that._observe();
             that._interpolate();
             if (elementToChange) {
-                that.interval = setInterval(function() { that._interpolate(true); }, 500);
+                that._interpolate(true);
+                // that.interval = setInterval(function() { that._interpolate(true); }, 500);
             }
             if (firstField && !elementToChange) {
                 try {

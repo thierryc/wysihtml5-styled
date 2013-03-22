@@ -773,3 +773,9 @@ table th[class*="span"],
 .wysiwyg-ol-harvard ol ol ol {
   list-style-type: lower-latin;
 }
+.wysiwyg-float-left {
+  float: left;
+}
+.wysiwyg-float-right {
+  float: right;
+}

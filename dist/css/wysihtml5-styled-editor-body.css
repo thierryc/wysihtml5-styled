@@ -194,6 +194,44 @@ textarea {
     page-break-after: avoid;
   }
 }
+.wysiwyg-text-align-center {
+  text-align: center;
+}
+.wysiwyg-text-align-left {
+  text-align: left;
+}
+.wysiwyg-text-align-right {
+  text-align: right;
+}
+.wysiwyg-text-align-justify {
+  text-align: justify;
+}
+.wysiwyg-ol-upper-roman,
+.wysiwyg-ol-upper-roman ol {
+  list-style-type: upper-roman;
+}
+.wysiwyg-ol-upper-latin,
+.wysiwyg-ol-upper-latin ol {
+  list-style-type: upper-latin;
+}
+.wysiwyg-ol-harvard {
+  list-style-type: upper-roman;
+}
+.wysiwyg-ol-harvard ol {
+  list-style-type: upper-latin;
+}
+.wysiwyg-ol-harvard ol ol {
+  list-style-type: decimal;
+}
+.wysiwyg-ol-harvard ol ol ol {
+  list-style-type: lower-latin;
+}
+.wysiwyg-float-left {
+  float: left;
+}
+.wysiwyg-float-right {
+  float: right;
+}
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;

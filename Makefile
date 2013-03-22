@@ -74,13 +74,14 @@ JS_FILES = src/wysihtml5.js \
   src/views/synchronizer.js \
   src/views/textarea.js \
   src/toolbar/dialog.js \
+  src/toolbar/modal.js \
   src/toolbar/speech.js \
   src/toolbar/toolbar.js \
   src/keyboardShortcut.js \
   src/predictive.js \
   src/editor.js
 
-all: bundle minify
+all: bundle minify css
 
 bundle:
 	@@echo "Bundling..."

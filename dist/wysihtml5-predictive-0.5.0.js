@@ -6971,7 +6971,7 @@ wysihtml5.commands.bold = {
 
       // if <a> contains url-like text content, rename it to <code> to prevent re-autolinking
       // else replace <a> with its childNodes
-      if (textContent.match(dom.autoLink.URL_REG_EXP) && !codeElement) {
+      if (textContent && textContent.match(dom.autoLink.URL_REG_EXP) && !codeElement) {
         // <code> element is used to prevent later auto-linking of the content
         codeElement = dom.renameElement(anchor, "code");
       } else {
@@ -8174,10 +8174,22 @@ wysihtml5.views.View = Base.extend(
   
   focus: function() {
     if (this.element.ownerDocument.querySelector(":focus") === this.element) {
+      console.log('focused');
       return;
     }
-    
-    try { this.element.focus(); } catch(e) {}
+    // prevent scroll in firefox
+    var that = this,
+        scrollTop = 0; 
+        
+    if (that.iframe)
+       scrollTop = that.iframe.contentWindow.document.documentElement.scrollTop;  
+    try { 
+        this.element.focus();
+        if (that.iframe)
+            setTimeout(function(){
+                that.iframe.contentWindow.document.documentElement.scrollTop = scrollTop;
+            }, 0);
+    } catch(e) {}
   },
   
   hide: function() {
@@ -8240,7 +8252,6 @@ wysihtml5.views.View = Base.extend(
 
     show: function() {
       this.iframe.style.display = this._displayStyle || "";
-      
       if (!this.textarea.element.disabled) {
         // Firefox needs this, otherwise contentEditable becomes uneditable
         this.disable();
@@ -9420,8 +9431,9 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
         return;
       }
       
-      var that = this,
-          callbackWrapper = function(event) {
+      var that = this;
+      
+      var callbackWrapper = function(event) {
             var attributes = that._serialize();
             if (attributes == that.elementToChange) {
               that.fire("edit", attributes);
@@ -9431,7 +9443,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
             that.hide();
             event.preventDefault();
             event.stopPropagation();
-          };
+      };
           
       dom.observe(that.link, "click", function() {
         if (dom.hasClass(that.link, CLASS_NAME_OPENED)) {
@@ -9543,7 +9555,6 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
           thisModal,
           firstField; //  = this.container.querySelector(SELECTOR_FORM_ELEMENTS);
           
-      console.log(this.container);
       this.elementToChange = elementToChange;
       this._observe();
       this._interpolate();
@@ -9783,6 +9794,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
           that._execCommand(command, attributes);
           
           that.editor.fire("save:dialog", { command: command, dialogContainer: dialogElement, commandLink: link });
+          
         });
 
         dialog.on("cancel", function() {
@@ -9806,7 +9818,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
           caretBookmark = that.composer.selection.getBookmark();
           that.editor.fire("show:modal", { command: command, modalContainer: modalElement, commandLink: link });
         });
-
+        
         modal.on("save", function(attributes) {
           if (caretBookmark) {
             that.composer.selection.setBookmark(caretBookmark);
@@ -9864,7 +9876,6 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
     _execCommand: function(command, commandValue) {
       // Make sure that composer is focussed (false => don't move caret to the end)
       this.editor.focus(false);
-
       this.composer.commands.exec(command, commandValue);
       this._updateLinkStates();
     },

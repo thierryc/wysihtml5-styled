@@ -97,6 +97,7 @@
           that._execCommand(command, attributes);
           
           that.editor.fire("save:dialog", { command: command, dialogContainer: dialogElement, commandLink: link });
+          
         });
 
         dialog.on("cancel", function() {
@@ -120,7 +121,7 @@
           caretBookmark = that.composer.selection.getBookmark();
           that.editor.fire("show:modal", { command: command, modalContainer: modalElement, commandLink: link });
         });
-
+        
         modal.on("save", function(attributes) {
           if (caretBookmark) {
             that.composer.selection.setBookmark(caretBookmark);
@@ -178,7 +179,6 @@
     _execCommand: function(command, commandValue) {
       // Make sure that composer is focussed (false => don't move caret to the end)
       this.editor.focus(false);
-
       this.composer.commands.exec(command, commandValue);
       this._updateLinkStates();
     },

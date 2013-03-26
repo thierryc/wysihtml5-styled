@@ -31,8 +31,15 @@ wysihtml5.views.View = Base.extend(
     if (this.element.ownerDocument.querySelector(":focus") === this.element) {
       return;
     }
-    
-    try { this.element.focus(); } catch(e) {}
+    // prevent scroll in firefox
+    var that = this,
+        scrollTop = that.iframe.contentWindow.document.documentElement.scrollTop;
+    try { 
+        this.element.focus();
+        setTimeout(function(){
+            that.iframe.contentWindow.document.documentElement.scrollTop = scrollTop;
+        }, 0);
+    } catch(e) {}
   },
   
   hide: function() {

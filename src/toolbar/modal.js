@@ -48,8 +48,9 @@
         return;
       }
       
-      var that = this,
-          callbackWrapper = function(event) {
+      var that = this;
+      
+      var callbackWrapper = function(event) {
             var attributes = that._serialize();
             if (attributes == that.elementToChange) {
               that.fire("edit", attributes);
@@ -59,7 +60,7 @@
             that.hide();
             event.preventDefault();
             event.stopPropagation();
-          };
+      };
           
       dom.observe(that.link, "click", function() {
         if (dom.hasClass(that.link, CLASS_NAME_OPENED)) {
@@ -171,7 +172,6 @@
           thisModal,
           firstField; //  = this.container.querySelector(SELECTOR_FORM_ELEMENTS);
           
-      console.log(this.container);
       this.elementToChange = elementToChange;
       this._observe();
       this._interpolate();

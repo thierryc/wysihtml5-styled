@@ -29,7 +29,6 @@ wysihtml5.views.View = Base.extend(
   
   focus: function() {
     if (this.element.ownerDocument.querySelector(":focus") === this.element) {
-      console.log('focused');
       return;
     }
     // prevent scroll in firefox

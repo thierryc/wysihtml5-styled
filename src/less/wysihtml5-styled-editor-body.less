@@ -6,16 +6,17 @@
 // CSS Reset
 @import "../../lib/bootstrap/less/reset.less";
 
+// Base CSS
+@import "../../lib/bootstrap/less/type.less";
+/* @import "../../lib/bootstrap/less/code.less"; */
 
 @import "wysihtml5-styled-editor-core.less";
 //
 // Scaffolding
 // --------------------------------------------------
 
-
 // Body reset
 // -------------------------
-
 
 body {
   font-family: @baseFontFamily;
@@ -23,6 +24,12 @@ body {
   line-height: @baseLineHeight;
   color: @textColor;
   background-color: @bodyBackground;
+}
+
+
+body.inverse {
+  color: @textColorInverse;
+  background-color: @bodyBackgroundInverse;
 }
 
 
@@ -39,6 +46,19 @@ a:focus {
   text-decoration: underline;
 }
 
+// Links
+// -------------------------
+.inverse {
+    a {
+      color: @linkColor;
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      color: @linkColorHover;
+      text-decoration: underline;
+    }
+}
 
 // Images
 // -------------------------
@@ -61,11 +81,6 @@ a:focus {
 .img-circle {
   .border-radius(500px); // crank the border-radius so it works with most reasonably sized images
 }
-
-// Base CSS
-@import "../../lib/bootstrap/less/type.less";
-@import "../../lib/bootstrap/less/code.less";
-
 
 .wysiwyg-text-align-center { text-align: center; }
 .wysiwyg-text-align-left { text-align: left; }

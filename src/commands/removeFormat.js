@@ -11,7 +11,6 @@ wysihtml5.commands.removeFormat = {
       });
       return;
     }
-    
   },
   
   state: function(composer) {

@@ -27,12 +27,13 @@
       this.editor     = editor;
       this.container  = typeof(container) === "string" ? document.getElementById(container) : container;
       this.composer   = editor.composer;
-
+      
       this._getLinks("command");
       this._getLinks("action");
-
+      
       this._observe();
       this.show();
+      
       
       var speechInputLinks  = this.container.querySelectorAll("[data-wysihtml5-command=insertSpeech]"),
           length            = speechInputLinks.length,
@@ -52,6 +53,7 @@
           name,
           value,
           dialog;
+          
       for (; i<length; i++) {
         link        = links[i];
         name        = link.getAttribute("data-wysihtml5-" + type);
@@ -60,7 +62,6 @@
         group       = this.container.querySelector("[data-wysihtml5-" + type + "-group='" + name + "']");
         dialog      = this._getDialog(link, name);
         modal       = this._getModal(link, name);
-        
         mapping[name + ":" + value] = {
           link:   link,
           group:  group,
@@ -71,6 +72,7 @@
           activeClass: activeClass,
           state:  false
         };
+        
       }
     },
 
@@ -333,6 +335,8 @@
         
         if (action.name === "change_view") {
           action.state = this.editor.currentView === this.editor.textarea;
+          
+          
           if (action.state) {
             dom.addClass(action.link, actionActiveClass);
           } else {

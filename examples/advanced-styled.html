@@ -9,217 +9,233 @@
 	<script src="js/bootstrap.js"></script>
     
     <script src="../parser_rules/advanced.js"></script>
-    <script src="../dist/wysihtml5-predictive-0.5.0pre.js"></script>
+    <script src="../dist/wysihtml5-predictive-0.5.0.js"></script>
    
 </head>
 <body>
 <div class="container">
 	<section class="row">
 		<div class="span12">
-			<h3>Fresh and Clean Theme :  Wysihtml5 <em>Styled</em></h3>
+			<h3>Fresh and Clean theme :  Wysihtml5 <em>Styled</em></h3>
 			<form>
-			    <div id="toolbar" class="btn-toolbar btn-toolbar-small" style="display: none;">
-			        <div class="btn-group">
-			            <a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1"><span class="icon-small ap-small-icon-h1"></span></a>
-			            <a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2"><span class="icon-small ap-small-icon-h2"></span></a>
-			            <a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3"><span class="icon-small ap-small-icon-h3"></span></a>
-			            <a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="p"><span class="ap-small-icon-align-justify-left"></span></a>
-			            <a class="btn" data-wysihtml5-command="insertLineBreak"><span class="ap-small-icon-line-break"></span></a>
-			        </div>
-			        <div class="btn-group">
-			            <a class="btn" data-wysihtml5-command="bold" title="CTRL+B"><span class="ap-small-icon-bold"></span></a>
-			            <a class="btn" data-wysihtml5-command="italic" title="CTRL+I"><span class="ap-small-icon-italic"></span></a>
-			        </div>
-			        <div class="btn-group">
-			            <a class="btn" data-wysihtml5-command="justifyLeft"><span class="ap-small-icon-align-left"></span></a>
-			            <a class="btn" data-wysihtml5-command="justifyCenter"><span class="ap-small-icon-align-center"></span></a>
-			            <a class="btn" data-wysihtml5-command="justifyRight"><span class="ap-small-icon-align-right"></span></a>
-			            <a class="btn" data-wysihtml5-command="justifyFull"><span class="ap-small-icon-align-justify"></span></a>
-			        </div>
-			        
-			        <div class="btn-group">
-			            <a class="btn" data-wysihtml5-command="outdent"><span class="ap-small-icon-indent-left"></span></a>
-			            <a class="btn" data-wysihtml5-command="indent"><span class="ap-small-icon-indent-right"></span></a>
-			        </div>
-			        
-			        <div class="btn-group">
-			            <a class="btn" data-wysihtml5-command="insertUnorderedList"><span class="ap-small-icon-list"></span></a>
-			            <a class="btn" data-wysihtml5-command="insertOrderedList"><span class="ap-small-icon-list-number"></span></a>
-			        </div>
-			        
-			        <div class="btn-group">
-			            <a class="btn" data-wysihtml5-command="createLinkHtml5" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-link"></span></a>
-			            <a class="btn" data-wysihtml5-command="removeLinkHtml5" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-unlink"></span></a>
-			        </div>
-			        
-			        <div class="btn-group">
-			            <a class="btn" data-wysihtml5-command="insertImageHtml5" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-picture"></span></a>
-			        </div>
-			        
-			        <div class="btn-group">
-			            <a class="btn" data-wysihtml5-command="undo"><span class="ap-small-icon-undo"></span></a>
-			            <a class="btn" data-wysihtml5-command="redo"><span class="ap-small-icon-redo"></span></a>
-			        </div>
-			        
-		            <a class="btn" data-wysihtml5-command="insertSpeech"><span class="ap-small-icon-mic"></span></a>
-			        
-			        <div class="btn-group">
-			            <a class="switchon" data-wysihtml5-action="change_view">
-				        	<span class="on">On</span>
-				        	<span class="off">Off</span>
-				        	<span class="slide"></span>
-			        	</a>
-			        </div>
+                <div id="toolbar" class="btn-toolbar btn-toolbar-small" style="display: none;">
+                    <div class="btn-group">
+                        <a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1"><span class="icon-small ap-small-icon-h1"></span></a>
+                        <a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2"><span class="icon-small ap-small-icon-h2"></span></a>
+                        <a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3"><span class="icon-small ap-small-icon-h3"></span></a>
+                        <a class="btn" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="p"><span class="ap-small-icon-align-justify-left"></span></a>
+                        <a class="btn" data-wysihtml5-command="insertLineBreak"><span class="ap-small-icon-line-break"></span></a>
+                    </div>
+                    <div class="btn-group">
+                        <a class="btn" data-wysihtml5-command="bold" title="CTRL+B"><span class="ap-small-icon-bold"></span></a>
+                        <a class="btn" data-wysihtml5-command="italic" title="CTRL+I"><span class="ap-small-icon-italic"></span></a>
+                        <a class="btn" data-wysihtml5-command="removeFormat"><span class="ap-small-icon-broom"></span></a>
+                    </div>
+                    <div class="btn-group">
+                        <a class="btn" data-wysihtml5-command="justifyLeft"><span class="ap-small-icon-align-left"></span></a>
+                        <a class="btn" data-wysihtml5-command="justifyCenter"><span class="ap-small-icon-align-center"></span></a>
+                        <a class="btn" data-wysihtml5-command="justifyRight"><span class="ap-small-icon-align-right"></span></a>
+                        <a class="btn" data-wysihtml5-command="justifyFull"><span class="ap-small-icon-align-justify"></span></a>
+                    </div>
+                
+                    <div class="btn-group">
+                        <a class="btn" data-wysihtml5-command="outdent"><span class="ap-small-icon-indent-left"></span></a>
+                        <a class="btn" data-wysihtml5-command="indent"><span class="ap-small-icon-indent-right"></span></a>
+                    </div>
+                
+                    <div class="btn-group">
+                        <a class="btn" data-wysihtml5-command="insertUnorderedList"><span class="ap-small-icon-list"></span></a>
+                        <a class="btn" data-wysihtml5-command="insertOrderedList"><span class="ap-small-icon-list-number"></span></a>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <a class="btn" data-wysihtml5-command="createLinkHtml5" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-link"></span></a>
+                        <a class="btn" data-wysihtml5-command="removeLinkHtml5" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-unlink"></span></a>
+                    </div>
+                
+                    <div class="btn-group">
+                        <a class="btn" data-wysihtml5-command="insertImageHtml5" data-wysihtml5-command-class="btn-info"><span class="ap-small-icon-picture"></span></a>
+                    </div>
+                
+                    <div class="btn-group">
+                        <a class="btn" data-wysihtml5-command="undo"><span class="ap-small-icon-undo"></span></a>
+                        <a class="btn" data-wysihtml5-command="redo"><span class="ap-small-icon-redo"></span></a>
+                    </div>
+                    
+                    
+                
+                    <a class="btn" data-wysihtml5-command="insertSpeech"><span class="ap-small-icon-mic"></span></a>
+                
+                    <div class="btn-group">
+                        <a class="switchon" data-wysihtml5-action="change_view">
+                            <span class="on">On</span>
+                            <span class="off">Off</span>
+                            <span class="slide"></span>
+                        </a>
+                    </div>
 
-			         <a class="help" href="#helpModal" role="button" data-toggle="modal"><span class="ap-small-icon-info-circle"></span></a>
-			         
-					<!-- Modal -->
-					<div id="helpModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h3 id="myModalLabel">Help </h3>
-						</div>
-						<div class="modal-body">
-							<section class="row-fluid">
-								<div class="span4">
-									<h5>Speech functions</h5>
-									<p>Speak and it will magically write into the editor.</p>
-									<p>Only work on Mac and with Safari or Chrome. Enable it in your system preferences in "Speech" and select your language.</p>
-								</div>
-								<div class="span8">
-									<h5>Keybord shortcuts</h5>
-									<dl class="dl-horizontal">
-										<dt>
-											<span class="label label-inverse">Shift + Enter</span></dt>
-										<dd>Line break using br instead of p</dd>
-										<dt>
-											<span class="label label-inverse">Tab</span></dt>
-										<dd>Indent</dd>
-										<dt>
-											<span class="label label-inverse">Shift + Tab</span></dt>
-										<dd>Outdent</dd>
-										<dt>
-											<span class="label label-inverse">⌘ or Ctrl + M</span></dt>
-										<dd>Remove Format</dd>
-										<dt>
-											<span class="label label-inverse">⌘ or Ctrl + B</span></dt>
-										<dd>Bold</dd>
-										<dt>
-											<span class="label label-inverse">⌘ or Ctrl + I</span></dt>
-										<dd>Italic</dd>
-										<dt>
-											<span class="label label-inverse">⌘ or Ctrl + U</span></dt>
-										<dd>Underline</dd>
-										<dt>
-											<span class="label label-inverse">⌘ or Ctrl + J</span></dt>
-										<dd>Unordered list</dd>
-										<dt>
-											<span class="label label-inverse">⌘ or Ctrl + K</span></dt>
-										<dd>Ordered list</dd>
-										<dt>
-											<span class="label label-inverse">⌘ or Ctrl + Z</span></dt>
-										<dd>Undo</dd>
-										<dt>
-											<span class="label label-inverse">⌘ or Ctrl + Shift + Z</span></dt>
-										<dd>Redo</dd>
-										<dt>
-											<span class="label label-inverse">⌘ or Ctrl + L</span></dt>
-										<dd>Sup</dd>
-									</dl>
-								</div>
-							</section>
-						</div>
-						<div class="modal-footer">
-							<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-						</div>
-					</div>
+                     <a class="help" href="#helpModal" role="button" data-toggle="modal"><span class="ap-small-icon-info-circle"></span></a>
+                 
+                    <!-- Modal -->
+                    <div id="helpModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="myModalLabel">Help </h3>
+                        </div>
+                        <div class="modal-body">
+                            <section class="row-fluid">
+                                <div class="span4">
+                                    <h5>Speech functions</h5>
+                                    <p>Speak and it will magically write into the editor.</p>
+                                    <p>Only work on Mac and with Safari or Chrome. Enable it in your system preferences in "Speech" and select your language.</p>
+                                </div>
+                                <div class="span8">
+                                    <h5>Keybord shortcuts</h5>
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            <span class="label label-inverse">Shift + Enter</span></dt>
+                                        <dd>Line break using br instead of p</dd>
+                                        <dt>
+                                            <span class="label label-inverse">Tab</span></dt>
+                                        <dd>Indent</dd>
+                                        <dt>
+                                            <span class="label label-inverse">Shift + Tab</span></dt>
+                                        <dd>Outdent</dd>
+                                        <dt>
+                                            <span class="label label-inverse">⌘ or Ctrl + M</span></dt>
+                                        <dd>Remove Format</dd>
+                                        <dt>
+                                            <span class="label label-inverse">⌘ or Ctrl + B</span></dt>
+                                        <dd>Bold</dd>
+                                        <dt>
+                                            <span class="label label-inverse">⌘ or Ctrl + I</span></dt>
+                                        <dd>Italic</dd>
+                                        <dt>
+                                            <span class="label label-inverse">⌘ or Ctrl + U</span></dt>
+                                        <dd>Underline</dd>
+                                        <dt>
+                                            <span class="label label-inverse">⌘ or Ctrl + J</span></dt>
+                                        <dd>Unordered list</dd>
+                                        <dt>
+                                            <span class="label label-inverse">⌘ or Ctrl + K</span></dt>
+                                        <dd>Ordered list</dd>
+                                        <dt>
+                                            <span class="label label-inverse">⌘ or Ctrl + Z</span></dt>
+                                        <dd>Undo</dd>
+                                        <dt>
+                                            <span class="label label-inverse">⌘ or Ctrl + Shift + Z</span></dt>
+                                        <dd>Redo</dd>
+                                        <dt>
+                                            <span class="label label-inverse">⌘ or Ctrl + L</span></dt>
+                                        <dd>Sup</dd>
+                                    </dl>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                        </div>
+                    </div>
 
-					<div data-wysihtml5-dialog="createLink" class="dialog-wysihtml5" style="display: none;">
-						<label>Link : </label>
-						<input data-wysihtml5-dialog-field="href" type="text" value="http://">
-						<div class="btn-toolbar">
-							<a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
-							<a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
-						</div>
-					</div>
-					
-					<div data-wysihtml5-dialog="insertImage" class="dialog-wysihtml5" style="display: none;">
-						<label>Image:</label>
-						<input type="text" data-wysihtml5-dialog-field="src" value="http://">
-						<label>Align:</label>
-						<select data-wysihtml5-dialog-field="className">
-							<option value="">default</option>
-							<option value="wysiwyg-float-left">left</option>
-							<option value="wysiwyg-float-right">right</option>
-						</select>
-						<div class="btn-toolbar">
-							<a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
-							<a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
-						</div>
-					</div>
+                    <div data-wysihtml5-dialog="createLink" class="dialog-wysihtml5" style="display: none;">
+                        <label>Link : </label>
+                        <input data-wysihtml5-dialog-field="href" type="text" value="http://">
+                        <div class="btn-toolbar">
+                            <a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
+                            <a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
+                        </div>
+                    </div>
+                
+                    <div data-wysihtml5-dialog="insertImage" class="dialog-wysihtml5" style="display: none;">
+                        <label>Image:</label>
+                        <input type="text" data-wysihtml5-dialog-field="src" value="http://">
+                        <label>Align:</label>
+                        <select data-wysihtml5-dialog-field="className">
+                            <option value="">default</option>
+                            <option value="wysiwyg-float-left">left</option>
+                            <option value="wysiwyg-float-right">right</option>
+                        </select>
+                        <div class="btn-toolbar">
+                            <a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
+                            <a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
+                        </div>
+                    </div>
 
-					<!-- Modal createLink -->
-					<div data-wysihtml5-modal="createLinkHtml5" id="wysihtml5ModalLink" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h3 id="myModalLabel">Insert Link</h3>
-						</div>
-						<div class="modal-body">
-							<label for="link">Link</label>
-							<input id="link" type="text" data-wysihtml5-modal-field="href" value="http://">
-						</div>
-						<div class="modal-footer">
-							<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
-							<button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
-						</div>
-					</div>
+                    <!-- Modal createLink -->
+                    <div data-wysihtml5-modal="createLinkHtml5" id="wysihtml5ModalLink" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="myModalLabel">Insert Link</h3>
+                        </div>
+                        <div class="modal-body">
+                            <label for="link">Link</label>
+                            <input id="link" type="text" data-wysihtml5-modal-field="href" value="http://">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
+                            <button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
+                        </div>
+                    </div>
 
-					<!-- Modal insertImage -->
-					<div data-wysihtml5-modal="insertImageHtml5" id="wysihtml5ModalImage" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							<h3 id="myModalLabel">Insert Image</h3>
-						</div>
-						<div class="modal-body">
-							<label for="wysihtml5ModalSrc">Image Src:</label>
-							<input type="text" id="wysihtml5ModalSrc" data-wysihtml5-modal-field="src" type="text" value="http://">
-							<label class="control-label" for="wysihtml5ModalAlign">Image Align:</label>
-							<select id="wysihtml5ModalAlign" data-wysihtml5-modal-field="className">
-					            <option value="">Default</option>
-					            <option value="wysiwyg-float-left">Left</option>
-					            <option value="wysiwyg-float-right">Right</option>
-					            <option value="img-rounded">Rounded</option>
-					            <option value="img-rounded wysiwyg-float-left">Rounded Left</option>
-					            <option value="img-rounded wysiwyg-float-right">Rounded Right</option>
-					            <option value="img-polaroid">Polaroid</option>
-					            <option value="img-polaroid wysiwyg-float-left">Polaroid Left</option>
-					            <option value="img-polaroid wysiwyg-float-right">Polaroid Right</option>
-					            <option value="img-circle">Circle</option>
-					            <option value="img-circle wysiwyg-float-left">Circle Left</option>
-					            <option value="img-circle wysiwyg-float-right">Circle Right</option>
-					        </select>
-						</div>
-						<div class="modal-footer">
-							<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
-						</div>
-					</div>
-			    </div>
-			  <textarea id="textarea"></textarea>
+                    <!-- Modal insertImage -->
+                    <div data-wysihtml5-modal="insertImageHtml5" id="wysihtml5ModalImage" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="myModalLabel">Insert Image</h3>
+                        </div>
+                        <div class="modal-body">
+                            <label for="wysihtml5ModalSrc">Image Src:</label>
+                            <input type="text" id="wysihtml5ModalSrc" data-wysihtml5-modal-field="src" type="text" value="http://">
+                            <label class="control-label" for="wysihtml5ModalAlign">Image Align:</label>
+                            <select id="wysihtml5ModalAlign" data-wysihtml5-modal-field="className">
+                                <option value="">Default</option>
+                                <option value="wysiwyg-float-left">Left</option>
+                                <option value="wysiwyg-float-right">Right</option>
+                                <option value="img-rounded">Rounded</option>
+                                <option value="img-rounded wysiwyg-float-left">Rounded Left</option>
+                                <option value="img-rounded wysiwyg-float-right">Rounded Right</option>
+                                <option value="img-polaroid">Polaroid</option>
+                                <option value="img-polaroid wysiwyg-float-left">Polaroid Left</option>
+                                <option value="img-polaroid wysiwyg-float-right">Polaroid Right</option>
+                                <option value="img-circle">Circle</option>
+                                <option value="img-circle wysiwyg-float-left">Circle Left</option>
+                                <option value="img-circle wysiwyg-float-right">Circle Right</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
+                            <button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+                <textarea id="textarea" lang='fr' placeholder="Enter text..."></textarea>
 			</form>
+			<h3>Events:</h3>
+            <div id="log"></div>
 			<p><small>Powered by <a href="https://github.com/xing/wysihtml5" target="_blank">Wysihtml5</a> and <a href="https://github.com/xing/wysihtml5" target="_blank">Wysihtml5 Styled</a></small></p>
 		</div>
 	</section>
 </div>
 
 <script>
-  var editor = new wysihtml5.Editor("textarea", {
-    toolbar:        "toolbar",
-    stylesheets:    "css/wysihtml5-styled-editor-body.css",
-    parserRules:    wysihtml5ParserRules,
-    credit:         false,
-    predictive:     true,
-    codeMirror:     true
-  });
+    
+    var editor = new wysihtml5.Editor("textarea", {
+        toolbar:        "toolbar",
+        style:          true,
+        stylesheets:    "css/wysihtml5-styled-editor-body.css",
+        parserRules:    wysihtml5ParserRules,
+        credit:         false,
+        predictive:     true,
+        codeMirror:     true
+    });
+    
+    var log = document.getElementById("log");
+    editor.on("load", function() {
+        log.innerHTML += "<div>load</div>";
+    });
+    
+    
+    
 </script>
 
 </body>

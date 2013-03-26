@@ -103,6 +103,7 @@
 	<script src="../src/editor.js"></script>
 	
 	<script src="../src/predictive.js"></script>
+	
 </head>
 <body>
 <div class="container">
@@ -329,6 +330,15 @@
     var log = document.getElementById("log");
     editor.on("load", function() {
         log.innerHTML += "<div>load</div>";
+    });
+    
+    
+    editor.on("change_view", function(mode) {
+
+    });
+    
+    editor.on("show", function() {
+        log.innerHTML += "<div>show</div>";
     });
     
     

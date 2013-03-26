@@ -43,7 +43,6 @@
 
     show: function() {
       this.iframe.style.display = this._displayStyle || "";
-      
       if (!this.textarea.element.disabled) {
         // Firefox needs this, otherwise contentEditable becomes uneditable
         this.disable();

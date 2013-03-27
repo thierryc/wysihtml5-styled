@@ -337,14 +337,10 @@
         	if (links[i] && !links[i].getAttribute("data-http-header-code")) {
         	    req = new XMLHttpRequest();
         	    req.onreadystatechange = function(el) {
-        	        console.log(el);
-        	        console.log(this);
-        	        console.log(req);
-        	        console.log(req.readyState);
                     if(req.readyState == 4) {
                         code = req.responseText.toLowerCase();
                         links[i].setAttribute("data-http-header-code", code);
-                        if (code != 200 ) $(links[i]).addClass('http-codeError');
+                        if (code != 200 ) $(links[i]).addClass('wysiwyg-http-codeError');
                     }
                 }
                 req.open('GET', 'header.php?url='+ links[i].href, false);
@@ -360,7 +356,6 @@
     });
     
     editor.on("change:composer", function() {
-        console.log('change:composer');
         testLinks(this.composer.element.getElementsByTagName("a"));
     });
     

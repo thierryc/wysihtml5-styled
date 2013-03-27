@@ -575,6 +575,6 @@ a:focus {
 .wysiwyg-ol-harvard ol ol ol {
   list-style-type: lower-latin;
 }
-.wysiwyg-code-error {
+.wysiwyg-http-codeError {
   background-color: #ff0000;
 }

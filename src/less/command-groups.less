@@ -1,0 +1,225 @@
+
+// Make the div behave like a button
+.cmd-group {
+  position: relative;
+  display: inline-block;
+  .ie7-inline-block();
+  font-size: 0; // remove as part 1 of font-size inline-block hack
+  vertical-align: middle; // match .cmd alignment given font-size hack above
+  white-space: nowrap; // prevent buttons from wrapping when in tight spaces (e.g., the table on the tests page)
+  .ie7-restore-left-whitespace();
+}
+
+// Space out series of button groups
+.cmd-group + .cmd-group {
+  margin-left: 5px;
+}
+
+// Optional: Group multiple button groups together for a toolbar
+.cmd-toolbar {
+  background-color: #f5f5f5;
+  font-size: 0; // Hack to remove whitespace that results from using inline-block
+  margin-top: 0;
+  margin-bottom: 0;
+  > .cmd + .cmd,
+  > .cmd-group + .cmd,
+  > .cmd + .cmd-group {
+    margin-left: 5px;
+  }
+}
+
+// Float them, remove border radius, then re-add to first and last elements
+.cmd-group > .cmd {
+  position: relative;
+  .border-radius(0);
+}
+.cmd-group > .cmd + .cmd {
+  margin-left: -1px;
+}
+.cmd-group > .cmd,
+.cmd-group > .dropdown-menu,
+.cmd-group > .popover {
+  font-size: @baseFontSize; // redeclare as part 2 of font-size inline-block hack
+}
+
+// Reset fonts for other sizes
+.cmd-group > .cmd-mini {
+  font-size: @fontSizeMini;
+}
+.cmd-group > .cmd-small {
+  font-size: @fontSizeSmall;
+}
+.cmd-group > .cmd-large {
+  font-size: @fontSizeLarge;
+}
+
+// Set corners individual because sometimes a single button can be in a .cmd-group and we need :first-child and :last-child to both match
+.cmd-group > .cmd:first-child {
+  margin-left: 0;
+  .border-top-left-radius(@baseBorderRadius);
+  .border-bottom-left-radius(@baseBorderRadius);
+}
+// Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
+.cmd-group > .cmd:last-child,
+.cmd-group > .dropdown-toggle {
+  .border-top-right-radius(@baseBorderRadius);
+  .border-bottom-right-radius(@baseBorderRadius);
+}
+// Reset corners for large buttons
+.cmd-group > .cmd.large:first-child {
+  margin-left: 0;
+  .border-top-left-radius(@borderRadiusLarge);
+  .border-bottom-left-radius(@borderRadiusLarge);
+}
+.cmd-group > .cmd.large:last-child,
+.cmd-group > .large.dropdown-toggle {
+  .border-top-right-radius(@borderRadiusLarge);
+  .border-bottom-right-radius(@borderRadiusLarge);
+}
+
+// On hover/focus/active, bring the proper btn to front
+.cmd-group > .cmd:hover,
+.cmd-group > .cmd:focus,
+.cmd-group > .cmd:active,
+.cmd-group > .cmd.active {
+  z-index: 2;
+}
+
+// On active and open, don't show outline
+.cmd-group .dropdown-toggle:active,
+.cmd-group.open .dropdown-toggle {
+  outline: 0;
+}
+
+
+// Split button dropdowns
+// ----------------------
+
+// Give the line between buttons some depth
+.cmd-group > .cmd + .dropdown-toggle {
+  padding-left: 8px;
+  padding-right: 8px;
+  .box-shadow(~"inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
+  *padding-top: 5px;
+  *padding-bottom: 5px;
+}
+.cmd-group > .cmd-mini + .dropdown-toggle {
+  padding-left: 5px;
+  padding-right: 5px;
+  *padding-top: 2px;
+  *padding-bottom: 2px;
+}
+.cmd-group > .cmd-small + .dropdown-toggle {
+  *padding-top: 5px;
+  *padding-bottom: 4px;
+}
+.cmd-group > .cmd-large + .dropdown-toggle {
+  padding-left: 12px;
+  padding-right: 12px;
+  *padding-top: 7px;
+  *padding-bottom: 7px;
+}
+
+.cmd-group.open {
+
+  // The clickable button for toggling the menu
+  // Remove the gradient and set the same inset shadow as the :active state
+  .dropdown-toggle {
+    background-image: none;
+    .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
+  }
+
+  // Keep the hover's background when dropdown is open
+  .cmd.dropdown-toggle {
+    background-color: @btnBackgroundHighlight;
+  }
+  .cmd-primary.dropdown-toggle {
+    background-color: @btnPrimaryBackgroundHighlight;
+  }
+  .cmd-warning.dropdown-toggle {
+    background-color: @btnWarningBackgroundHighlight;
+  }
+  .cmd-danger.dropdown-toggle {
+    background-color: @btnDangerBackgroundHighlight;
+  }
+  .cmd-success.dropdown-toggle {
+    background-color: @btnSuccessBackgroundHighlight;
+  }
+  .cmd-info.dropdown-toggle {
+    background-color: @btnInfoBackgroundHighlight;
+  }
+  .cmd-inverse.dropdown-toggle {
+    background-color: @btnInverseBackgroundHighlight;
+  }
+}
+
+
+// Reposition the caret
+.cmd .caret {
+  margin-top: 8px;
+  margin-left: 0;
+}
+// Carets in other button sizes
+.cmd-large .caret {
+  margin-top: 6px;
+}
+.cmd-large .caret {
+  border-left-width:  5px;
+  border-right-width: 5px;
+  border-top-width:   5px;
+}
+.cmd-mini .caret,
+.cmd-small .caret {
+  margin-top: 8px;
+}
+// Upside down carets for .dropup
+.dropup .cmd-large .caret {
+  border-bottom-width: 5px;
+}
+
+
+
+// Account for other colors
+.cmd-primary,
+.cmd-warning,
+.cmd-danger,
+.cmd-info,
+.cmd-success,
+.cmd-inverse {
+  .caret {
+    border-top-color: @white;
+    border-bottom-color: @white;
+  }
+}
+
+
+
+// Vertical button groups
+// ----------------------
+
+.cmd-group-vertical {
+  display: inline-block; // makes buttons only take up the width they need
+  .ie7-inline-block();
+}
+.cmd-group-vertical > .cmd {
+  display: block;
+  float: none;
+  max-width: 100%;
+  .border-radius(0);
+}
+.cmd-group-vertical > .cmd + .cmd {
+  margin-left: 0;
+  margin-top: -1px;
+}
+.cmd-group-vertical > .cmd:first-child {
+  .border-radius(@baseBorderRadius @baseBorderRadius 0 0);
+}
+.cmd-group-vertical > .cmd:last-child {
+  .border-radius(0 0 @baseBorderRadius @baseBorderRadius);
+}
+.cmd-group-vertical > .cmd-large:first-child {
+  .border-radius(@borderRadiusLarge @borderRadiusLarge 0 0);
+}
+.cmd-group-vertical > .cmd-large:last-child {
+  .border-radius(0 0 @borderRadiusLarge @borderRadiusLarge);
+}

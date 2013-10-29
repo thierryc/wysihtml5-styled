@@ -149,10 +149,9 @@
       if (this.commandsDisabled) {
         return;
       }
-      
       var commandObj = this.commandMapping[command + ":" + commandValue],
           state;
-      
+                
       // Show dialog when available
       if (commandObj && commandObj.dialog && !commandObj.state) {
         commandObj.dialog.show();
@@ -222,14 +221,14 @@
         var link          = this,
             command       = link.getAttribute("data-wysihtml5-command"),
             commandValue  = link.getAttribute("data-wysihtml5-command-value");
-        that.execCommand(command, commandValue);
         event.preventDefault();
+        that.execCommand(command, commandValue);
       });
 
       dom.delegate(container, "[data-wysihtml5-action]", "click", function(event) {
         var action = this.getAttribute("data-wysihtml5-action");
-        that.execAction(action);
         event.preventDefault();
+        that.execAction(action);
       });
 
       editor.on("focus:composer", function() {

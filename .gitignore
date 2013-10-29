@@ -1,4 +1,5 @@
 .tm_sync.config
 .idea
-
+less-monitor.command
+less-monitor.yaml
 lib/codemirror

@@ -1,8 +1,7 @@
 wysihtml5.commands.fullscreen = {
   exec: function(composer) {
-	
-		console.log(composer);
-		
+
+
 		this._fullscren(composer.iframe);
 
     /*

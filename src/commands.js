@@ -36,8 +36,8 @@ wysihtml5.Commands = Base.extend(
         args    = wysihtml5.lang.array(arguments).get(),
         method  = obj && obj.exec,
         result  = null;
-    
-    this.editor.fire("beforecommand:composer", { 'command': command, 'value': value });
+        
+    this.editor.fire("beforecommand:composer", { 'command': command, 'value': value});
     
     if (method) {
       args.unshift(this.composer);

@@ -59,6 +59,7 @@
         name        = link.getAttribute("data-wysihtml5-" + type);
         value       = link.getAttribute("data-wysihtml5-" + type + "-value");
         activeClass = link.getAttribute("data-wysihtml5-" + type + "-class");
+        groupClass = link.getAttribute("data-wysihtml5-" + type + "-group-class");
         group       = this.container.querySelector("[data-wysihtml5-" + type + "-group='" + name + "']");
         dialog      = this._getDialog(link, name);
         modal       = this._getModal(link, name);
@@ -70,9 +71,9 @@
           dialog: dialog,
           modal: modal,
           activeClass: activeClass,
+          groupClass: groupClass,
           state:  false
         };
-        
       }
     },
 
@@ -95,9 +96,7 @@
             that.composer.selection.setBookmark(caretBookmark);
           }
           that._execCommand(command, attributes);
-          
           that.editor.fire("save:dialog", { command: command, dialogContainer: dialogElement, commandLink: link });
-          
         });
 
         dialog.on("cancel", function() {
@@ -267,16 +266,19 @@
           state,
           action,
           command;
+          
       // every millisecond counts... this is executed quite often
       for (i in commandMapping) {
         command = commandMapping[i];
         var commandActiveClass = (command.activeClass) ? command.activeClass : CLASS_NAME_COMMAND_ACTIVE;
+        var groupActiveClass = (command.groupClass) ? command.groupClass : commandActiveClass;
+        
         
         if (this.commandsDisabled) {
           state = false;
           dom.removeClass(command.link, commandActiveClass);
           if (command.group) {
-            dom.removeClass(command.group, commandActiveClass);
+            dom.removeClass(command.group, groupActiveClass);
           }
           if (command.dialog) {
             command.dialog.hide();
@@ -307,8 +309,9 @@
         command.state = state;
         if (state) {
           dom.addClass(command.link, commandActiveClass);
+          
           if (command.group) {
-            dom.addClass(command.group, commandActiveClass);
+            dom.addClass(command.group, groupActiveClass);
           }
           if (command.dialog) {
             if (typeof(state) === "object") {
@@ -320,7 +323,7 @@
         } else {
           dom.removeClass(command.link, commandActiveClass);
           if (command.group) {
-            dom.removeClass(command.group, commandActiveClass);
+            dom.removeClass(command.group, groupActiveClass);
           } 
           if (command.dialog) {
             command.dialog.hide();

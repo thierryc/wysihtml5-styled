@@ -1,8 +1,15 @@
 wysihtml5.commands.fullscreen = {
   exec: function(composer) {
 
-
-		this._fullscren(composer.iframe);
+		if (composer.config.editorContainer) {
+			this.editorContainer = typeof(composer.config.editorContainer) === "string" ? document.getElementById(composer.config.editorContainer) : composer.config.editorContainer;
+		} else {
+			this.editorContainer = document.documentElement;
+		}
+		console.log(this.editorContainer);
+		
+		wysihtml5.dom.addClass(this.editorContainer, 'wysihtml5-fullscreen');
+		this._fullscren(this.editorContainer);
 
     /*
     if(!this._isFullscren()) {
@@ -19,6 +26,7 @@ wysihtml5.commands.fullscreen = {
   },
   
   _fullscren: function(element){
+  	wysihtml5.dom.addClass(element, 'wysihtml5-fullscreen');
   	var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
 		if (requestMethod) { // Native full screen.
         requestMethod.call(element);
@@ -32,6 +40,7 @@ wysihtml5.commands.fullscreen = {
   },
   
   _cancelFullscren: function(element){
+  	wysihtml5.dom.removeClass(element, 'wysihtml5-fullscreen');
   	var cancelRequestMethod = element.cancelFullScreen || element.webkitCancelFullScreen || element.mozCancelFullScreen || element.msCancelFullScreen;
 		if (cancelRequestMethod) { // Native full screen.
         cancelRequestMethod.call(element);

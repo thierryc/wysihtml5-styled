@@ -33,6 +33,8 @@
   var undef;
   
   var defaultConfig = {
+    // Give id of the editor contener 
+    editorContainer:             undef,
     // Give the editor a name, the name will also be set as class name on the iframe and on the iframe's body 
     name:                       undef,
     // Whether the editor should look like the textarea (by adopting styles)

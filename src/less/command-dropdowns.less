@@ -244,3 +244,31 @@
   margin-top: 2px; // give it some space to breathe
   .border-radius(@baseBorderRadius);
 }
+
+.justifyLeft .dropdown-toggle .ap-small-icon-align-left {
+	background-position:   -(8*20+@delta)+0px -(@rowEditor1+@delta)+0px;
+}
+
+.justifyRight .dropdown-toggle .ap-small-icon-align-left {
+	background-position:   -(9*20+@delta)+0px -(@rowEditor1+@delta)+0px;
+}
+
+.justifyCenter .dropdown-toggle .ap-small-icon-align-left {
+	 background-position:   -(10*20+@delta)+0px -(@rowEditor1+@delta)+0px;
+}
+
+.justifyFull .dropdown-toggle .ap-small-icon-align-left {
+	background-position:   -(11*20+@delta)+0px -(@rowEditor1+@delta)+0px;
+}
+
+.justifyLeft .dropdown-toggle,
+.justifyRight .dropdown-toggle,
+.justifyCenter .dropdown-toggle,
+.justifyFull .dropdown-toggle {
+  border: 1px solid #e8e8e8;
+  *border: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  outline: 0;
+}

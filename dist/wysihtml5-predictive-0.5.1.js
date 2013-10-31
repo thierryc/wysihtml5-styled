@@ -6767,6 +6767,26 @@ wysihtml5.Commands = Base.extend(
     this.editor   = editor;
     this.composer = editor.composer;
     this.doc      = this.composer.doc;
+    
+    /*
+    * Fullscreen Change
+    * 
+    *
+    */
+    var fullscreenchange = function(){
+    	setTimeout(function(){
+				if(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
+					//console.log('fullscreenEnable');
+					editor.composer.parent.fire("fullscreenEnable:composer").fire("focus");
+				} else {
+					//console.log('fullscreenDisable');
+					editor.composer.parent.fire("fullscreenDisable:composer").fire("focus");
+				}
+    	}, 0);
+    };
+    document.addEventListener("fullscreenchange", fullscreenchange, false);
+		document.addEventListener("mozfullscreenchange", fullscreenchange, false);
+		document.addEventListener("webkitfullscreenchange", fullscreenchange, false);
   },
   
   /**
@@ -6793,8 +6813,8 @@ wysihtml5.Commands = Base.extend(
         args    = wysihtml5.lang.array(arguments).get(),
         method  = obj && obj.exec,
         result  = null;
-    
-    this.editor.fire("beforecommand:composer");
+        
+    this.editor.fire("beforecommand:composer", { 'command': command, 'value': value});
     
     if (method) {
       args.unshift(this.composer);
@@ -6806,7 +6826,7 @@ wysihtml5.Commands = Base.extend(
       } catch(e) {}
     }
     
-    this.editor.fire("aftercommand:composer");
+    this.editor.fire("aftercommand:composer", { 'command': command, 'value': value });
     return result;
   },
   
@@ -8741,6 +8761,7 @@ wysihtml5.views.View = Base.extend(
         originalDisabled      = textareaElement.disabled,
         displayValueForCopying;
     
+    this.defaultStylesHost    = HOST_TEMPLATE.cloneNode(false);
     this.focusStylesHost      = HOST_TEMPLATE.cloneNode(false);
     this.blurStylesHost       = HOST_TEMPLATE.cloneNode(false);
     this.disabledStylesHost   = HOST_TEMPLATE.cloneNode(false);
@@ -8765,11 +8786,14 @@ wysihtml5.views.View = Base.extend(
       textareaElement.style.display = displayValueForCopying = originalDisplayValue;
     }
     
+    dom.copyStyles(BOX_FORMATTING).from(textareaElement).to(this.iframe).andTo(this.defaultStylesHost);
+    
     // --------- iframe styles (has to be set before editor styles, otherwise IE9 sets wrong fontFamily on blurStylesHost) ---------
     dom.copyStyles(BOX_FORMATTING).from(textareaElement).to(this.iframe).andTo(this.blurStylesHost);
     
     // --------- editor styles ---------
     dom.copyStyles(TEXT_FORMATTING).from(textareaElement).to(this.element).andTo(this.blurStylesHost);
+    
     
     // --------- apply standard rules ---------
     dom.insertCSS(ADDITIONAL_CSS_RULES).into(this.element.ownerDocument);
@@ -8809,6 +8833,20 @@ wysihtml5.views.View = Base.extend(
     if (hasPlaceholder) {
       textareaElement.setAttribute("placeholder", originalPlaceholder);
     }
+    
+    // --------- Sync fullscreenEnable styles ---------
+    this.parent.on("fullscreenEnable:composer", function() {
+    	// update that.focusStylesHost to height 100%;
+    	dom.setStyles({
+        height:              "100%"
+    	}).on(that.focusStylesHost);
+    });
+    
+    // --------- Sync fullscreenEnable styles ---------
+    this.parent.on("fullscreenDisable:composer", function() {
+      //  restore default style
+      dom.copyStyles(BOX_FORMATTING).from(that.defaultStylesHost).to(that.focusStylesHost);
+    });
     
     // --------- Sync focus/blur styles ---------
     this.parent.on("focus:composer", function() {
@@ -9755,6 +9793,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
         name        = link.getAttribute("data-wysihtml5-" + type);
         value       = link.getAttribute("data-wysihtml5-" + type + "-value");
         activeClass = link.getAttribute("data-wysihtml5-" + type + "-class");
+        groupClass = link.getAttribute("data-wysihtml5-" + type + "-group-class");
         group       = this.container.querySelector("[data-wysihtml5-" + type + "-group='" + name + "']");
         dialog      = this._getDialog(link, name);
         modal       = this._getModal(link, name);
@@ -9766,9 +9805,9 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
           dialog: dialog,
           modal: modal,
           activeClass: activeClass,
+          groupClass: groupClass,
           state:  false
         };
-        
       }
     },
 
@@ -9791,9 +9830,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
             that.composer.selection.setBookmark(caretBookmark);
           }
           that._execCommand(command, attributes);
-          
           that.editor.fire("save:dialog", { command: command, dialogContainer: dialogElement, commandLink: link });
-          
         });
 
         dialog.on("cancel", function() {
@@ -9845,10 +9882,9 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
       if (this.commandsDisabled) {
         return;
       }
-      
       var commandObj = this.commandMapping[command + ":" + commandValue],
           state;
-      
+                
       // Show dialog when available
       if (commandObj && commandObj.dialog && !commandObj.state) {
         commandObj.dialog.show();
@@ -9964,16 +10000,19 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
           state,
           action,
           command;
+          
       // every millisecond counts... this is executed quite often
       for (i in commandMapping) {
         command = commandMapping[i];
         var commandActiveClass = (command.activeClass) ? command.activeClass : CLASS_NAME_COMMAND_ACTIVE;
+        var groupActiveClass = (command.groupClass) ? command.groupClass : commandActiveClass;
+        
         
         if (this.commandsDisabled) {
           state = false;
           dom.removeClass(command.link, commandActiveClass);
           if (command.group) {
-            dom.removeClass(command.group, commandActiveClass);
+            dom.removeClass(command.group, groupActiveClass);
           }
           if (command.dialog) {
             command.dialog.hide();
@@ -10004,8 +10043,9 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
         command.state = state;
         if (state) {
           dom.addClass(command.link, commandActiveClass);
+          
           if (command.group) {
-            dom.addClass(command.group, commandActiveClass);
+            dom.addClass(command.group, groupActiveClass);
           }
           if (command.dialog) {
             if (typeof(state) === "object") {
@@ -10017,7 +10057,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
         } else {
           dom.removeClass(command.link, commandActiveClass);
           if (command.group) {
-            dom.removeClass(command.group, commandActiveClass);
+            dom.removeClass(command.group, groupActiveClass);
           } 
           if (command.dialog) {
             command.dialog.hide();
@@ -10197,6 +10237,8 @@ wysihtml5.Predictive = Base.extend(
   var undef;
   
   var defaultConfig = {
+    // Give id of the editor contener 
+    editorContainer:             undef,
     // Give the editor a name, the name will also be set as class name on the iframe and on the iframe's body 
     name:                       undef,
     // Whether the editor should look like the textarea (by adopting styles)
@@ -10353,5 +10395,6 @@ wysihtml5.Predictive = Base.extend(
         }, keepScrollPosition);
       });
     }
+    
   });
 })(wysihtml5);

@@ -507,6 +507,23 @@ body.inverse {
   color: #f6f6f6;
   background-color: #444444;
 }
+/*
+h1 :before {
+	 content: "";
+	 display: block;
+	 width: 100px;
+	 height: 3px;
+	 background-color: @linkColorHover;
+}
+
+p :before {
+	 content: "";
+	 display: block;
+	 width: 30px;
+	 height: 1px;
+	 background-color: @linkColorHover;
+}
+*/
 a {
   color: #049cdb;
   text-decoration: none;

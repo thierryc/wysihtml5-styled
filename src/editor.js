@@ -191,5 +191,6 @@
         }, keepScrollPosition);
       });
     }
+    
   });
 })(wysihtml5);

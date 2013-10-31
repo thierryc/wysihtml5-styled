@@ -10,6 +10,26 @@ wysihtml5.Commands = Base.extend(
     this.editor   = editor;
     this.composer = editor.composer;
     this.doc      = this.composer.doc;
+    
+    /*
+    * Fullscreen Change
+    * 
+    *
+    */
+    var fullscreenchange = function(){
+    	setTimeout(function(){
+				if(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
+					//console.log('fullscreenEnable');
+					editor.composer.parent.fire("fullscreenEnable:composer").fire("focus");
+				} else {
+					//console.log('fullscreenDisable');
+					editor.composer.parent.fire("fullscreenDisable:composer").fire("focus");
+				}
+    	}, 0);
+    };
+    document.addEventListener("fullscreenchange", fullscreenchange, false);
+		document.addEventListener("mozfullscreenchange", fullscreenchange, false);
+		document.addEventListener("webkitfullscreenchange", fullscreenchange, false);
   },
   
   /**

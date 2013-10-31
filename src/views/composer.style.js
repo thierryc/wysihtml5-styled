@@ -111,6 +111,7 @@
         originalDisabled      = textareaElement.disabled,
         displayValueForCopying;
     
+    this.defaultStylesHost    = HOST_TEMPLATE.cloneNode(false);
     this.focusStylesHost      = HOST_TEMPLATE.cloneNode(false);
     this.blurStylesHost       = HOST_TEMPLATE.cloneNode(false);
     this.disabledStylesHost   = HOST_TEMPLATE.cloneNode(false);
@@ -135,11 +136,14 @@
       textareaElement.style.display = displayValueForCopying = originalDisplayValue;
     }
     
+    dom.copyStyles(BOX_FORMATTING).from(textareaElement).to(this.iframe).andTo(this.defaultStylesHost);
+    
     // --------- iframe styles (has to be set before editor styles, otherwise IE9 sets wrong fontFamily on blurStylesHost) ---------
     dom.copyStyles(BOX_FORMATTING).from(textareaElement).to(this.iframe).andTo(this.blurStylesHost);
     
     // --------- editor styles ---------
     dom.copyStyles(TEXT_FORMATTING).from(textareaElement).to(this.element).andTo(this.blurStylesHost);
+    
     
     // --------- apply standard rules ---------
     dom.insertCSS(ADDITIONAL_CSS_RULES).into(this.element.ownerDocument);
@@ -179,6 +183,20 @@
     if (hasPlaceholder) {
       textareaElement.setAttribute("placeholder", originalPlaceholder);
     }
+    
+    // --------- Sync fullscreenEnable styles ---------
+    this.parent.on("fullscreenEnable:composer", function() {
+    	// update that.focusStylesHost to height 100%;
+    	dom.setStyles({
+        height:              "100%"
+    	}).on(that.focusStylesHost);
+    });
+    
+    // --------- Sync fullscreenEnable styles ---------
+    this.parent.on("fullscreenDisable:composer", function() {
+      //  restore default style
+      dom.copyStyles(BOX_FORMATTING).from(that.defaultStylesHost).to(that.focusStylesHost);
+    });
     
     // --------- Sync focus/blur styles ---------
     this.parent.on("focus:composer", function() {

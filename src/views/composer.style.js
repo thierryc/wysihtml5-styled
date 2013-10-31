@@ -190,12 +190,18 @@
     	dom.setStyles({
         height:              "100%"
     	}).on(that.focusStylesHost);
+    	
+    	dom.setStyles({
+        height:              "100%"
+    	}).on(that.blurStylesHost);
+    	
     });
     
     // --------- Sync fullscreenEnable styles ---------
     this.parent.on("fullscreenDisable:composer", function() {
       //  restore default style
       dom.copyStyles(BOX_FORMATTING).from(that.defaultStylesHost).to(that.focusStylesHost);
+      dom.copyStyles(BOX_FORMATTING).from(that.defaultStylesHost).to(that.blurStylesHost);
     });
     
     // --------- Sync focus/blur styles ---------

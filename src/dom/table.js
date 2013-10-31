@@ -509,7 +509,7 @@
                     this.rectify();
                 } else {
                     if (window.console) {
-                        console.log('Do not know how to merge allready merged cells.');
+                      console.log('Do not know how to merge allready merged cells.');
                     }
                 }
             }

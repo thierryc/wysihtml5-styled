@@ -29,22 +29,11 @@ wysihtml5.commands.insertOrderedListType = {
       });
     } else {
       // Create list
-      
-      
-      
       composer.commands.exec("formatBlock", "div", tempClassName);
       tempElement = doc.querySelector("." + tempClassName);
-      
-      console.log(tempElement);
-      
       isEmpty = tempElement.innerHTML === "" || tempElement.innerHTML === wysihtml5.INVISIBLE_SPACE || tempElement.innerHTML === "<br>";
-      
-      console.log(isEmpty);
-      
       composer.selection.executeAndRestore(function() {
         list = wysihtml5.dom.convertToList(tempElement, "ol");
-        console.log(list);
-        console.log(wysihtml5.dom.addClass(list, "wysiwyg-ol-" + type));
       });
       if (isEmpty) {
         composer.selection.selectNode(list.querySelector("li"), true);

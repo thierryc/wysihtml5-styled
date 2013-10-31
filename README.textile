@@ -2,13 +2,15 @@ h1. wysihtml5-styled Predictive 0.6.0a
 
 wysihtml5 is an open source rich text editor based on HTML5 technology and the progressive-enhancement approach.
 It uses a sophisticated security concept and aims to generate fully valid HTML5 markup by preventing unmaintainable tag soups and inline styles.
-The code is completely library agnostic: No jQuery, Prototype or similar is required.
 
-This project use twitter boostrap. 
+The code is (not*) completely library agnostic: No jQuery, Prototype or similar is required.
+
+*Modal require jQuery and Bootstrap.
+
+Todo : add soft dependences to bootstrap.
+This project use twitter boostrap.
 
 *This project was initiated and is supported by the "XING AG":https://www.xing.com*. Thanks!
-
-
 
 
 h2. Features
@@ -32,6 +34,9 @@ h2. Roadmap
 
 h3. 0.6.1a 
 * Table
+
+h3. 0.6.1b
+* Soft dependences to bootstrap.
 
 
 h2. Browser Support

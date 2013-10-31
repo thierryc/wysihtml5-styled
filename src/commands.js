@@ -19,10 +19,8 @@ wysihtml5.Commands = Base.extend(
     var fullscreenchange = function(){
     	setTimeout(function(){
 				if(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
-					//console.log('fullscreenEnable');
 					editor.composer.parent.fire("fullscreenEnable:composer").fire("focus");
 				} else {
-					//console.log('fullscreenDisable');
 					editor.composer.parent.fire("fullscreenDisable:composer").fire("focus");
 				}
     	}, 0);

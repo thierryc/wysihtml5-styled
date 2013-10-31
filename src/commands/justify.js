@@ -4,7 +4,6 @@
   
   wysihtml5.commands.justify = {
     exec: function(composer, command, value) {
-      console.log(composer, command, value);
       switch ( value ) {
       	case 'center':
       		return wysihtml5.commands.justifyCenter.exec(composer, "justifyCenter");

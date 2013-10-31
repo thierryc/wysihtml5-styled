@@ -200,7 +200,9 @@
         });
         thisModal.modal('show');
       } else {
-        console.log('add jquery dependance');
+        if (window.console) {
+            console.log('add jquery dependance');
+        }
       }
       this.fire("show");
     },
@@ -217,7 +219,9 @@
       if($ && $('#'+this.container.id)){
         $('#'+this.container.id).modal('hide');
       } else {
-        console.log('add jquery dependance');
+        if (window.console) { 
+        	console.log('add jquery dependance');
+        }
       }
       this.fire("hide");
     }

@@ -2,6 +2,8 @@
 @import "../../lib/bootstrap/less/variables.less"; // Modify this for custom colors, font-sizes, etc
 @import "wysihtml5-styled-variables.less"; // wysihtml5-styled variable
 @import "../../lib/bootstrap/less/mixins.less";
+// Import for table
+@import "../../lib/bootstrap/less/tables.less";
 
 // CSS Reset
 @import "../../lib/bootstrap/less/reset.less";
@@ -118,4 +120,8 @@ a:focus {
 
 .wysiwyg-http-codeError {
     background-color: #ff0000;
+}
+
+table{
+  .table-bordered();
 }

@@ -82,7 +82,6 @@
      */
     exec: function(composer, command, value) {
       var anchors = this.state(composer, command);
-      
       if (anchors) {
         // Selection contains links
         composer.selection.executeAndRestore(function() {

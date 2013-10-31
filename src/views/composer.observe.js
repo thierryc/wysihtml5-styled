@@ -21,24 +21,40 @@
   wysihtml5.views.Composer.prototype.observe = function() {
     var that                = this,
         state               = this.getValue(),
-        iframe              = this.sandbox.getIframe(),
+        container           = (this.sandbox.getIframe) ? this.sandbox.getIframe() : this.sandbox.getContentEditable(),
         element             = this.element,
-        focusBlurElement    = browser.supportsEventsInIframeCorrectly() ? element : this.sandbox.getWindow(),
-        pasteEvents         = ["drop", "paste"];
+        focusBlurElement    = (browser.supportsEventsInIframeCorrectly() || this.sandbox.getContentEditable) ? element : this.sandbox.getWindow(),
+        pasteEvents         = ["drop", "paste"],
+        interactionEvents   = ["drop", "paste", "mouseup", "focus", "blur", "keyup"];
 
     // --------- destroy:composer event ---------
-    dom.observe(iframe, "DOMNodeRemoved", function() {
+    dom.observe(container, "DOMNodeRemoved", function() {
       clearInterval(domNodeRemovedInterval);
       that.parent.fire("destroy:composer");
     });
 
     // DOMNodeRemoved event is not supported in IE 8
+    if (!browser.supportsMutationEvents()) {
     var domNodeRemovedInterval = setInterval(function() {
-      if (!dom.contains(document.documentElement, iframe)) {
+          if (!dom.contains(document.documentElement, container)) {
         clearInterval(domNodeRemovedInterval);
         that.parent.fire("destroy:composer");
       }
     }, 250);
+    }
+    
+    // --------- User interaction tracking --
+    
+    dom.observe(focusBlurElement, interactionEvents, function() {
+      setTimeout(function() {
+        that.parent.fire("interaction").fire("interaction:composer");
+      }, 0);
+    });
+    
+
+    if (this.config.handleTables) {
+        this.tableSelection = wysihtml5.quirks.tableCellsSelection(element, that.parent);
+    }
 
     // --------- Focus & blur logic ---------
     dom.observe(focusBlurElement, "focus", function() {
@@ -85,9 +101,17 @@
         var target = event.target;
         if (target.nodeName === "IMG") {
           that.selection.selectNode(target);
-          event.preventDefault();
         }
       });
+    }
+    
+    if (!browser.canSelectImagesInContentEditable()) {
+        dom.observe(element, "drop", function(event) {
+            // TODO: if I knew how to get dropped elements list from event I could limit it to only IMG element case
+            setTimeout(function() {
+                that.selection.getSelection().removeAllRanges();
+            }, 0);
+        });
     }
     
     if (browser.hasHistoryIssue() && browser.supportsSelectionModify()) {
@@ -148,7 +172,7 @@
     });
     
     // --------- IE 8+9 focus the editor when the iframe is clicked (without actually firing the 'focus' event on the <body>) ---------
-    if (browser.hasIframeFocusIssue()) {
+    if (!this.config.contentEditableMode && browser.hasIframeFocusIssue()) {
       dom.observe(this.iframe, "focus", function() {
         setTimeout(function() {
           if (that.doc.querySelector(":focus") !== that.element) {

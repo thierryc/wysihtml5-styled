@@ -6,7 +6,7 @@
       /**
        * Styles to copy from textarea to the composer element
        */
-      TEXT_FORMATTING_old = [
+      TEXT_FORMATTING = [
         "background-color",
         "color", "cursor",
         "font-family", "font-size", "font-style", "font-variant", "font-weight",
@@ -14,13 +14,8 @@
         "text-align", "text-decoration", "text-indent", "text-rendering",
         "word-break", "word-wrap", "word-spacing"
       ],
-      // remove "line-height" to improve html display in editor
-      TEXT_FORMATTING = [
-        "background-color",
-        "cursor"
-      ],
       /**
-       * Styles to copy from textarea to the iframe
+       * Styles to copy from textarea to the editableArea
        */
       BOX_FORMATTING = [
         "background-color",
@@ -136,14 +131,13 @@
       textareaElement.style.display = displayValueForCopying = originalDisplayValue;
     }
     
-    dom.copyStyles(BOX_FORMATTING).from(textareaElement).to(this.iframe).andTo(this.defaultStylesHost);
+    dom.copyStyles(BOX_FORMATTING).from(textareaElement).to(this.editableArea).andTo(this.defaultStylesHost);
     
-    // --------- iframe styles (has to be set before editor styles, otherwise IE9 sets wrong fontFamily on blurStylesHost) ---------
-    dom.copyStyles(BOX_FORMATTING).from(textareaElement).to(this.iframe).andTo(this.blurStylesHost);
+    // --------- editableArea styles (has to be set before editor styles, otherwise IE9 sets wrong fontFamily on blurStylesHost) ---------
+    dom.copyStyles(BOX_FORMATTING).from(textareaElement).to(this.editableArea).andTo(this.blurStylesHost);
     
     // --------- editor styles ---------
     dom.copyStyles(TEXT_FORMATTING).from(textareaElement).to(this.element).andTo(this.blurStylesHost);
-    
     
     // --------- apply standard rules ---------
     dom.insertCSS(ADDITIONAL_CSS_RULES).into(this.element.ownerDocument);
@@ -165,10 +159,10 @@
     // reset textarea
     textareaElement.style.display = originalDisplayValue;
     
-    dom.copyStyles(["display"]).from(textareaElement).to(this.iframe);
+    dom.copyStyles(["display"]).from(textareaElement).to(this.editableArea);
     
-    // Make sure that we don't change the display style of the iframe when copying styles oblur/onfocus
-    // this is needed for when the change_view event is fired where the iframe is hidden and then
+    // Make sure that we don't change the display style of the editableArea when copying styles oblur/onfocus
+    // this is needed for when the change_view event is fired where the editableArea is hidden and then
     // the blur event fires and re-displays it
     var boxFormattingStyles = wysihtml5.lang.array(BOX_FORMATTING).without(["display"]);
     
@@ -206,22 +200,22 @@
     
     // --------- Sync focus/blur styles ---------
     this.parent.on("focus:composer", function() {
-      dom.copyStyles(boxFormattingStyles) .from(that.focusStylesHost).to(that.iframe);
+      dom.copyStyles(boxFormattingStyles) .from(that.focusStylesHost).to(that.editableArea);
       dom.copyStyles(TEXT_FORMATTING)     .from(that.focusStylesHost).to(that.element);
     });
     
     this.parent.on("blur:composer", function() {
-      dom.copyStyles(boxFormattingStyles) .from(that.blurStylesHost).to(that.iframe);
+      dom.copyStyles(boxFormattingStyles) .from(that.blurStylesHost).to(that.editableArea);
       dom.copyStyles(TEXT_FORMATTING)     .from(that.blurStylesHost).to(that.element);
     });
     
     this.parent.observe("disable:composer", function() {
-      dom.copyStyles(boxFormattingStyles) .from(that.disabledStylesHost).to(that.iframe);
+      dom.copyStyles(boxFormattingStyles) .from(that.disabledStylesHost).to(that.editableArea);
       dom.copyStyles(TEXT_FORMATTING)     .from(that.disabledStylesHost).to(that.element);
     });
     
     this.parent.observe("enable:composer", function() {
-      dom.copyStyles(boxFormattingStyles) .from(that.blurStylesHost).to(that.iframe);
+      dom.copyStyles(boxFormattingStyles) .from(that.blurStylesHost).to(that.editableArea);
       dom.copyStyles(TEXT_FORMATTING)     .from(that.blurStylesHost).to(that.element);
     });
     

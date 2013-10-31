@@ -23,7 +23,7 @@
   
   wysihtml5.toolbar.Toolbar = Base.extend(
     /** @scope wysihtml5.toolbar.Toolbar.prototype */ {
-    constructor: function(editor, container) {
+    constructor: function(editor, container, showOnInit) {
       this.editor     = editor;
       this.container  = typeof(container) === "string" ? document.getElementById(container) : container;
       this.composer   = editor.composer;
@@ -32,8 +32,7 @@
       this._getLinks("action");
       
       this._observe();
-      this.show();
-      
+      if (showOnInit) { this.show(); }
       
       var speechInputLinks  = this.container.querySelectorAll("[data-wysihtml5-command=insertSpeech]"),
           length            = speechInputLinks.length,
@@ -53,7 +52,6 @@
           name,
           value,
           dialog;
-          
       for (; i<length; i++) {
         link        = links[i];
         name        = link.getAttribute("data-wysihtml5-" + type);
@@ -84,10 +82,15 @@
           caretBookmark;
       
       if (dialogElement) {
-        dialog = new wysihtml5.toolbar.Dialog(link, dialogElement);
+        if (wysihtml5.toolbar["Dialog_" + command]) {
+          dialog = new wysihtml5.toolbar["Dialog_" + command](link, dialogElement);
+        } else {
+        	dialog = new wysihtml5.toolbar.Dialog(link, dialogElement);
+        }
 
         dialog.on("show", function() {
           caretBookmark = that.composer.selection.getBookmark();
+
           that.editor.fire("show:dialog", { command: command, dialogContainer: dialogElement, commandLink: link });
         });
 
@@ -96,6 +99,7 @@
             that.composer.selection.setBookmark(caretBookmark);
           }
           that._execCommand(command, attributes);
+          
           that.editor.fire("save:dialog", { command: command, dialogContainer: dialogElement, commandLink: link });
         });
 
@@ -177,6 +181,7 @@
     _execCommand: function(command, commandValue) {
       // Make sure that composer is focussed (false => don't move caret to the end)
       this.editor.focus(false);
+
       this.composer.commands.exec(command, commandValue);
       this._updateLinkStates();
     },
@@ -184,11 +189,16 @@
     execAction: function(action) {
       var editor = this.editor;
       if (action === "change_view") {
-        if (editor.currentView === editor.textarea) {
-          editor.fire("change_view", "composer");
-        } else {
-          editor.fire("change_view", "textarea");
-        }
+        if (editor.textarea) { 
+					if (editor.currentView === editor.textarea) {
+						editor.fire("change_view", "composer");
+					} else {
+						editor.fire("change_view", "textarea");
+					}
+				}
+      }
+      if (action == "showSource") {
+          editor.fire("showSource");
       }
     },
 
@@ -229,12 +239,25 @@
         event.preventDefault();
         that.execAction(action);
       });
+      
+			editor.on("interaction:composer", function() {
+					that._updateLinkStates();
+			});
 
       editor.on("focus:composer", function() {
         that.bookmark = null;
         clearInterval(that.interval);
         that.interval = setInterval(function() { that._updateLinkStates(); }, 500);
       });
+      
+      if (this.editor.config.handleTables) {
+				editor.on("tableselect:composer", function() {
+						that.container.querySelectorAll('[data-wysihtml5-hiddentools="table"]')[0].style.display = "";
+				});
+				editor.on("tableunselect:composer", function() {
+						that.container.querySelectorAll('[data-wysihtml5-hiddentools="table"]')[0].style.display = "none";
+				});
+      }
 
       editor.on("blur:composer", function() {
         clearInterval(that.interval);
@@ -246,27 +269,27 @@
 
       editor.on("change_view", function(currentView) {
         // Set timeout needed in order to let the blur event fire first
-        setTimeout(function() {
-          that.commandsDisabled = (currentView !== "composer");
-          that._updateLinkStates();
-          if (that.commandsDisabled) {
-            dom.addClass(container, CLASS_NAME_COMMANDS_DISABLED);
-          } else {
-            dom.removeClass(container, CLASS_NAME_COMMANDS_DISABLED);
-          }
-        }, 0);
+        if (editor.textarea) {
+					setTimeout(function() {
+						that.commandsDisabled = (currentView !== "composer");
+						that._updateLinkStates();
+						if (that.commandsDisabled) {
+							dom.addClass(container, CLASS_NAME_COMMANDS_DISABLED);
+						} else {
+							dom.removeClass(container, CLASS_NAME_COMMANDS_DISABLED);
+						}
+					}, 0);
+        }
       });
     },
 
     _updateLinkStates: function() {
-
       var commandMapping    = this.commandMapping,
           actionMapping     = this.actionMapping,
           i,
           state,
           action,
           command;
-          
       // every millisecond counts... this is executed quite often
       for (i in commandMapping) {
         command = commandMapping[i];
@@ -288,7 +311,6 @@
           }
         } else {
           state = this.composer.commands.state(command.name, command.value);
-          
           if (wysihtml5.lang.object(state).isArray()) {
             // Grab first and only object/element in state array, otherwise convert state into boolean
             // to avoid showing a dialog for multiple selected elements which may have different attributes
@@ -337,8 +359,6 @@
         
         if (action.name === "change_view") {
           action.state = this.editor.currentView === this.editor.textarea;
-          
-          
           if (action.state) {
             dom.addClass(action.link, actionActiveClass);
           } else {

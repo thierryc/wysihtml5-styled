@@ -3,7 +3,7 @@
       // Following elements are grouped
       // when the caret is within a H1 and the H4 is invoked, the H1 should turn into H4
       // instead of creating a H4 within a H1 which would result in semantically invalid html
-      BLOCK_ELEMENTS_GROUP    = ["H1", "H2", "H3", "H4", "H5", "H6", "P", "BLOCKQUOTE", "DIV"];
+      BLOCK_ELEMENTS_GROUP    = ["H1", "H2", "H3", "H4", "H5", "H6", "P", "PRE", "BLOCKQUOTE", "DIV"];
   
   /**
    * Remove similiar classes (based on classRegExp)
@@ -12,14 +12,19 @@
   function _addClass(element, className, classRegExp) {
     if (element.className) {
       _removeClass(element, classRegExp);
-      element.className += " " + className;
+      element.className = wysihtml5.lang.string(element.className + " " + className).trim();
     } else {
       element.className = className;
     }
   }
 
   function _removeClass(element, classRegExp) {
+    var ret = classRegExp.test(element.className);
     element.className = element.className.replace(classRegExp, "");
+    if (wysihtml5.lang.string(element.className).trim() == '') {
+        element.removeAttribute('class');
+    }
+    return ret;
   }
 
   /**
@@ -130,13 +135,16 @@
       });
     }
     doc.execCommand(command, false, nodeName);
+    
     if (eventListener) {
       eventListener.stop();
     }
   }
 
-  function _selectLineAndWrap(composer, element) {
+  function _selectionWrap(composer, element) {
+    if (composer.selection.isCollapsed()) {
     composer.selection.selectLine();
+    }
     composer.selection.surround(element);
     _removeLineBreakBeforeAndAfter(element);
     _removeLastChildIfLineBreak(element);
@@ -153,15 +161,21 @@
           blockElement    = this.state(composer, command, nodeName, className, classRegExp),
           useLineBreaks   = composer.config.useLineBreaks,
           defaultNodeName = useLineBreaks ? "DIV" : "P",
-          selectedNode;
+          selectedNode, classRemoveAction;
 
       nodeName = typeof(nodeName) === "string" ? nodeName.toUpperCase() : nodeName;
       
       if (blockElement) {
         composer.selection.executeAndRestoreSimple(function() {
           if (classRegExp) {
-            _removeClass(blockElement, classRegExp);
+            classRemoveAction = _removeClass(blockElement, classRegExp);
           }
+          
+          if (classRemoveAction && nodeName === null && blockElement.nodeName != defaultNodeName) {
+            // dont rename or remove element when just setting block formating class
+            return;
+          }
+          
           var hasClasses = _hasClasses(blockElement);
           if (!hasClasses && (useLineBreaks || nodeName === "P")) {
             // Insert a line break afterwards and beforewards when there are siblings
@@ -179,9 +193,13 @@
       // Find similiar block element and rename it (<h2 class="foo"></h2>  =>  <h1 class="foo"></h1>)
       if (nodeName === null || wysihtml5.lang.array(BLOCK_ELEMENTS_GROUP).contains(nodeName)) {
         selectedNode = composer.selection.getSelectedNode();
+        
         blockElement = dom.getParentElement(selectedNode, {
           nodeName: BLOCK_ELEMENTS_GROUP
         });
+        if (blockElement == composer.element) {
+            blockElement = null;
+        }
 
         if (blockElement) {
           composer.selection.executeAndRestore(function() {
@@ -197,16 +215,23 @@
         }
       }
 
-      if (composer.commands.support(command)) {
-        _execCommand(doc, command, nodeName || defaultNodeName, className);
-        return;
+      if (wysihtml5.browser.supportsSelectLine()) {
+          blockElement = doc.createElement(nodeName || defaultNodeName);
+          if (className) {
+            blockElement.className = className;
+          }
+          _selectionWrap(composer, blockElement);
+      } else {
+          // Falling back to native command for Opera up to 12 mostly
+          // Native command does not create elements from selecton boundaries.
+          // Not quite user expected behaviour
+				if (composer.commands.support(command)) {
+					_execCommand(doc, command, nodeName || defaultNodeName, className);
+					return;
+				}
       }
-
-      blockElement = doc.createElement(nodeName || defaultNodeName);
-      if (className) {
-        blockElement.className = className;
-      }
-      _selectLineAndWrap(composer, blockElement);
+      
+      
     },
 
     state: function(composer, command, nodeName, className, classRegExp) {

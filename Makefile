@@ -33,14 +33,18 @@ JS_FILES = src/wysihtml5.js \
   src/dom/replace_with_child_nodes.js \
   src/dom/resolve_list.js \
   src/dom/sandbox.js \
+  src/dom/contenteditable_area.js \
   src/dom/set_attributes.js \
   src/dom/set_styles.js \
   src/dom/simulate_placeholder.js \
   src/dom/text_content.js \
+  src/dom/get_attribute.js \
+  src/dom/table.js \
   src/quirks/clean_pasted_html.js \
   src/quirks/ensure_proper_clearing.js \
   src/quirks/get_correct_inner_html.js \
   src/quirks/redraw.js \
+  src/quirks/table_cells_selection.js\
   src/selection/selection.js \
   src/selection/html_applier.js \
   src/commands.js \
@@ -66,6 +70,10 @@ JS_FILES = src/wysihtml5.js \
   src/commands/redo.js \
   src/commands/underline.js \
   src/commands/undo.js \
+  src/commands/createTable.js\
+  src/commands/mergeTableCells.js\
+  src/commands/addTableCells.js\
+  src/commands/deleteTableCells.js\
   src/undo_manager.js \
   src/views/view.js \
   src/views/composer.js \
@@ -79,6 +87,7 @@ JS_FILES = src/wysihtml5.js \
   src/toolbar/toolbar.js \
   src/keyboardShortcut.js \
   src/predictive.js \
+  src/toolbar/dialog_createTable.js\
   src/editor.js
 
 all: bundle minify css

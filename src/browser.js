@@ -12,11 +12,11 @@ wysihtml5.browser = (function() {
       isOpera     = userAgent.indexOf("Opera/")       !== -1;
   
   function iosVersion(userAgent) {
-    return +((/ipad|iphone|ipod/.test(userAgent) && userAgent.match(/ os (\d+).+? like mac os x/)) || [, 0])[1];
+    return +((/ipad|iphone|ipod/.test(userAgent) && userAgent.match(/ os (\d+).+? like mac os x/)) || [undefined, 0])[1];
   }
   
   function androidVersion(userAgent) {
-    return +(userAgent.match(/android (\d+)/) || [, 0])[1];
+    return +(userAgent.match(/android (\d+)/) || [undefined, 0])[1];
   }
   
   return {
@@ -278,6 +278,11 @@ wysihtml5.browser = (function() {
       return "getSelection" in window && "modify" in window.getSelection();
     },
     
+    // Returns if there is a way for setting selection to expand a line
+    supportsSelectLine: function () {
+        return (this.supportsSelectionModify() || document.selection) ? true : false;
+    },
+    
     /**
      * Opera needs a white space after a <br> in order to position the caret correctly
      */
@@ -296,7 +301,7 @@ wysihtml5.browser = (function() {
      *    }
      */
     supportsSpeechApiOn: function(input) {
-      var chromeVersion = userAgent.match(/Chrome\/(\d+)/) || [, 0];
+      var chromeVersion = userAgent.match(/Chrome\/(\d+)/) || [undefined, 0];
       return chromeVersion[1] >= 11 && ("onwebkitspeechchange" in input || "speech" in input);
     },
     
@@ -354,6 +359,10 @@ wysihtml5.browser = (function() {
      */
     createsNestedInvalidMarkupAfterPaste: function() {
       return isWebKit;
+    },
+    
+    supportsMutationEvents: function() {
+        return ("MutationEvent" in window);
     }
   };
 })();

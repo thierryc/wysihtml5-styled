@@ -1,4 +1,4 @@
-h1. wysihtml5-styled Predictive 0.5.0Pre
+h1. wysihtml5-styled Predictive 0.6.0a
 
 wysihtml5 is an open source rich text editor based on HTML5 technology and the progressive-enhancement approach.
 It uses a sophisticated security concept and aims to generate fully valid HTML5 markup by preventing unmaintainable tag soups and inline styles.
@@ -8,6 +8,10 @@ The code is completely library agnostic: No jQuery, Prototype or similar is requ
 
 h2. Features
 
+h3. 0.6.0a 
+* Fullscreen
+
+h3. 0.5.0Pre 
 * Auto linking of urls as-you-type
 * Generates valid and semantic HTML5 markup (no <code><font></code>)
 * Uses class-names instead of inline styles
@@ -18,6 +22,12 @@ h2. Features
 * Uses sandboxed iframes in order to prevent identity theft through XSS
 * Editor inherits styles and attributes (placeholder, autofocus, ...) from original textarea (you only have to style one element)
 * Speech-input for Chrome
+
+h2. Roadmap
+
+h3. 0.6.1a 
+* Table
+
 
 h2. Browser Support
 

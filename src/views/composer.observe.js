@@ -34,23 +34,21 @@
     });
 
     // DOMNodeRemoved event is not supported in IE 8
-    if (!browser.supportsMutationEvents()) {
     var domNodeRemovedInterval = setInterval(function() {
           if (!dom.contains(document.documentElement, container)) {
         clearInterval(domNodeRemovedInterval);
         that.parent.fire("destroy:composer");
       }
     }, 250);
-    }
     
-    // --------- User interaction tracking --
-    
+    // --------- User interaction tracking -- 
+    /*
     dom.observe(focusBlurElement, interactionEvents, function() {
       setTimeout(function() {
         that.parent.fire("interaction").fire("interaction:composer");
       }, 0);
     });
-    
+    */
 
     if (this.config.handleTables) {
         this.tableSelection = wysihtml5.quirks.tableCellsSelection(element, that.parent);
@@ -100,11 +98,13 @@
       dom.observe(element, "mousedown", function(event) {
         var target = event.target;
         if (target.nodeName === "IMG") {
+          event.preventDefault();
           that.selection.selectNode(target);
         }
       });
     }
     
+    // TODO add real drop option 
     if (!browser.canSelectImagesInContentEditable()) {
         dom.observe(element, "drop", function(event) {
             // TODO: if I knew how to get dropped elements list from event I could limit it to only IMG element case

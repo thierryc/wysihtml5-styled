@@ -55,7 +55,6 @@
 
     show: function() {
       this.editableArea.style.display = this._displayStyle || "";
-      
       if (!this.config.noTextarea && !this.textarea.element.disabled) {
         // Firefox needs this, otherwise contentEditable becomes uneditable
         this.disable();
@@ -120,7 +119,6 @@
 
     _initContentEditableArea: function() {
         var that = this;
-        
         if (this.config.noTextarea) {
             this.sandbox = new dom.ContentEditableArea(function() {
                 that._create();
@@ -158,12 +156,13 @@
         hiddenField.type   = "hidden";
         hiddenField.name   = "_wysihtml5_mode";
         hiddenField.value  = 1;
-          dom.insert(hiddenField).after(this.textarea.element);
+        dom.insert(hiddenField).after(this.textarea.element);
       }
     },
 
     _create: function() {
       var that = this;
+      
       this.doc                = this.sandbox.getDocument();
       this.element            = (this.config.contentEditableMode) ? this.sandbox.getContentEditable() : this.doc.body;
       if (!this.config.noTextarea) {
@@ -178,6 +177,13 @@
       
       // Make sure commands dispatcher is ready
       this.commands  = new wysihtml5.Commands(this.parent);
+      
+      // Make sure predictive dispatcher is ready
+      this.predictive  = new wysihtml5.Predictive(this.parent);
+      
+      // Make sure predictive dispatcher is ready
+      this.keyboardShortcut  = new wysihtml5.KeyboardShortcut(this.parent);
+
       
       if (!this.config.noTextarea) {
 				dom.copyAttributes([
@@ -197,7 +203,9 @@
       var name = this.config.name;
       if (name) {
         dom.addClass(this.element, name);
-        if (!this.config.contentEditableMode) { dom.addClass(this.editableArea, name); }
+        if (!this.config.contentEditableMode) { 
+          dom.addClass(this.editableArea, name); 
+        }
       }
       
       this.enable();
@@ -240,6 +248,8 @@
       
       // Okay hide the textarea, we are ready to go
       if (!this.config.noTextarea) { this.textarea.hide(); }
+      
+      // TODO add codemiror option !
       
       // Fire global (before-)load event
       this.parent.fire("beforeload").fire("load");

@@ -141,9 +141,9 @@
     }
   }
 
-  function _selectionWrap(composer, element) {
+  function _selectLineAndWrap(composer, element) {
     if (composer.selection.isCollapsed()) {
-    composer.selection.selectLine();
+      composer.selection.selectLine();
     }
     composer.selection.surround(element);
     _removeLineBreakBeforeAndAfter(element);
@@ -220,7 +220,7 @@
           if (className) {
             blockElement.className = className;
           }
-          _selectionWrap(composer, blockElement);
+          _selectLineAndWrap(composer, blockElement);
       } else {
           // Falling back to native command for Opera up to 12 mostly
           // Native command does not create elements from selecton boundaries.

@@ -43,11 +43,11 @@
     toolbar:                    undef,
     // Wether toolbar is displayed after init by script automatically.
     // Can be set to false if toolobar is set to display only on editable area focus
-    showToolbarAfterInit: true,
+    showToolbarAfterInit:       true,
     // Whether urls, entered by the user should automatically become clickable-links
     autoLink:                   true,
     // Includes table editing events and cell selection tracking 
-    handleTables:         true,
+    handleTables:               true,
     // Object which includes parser rules to apply when html gets inserted via copy & paste
     // See parser_rules/*.js for examples
     parserRules:                { tags: { br: {}, span: {}, div: {}, p: {} }, classes: {} },

@@ -2,7 +2,6 @@
   var api = wysihtml5.dom;
   
   api.addClass = function(element, className) {
-
     var classList = element.classList;
     if (classList) {
       return classList.add(className);

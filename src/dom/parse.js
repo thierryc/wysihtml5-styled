@@ -49,7 +49,6 @@
  *    });
  *    // => '<p class="red">foo</p><p>bar</p>'
  */
-
 wysihtml5.dom.parse = (function() {
   
   /**

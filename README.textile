@@ -62,7 +62,6 @@ h2. Companies using wysihtml5 (styled)
 * "Autre Planete":https://www.autreplanete.com.com - Graphic and Interactive User Interfaces Design Studio
 * and many more I hope ;-)...
 
-
 h2. Wiki
 
 Check our "Wiki Pages":https://github.com/xing/wysihtml5/wiki including a simple "Getting Started Tutorial":https://github.com/xing/wysihtml5/wiki/Getting-Started.
@@ -85,6 +84,10 @@ h2. Contributors wysihtml5 (original)
 * "@tiff":https://github.com/tiff
 * "@ingochao":https://github.com/ingochao
 * "@uwe":https://github.com/uwe
+
+h2. Contributors Table (original)
+
+* "@Edicy":https://github.com/Edicy
 
 h2. Contributors wysihtml5  (styled)
 

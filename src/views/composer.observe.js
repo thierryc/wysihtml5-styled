@@ -35,7 +35,7 @@
 
     // DOMNodeRemoved event is not supported in IE 8
     var domNodeRemovedInterval = setInterval(function() {
-          if (!dom.contains(document.documentElement, container)) {
+      if (!dom.contains(document.documentElement, container)) {
         clearInterval(domNodeRemovedInterval);
         that.parent.fire("destroy:composer");
       }

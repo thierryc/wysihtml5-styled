@@ -38,8 +38,9 @@
         "-webkit-border-top-left-radius", "-moz-border-radius-topleft", "border-top-left-radius",
         "width", "height"
       ],
+      
       ADDITIONAL_CSS_RULES = [
-        "html                 { height: 100%; }",
+        "html                 { height: auto; margin: 1em; }",
         "body                 { height: 100%; padding: 1px 0 0 0; margin: -1px 0 0 0; }",
         "body > p:first-child { margin-top: 0; }",
         "._wysihtml5-temp     { display: none; }",

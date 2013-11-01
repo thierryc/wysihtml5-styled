@@ -20,14 +20,12 @@
 // Body reset
 // -------------------------
 
-
 body {
-  font-family: @baseFontFamily;
-  font-size: @baseFontSize;
-  line-height: @baseLineHeight;
-  color: @textColor;
+  //font-family: @baseFontFamily;
+  //font-size: @baseFontSize;
+  //line-height: @baseLineHeight;
+  //color: @textColor;
   background-color: @bodyBackground;
-  padding: 1em;
 }
 
 
@@ -35,6 +33,44 @@ body.inverse {
   color: @textColorInverse;
   background-color: @bodyBackgroundInverse;
 }
+
+/*
+@-moz-document url-prefix('http://'),url-prefix('https://') {
+	scrollbar {
+		 -moz-appearance: none !important;
+		 background-color: rgba(113,112,107,0.1); !important;
+	}
+	thumb,scrollbarbutton {
+		 -moz-appearance: none !important;
+		 background-color: rgba(0,0,0,.1) !important;
+	}
+
+	thumb:hover,scrollbarbutton:hover {
+		 -moz-appearance: none !important;
+		 background-color: rgba(0,0,0,.3) !important;
+	}
+	
+}
+
+*/
+
+::-webkit-scrollbar-track {
+	background-color: rgba(113,112,107,0.1);
+	-webkit-border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:horizontal,
+::-webkit-scrollbar-thumb:vertical {
+	background-color: rgba(0,0,0,.1);
+	-webkit-border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:vertical:hover,
+::-webkit-scrollbar-thumb:horizontal:hover {
+	background: rgba(0,0,0,.3);
+}
+
+
 
 /*
 h1 :before {

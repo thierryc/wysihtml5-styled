@@ -65,7 +65,6 @@
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff5f5f5', GradientType=0);
   margin-top: 0;
-  margin-bottom: 9px;
 }
 .cmd-toolbar > .cmd + .cmd,
 .cmd-toolbar > .cmd-group + .cmd,
@@ -1375,19 +1374,6 @@ textarea.wysihtml5-textarea {
 #helpModal .dl-horizontal dd {
   margin-left: 145px;
 }
-.custom_scrollbar::-webkit-scrollbar-track {
-  background-color: rgba(113, 112, 107, 0.1);
-  -webkit-border-radius: 1px;
-}
-.custom_scrollbar::-webkit-scrollbar-thumb:horizontal,
-.custom_scrollbar::-webkit-scrollbar-thumb:vertical {
-  background-color: rgba(0, 0, 0, 0.1);
-  -webkit-border-radius: 2px;
-}
-.custom_scrollbar::-webkit-scrollbar-thumb:vertical:hover,
-.custom_scrollbar::-webkit-scrollbar-thumb:horizontal:hover {
-  background: rgba(0, 0, 0, 0.3);
-}
 :-webkit-full-screen {
   background-color: #eeeeee;
   width: 100%;
@@ -1416,6 +1402,17 @@ textarea.wysihtml5-textarea {
   color: #333333;
   padding: 0;
   margin-bottom: 0;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 [class^="ap-small-icon-"],
 [class*="ap-small-icon-"] {

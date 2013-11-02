@@ -52,7 +52,38 @@
     cleanUp: function() {
         this.parent.parse(this.element);
     },
+    
+    
+    prependValue: function(html, parse) {
+      if (parse) {
+        html = this.parent.parse(html);
+      }
+      var wrapper = this.doc.createElement('div');
+      wrapper.innerHTML = html;
 
+      for (var i = (wrapper.childNodes.length-1); i >= 0; i--) {
+        this.element.insertBefore(wrapper.childNodes[i], this.element.firstChild );
+      }
+    },
+    appendValue: function(html, parse) {
+      if (parse) {
+        html = this.parent.parse(html);
+      }
+      var wrapper = this.doc.createElement('div');
+      wrapper.innerHTML = html;
+
+      for (var i = 0; i < wrapper.childNodes.length; i++) {
+        this.element.appendChild(wrapper.childNodes[i]);
+      }
+    },
+    replaceValue: function(a, b) {
+      var element = this.element;
+      this.selection.executeAndRestore(function() {
+        element.innerHTML = element.innerHTML.replace(a, b);
+      });
+    },
+    
+    
     show: function() {
       this.editableArea.style.display = this._displayStyle || "";
       if (!this.config.noTextarea && !this.textarea.element.disabled) {

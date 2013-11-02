@@ -20,6 +20,24 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
     return value;
   },
   
+  prependValue: function(html, parse) {
+    if (parse) {
+      html = this.parent.parse(html);
+    }
+    this.element.value = html+this.element.value
+  },
+  
+  appendValue: function(html, parse) {
+    if (parse) {
+      html = this.parent.parse(html);
+    }
+    this.element.value = this.element.value+html
+  },
+  
+  replaceValue: function(a, b) {
+    this.element.value = this.element.value.replace(a, b);
+  },
+  
   setValue: function(html, parse) {
     if (parse) {
       html = this.parent.parse(html);
@@ -55,7 +73,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
          * Calling focus() or blur() on an element doesn't synchronously trigger the attached focus/blur events
          * This is the case for focusin and focusout, so let's use them whenever possible, kkthxbai
          */
-        events = wysihtml5.browser.supportsEvent("focusin") ? ["focusin", "focusout", "change"] : ["focus", "blur", "change"];
+        events = wysihtml5.browser.supportsEvent("focusin") ? ["focusin", "focusout", "change", "keyup", "keydown", "keypress"] : ["focus", "blur", "change", "keyup", "keydown", "keypress"];
     
     parent.on("beforeload", function() {
       wysihtml5.dom.observe(element, events, function(event) {

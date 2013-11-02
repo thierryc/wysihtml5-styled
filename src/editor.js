@@ -158,6 +158,22 @@
       this.currentView.setValue(html, parse);
       return this;
     },
+    
+    
+    prependValue: function(html, parse) {
+      this.currentView.prependValue(html, parse);
+      return this;
+    },
+
+    appendValue: function(html, parse) {
+      this.currentView.appendValue(html, parse);
+      return this;
+    },
+
+    replaceValue: function(a, b) {
+      this.currentView.replaceValue(a, b);
+      return this;
+    },
 
     cleanUp: function() {
         this.currentView.cleanUp();

@@ -75,8 +75,7 @@
      *    selection.setBefore(myElement);
      */
     setAfter: function(node) {
-      var range = rangy.createRange(this.doc);
-      
+      var range = rangy.createRange(this.doc);    
       range.setStartAfter(node);
       range.setEndAfter(node);
       return this.setSelection(range);
@@ -271,7 +270,6 @@
       var range     = rangy.createRange(this.doc),
           node      = range.createContextualFragment(html),
           lastChild = node.lastChild;
-    
       this.insertNode(node);
       if (lastChild) {
         this.setAfter(lastChild);

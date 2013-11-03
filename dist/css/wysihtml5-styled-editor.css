@@ -201,6 +201,17 @@ textarea.wysihtml5-textarea {
   color: #333333;
   padding: 0;
   margin-bottom: 0;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 .cmd-group {
   position: relative;
@@ -232,7 +243,6 @@ textarea.wysihtml5-textarea {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff5f5f5', GradientType=0);
   margin-top: 0;
-  margin-bottom: 9px;
 }
 .cmd-toolbar > .cmd + .cmd,
 .cmd-toolbar > .cmd-group + .cmd,

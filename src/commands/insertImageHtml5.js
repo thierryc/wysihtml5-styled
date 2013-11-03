@@ -19,7 +19,7 @@
           image   = this.state(composer),
           textNode,
           parent;
-
+      
       if (image) {
         // Image already selected, set the caret before it and delete it
         composer.selection.setBefore(image);
@@ -40,8 +40,8 @@
 
       image = doc.createElement(NODE_NAME);
       
-      for (var i in value) {
-        image.setAttribute(i === "className" ? "class" : i, value[i]);
+      for (var val in value) {
+        image.setAttribute(val === "className" ? "class" : val, value[val]);
       }
       
       composer.selection.insertNode(image);

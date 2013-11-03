@@ -64,7 +64,6 @@
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff5f5f5', GradientType=0);
   margin-top: 0;
-  margin-bottom: 9px;
 }
 .cmd-toolbar > .cmd + .cmd,
 .cmd-toolbar > .cmd-group + .cmd,

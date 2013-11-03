@@ -130,8 +130,11 @@
             that.composer.selection.setBookmark(caretBookmark);
           }
           that._execCommand(command, attributes);
-          
           that.editor.fire("save:modal", { command: command, modalContainer: modalElement, commandLink: link });
+        });
+        
+        modal.on("edit", function(attributes) {
+          console.log("edit");
         });
 
         modal.on("cancel", function() {
@@ -181,7 +184,6 @@
     _execCommand: function(command, commandValue) {
       // Make sure that composer is focussed (false => don't move caret to the end)
       this.editor.focus(false);
-
       this.composer.commands.exec(command, commandValue);
       this._updateLinkStates();
     },
@@ -250,6 +252,8 @@
         that.interval = setInterval(function() { that._updateLinkStates(); }, 500);
       });
       
+      /* MOVE  to state */
+      /*
       if (this.editor.config.handleTables) {
 				editor.on("tableselect:composer", function() {
 						that.container.querySelectorAll('[data-wysihtml5-hiddentools="table"]')[0].style.display = "";
@@ -258,6 +262,7 @@
 						that.container.querySelectorAll('[data-wysihtml5-hiddentools="table"]')[0].style.display = "none";
 				});
       }
+      */
 
       editor.on("blur:composer", function() {
         clearInterval(that.interval);

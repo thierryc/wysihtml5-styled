@@ -874,15 +874,10 @@ table.wysiwyg-table th,
 table.wysiwyg-table td {
   padding: 8px;
   line-height: 20px;
-  text-align: left;
-  vertical-align: top;
   border-top: 1px solid #dddddd;
 }
 table.wysiwyg-table th {
   font-weight: bold;
-}
-table.wysiwyg-table thead th {
-  vertical-align: bottom;
 }
 table.wysiwyg-table caption + thead tr:first-child th,
 table.wysiwyg-table caption + thead tr:first-child td,

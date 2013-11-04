@@ -20,6 +20,7 @@ JS_FILES = src/wysihtml5.js \
   src/dom/copy_styles.js \
   src/dom/delegate.js \
   src/dom/get_as_dom.js \
+  src/dom/get_attribute.js \
   src/dom/get_parent_element.js \
   src/dom/get_style.js \
   src/dom/has_element_with_tag_name.js \
@@ -48,6 +49,7 @@ JS_FILES = src/wysihtml5.js \
   src/selection/selection.js \
   src/selection/html_applier.js \
   src/commands.js \
+  src/commands/addClass.js \
   src/commands/bold.js \
   src/commands/createLink.js \
   src/commands/createLinkHtml5.js \

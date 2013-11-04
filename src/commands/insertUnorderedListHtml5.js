@@ -37,7 +37,7 @@ wysihtml5.commands.insertUnorderedList = {
       });
     } else {
       // Create list
-      composer.commands.exec("formatBlock", "div", tempClassName);
+      composer.commands.exec("formatBlock", "div", tempClassName, /wysiwyg-text-align-[0-9a-z]+/g);
       tempElement = doc.querySelector("." + tempClassName);
       isEmpty = tempElement.innerHTML === "" || tempElement.innerHTML === wysihtml5.INVISIBLE_SPACE || tempElement.innerHTML === "<br>";
       composer.selection.executeAndRestore(function() {

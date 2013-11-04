@@ -75,7 +75,10 @@ var wysihtml5ParserRules = {
         // editor class
         'img-rounded': 1,
         'img-polaroid': 1,
-        'img-circle': 1
+        'img-circle': 1,
+        'ap-class1': 1,
+        'ap-class2': 1,
+        'ap-class3': 1
     },
     /**
      * Tag list

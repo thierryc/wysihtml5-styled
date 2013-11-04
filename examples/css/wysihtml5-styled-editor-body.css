@@ -970,3 +970,12 @@ table.wysiwyg-table th.wysiwyg-tmp-selected-cell,
 table.wysiwyg-table td.wysiwyg-tmp-selected-cell {
   background-color: #eeeeee;
 }
+.ap-class1 {
+  color: red;
+}
+.ap-class2 {
+  color: blue;
+}
+.ap-class3 {
+  color: yellow;
+}

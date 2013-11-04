@@ -74,7 +74,9 @@
     // Whether to use div instead of secure iframe
     contentEditableMode: false,
     // enable predictive heading 
-    predictive:                 true
+    predictive:                 true,
+    // customClassRegExp
+    customClassRegExp: 					/ap-[-0-9a-z]+/g
   };
   
   wysihtml5.Editor = wysihtml5.lang.Dispatcher.extend(

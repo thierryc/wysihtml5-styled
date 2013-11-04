@@ -4,7 +4,8 @@
       // when the caret is within a H1 and the H4 is invoked, the H1 should turn into H4
       // instead of creating a H4 within a H1 which would result in semantically invalid html
       BLOCK_ELEMENTS_GROUP    = ["H1", "H2", "H3", "H4", "H5", "H6", "P", "PRE", "BLOCKQUOTE", "DIV"];
-      ITEM_ELEMENTS_GROUP    = ["OL", "UL", "TABLE", "DL", "LI", "TD", "TH", "DT", "DD"];
+      LIST_ELEMENTS_GROUP    = ["OL", "UL", "TABLE", "DL"];
+      ITEM_ELEMENTS_GROUP    = ["LI", "TD", "TH", "DT", "DD"];
   
   /**
    * Remove similiar classes (based on classRegExp)
@@ -201,7 +202,17 @@
           nodeName: ITEM_ELEMENTS_GROUP
         });
         if (itemElement) {
-        	return;
+        	if (className) {
+						_addClass(itemElement, className, classRegExp);
+					}
+          return;
+        }
+        
+        listElement = dom.getParentElement(selectedNode, {
+          nodeName: LIST_ELEMENTS_GROUP
+        });
+        if (listElement) {
+          return;
         }
         
         blockElement = dom.getParentElement(selectedNode, {
@@ -223,6 +234,7 @@
           });
           return;
         }
+        
       }
 
       // Falling back to native command for Opera up to 12 mostly
@@ -237,6 +249,7 @@
     state: function(composer, command, nodeName, className, classRegExp) {
       nodeName = typeof(nodeName) === "string" ? nodeName.toUpperCase() : nodeName;
       var selectedNode = composer.selection.getSelectedNode();
+      
       return dom.getParentElement(selectedNode, {
         nodeName:     nodeName,
         className:    className,

@@ -275,6 +275,11 @@
   border: 1px solid transparent;
   *border: 0;
   color: #555555;
+  opacity: 1;
+  -webkit-transition: opacity 0.1s linear;
+  -moz-transition: opacity 0.1s linear;
+  -o-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
 }
 .cmd:hover,
 .cmd:focus {
@@ -363,6 +368,9 @@
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+}
+.wysihtml5-disabled .cmd {
+  opacity: 0.3;
 }
 .cmd-large {
   padding: 11px 19px;

@@ -320,9 +320,6 @@
             state = state.length === 1 ? state[0] : true;
           }
           dom.removeClass(command.link, CLASS_NAME_COMMAND_DISABLED);
-          if (command.group) {
-            dom.removeClass(command.group, CLASS_NAME_COMMAND_DISABLED);
-          }
         }
 
         if (command.state === state) {
@@ -330,6 +327,7 @@
         }
 
         command.state = state;
+        
         if (state) {
           dom.addClass(command.link, commandActiveClass);
           
@@ -347,6 +345,7 @@
           dom.removeClass(command.link, commandActiveClass);
           if (command.group) {
             dom.removeClass(command.group, groupActiveClass);
+            //dom.addClass(command.group, CLASS_NAME_COMMANDS_DISABLED);
           } 
           if (command.dialog) {
             command.dialog.hide();

@@ -29,7 +29,7 @@ wysihtml5.quirks.tableCellsSelection = (function() {
       return select;
   }
   
-  function handleSelectionMousedown (target) {
+  function handleSelectionMousedown(target) {
     select.start = target;
     select.end = target;
     select.table = dom.getParentElement(select.start, { nodeName: ["TABLE"] });

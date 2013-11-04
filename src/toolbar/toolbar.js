@@ -90,7 +90,6 @@
 
         dialog.on("show", function() {
           caretBookmark = that.composer.selection.getBookmark();
-
           that.editor.fire("show:dialog", { command: command, dialogContainer: dialogElement, commandLink: link });
         });
 
@@ -99,7 +98,6 @@
             that.composer.selection.setBookmark(caretBookmark);
           }
           that._execCommand(command, attributes);
-          
           that.editor.fire("save:dialog", { command: command, dialogContainer: dialogElement, commandLink: link });
         });
 
@@ -133,9 +131,7 @@
           that.editor.fire("save:modal", { command: command, modalContainer: modalElement, commandLink: link });
         });
         
-        modal.on("edit", function(attributes) {
-          console.log("edit");
-        });
+        //modal.on("edit", function(attributes) {});
 
         modal.on("cancel", function() {
           that.editor.focus(false);

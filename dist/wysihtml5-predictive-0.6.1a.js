@@ -6995,7 +6995,7 @@ wysihtml5.quirks.ensureProperClearing = (function() {
       return select;
   }
   
-  function handleSelectionMousedown (target) {
+  function handleSelectionMousedown(target) {
     select.start = target;
     select.end = target;
     select.table = dom.getParentElement(select.start, { nodeName: ["TABLE"] });
@@ -8393,7 +8393,7 @@ wysihtml5.commands.bold = {
       // Following elements are grouped
       // when the caret is within a H1 and the H4 is invoked, the H1 should turn into H4
       // instead of creating a H4 within a H1 which would result in semantically invalid html
-      BLOCK_ELEMENTS_GROUP    = ["H1", "H2", "H3", "H4", "H5", "H6", "P", "PRE", "BLOCKQUOTE", "DIV"];
+      BLOCK_ELEMENTS_GROUP    = ["H1", "H2", "H3", "H4", "H5", "H6", "P", "PRE", "BLOCKQUOTE", "DIV", 'TD', 'TH'];
   
   /**
    * Remove similiar classes (based on classRegExp)
@@ -8847,7 +8847,7 @@ wysihtml5.commands.bold = {
           image   = this.state(composer),
           textNode,
           parent;
-
+      
       if (image) {
         // Image already selected, set the caret before it and delete it
         composer.selection.setBefore(image);
@@ -8868,8 +8868,8 @@ wysihtml5.commands.bold = {
 
       image = doc.createElement(NODE_NAME);
       
-      for (var i in value) {
-        image.setAttribute(i === "className" ? "class" : i, value[i]);
+      for (var val in value) {
+        image.setAttribute(val === "className" ? "class" : val, value[val]);
       }
       
       composer.selection.insertNode(image);
@@ -9154,20 +9154,18 @@ wysihtml5.commands.redo = {
   exec: function(composer, command, value) {
       var col, row, html;
       if (value && value.cols && value.rows && parseInt(value.cols, 10) > 0 && parseInt(value.rows, 10) > 0) {
-          html = "<table><tbody>";
-          for (row = 0; row < value.rows; row ++) {
-              html += '<tr>';
-              for (col = 0; col < value.cols; col ++) {
-                  html += "<td>&nbsp;</td>";
-              }
-              html += '</tr>';
-          }
-          html += "</tbody></table>";
-          composer.commands.exec("insertHTML", html);
-          //composer.selection.insertHTML(html);
-      } 
-      
-      
+        html = '<table class="wysiwyg-table"><tbody>';
+        for (row = 0; row < value.rows; row ++) {
+            html += '<tr>';
+            for (col = 0; col < value.cols; col ++) {
+                html += "<td>&nbsp;</td>";
+            }
+            html += '</tr>';
+        }
+        html += "</tbody></table>";
+        composer.commands.exec("insertHTML", html);
+        //composer.selection.insertHTML(html);
+      }
   },
 
   state: function(composer, command) {
@@ -10944,17 +10942,16 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
       }
       
       var that = this;
-      
       var callbackWrapper = function(event) {
-            var attributes = that._serialize();
-            if (attributes == that.elementToChange) {
-              that.fire("edit", attributes);
-            } else {
-              that.fire("save", attributes);
-            }
-            that.hide();
-            event.preventDefault();
-            event.stopPropagation();
+          var attributes = that._serialize();
+          if (attributes == that.elementToChange) {
+            that.fire("edit", attributes);
+          } else {
+            that.fire("save", attributes);
+          }
+          that.hide();
+          event.preventDefault();
+          event.stopPropagation();
       };
           
       dom.observe(that.link, "click", function() {
@@ -11051,6 +11048,8 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
         
         fieldName = field.getAttribute(ATTRIBUTE_FIELDS);
         newValue  = this.elementToChange ? (this.elementToChange[fieldName] || "") : field.defaultValue;
+        
+        //console.log(newValue);
         field.value = newValue;
       }
     },
@@ -11074,25 +11073,9 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
         this.interval = setInterval(function() { that._interpolate(true); }, 500);
       }
       dom.addClass(this.link, CLASS_NAME_OPENED);
-      
-      if($ && $('#'+this.container.id)) {
-        thisModal = $('#'+this.container.id);
-        /*
-        thisModal.on('show', function(){
-            
-        });
-        */
-        thisModal.on('shown', function(){
-            firstField  = that.container.querySelector(SELECTOR_FORM_ELEMENTS);
-            //that._observe();
-            /* TODO remove for IE
-            if (firstField && !elementToChange) {
-                try {
-                  firstField.focus();
-                } catch(e) {}
-            }
-            */
-        });
+      if($ && $(this.container)) {
+        thisModal = $(this.container);
+        // on showed event focus firstField.
         thisModal.modal('show');
       } else {
         if (window.console) {
@@ -11111,8 +11094,8 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
       dom.removeClass(this.link, CLASS_NAME_OPENED);
       //this.container.style.display = "none";
       
-      if($ && $('#'+this.container.id)){
-        $('#'+this.container.id).modal('hide');
+      if($ && $(this.container)){
+        $(this.container).modal('hide');
       } else {
         if (window.console) { 
         	console.log('add jquery dependance');
@@ -11303,7 +11286,6 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
 
         dialog.on("show", function() {
           caretBookmark = that.composer.selection.getBookmark();
-
           that.editor.fire("show:dialog", { command: command, dialogContainer: dialogElement, commandLink: link });
         });
 
@@ -11312,7 +11294,6 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
             that.composer.selection.setBookmark(caretBookmark);
           }
           that._execCommand(command, attributes);
-          
           that.editor.fire("save:dialog", { command: command, dialogContainer: dialogElement, commandLink: link });
         });
 
@@ -11343,9 +11324,10 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
             that.composer.selection.setBookmark(caretBookmark);
           }
           that._execCommand(command, attributes);
-          
           that.editor.fire("save:modal", { command: command, modalContainer: modalElement, commandLink: link });
         });
+        
+        //modal.on("edit", function(attributes) {});
 
         modal.on("cancel", function() {
           that.editor.focus(false);
@@ -11394,7 +11376,6 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
     _execCommand: function(command, commandValue) {
       // Make sure that composer is focussed (false => don't move caret to the end)
       this.editor.focus(false);
-
       this.composer.commands.exec(command, commandValue);
       this._updateLinkStates();
     },
@@ -11463,6 +11444,8 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
         that.interval = setInterval(function() { that._updateLinkStates(); }, 500);
       });
       
+      /* MOVE  to state */
+      /*
       if (this.editor.config.handleTables) {
 				editor.on("tableselect:composer", function() {
 						that.container.querySelectorAll('[data-wysihtml5-hiddentools="table"]')[0].style.display = "";
@@ -11471,6 +11454,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
 						that.container.querySelectorAll('[data-wysihtml5-hiddentools="table"]')[0].style.display = "none";
 				});
       }
+      */
 
       editor.on("blur:composer", function() {
         clearInterval(that.interval);

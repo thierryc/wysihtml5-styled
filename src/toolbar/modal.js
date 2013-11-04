@@ -49,17 +49,16 @@
       }
       
       var that = this;
-      
       var callbackWrapper = function(event) {
-            var attributes = that._serialize();
-            if (attributes == that.elementToChange) {
-              that.fire("edit", attributes);
-            } else {
-              that.fire("save", attributes);
-            }
-            that.hide();
-            event.preventDefault();
-            event.stopPropagation();
+          var attributes = that._serialize();
+          if (attributes == that.elementToChange) {
+            that.fire("edit", attributes);
+          } else {
+            that.fire("save", attributes);
+          }
+          that.hide();
+          event.preventDefault();
+          event.stopPropagation();
       };
           
       dom.observe(that.link, "click", function() {
@@ -156,6 +155,8 @@
         
         fieldName = field.getAttribute(ATTRIBUTE_FIELDS);
         newValue  = this.elementToChange ? (this.elementToChange[fieldName] || "") : field.defaultValue;
+        
+        //console.log(newValue);
         field.value = newValue;
       }
     },
@@ -179,25 +180,9 @@
         this.interval = setInterval(function() { that._interpolate(true); }, 500);
       }
       dom.addClass(this.link, CLASS_NAME_OPENED);
-      
-      if($ && $('#'+this.container.id)) {
-        thisModal = $('#'+this.container.id);
-        /*
-        thisModal.on('show', function(){
-            
-        });
-        */
-        thisModal.on('shown', function(){
-            firstField  = that.container.querySelector(SELECTOR_FORM_ELEMENTS);
-            //that._observe();
-            /* TODO remove for IE
-            if (firstField && !elementToChange) {
-                try {
-                  firstField.focus();
-                } catch(e) {}
-            }
-            */
-        });
+      if($ && $(this.container)) {
+        thisModal = $(this.container);
+        // on showed event focus firstField.
         thisModal.modal('show');
       } else {
         if (window.console) {
@@ -216,8 +201,8 @@
       dom.removeClass(this.link, CLASS_NAME_OPENED);
       //this.container.style.display = "none";
       
-      if($ && $('#'+this.container.id)){
-        $('#'+this.container.id).modal('hide');
+      if($ && $(this.container)){
+        $(this.container).modal('hide');
       } else {
         if (window.console) { 
         	console.log('add jquery dependance');

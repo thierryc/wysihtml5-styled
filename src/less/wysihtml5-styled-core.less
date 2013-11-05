@@ -156,17 +156,50 @@
     opacity: 0.5;
 }
 
-
-
 textarea.wysihtml5-textarea {
     line-height: auto;
     font-size: @baseFontSize;
     color: @textColor;
     width: 100%;
-  height: 400px;
+    height: 400px;
     /* font-family: monospace; */
 }
 
+// Modal for editor
+.modal-editor{
+  .modal-header{
+    background-color: transparent;
+  }
+  
+  select,
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"],
+  .uneditable-input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 38px;
+    .box-shadow(none);
+  }
+  .modal-footer{
+    background-color: transparent;
+  }
+}
+//@end Modal for editor
+
+// Dialog inline of the original wysihtml5
 .dialog-wysihtml5{
   width: 99%;
   background-color: @cmdBackgroundHighlight;
@@ -194,11 +227,12 @@ textarea.wysihtml5-textarea {
     display: inline-block;
   }
 }
+// @end Dialog inline of the original wysihtml5
 
 .help{
   margin-left: 5px;
 }
-
+// Help Modal for shortcut
 #helpModal{
   
   .dl-horizontal dt{
@@ -210,6 +244,7 @@ textarea.wysihtml5-textarea {
     margin-left: 145px;
   }
 }
+// @end Help Modal for shortcut
 
 :-webkit-full-screen {
 	background-color: #eeeeee;

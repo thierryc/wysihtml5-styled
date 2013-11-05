@@ -204,24 +204,24 @@
   margin-top: -1px;
 }
 .cmd-group-vertical > .cmd:first-child {
-  -webkit-border-radius: 4px 4px 0 0;
-  -moz-border-radius: 4px 4px 0 0;
-  border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 2px 2px 0 0;
+  -moz-border-radius: 2px 2px 0 0;
+  border-radius: 2px 2px 0 0;
 }
 .cmd-group-vertical > .cmd:last-child {
-  -webkit-border-radius: 0 0 4px 4px;
-  -moz-border-radius: 0 0 4px 4px;
-  border-radius: 0 0 4px 4px;
+  -webkit-border-radius: 0 0 2px 2px;
+  -moz-border-radius: 0 0 2px 2px;
+  border-radius: 0 0 2px 2px;
 }
 .cmd-group-vertical > .cmd-large:first-child {
-  -webkit-border-radius: 6px 6px 0 0;
-  -moz-border-radius: 6px 6px 0 0;
-  border-radius: 6px 6px 0 0;
+  -webkit-border-radius: 2px 2px 0 0;
+  -moz-border-radius: 2px 2px 0 0;
+  border-radius: 2px 2px 0 0;
 }
 .cmd-group-vertical > .cmd-large:last-child {
-  -webkit-border-radius: 0 0 6px 6px;
-  -moz-border-radius: 0 0 6px 6px;
-  border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0 0 2px 2px;
+  -moz-border-radius: 0 0 2px 2px;
+  border-radius: 0 0 2px 2px;
 }
 .cmd {
   display: inline-block;
@@ -237,14 +237,14 @@
   vertical-align: middle;
   cursor: pointer;
   border: 1px solid transparent;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   background-color: #e6e6e6;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   background-image: none;
-  color: #ffffff;
+  color: #555555;
   *margin-left: .3em;
 }
 .cmd:hover,
@@ -253,17 +253,17 @@
 .cmd[disabled] {
   background-color: #e6e6e6;
   border: 1px solid #bfbfbf;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd:active,
 .cmd.active {
   background-color: #d9d9d9;
   border: 1px solid #bfbfbf;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -274,17 +274,17 @@
 .cmd[disabled] {
   background-color: #e6e6e6;
   border: 1px solid #bfbfbf;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd:active,
 .cmd.active {
   background-color: #d9d9d9;
   border: 1px solid #bfbfbf;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -295,9 +295,9 @@
 .cmd-large {
   padding: 11px 19px;
   font-size: 17.5px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-large [class^="icon-"],
 .cmd-large [class*=" icon-"] {
@@ -306,9 +306,9 @@
 .cmd-small {
   padding: 2px 10px;
   font-size: 11.9px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-small [class^="icon-"],
 .cmd-small [class*=" icon-"] {
@@ -321,9 +321,9 @@
 .cmd-mini {
   padding: 0 6px;
   font-size: 10.5px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-block {
   display: block;
@@ -363,17 +363,17 @@ input[type="button"].cmd-block {
 .cmd-primary[disabled] {
   background-color: #049cdb;
   border: 1px solid #036690;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-primary:active,
 .cmd-primary.active {
   background-color: #048ac2;
   border: 1px solid #036690;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -384,17 +384,17 @@ input[type="button"].cmd-block {
 .cmd-primary[disabled] {
   background-color: #049cdb;
   border: 1px solid #036690;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-primary:active,
 .cmd-primary.active {
   background-color: #048ac2;
   border: 1px solid #036690;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -412,17 +412,17 @@ input[type="button"].cmd-block {
 .cmd-warning[disabled] {
   background-color: #fbb450;
   border: 1px solid #c67605;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-warning:active,
 .cmd-warning.active {
   background-color: #f89406;
   border: 1px solid #c67605;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -433,17 +433,17 @@ input[type="button"].cmd-block {
 .cmd-warning[disabled] {
   background-color: #fbb450;
   border: 1px solid #c67605;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-warning:active,
 .cmd-warning.active {
   background-color: #f89406;
   border: 1px solid #c67605;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -461,17 +461,17 @@ input[type="button"].cmd-block {
 .cmd-danger[disabled] {
   background-color: #ee5f5b;
   border: 1px solid #942a25;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-danger:active,
 .cmd-danger.active {
   background-color: #bd362f;
   border: 1px solid #942a25;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -482,17 +482,17 @@ input[type="button"].cmd-block {
 .cmd-danger[disabled] {
   background-color: #ee5f5b;
   border: 1px solid #942a25;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-danger:active,
 .cmd-danger.active {
   background-color: #bd362f;
   border: 1px solid #942a25;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -510,17 +510,17 @@ input[type="button"].cmd-block {
 .cmd-success[disabled] {
   background-color: #62c462;
   border: 1px solid #408140;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-success:active,
 .cmd-success.active {
   background-color: #51a351;
   border: 1px solid #408140;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -531,17 +531,17 @@ input[type="button"].cmd-block {
 .cmd-success[disabled] {
   background-color: #62c462;
   border: 1px solid #408140;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-success:active,
 .cmd-success.active {
   background-color: #51a351;
   border: 1px solid #408140;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -559,17 +559,17 @@ input[type="button"].cmd-block {
 .cmd-info[disabled] {
   background-color: #5bc0de;
   border: 1px solid #24748c;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-info:active,
 .cmd-info.active {
   background-color: #2f96b4;
   border: 1px solid #24748c;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -580,17 +580,17 @@ input[type="button"].cmd-block {
 .cmd-info[disabled] {
   background-color: #5bc0de;
   border: 1px solid #24748c;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-info:active,
 .cmd-info.active {
   background-color: #2f96b4;
   border: 1px solid #24748c;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -608,17 +608,17 @@ input[type="button"].cmd-block {
 .cmd-inverse[disabled] {
   background-color: #444444;
   border: 1px solid #080808;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-inverse:active,
 .cmd-inverse.active {
   background-color: #222222;
   border: 1px solid #080808;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -629,17 +629,17 @@ input[type="button"].cmd-block {
 .cmd-inverse[disabled] {
   background-color: #444444;
   border: 1px solid #080808;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-inverse:active,
 .cmd-inverse.active {
   background-color: #222222;
   border: 1px solid #080808;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -707,9 +707,9 @@ input[type="submit"].cmd.cmd-mini {
 .cmd-toolbar .dropdown-toggle:active,
 .cmd-toolbar .open .dropdown-toggle {
   outline: 0;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-toolbar .caret {
   display: inline-block;
@@ -896,9 +896,9 @@ input[type="submit"].cmd.cmd-mini {
 .cmd-toolbar .typeahead {
   z-index: 1051;
   margin-top: 2px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-toolbar .justify-left .dropdown-toggle .ap-small-icon-align-left {
   background-position: -163px -43px;
@@ -934,9 +934,9 @@ input[type="submit"].cmd.cmd-mini {
 .cmd-toolbar .justify-full .dropdown-toggle {
   border: 1px solid #cccccc;
   *border: 0;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   outline: 0;
 }
 .switchon {
@@ -957,9 +957,9 @@ input[type="submit"].cmd.cmd-mini {
   border: 1px solid #d9d9d9;
   *border: 0;
   border-bottom-color: #bfbfbf;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   *margin-left: .3em;
   -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
   -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
@@ -988,9 +988,9 @@ input[type="submit"].cmd.cmd-mini {
   top: 0;
   left: 50%;
   height: 100%;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   *display: inline;
   /* IE7 inline-block hack */
 
@@ -1050,17 +1050,17 @@ input[type="submit"].cmd.cmd-mini {
 .cmd-toolbar.inverse .cmd[disabled] {
   background-color: #444444;
   border: 1px solid #1e1e1e;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-toolbar.inverse .cmd:active,
 .cmd-toolbar.inverse .cmd.active {
   background-color: #373737;
   border: 1px solid #1e1e1e;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -1071,17 +1071,17 @@ input[type="submit"].cmd.cmd-mini {
 .cmd-toolbar.inverse .cmd[disabled] {
   background-color: #444444;
   border: 1px solid #1e1e1e;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .cmd-toolbar.inverse .cmd:active,
 .cmd-toolbar.inverse .cmd.active {
   background-color: #373737;
   border: 1px solid #1e1e1e;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -1150,13 +1150,43 @@ textarea.wysihtml5-textarea {
   /* font-family: monospace; */
 
 }
+.modal-editor .modal-header {
+  background-color: transparent;
+}
+.modal-editor select,
+.modal-editor textarea,
+.modal-editor input[type="text"],
+.modal-editor input[type="password"],
+.modal-editor input[type="datetime"],
+.modal-editor input[type="datetime-local"],
+.modal-editor input[type="date"],
+.modal-editor input[type="month"],
+.modal-editor input[type="time"],
+.modal-editor input[type="week"],
+.modal-editor input[type="number"],
+.modal-editor input[type="email"],
+.modal-editor input[type="url"],
+.modal-editor input[type="search"],
+.modal-editor input[type="tel"],
+.modal-editor input[type="color"],
+.modal-editor .uneditable-input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 38px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.modal-editor .modal-footer {
+  background-color: transparent;
+}
 .dialog-wysihtml5 {
   width: 99%;
   background-color: #d9d9d9;
   color: #333333;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   padding: 4px 12px;
   margin-top: 9px;
 }

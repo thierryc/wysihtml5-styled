@@ -707,7 +707,7 @@ input[type="submit"].cmd.cmd-mini {
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 160px;
+  min-width: 140px;
   padding: 5px 0;
   margin: 2px 0 0;
   list-style: none;
@@ -1634,19 +1634,19 @@ textarea.wysihtml5-textarea {
   background-position: -163px -63px;
 }
 .ap-small-icon-warning-sign {
-  background-position: -183px -63px;
+  background-position: -263px -63px;
 }
 .ap-small-icon-info-circle {
-  background-position: -203px -63px;
+  background-position: -183px -63px;
 }
 .ap-small-icon-question-circle {
-  background-position: -223px -63px;
+  background-position: -203px -63px;
 }
 .ap-small-icon-add-circle {
-  background-position: -243px -63px;
+  background-position: -223px -63px;
 }
 .ap-small-icon-subtract-circle {
-  background-position: -263px -63px;
+  background-position: -243px -63px;
 }
 .ap-small-icon-color-wheel {
   background-position: -283px -63px;
@@ -1746,12 +1746,6 @@ textarea.wysihtml5-textarea {
 }
 .ap-small-icon-dislike {
   background-position: -363px -103px;
-}
-.ap-small-icon-map-marker-small {
-  background-position: -383px -103px;
-}
-.ap-small-icon-broom {
-  background-position: -403px -103px;
 }
 .ap-small-icon-video {
   background-position: -3px -143px;

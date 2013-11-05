@@ -11,7 +11,6 @@
 	<script src="js/jquery.js"></script>
 	<script src="../lib/bootstrap/docs/assets/js/bootstrap.js"></script>
 	
-	
 	<link rel="stylesheet" href="css/bootstrap-wysihtml5-styled.css">
 	
   <script src="../parser_rules/advanced.js"></script>
@@ -160,8 +159,8 @@
 							
 							<div class="cmd-group">
 									<a class="cmd dropdown-toggle" data-toggle="dropdown" href="#">
-									<span class="ap-small-icon-font"></span>
-									<span class="caret"></span>
+										<span class="ap-small-icon-font"></span>
+										<span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu">
 											<li><a data-wysihtml5-command="addClassInline" data-wysihtml5-command-value="ap-class1">ClassName 1</a></li>
@@ -215,27 +214,50 @@
 								<span class="caret"></span>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a data-wysihtml5-command="createTable" data-wysihtml5-command-class="cmd-info"><span class="ap-small-icon-table"></span> Create table</a></li>
+									<li>
+										<a data-wysihtml5-command="createTable" data-wysihtml5-command-class="cmd-info"><span class="ap-small-icon-table"></span> Create table</a></li>
 									<li class="divider"></li>
-									<li><a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="above">Insert row above</a></li>
-									<li><a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="below">Insert row below</a></li>
+									<li>
+										<a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="above"><span class="ap-small-icon-arrow-up"></span>Insert row above</a></li>
+									<li>
+										<a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="below"><span class="ap-small-icon-arrow-down"></span>Insert row below</a></li>
 									<!-- li class="divider"></li>
 									<li><a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="aboveHeader">Insert header row above</a></li>
 									<li><a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="belowHeader">Insert header row below</a></li -->
 									<li class="divider"></li>
-									<li><a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="before">Insert column left</a></li>
-									<li><a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="after">Insert column right</a></li>
+									<li>
+										<a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="before"><span class="ap-small-icon-arrow-left"></span>Insert column left</a></li>
+									<li>
+										<a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="after"><span class="ap-small-icon-arrow-right"></span>Insert column right</a></li>
 									<li class="divider"></li>
-									<li><a data-wysihtml5-command="deleteTableCells" data-wysihtml5-command-value="delete">Delete table</a></li>
-									<li><a data-wysihtml5-command="deleteTableCells" data-wysihtml5-command-value="row">Delete row</a></li>
-									<li><a data-wysihtml5-command="deleteTableCells" data-wysihtml5-command-value="column">Delete column</a></li>
+									<li>
+										<a data-wysihtml5-command="deleteTableCells" data-wysihtml5-command-value="delete"><span class="ap-small-icon-subtract-circle"></span>Delete table</a></li>
+									<li>
+										<a data-wysihtml5-command="deleteTableCells" data-wysihtml5-command-value="row"><span class="ap-small-icon-subtract-circle"></span>Delete row</a></li>
+									<li>
+										<a data-wysihtml5-command="deleteTableCells" data-wysihtml5-command-value="column"><span class="ap-small-icon-subtract-circle"></span>Delete column</a></li>
 									<li class="divider"></li>
-									<li><a data-wysihtml5-command="editTable" data-wysihtml5-command-value="">Table Style Default</a></li>
-									<li><a data-wysihtml5-command="editTable" data-wysihtml5-command-value="wysiwyg-table-bordered">Table Style Bordered</a></li>
-									<li><a data-wysihtml5-command="editTable" data-wysihtml5-command-value="wysiwyg-table-striped">Table Style Striped</a></li>
-									<li><a data-wysihtml5-command="editTable" data-wysihtml5-command-value="wysiwyg-table-bordered wysiwyg-table-striped">Table Style Bordered Striped</a></li>
+									<li class="dropdown-submenu">
+								    <a tabindex="-1" href="#"><span class="ap-small-icon-pen"></span>Table Style</a>
+								    <ul class="dropdown-menu">
+								      <li>
+												<a data-wysihtml5-command="editTable" data-wysihtml5-command-value="">Default</a>
+											</li>
+											<li>
+												<a data-wysihtml5-command="editTable" data-wysihtml5-command-value="wysiwyg-table-bordered">Bordered</a>
+											</li>
+											<li>
+												<a data-wysihtml5-command="editTable" data-wysihtml5-command-value="wysiwyg-table-striped">Striped</a>
+											</li>
+											<li>
+												<a data-wysihtml5-command="editTable" data-wysihtml5-command-value="wysiwyg-table-bordered wysiwyg-table-striped">Bordered Striped</a>
+											</li>
+								    </ul>
+								  </li>
 									<li class="divider"></li>
-									<li><a data-wysihtml5-command="mergeTableCells" data-wysihtml5-command-value="properties">Merge Cells properties</a></li>
+									<li>
+										<a data-wysihtml5-command="mergeTableCells" data-wysihtml5-command-value="properties">Merge Cells</a>
+									</li>
 								</ul>
 							</div>
 							

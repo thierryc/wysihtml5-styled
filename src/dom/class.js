@@ -1,4 +1,5 @@
 (function(wysihtml5) {
+	"use strict";
   var api = wysihtml5.dom;
   
   api.addClass = function(element, className) {

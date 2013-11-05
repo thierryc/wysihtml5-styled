@@ -1,4 +1,5 @@
 wysihtml5.commands.deleteTableCells = {
+	"use strict";
   exec: function(composer, command, value) {
       if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
           var tableSelect = wysihtml5.dom.table.orderSelectionEnds(composer.tableSelection.start, composer.tableSelection.end),

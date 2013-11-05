@@ -25,6 +25,7 @@
  *    </ul>
  */
 wysihtml5.dom.convertToList = (function() {
+	"use strict";
   function _createListItem(doc, list) {
     var listItem = doc.createElement("li");
     list.appendChild(listItem);

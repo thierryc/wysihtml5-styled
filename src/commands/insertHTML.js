@@ -1,4 +1,5 @@
 wysihtml5.commands.insertHTML = {
+	"use strict";
   exec: function(composer, command, html) {
     // insert is not replace... ;-)
     if (!composer.selection.getSelection().isCollapsed) return;

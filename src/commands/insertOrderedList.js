@@ -1,4 +1,5 @@
 wysihtml5.commands.insertOrderedList = {
+	"use strict";
   exec: function(composer, command) {
     var doc           = composer.doc,
         selectedNode  = composer.selection.getSelectedNode(),

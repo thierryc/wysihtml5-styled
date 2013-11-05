@@ -30,6 +30,9 @@
  *    change_view
  */
 (function(wysihtml5) {
+  
+  "use strict";
+  
   var undef;
   
   var defaultConfig = {

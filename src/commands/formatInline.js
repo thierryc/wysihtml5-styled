@@ -32,6 +32,7 @@
  *      <span>ab|c</span> de|<b>fgh</b>
  */
 (function(wysihtml5) {
+	"use strict";
   var // Treat <b> as <strong> and vice versa
       ALIAS_MAPPING = {
         "strong": "b",

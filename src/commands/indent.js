@@ -1,4 +1,5 @@
 wysihtml5.commands.indent = {
+	"use strict";
   exec: function(composer, command) {
     var doc           = composer.doc,
         selectedNode  = composer.selection.getSelectedNode(),

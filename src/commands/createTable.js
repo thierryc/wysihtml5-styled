@@ -1,4 +1,5 @@
 (function(wysihtml5) {
+	"use strict";
   var dom = wysihtml5.dom;
   
   /**

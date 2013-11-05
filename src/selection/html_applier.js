@@ -7,6 +7,9 @@
  *    - to detect and replace similar css classes via reg exp
  */
 (function(wysihtml5, rangy) {
+	
+	"use strict";
+	
   var defaultTagName = "span";
   
   var REG_EXP_WHITE_SPACE = /\s+/g;

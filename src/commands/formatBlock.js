@@ -1,4 +1,5 @@
 (function(wysihtml5) {
+	"use strict";
   var dom                     = wysihtml5.dom,
       // Following elements are grouped
       // when the caret is within a H1 and the H4 is invoked, the H1 should turn into H4

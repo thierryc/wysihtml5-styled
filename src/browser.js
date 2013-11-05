@@ -2,6 +2,7 @@
  * Detect browser support for specific features
  */
 wysihtml5.browser = (function() {
+	"use strict";
   var userAgent   = navigator.userAgent,
       testElement = document.createElement("div"),
       // Browser sniffing is unfortunately needed since some behaviors are impossible to feature detect

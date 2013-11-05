@@ -9,6 +9,7 @@
  *    <script>wysihtml5.dom.autoLink(document.getElementById("text-container"));</script>
  */
 (function(wysihtml5) {
+	"use strict";
   var /**
        * Don't auto-link urls that are contained in the following elements:
        */

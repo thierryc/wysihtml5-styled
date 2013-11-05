@@ -1,4 +1,5 @@
 (function(wysihtml5) {
+	"use strict";
   var RULE = "<hr>";
     
   wysihtml5.commands.insertRule = {

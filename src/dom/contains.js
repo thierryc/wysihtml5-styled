@@ -1,4 +1,5 @@
 wysihtml5.dom.contains = (function() {
+	"use strict";
   var documentElement = document.documentElement;
   if (documentElement.contains) {
     return function(container, element) {

@@ -1,4 +1,5 @@
 (function(wysihtml5) {
+	"use strict";
   var CLASS_NAME  = "wysiwyg-text-align-right",
       REG_EXP     = /wysiwyg-text-align-[0-9a-z]+/g;
   

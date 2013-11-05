@@ -5,6 +5,9 @@
  *    var selection = new wysihtml5.Selection(editor);
  */
 (function(wysihtml5) {
+	
+	"use strict";
+	
   var dom = wysihtml5.dom;
   
   function _getCumulativeOffsetTop(element) {

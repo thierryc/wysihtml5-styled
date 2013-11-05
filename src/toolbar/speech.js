@@ -12,6 +12,9 @@
  * http://mikepultz.com/2011/03/accessing-google-speech-api-chrome-11/
  */
 (function(wysihtml5) {
+
+	"use strict";
+
   var dom = wysihtml5.dom;
   
   var linkStyles = {

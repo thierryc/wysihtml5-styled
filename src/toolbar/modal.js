@@ -29,6 +29,8 @@
  *    </script>
  */
 (function(wysihtml5) {
+	"use strict";
+	
   var dom                     = wysihtml5.dom,
       CLASS_NAME_OPENED       = "wysihtml5-command-modal-opened",
       SELECTOR_FORM_ELEMENTS  = "input, select, textarea",

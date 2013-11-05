@@ -1,4 +1,5 @@
 (function(wysihtml5) {
+	"use strict";
   var NODE_NAME = "IMG";
   
   wysihtml5.commands.insertImageHtml5 = {

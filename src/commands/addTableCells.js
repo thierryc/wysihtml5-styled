@@ -1,4 +1,6 @@
 wysihtml5.commands.addTableCells = {
+	"use strict";
+	
   exec: function(composer, command, value) {
       if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
           // switches start and end if start is bigger than end (reverse selection)

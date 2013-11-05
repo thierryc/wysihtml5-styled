@@ -1,4 +1,5 @@
 wysihtml5.commands.bold = {
+	"use strict";
   exec: function(composer, command) {
     return wysihtml5.commands.formatInline.exec(composer, command, "b");
   },

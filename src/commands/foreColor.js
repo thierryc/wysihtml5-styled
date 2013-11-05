@@ -4,6 +4,7 @@
  * Instead we set a css class
  */
 (function(wysihtml5) {
+	"use strict";
   var REG_EXP = /wysiwyg-color-[0-9a-z]+/g;
   
   wysihtml5.commands.foreColor = {

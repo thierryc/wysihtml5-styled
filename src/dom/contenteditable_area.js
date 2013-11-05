@@ -1,4 +1,5 @@
 (function(wysihtml5) {
+	"use strict";
   var doc = document;  
   wysihtml5.dom.ContentEditableArea = Base.extend({
       getContentEditable: function() {

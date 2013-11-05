@@ -1,4 +1,5 @@
 (function(wysihtml5) {
+	"use strict";
   var undef,
       NODE_NAME = "A",
       dom       = wysihtml5.dom;

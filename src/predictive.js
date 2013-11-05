@@ -15,7 +15,7 @@
  * @example
  *    var predictive = new wysihtml5.Predictive(editor);
  */
- 
+
 wysihtml5.Predictive = Base.extend(
   /** @scope wysihtml5.Commands.prototype */ 
   {

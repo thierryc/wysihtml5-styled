@@ -1,4 +1,5 @@
 (function(wysihtml5) {
+	"use strict";
   var CLASS_NAME  = "wysiwyg-table-default",
       REG_EXP     = /wysiwyg-table-[0-9a-z]+/g;
   

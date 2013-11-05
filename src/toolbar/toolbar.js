@@ -15,6 +15,9 @@
  *    </script>
  */
 (function(wysihtml5) {
+
+	"use strict";
+
   var CLASS_NAME_COMMAND_DISABLED   = "disabled",
       CLASS_NAME_COMMANDS_DISABLED  = "wysihtml5-disabled",
       CLASS_NAME_COMMAND_ACTIVE     = "active",
@@ -51,6 +54,9 @@
           group,
           name,
           value,
+          activeClass,
+          groupClass,
+          modal,
           dialog;
       for (; i<length; i++) {
         link        = links[i];

@@ -1,6 +1,7 @@
 wysihtml5.dom.setStyles = function(styles) {
   return {
     on: function(element) {
+      if (!element) return;
       var style = element.style;
       if (typeof(styles) === "string") {
         style.cssText += ";" + styles;

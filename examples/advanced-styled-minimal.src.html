@@ -217,6 +217,9 @@
 									<li class="divider"></li>
 									<li><a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="above">Insert row above</a></li>
 									<li><a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="below">Insert row below</a></li>
+									<!-- li class="divider"></li>
+									<li><a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="aboveHeader">Insert header row above</a></li>
+									<li><a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="belowHeader">Insert header row below</a></li -->
 									<li class="divider"></li>
 									<li><a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="before">Insert column left</a></li>
 									<li><a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="after">Insert column right</a></li>
@@ -237,27 +240,7 @@
 							
 							<!--
 			
-			
-	<div class="block">
-      <a data-wysihtml5-command="createTable">Table</a>
-      <div data-wysihtml5-dialog="createTable" style="display: none;">
-        Rows: <input type="text" data-wysihtml5-dialog-field="rows" /><br/>
-        Cols: <input type="text" data-wysihtml5-dialog-field="cols" /><br/>
-        <a data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a data-wysihtml5-dialog-action="cancel">Cancel</a>
-      </div>
-    </div>
-    <div class="block" data-wysihtml5-hiddentools="table" style="display: none;">
-      <a data-wysihtml5-command="mergeTableCells">Merge</a>
-      <a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="above">row-before</a>
-      <a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="below">row-after</a>
-      <a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="before">col-before</a>
-      <a data-wysihtml5-command="addTableCells" data-wysihtml5-command-value="after">col-after</a>
-      
-      <a data-wysihtml5-command="deleteTableCells" data-wysihtml5-command-value="row">delete row</a>
-      <a data-wysihtml5-command="deleteTableCells" data-wysihtml5-command-value="column">delete col</a>
-      
-    </div>
-    				
+		
 							
 		//table
     $('#addRowBelow').click(function(event) {
@@ -469,21 +452,6 @@
 										<label for="wysihtml5ModalCreateTableRows">Rows</label>
 										<input id="wysihtml5ModalCreateTableRows" type="text" data-wysihtml5-modal-field="rows" value="3"><br/>
         						
-        						<label class="control-label" for="wysihtml5ModalCreateTableType">Type:</label>
-        						<select id="wysihtml5ModalCreateTableType" data-wysihtml5-modal-field="className">
-													<option value="">Default</option>
-													<option value="wysiwyg-float-left">Left</option>
-													<option value="wysiwyg-float-right">Right</option>
-													<option value="img-rounded">Rounded</option>
-													<option value="img-rounded wysiwyg-float-left">Rounded Left</option>
-													<option value="img-rounded wysiwyg-float-right">Rounded Right</option>
-													<option value="img-polaroid">Polaroid</option>
-													<option value="img-polaroid wysiwyg-float-left">Polaroid Left</option>
-													<option value="img-polaroid wysiwyg-float-right">Polaroid Right</option>
-													<option value="img-circle">Circle</option>
-													<option value="img-circle wysiwyg-float-left">Circle Left</option>
-													<option value="img-circle wysiwyg-float-right">Circle Right</option>
-											</select>
 									</div>
 									<div class="modal-footer">
 											<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>

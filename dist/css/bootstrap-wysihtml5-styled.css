@@ -707,6 +707,9 @@ input[type="submit"].cmd.cmd-mini {
 .cmd-toolbar .dropdown-toggle:active,
 .cmd-toolbar .open .dropdown-toggle {
   outline: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 .cmd-toolbar .caret {
   display: inline-block;

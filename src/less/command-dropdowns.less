@@ -90,6 +90,7 @@
 		}
 		> li > a{
 			padding: 4px 8px;
+			margin-right: 1px;
 		}
 	}
 	// Hover/Focus state
@@ -289,11 +290,9 @@
 	.justify-right .dropdown-toggle,
 	.justify-center .dropdown-toggle,
 	.justify-full .dropdown-toggle {
-		border: 1px solid #e8e8e8;
+		border: 1px solid @btnBorder;
 		*border: 0;
-		-webkit-border-radius: 3px;
-		-moz-border-radius: 3px;
-		border-radius: 3px;
+		.border-radius(@borderRadiusSmall);
 		outline: 0;
 	}
 	

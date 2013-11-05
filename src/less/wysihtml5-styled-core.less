@@ -1,112 +1,18 @@
 // Show text in modal called from toolbar
 
-.flatbuttonBackground(@startColor, @endColor, @textColor: #fff) {
-  background-color: @startColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-  background-image: none;
-  color: @textColor;
-  &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
-    background-color: @endColor;
-    color: @textColor;
-  }
-}
-
-.cmd-toolbar {
-  font-size: @baseFontSize;
-}
-.cmd-toolbar.inverse {
-  background:@btnBackground;
-  // Change the color of inverse toolbar buttons
-  @btnBackground:                     #444;
-  @btnBackgroundHighlight:            #444;
-  @btnBorder:                         darken(@btnBackground,10%);
-  .cmd{
-    .flatbuttonBackground(@btnBackground, @btnBackgroundHighlight);
-      color: @white;
-
-      &:hover{
-        color: @white;
-        border: 1px solid @btnBorder;
-      }
-    }
-
-  .cmd.active {
-    background-color: lighten(@btnBackground, 15%);
-    background-position: 0 -30px;
-  }
-  
-  .cmd-group + .cmd-group {
-    border-left: 1px solid @btnBorder;
-  }
-    [class^="ap-small-icon-"],
-  [class*="ap-small-icon-"] {
-    background-image: url("../img/sprite-ap-small-icons-white.png");
-  }
-  .cmd-primary {
-    .flatbuttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
-  }
-  .cmd-warning {
-    .flatbuttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
-  }
-  .cmd-danger {
-    .flatbuttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
-  }
-  .cmd-success {
-    .flatbuttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
-  }
-  .cmd-info {
-    .flatbuttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight);
-  }
-  .cmd-inverse {
-    .flatbuttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
-  }
-
-  .dialog-wysihtml5{
-    background-color: @btnBackground;
-    color: @white;
-  }
-  .switchon{
-    border: 1px solid @btnBorder;
-    .slide{
-      .flatbuttonBackground(@btnBackground, @btnBackgroundHighlight);
-    }
-  }
-
-  .switchon.active {
-    background-color: lighten(@btnBackground, 15%);
-    text-shadow: 0px 1px 1px @gray;
-  }
-
-  .modal{
-    color:@textColor;
-  }
-}
-
-.cmd-toolbar-small .btn {
-    padding: 4px 8px;
-    span {
-      .transition(opacity .7s ease-in);
-      opacity: 1;
-  }
-}
-
-.wysihtml5-disabled .cmd span {
-    .transition(background .7s ease-in);
-    opacity: 0.5;
-}
-
 .switchon {
-    .transition(background .7s ease-in);
+  .transition(background .7s ease-in);
   color: @textColor;
-  text-shadow:0px 1px 2px @white;
+  // text-shadow:0px 1px 2px @white;
   display: inline-block;
   .ie7-inline-block();
   margin-bottom: 0; // For input.btn
   font-size: @baseFontSize;
   cursor: pointer;
-  background-color: @btnSuccessBackground;
-  border: 1px solid @btnBorder;
+  background-color: @cmdSuccessBackground;
+  border: 1px solid @cmdBorder;
   *border: 0; // Remove the border to prevent IE7's black border on input:focus
-  border-bottom-color: darken(@btnBorder, 10%);
+  border-bottom-color: darken(@cmdBorder, 10%);
   .border-radius(@switchBorderRadius);
   .ie7-restore-left-whitespace(); // Give IE7 some love
   .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
@@ -121,7 +27,8 @@
     display: inline-block;
     position: absolute;
     width: 50%;
-    .flatbuttonBackground(@btnBackground, @btnBackgroundHighlight);
+    background-color: @cmdBackground; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+    background-image: none;
     .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
     top:0;
     left:50%;
@@ -150,12 +57,94 @@
 }
 
 .switchon.active {
-  background-color: @btnBackgroundHighlight;
+  background-color: @cmdBackgroundHighlight;
   .slide{
     .transition(left 0.3s ease-in);
     left:0;
   }
 }
+
+.flatbuttonBackground(@startColor, @endColor, @textColor: #fff) {
+  background-color: @startColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  background-image: none;
+  color: @textColor;
+    &:hover, &:focus, &.disabled, &[disabled] {
+      background-color: @startColor;
+      border:1px solid darken(@endColor,10%);
+      .border-radius(@borderRadiusSmall);
+    }
+   &:active, &.active{
+    background-color: @endColor;
+    border:1px solid darken(@endColor,10%);
+    .border-radius(@borderRadiusSmall);
+    .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.15)");
+   }
+}
+
+.cmd-toolbar {
+  font-size: @baseFontSize;
+}
+.cmd-toolbar.inverse {
+  // Change the color of inverse toolbar buttons
+  @cmdBackground:                     #444;
+  @cmdBackgroundHighlight:            darken(@cmdBackground, 5%);
+  @btnBorder:                         @cmdBackgroundHighlight;
+  
+  background:@cmdBackground;
+
+  .cmd{
+    .flatbuttonBackground(@cmdBackground, @cmdBackgroundHighlight);
+  }
+
+  .format-block-h1 .dropdown-toggle,
+  .format-block-h2 .dropdown-toggle,
+  .format-block-h3 .dropdown-toggle,
+  .format-block-p .dropdown-toggle,
+  .justify-left .dropdown-toggle,
+  .justify-right .dropdown-toggle,
+  .justify-center .dropdown-toggle,
+  .justify-full .dropdown-toggle {
+    border-color: @btnBorder;
+  }
+  .cmd-group + .cmd-group {
+    border-left: 1px solid @btnBorder;
+  }
+    [class^="ap-small-icon-"],
+  [class*="ap-small-icon-"] {
+    background-image: url("../img/sprite-ap-small-icons-white.png");
+  }
+  
+  .dialog-wysihtml5{
+    background-color: @cmdBackground;
+    color: @white;
+  }
+  .switchon{
+    border: 1px solid @btnBorder;
+    .slide{
+      background-color: @cmdBackgroundHighlight;
+    }
+  }
+
+
+  .modal{
+    color:@textColor;
+  }
+}
+
+.cmd-toolbar-small .btn {
+    padding: 4px 8px;
+    span {
+      .transition(opacity .7s ease-in);
+      opacity: 1;
+  }
+}
+
+.wysihtml5-disabled .cmd span {
+    .transition(background .7s ease-in);
+    opacity: 0.5;
+}
+
+
 
 textarea.wysihtml5-textarea {
     line-height: auto;
@@ -168,7 +157,7 @@ textarea.wysihtml5-textarea {
 
 .dialog-wysihtml5{
   width: 99%;
-  background-color: @btnBackgroundHighlight;
+  background-color: @cmdBackgroundHighlight;
   color: @textColor;
   .border-radius(@baseBorderRadius);
   padding: 4px 12px;

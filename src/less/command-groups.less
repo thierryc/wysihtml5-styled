@@ -12,14 +12,14 @@
 // Space out series of button groups
 .cmd-group + .cmd-group {
   // margin-left: 5px;
-  border-left: 1px solid darken(@cmdToolbarBackground,8%);
+  border-left: 1px solid @cmdBackgroundHighlight;
   padding-left: 4px;
 }
 
 // Optional: Group multiple button groups together for a toolbar
 .cmd-toolbar {
   padding: 4px;
-  #gradient > .vertical(@cmdToolbarBackgroundHighlight, @cmdToolbarBackground);
+  #gradient > .vertical(@cmdBackground, @cmdBackground);
   // font-size: 0; // Hack to remove whitespace that results from using inline-block
   margin-top: 0;
   // margin-bottom: 9px;
@@ -56,30 +56,30 @@
 }
 
 // Set corners individual because sometimes a single button can be in a .cmd-group and we need :first-child and :last-child to both match
-.cmd-group > .cmd:first-child {
-  margin-left: 0;
-  .border-top-left-radius(@baseBorderRadius);
-  .border-bottom-left-radius(@baseBorderRadius);
-}
-// Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
-.cmd-group > .cmd:last-child,
-.cmd-group > .dropdown-toggle {
-  .border-top-right-radius(@baseBorderRadius);
-  .border-bottom-right-radius(@baseBorderRadius);
-}
-// Reset corners for large buttons
-.cmd-group > .cmd.large:first-child {
-  margin-left: 0;
-  .border-top-left-radius(@borderRadiusLarge);
-  .border-bottom-left-radius(@borderRadiusLarge);
-}
-.cmd-group > .cmd.large:last-child,
-.cmd-group > .large.dropdown-toggle {
-  .border-top-right-radius(@borderRadiusLarge);
-  .border-bottom-right-radius(@borderRadiusLarge);
-}
+// .cmd-group > .cmd:first-child {
+//   margin-left: 0;
+//   .border-top-left-radius(@baseBorderRadius);
+//   .border-bottom-left-radius(@baseBorderRadius);
+// }
+// // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
+// .cmd-group > .cmd:last-child,
+// .cmd-group > .dropdown-toggle {
+//   .border-top-right-radius(@baseBorderRadius);
+//   .border-bottom-right-radius(@baseBorderRadius);
+// }
+// // Reset corners for large buttons
+// .cmd-group > .cmd.large:first-child {
+//   margin-left: 0;
+//   .border-top-left-radius(@borderRadiusLarge);
+//   .border-bottom-left-radius(@borderRadiusLarge);
+// }
+// .cmd-group > .cmd.large:last-child,
+// .cmd-group > .large.dropdown-toggle {
+//   .border-top-right-radius(@borderRadiusLarge);
+//   .border-bottom-right-radius(@borderRadiusLarge);
+// }
 
-// On hover/focus/active, bring the proper btn to front
+// On hover/focus/active, bring the proper cmd to front
 .cmd-group > .cmd:hover,
 .cmd-group > .cmd:focus,
 .cmd-group > .cmd:active,
@@ -101,7 +101,7 @@
 .cmd-group > .cmd + .dropdown-toggle {
   padding-left: 8px;
   padding-right: 8px;
-  .box-shadow(~"inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
+  .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.15)");
   *padding-top: 5px;
   *padding-bottom: 5px;
 }
@@ -128,7 +128,7 @@
   // Remove the gradient and set the same inset shadow as the :active state
   .dropdown-toggle {
     background-image: none;
-    .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
+    .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.15)");
   }
 
   // Keep the hover's background when dropdown is open
@@ -136,22 +136,22 @@
     background-color: @cmdBackgroundHighlight;
   }
   .cmd-primary.dropdown-toggle {
-    background-color: @btnPrimaryBackgroundHighlight;
+    background-color: @cmdPrimaryBackgroundHighlight;
   }
   .cmd-warning.dropdown-toggle {
-    background-color: @btnWarningBackgroundHighlight;
+    background-color: @cmdWarningBackgroundHighlight;
   }
   .cmd-danger.dropdown-toggle {
-    background-color: @btnDangerBackgroundHighlight;
+    background-color: @cmdDangerBackgroundHighlight;
   }
   .cmd-success.dropdown-toggle {
-    background-color: @btnSuccessBackgroundHighlight;
+    background-color: @cmdSuccessBackgroundHighlight;
   }
   .cmd-info.dropdown-toggle {
-    background-color: @btnInfoBackgroundHighlight;
+    background-color: @cmdInfoBackgroundHighlight;
   }
   .cmd-inverse.dropdown-toggle {
-    background-color: @btnInverseBackgroundHighlight;
+    background-color: @cmdInverseBackgroundHighlight;
   }
 }
 

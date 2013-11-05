@@ -51,19 +51,19 @@
   *margin-left: 0;
 }
 .cmd-group + .cmd-group {
-  border-left: 1px solid #e1e1e1;
+  border-left: 1px solid #d9d9d9;
   padding-left: 4px;
 }
 .cmd-toolbar {
   padding: 4px;
-  background-color: #f5f5f5;
-  background-image: -moz-linear-gradient(top, #f5f5f5, #f5f5f5);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#f5f5f5));
-  background-image: -webkit-linear-gradient(top, #f5f5f5, #f5f5f5);
-  background-image: -o-linear-gradient(top, #f5f5f5, #f5f5f5);
-  background-image: linear-gradient(to bottom, #f5f5f5, #f5f5f5);
+  background-color: #e6e6e6;
+  background-image: -moz-linear-gradient(top, #e6e6e6, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e6e6), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #e6e6e6, #e6e6e6);
+  background-image: -o-linear-gradient(top, #e6e6e6, #e6e6e6);
+  background-image: linear-gradient(to bottom, #e6e6e6, #e6e6e6);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff5f5f5', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe6e6e6', endColorstr='#ffe6e6e6', GradientType=0);
   margin-top: 0;
 }
 .cmd-toolbar > .cmd + .cmd,
@@ -94,42 +94,6 @@
 .cmd-group > .cmd-large {
   font-size: 17.5px;
 }
-.cmd-group > .cmd:first-child {
-  margin-left: 0;
-  -webkit-border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px;
-  border-top-left-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  border-bottom-left-radius: 4px;
-}
-.cmd-group > .cmd:last-child,
-.cmd-group > .dropdown-toggle {
-  -webkit-border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px;
-  border-bottom-right-radius: 4px;
-}
-.cmd-group > .cmd.large:first-child {
-  margin-left: 0;
-  -webkit-border-top-left-radius: 6px;
-  -moz-border-radius-topleft: 6px;
-  border-top-left-radius: 6px;
-  -webkit-border-bottom-left-radius: 6px;
-  -moz-border-radius-bottomleft: 6px;
-  border-bottom-left-radius: 6px;
-}
-.cmd-group > .cmd.large:last-child,
-.cmd-group > .large.dropdown-toggle {
-  -webkit-border-top-right-radius: 6px;
-  -moz-border-radius-topright: 6px;
-  border-top-right-radius: 6px;
-  -webkit-border-bottom-right-radius: 6px;
-  -moz-border-radius-bottomright: 6px;
-  border-bottom-right-radius: 6px;
-}
 .cmd-group > .cmd:hover,
 .cmd-group > .cmd:focus,
 .cmd-group > .cmd:active,
@@ -143,9 +107,9 @@
 .cmd-group > .cmd + .dropdown-toggle {
   padding-left: 8px;
   padding-right: 8px;
-  -webkit-box-shadow: inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  -moz-box-shadow: inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  box-shadow: inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   *padding-top: 5px;
   *padding-bottom: 5px;
 }
@@ -167,12 +131,12 @@
 }
 .cmd-group.open .dropdown-toggle {
   background-image: none;
-  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-  box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
 }
 .cmd-group.open .cmd.dropdown-toggle {
-  background-color: #f5f5f5;
+  background-color: #d9d9d9;
 }
 .cmd-group.open .cmd-primary.dropdown-toggle {
   background-color: #048ac2;
@@ -265,7 +229,7 @@
   /* IE7 inline-block hack */
 
   *zoom: 1;
-  padding: 4px 8px;
+  padding: 4px 12px;
   margin-bottom: 0;
   font-size: 14px;
   line-height: 20px;
@@ -273,67 +237,60 @@
   vertical-align: middle;
   cursor: pointer;
   border: 1px solid transparent;
-  *border: 0;
-  color: #555555;
-  opacity: 1;
-  -webkit-transition: opacity 0.1s linear;
-  -moz-transition: opacity 0.1s linear;
-  -o-transition: opacity 0.1s linear;
-  transition: opacity 0.1s linear;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  background-image: none;
+  color: #ffffff;
+  *margin-left: .3em;
 }
 .cmd:hover,
-.cmd:focus {
-  color: #555555;
-  text-decoration: none;
-  background-position: 0 -15px;
-  border: 1px solid #cccccc;
-  *border: 0;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  *margin-left: .3em;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.1);
-  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.1);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.1);
-  -webkit-transition: background-position 0.1s linear;
-  -moz-transition: background-position 0.1s linear;
-  -o-transition: background-position 0.1s linear;
-  transition: background-position 0.1s linear;
-}
-.cmd:hover:first-child,
-.cmd:focus:first-child {
-  *margin-left: 0;
-}
-.cmd:focus {
-  outline: thin dotted #333;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-.cmd.active,
-.cmd:active {
-  background-color: #e8e8e8;
-  border: 1px solid #cccccc;
-  *border: 0;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-}
+.cmd:focus,
 .cmd.disabled,
 .cmd[disabled] {
-  cursor: default;
-  background-image: none;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
+  background-color: #e6e6e6;
+  border: 1px solid #bfbfbf;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
-.wysihtml5-disabled .cmd {
-  opacity: 0.3;
+.cmd:active,
+.cmd.active {
+  background-color: #d9d9d9;
+  border: 1px solid #bfbfbf;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+}
+.cmd:hover,
+.cmd:focus,
+.cmd.disabled,
+.cmd[disabled] {
+  background-color: #e6e6e6;
+  border: 1px solid #bfbfbf;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.cmd:active,
+.cmd.active {
+  background-color: #d9d9d9;
+  border: 1px solid #bfbfbf;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+}
+.cmd:first-child {
+  *margin-left: 0;
 }
 .cmd-large {
   padding: 11px 19px;
@@ -394,11 +351,22 @@ input[type="button"].cmd-block {
   color: rgba(255, 255, 255, 0.75);
 }
 .cmd-primary {
-  background-color: #049cdb;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #0495d1;
+  background-image: -moz-linear-gradient(top, #049cdb, #048ac2);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#049cdb), to(#048ac2));
+  background-image: -webkit-linear-gradient(top, #049cdb, #048ac2);
+  background-image: -o-linear-gradient(top, #049cdb, #048ac2);
+  background-image: linear-gradient(to bottom, #049cdb, #048ac2);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff049cdb', endColorstr='#ff048ac2', GradientType=0);
+  border-color: #048ac2 #048ac2 #025577;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #048ac2;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
-  background-image: none;
-  color: #ffffff;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .cmd-primary:hover,
 .cmd-primary:focus,
@@ -406,24 +374,31 @@ input[type="button"].cmd-block {
 .cmd-primary.active,
 .cmd-primary.disabled,
 .cmd-primary[disabled] {
-  background-color: #048ac2;
   color: #ffffff;
+  background-color: #048ac2;
+  *background-color: #0378a9;
 }
-.cmd-primary:hover,
-.cmd-primary:focus,
 .cmd-primary:active,
-.cmd-primary.active,
-.cmd-primary.disabled,
-.cmd-primary[disabled] {
-  background-color: #048ac2;
-  color: #ffffff;
+.cmd-primary.active {
+  background-color: #036690 \9;
 }
 .cmd-warning {
-  background-color: #fbb450;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #faa732;
+  background-image: -moz-linear-gradient(top, #fbb450, #f89406);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
+  background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
+  background-image: -o-linear-gradient(top, #fbb450, #f89406);
+  background-image: linear-gradient(to bottom, #fbb450, #f89406);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
+  border-color: #f89406 #f89406 #ad6704;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #f89406;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
-  background-image: none;
-  color: #ffffff;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .cmd-warning:hover,
 .cmd-warning:focus,
@@ -431,24 +406,31 @@ input[type="button"].cmd-block {
 .cmd-warning.active,
 .cmd-warning.disabled,
 .cmd-warning[disabled] {
-  background-color: #f89406;
   color: #ffffff;
+  background-color: #f89406;
+  *background-color: #df8505;
 }
-.cmd-warning:hover,
-.cmd-warning:focus,
 .cmd-warning:active,
-.cmd-warning.active,
-.cmd-warning.disabled,
-.cmd-warning[disabled] {
-  background-color: #f89406;
-  color: #ffffff;
+.cmd-warning.active {
+  background-color: #c67605 \9;
 }
 .cmd-danger {
-  background-color: #ee5f5b;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #da4f49;
+  background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+  background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+  background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+  border-color: #bd362f #bd362f #802420;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #bd362f;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
-  background-image: none;
-  color: #ffffff;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .cmd-danger:hover,
 .cmd-danger:focus,
@@ -456,24 +438,31 @@ input[type="button"].cmd-block {
 .cmd-danger.active,
 .cmd-danger.disabled,
 .cmd-danger[disabled] {
-  background-color: #bd362f;
   color: #ffffff;
+  background-color: #bd362f;
+  *background-color: #a9302a;
 }
-.cmd-danger:hover,
-.cmd-danger:focus,
 .cmd-danger:active,
-.cmd-danger.active,
-.cmd-danger.disabled,
-.cmd-danger[disabled] {
-  background-color: #bd362f;
-  color: #ffffff;
+.cmd-danger.active {
+  background-color: #942a25 \9;
 }
 .cmd-success {
-  background-color: #62c462;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #5bb75b;
+  background-image: -moz-linear-gradient(top, #62c462, #51a351);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+  background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+  background-image: -o-linear-gradient(top, #62c462, #51a351);
+  background-image: linear-gradient(to bottom, #62c462, #51a351);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+  border-color: #51a351 #51a351 #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #51a351;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
-  background-image: none;
-  color: #ffffff;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .cmd-success:hover,
 .cmd-success:focus,
@@ -481,24 +470,31 @@ input[type="button"].cmd-block {
 .cmd-success.active,
 .cmd-success.disabled,
 .cmd-success[disabled] {
-  background-color: #51a351;
   color: #ffffff;
+  background-color: #51a351;
+  *background-color: #499249;
 }
-.cmd-success:hover,
-.cmd-success:focus,
 .cmd-success:active,
-.cmd-success.active,
-.cmd-success.disabled,
-.cmd-success[disabled] {
-  background-color: #51a351;
-  color: #ffffff;
+.cmd-success.active {
+  background-color: #408140 \9;
 }
 .cmd-info {
-  background-color: #5bc0de;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #49afcd;
+  background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
+  background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
+  background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
+  border-color: #2f96b4 #2f96b4 #1f6377;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #2f96b4;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
-  background-image: none;
-  color: #ffffff;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .cmd-info:hover,
 .cmd-info:focus,
@@ -506,24 +502,31 @@ input[type="button"].cmd-block {
 .cmd-info.active,
 .cmd-info.disabled,
 .cmd-info[disabled] {
-  background-color: #2f96b4;
   color: #ffffff;
+  background-color: #2f96b4;
+  *background-color: #2a85a0;
 }
-.cmd-info:hover,
-.cmd-info:focus,
 .cmd-info:active,
-.cmd-info.active,
-.cmd-info.disabled,
-.cmd-info[disabled] {
-  background-color: #2f96b4;
-  color: #ffffff;
+.cmd-info.active {
+  background-color: #24748c \9;
 }
 .cmd-inverse {
-  background-color: #444444;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #363636;
+  background-image: -moz-linear-gradient(top, #444444, #222222);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
+  background-image: -webkit-linear-gradient(top, #444444, #222222);
+  background-image: -o-linear-gradient(top, #444444, #222222);
+  background-image: linear-gradient(to bottom, #444444, #222222);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+  border-color: #222222 #222222 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #222222;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
-  background-image: none;
-  color: #ffffff;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .cmd-inverse:hover,
 .cmd-inverse:focus,
@@ -531,17 +534,13 @@ input[type="button"].cmd-block {
 .cmd-inverse.active,
 .cmd-inverse.disabled,
 .cmd-inverse[disabled] {
-  background-color: #222222;
   color: #ffffff;
+  background-color: #222222;
+  *background-color: #151515;
 }
-.cmd-inverse:hover,
-.cmd-inverse:focus,
 .cmd-inverse:active,
-.cmd-inverse.active,
-.cmd-inverse.disabled,
-.cmd-inverse[disabled] {
-  background-color: #222222;
-  color: #ffffff;
+.cmd-inverse.active {
+  background-color: #080808 \9;
 }
 button.cmd,
 input[type="submit"].cmd {
@@ -674,6 +673,7 @@ input[type="submit"].cmd.cmd-mini {
 }
 .cmd-toolbar .dropdown-menu.icon > li > a {
   padding: 4px 8px;
+  margin-right: 1px;
 }
 .cmd-toolbar .dropdown-menu > li > a:hover,
 .cmd-toolbar .dropdown-menu > li > a:focus,
@@ -681,7 +681,7 @@ input[type="submit"].cmd.cmd-mini {
 .cmd-toolbar .dropdown-submenu:focus > a {
   text-decoration: none;
   color: #555555;
-  background-color: #e8e8e8;
+  background-color: #d9d9d9;
   background-image: none;
 }
 .cmd-toolbar .dropdown-menu > .active > a,
@@ -690,14 +690,14 @@ input[type="submit"].cmd.cmd-mini {
   color: #555555;
   text-decoration: none;
   outline: 0;
-  background-color: #e3e3e3;
-  background-image: -moz-linear-gradient(top, #e8e8e8, #dbdbdb);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e8e8e8), to(#dbdbdb));
-  background-image: -webkit-linear-gradient(top, #e8e8e8, #dbdbdb);
-  background-image: -o-linear-gradient(top, #e8e8e8, #dbdbdb);
-  background-image: linear-gradient(to bottom, #e8e8e8, #dbdbdb);
+  background-color: #d4d4d4;
+  background-image: -moz-linear-gradient(top, #d9d9d9, #cccccc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d9d9d9), to(#cccccc));
+  background-image: -webkit-linear-gradient(top, #d9d9d9, #cccccc);
+  background-image: -o-linear-gradient(top, #d9d9d9, #cccccc);
+  background-image: linear-gradient(to bottom, #d9d9d9, #cccccc);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe8e8e8', endColorstr='#ffdbdbdb', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd9d9d9', endColorstr='#ffcccccc', GradientType=0);
 }
 .cmd-toolbar .dropdown-menu > .disabled > a,
 .cmd-toolbar .dropdown-menu > .disabled > a:hover,
@@ -827,264 +827,12 @@ input[type="submit"].cmd.cmd-mini {
 .cmd-toolbar .justify-right .dropdown-toggle,
 .cmd-toolbar .justify-center .dropdown-toggle,
 .cmd-toolbar .justify-full .dropdown-toggle {
-  border: 1px solid #e8e8e8;
+  border: 1px solid #cccccc;
   *border: 0;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
   outline: 0;
-}
-.cmd-toolbar {
-  font-size: 14px;
-}
-.cmd-toolbar.inverse {
-  background: #444444;
-}
-.cmd-toolbar.inverse .cmd {
-  background-color: #444444;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd:hover,
-.cmd-toolbar.inverse .cmd:focus,
-.cmd-toolbar.inverse .cmd:active,
-.cmd-toolbar.inverse .cmd.active,
-.cmd-toolbar.inverse .cmd.disabled,
-.cmd-toolbar.inverse .cmd[disabled] {
-  background-color: #444444;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd:hover,
-.cmd-toolbar.inverse .cmd:focus,
-.cmd-toolbar.inverse .cmd:active,
-.cmd-toolbar.inverse .cmd.active,
-.cmd-toolbar.inverse .cmd.disabled,
-.cmd-toolbar.inverse .cmd[disabled] {
-  background-color: #444444;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd:hover {
-  color: #ffffff;
-  border: 1px solid #2b2b2b;
-}
-.cmd-toolbar.inverse .cmd.active {
-  background-color: #6a6a6a;
-  background-position: 0 -30px;
-}
-.cmd-toolbar.inverse .cmd-group + .cmd-group {
-  border-left: 1px solid #2b2b2b;
-}
-.cmd-toolbar.inverse [class^="ap-small-icon-"],
-.cmd-toolbar.inverse [class*="ap-small-icon-"] {
-  background-image: url("../img/sprite-ap-small-icons-white.png");
-}
-.cmd-toolbar.inverse .cmd-primary {
-  background-color: #049cdb;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-primary:hover,
-.cmd-toolbar.inverse .cmd-primary:focus,
-.cmd-toolbar.inverse .cmd-primary:active,
-.cmd-toolbar.inverse .cmd-primary.active,
-.cmd-toolbar.inverse .cmd-primary.disabled,
-.cmd-toolbar.inverse .cmd-primary[disabled] {
-  background-color: #048ac2;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-primary:hover,
-.cmd-toolbar.inverse .cmd-primary:focus,
-.cmd-toolbar.inverse .cmd-primary:active,
-.cmd-toolbar.inverse .cmd-primary.active,
-.cmd-toolbar.inverse .cmd-primary.disabled,
-.cmd-toolbar.inverse .cmd-primary[disabled] {
-  background-color: #048ac2;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-warning {
-  background-color: #fbb450;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-warning:hover,
-.cmd-toolbar.inverse .cmd-warning:focus,
-.cmd-toolbar.inverse .cmd-warning:active,
-.cmd-toolbar.inverse .cmd-warning.active,
-.cmd-toolbar.inverse .cmd-warning.disabled,
-.cmd-toolbar.inverse .cmd-warning[disabled] {
-  background-color: #f89406;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-warning:hover,
-.cmd-toolbar.inverse .cmd-warning:focus,
-.cmd-toolbar.inverse .cmd-warning:active,
-.cmd-toolbar.inverse .cmd-warning.active,
-.cmd-toolbar.inverse .cmd-warning.disabled,
-.cmd-toolbar.inverse .cmd-warning[disabled] {
-  background-color: #f89406;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-danger {
-  background-color: #ee5f5b;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-danger:hover,
-.cmd-toolbar.inverse .cmd-danger:focus,
-.cmd-toolbar.inverse .cmd-danger:active,
-.cmd-toolbar.inverse .cmd-danger.active,
-.cmd-toolbar.inverse .cmd-danger.disabled,
-.cmd-toolbar.inverse .cmd-danger[disabled] {
-  background-color: #bd362f;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-danger:hover,
-.cmd-toolbar.inverse .cmd-danger:focus,
-.cmd-toolbar.inverse .cmd-danger:active,
-.cmd-toolbar.inverse .cmd-danger.active,
-.cmd-toolbar.inverse .cmd-danger.disabled,
-.cmd-toolbar.inverse .cmd-danger[disabled] {
-  background-color: #bd362f;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-success {
-  background-color: #62c462;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-success:hover,
-.cmd-toolbar.inverse .cmd-success:focus,
-.cmd-toolbar.inverse .cmd-success:active,
-.cmd-toolbar.inverse .cmd-success.active,
-.cmd-toolbar.inverse .cmd-success.disabled,
-.cmd-toolbar.inverse .cmd-success[disabled] {
-  background-color: #51a351;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-success:hover,
-.cmd-toolbar.inverse .cmd-success:focus,
-.cmd-toolbar.inverse .cmd-success:active,
-.cmd-toolbar.inverse .cmd-success.active,
-.cmd-toolbar.inverse .cmd-success.disabled,
-.cmd-toolbar.inverse .cmd-success[disabled] {
-  background-color: #51a351;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-info {
-  background-color: #5bc0de;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-info:hover,
-.cmd-toolbar.inverse .cmd-info:focus,
-.cmd-toolbar.inverse .cmd-info:active,
-.cmd-toolbar.inverse .cmd-info.active,
-.cmd-toolbar.inverse .cmd-info.disabled,
-.cmd-toolbar.inverse .cmd-info[disabled] {
-  background-color: #2f96b4;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-info:hover,
-.cmd-toolbar.inverse .cmd-info:focus,
-.cmd-toolbar.inverse .cmd-info:active,
-.cmd-toolbar.inverse .cmd-info.active,
-.cmd-toolbar.inverse .cmd-info.disabled,
-.cmd-toolbar.inverse .cmd-info[disabled] {
-  background-color: #2f96b4;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-inverse {
-  background-color: #444444;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-inverse:hover,
-.cmd-toolbar.inverse .cmd-inverse:focus,
-.cmd-toolbar.inverse .cmd-inverse:active,
-.cmd-toolbar.inverse .cmd-inverse.active,
-.cmd-toolbar.inverse .cmd-inverse.disabled,
-.cmd-toolbar.inverse .cmd-inverse[disabled] {
-  background-color: #222222;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-inverse:hover,
-.cmd-toolbar.inverse .cmd-inverse:focus,
-.cmd-toolbar.inverse .cmd-inverse:active,
-.cmd-toolbar.inverse .cmd-inverse.active,
-.cmd-toolbar.inverse .cmd-inverse.disabled,
-.cmd-toolbar.inverse .cmd-inverse[disabled] {
-  background-color: #222222;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .dialog-wysihtml5 {
-  background-color: #444444;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .switchon {
-  border: 1px solid #2b2b2b;
-}
-.cmd-toolbar.inverse .switchon .slide {
-  background-color: #444444;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .switchon .slide:hover,
-.cmd-toolbar.inverse .switchon .slide:focus,
-.cmd-toolbar.inverse .switchon .slide:active,
-.cmd-toolbar.inverse .switchon .slide.active,
-.cmd-toolbar.inverse .switchon .slide.disabled,
-.cmd-toolbar.inverse .switchon .slide[disabled] {
-  background-color: #444444;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .switchon .slide:hover,
-.cmd-toolbar.inverse .switchon .slide:focus,
-.cmd-toolbar.inverse .switchon .slide:active,
-.cmd-toolbar.inverse .switchon .slide.active,
-.cmd-toolbar.inverse .switchon .slide.disabled,
-.cmd-toolbar.inverse .switchon .slide[disabled] {
-  background-color: #444444;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .switchon.active {
-  background-color: #6a6a6a;
-  text-shadow: 0px 1px 1px #555555;
-}
-.cmd-toolbar.inverse .modal {
-  color: #333333;
-}
-.cmd-toolbar-small .btn {
-  padding: 4px 8px;
-}
-.cmd-toolbar-small .btn span {
-  -webkit-transition: opacity 0.7s ease-in;
-  -moz-transition: opacity 0.7s ease-in;
-  -o-transition: opacity 0.7s ease-in;
-  transition: opacity 0.7s ease-in;
-  opacity: 1;
-}
-.wysihtml5-disabled .cmd span {
-  -webkit-transition: background 0.7s ease-in;
-  -moz-transition: background 0.7s ease-in;
-  -o-transition: background 0.7s ease-in;
-  transition: background 0.7s ease-in;
-  opacity: 0.5;
 }
 .switchon {
   -webkit-transition: background 0.7s ease-in;
@@ -1092,7 +840,6 @@ input[type="submit"].cmd.cmd-mini {
   -o-transition: background 0.7s ease-in;
   transition: background 0.7s ease-in;
   color: #333333;
-  text-shadow: 0px 1px 2px #ffffff;
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
@@ -1102,9 +849,9 @@ input[type="submit"].cmd.cmd-mini {
   font-size: 14px;
   cursor: pointer;
   background-color: #62c462;
-  border: 1px solid #cccccc;
+  border: 1px solid #d9d9d9;
   *border: 0;
-  border-bottom-color: #b3b3b3;
+  border-bottom-color: #bfbfbf;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -1126,11 +873,10 @@ input[type="submit"].cmd.cmd-mini {
   display: inline-block;
   position: absolute;
   width: 50%;
-  background-color: #ffffff;
+  background-color: #e6e6e6;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   background-image: none;
-  color: #ffffff;
   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
@@ -1148,24 +894,6 @@ input[type="submit"].cmd.cmd-mini {
   -moz-transition: left 0.3s ease-in;
   -o-transition: left 0.3s ease-in;
   transition: left 0.3s ease-in;
-}
-.switchon .slide:hover,
-.switchon .slide:focus,
-.switchon .slide:active,
-.switchon .slide.active,
-.switchon .slide.disabled,
-.switchon .slide[disabled] {
-  background-color: #e6e6e6;
-  color: #ffffff;
-}
-.switchon .slide:hover,
-.switchon .slide:focus,
-.switchon .slide:active,
-.switchon .slide.active,
-.switchon .slide.disabled,
-.switchon .slide[disabled] {
-  background-color: #e6e6e6;
-  color: #ffffff;
 }
 .switchon .on,
 .switchon .off {
@@ -1189,7 +917,7 @@ input[type="submit"].cmd.cmd-mini {
   color: #999999;
 }
 .switchon.active {
-  background-color: #e6e6e6;
+  background-color: #d9d9d9;
 }
 .switchon.active .slide {
   -webkit-transition: left 0.3s ease-in;
@@ -1197,6 +925,108 @@ input[type="submit"].cmd.cmd-mini {
   -o-transition: left 0.3s ease-in;
   transition: left 0.3s ease-in;
   left: 0;
+}
+.cmd-toolbar {
+  font-size: 14px;
+}
+.cmd-toolbar.inverse {
+  background: #444444;
+}
+.cmd-toolbar.inverse .cmd {
+  background-color: #444444;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  background-image: none;
+  color: #ffffff;
+}
+.cmd-toolbar.inverse .cmd:hover,
+.cmd-toolbar.inverse .cmd:focus,
+.cmd-toolbar.inverse .cmd.disabled,
+.cmd-toolbar.inverse .cmd[disabled] {
+  background-color: #444444;
+  border: 1px solid #1e1e1e;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.cmd-toolbar.inverse .cmd:active,
+.cmd-toolbar.inverse .cmd.active {
+  background-color: #373737;
+  border: 1px solid #1e1e1e;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+}
+.cmd-toolbar.inverse .cmd:hover,
+.cmd-toolbar.inverse .cmd:focus,
+.cmd-toolbar.inverse .cmd.disabled,
+.cmd-toolbar.inverse .cmd[disabled] {
+  background-color: #444444;
+  border: 1px solid #1e1e1e;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.cmd-toolbar.inverse .cmd:active,
+.cmd-toolbar.inverse .cmd.active {
+  background-color: #373737;
+  border: 1px solid #1e1e1e;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+}
+.cmd-toolbar.inverse .format-block-h1 .dropdown-toggle,
+.cmd-toolbar.inverse .format-block-h2 .dropdown-toggle,
+.cmd-toolbar.inverse .format-block-h3 .dropdown-toggle,
+.cmd-toolbar.inverse .format-block-p .dropdown-toggle,
+.cmd-toolbar.inverse .justify-left .dropdown-toggle,
+.cmd-toolbar.inverse .justify-right .dropdown-toggle,
+.cmd-toolbar.inverse .justify-center .dropdown-toggle,
+.cmd-toolbar.inverse .justify-full .dropdown-toggle {
+  border-color: #373737;
+}
+.cmd-toolbar.inverse .cmd-group + .cmd-group {
+  border-left: 1px solid #373737;
+}
+.cmd-toolbar.inverse [class^="ap-small-icon-"],
+.cmd-toolbar.inverse [class*="ap-small-icon-"] {
+  background-image: url("../img/sprite-ap-small-icons-white.png");
+}
+.cmd-toolbar.inverse .dialog-wysihtml5 {
+  background-color: #444444;
+  color: #ffffff;
+}
+.cmd-toolbar.inverse .switchon {
+  border: 1px solid #373737;
+}
+.cmd-toolbar.inverse .switchon .slide {
+  background-color: #373737;
+}
+.cmd-toolbar.inverse .modal {
+  color: #333333;
+}
+.cmd-toolbar-small .btn {
+  padding: 4px 8px;
+}
+.cmd-toolbar-small .btn span {
+  -webkit-transition: opacity 0.7s ease-in;
+  -moz-transition: opacity 0.7s ease-in;
+  -o-transition: opacity 0.7s ease-in;
+  transition: opacity 0.7s ease-in;
+  opacity: 1;
+}
+.wysihtml5-disabled .cmd span {
+  -webkit-transition: background 0.7s ease-in;
+  -moz-transition: background 0.7s ease-in;
+  -o-transition: background 0.7s ease-in;
+  transition: background 0.7s ease-in;
+  opacity: 0.5;
 }
 textarea.wysihtml5-textarea {
   line-height: auto;
@@ -1209,7 +1039,7 @@ textarea.wysihtml5-textarea {
 }
 .dialog-wysihtml5 {
   width: 99%;
-  background-color: #e6e6e6;
+  background-color: #d9d9d9;
   color: #333333;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;

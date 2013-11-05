@@ -93,8 +93,8 @@
 
 // Buttons
 // -------------------------
-@btnBackground:                     @white;
-@btnBackgroundHighlight:            darken(@white, 10%);
+@btnBackground:                     darken(@white, 10%);
+@btnBackgroundHighlight:            darken(@white, 15%);
 @btnBorder:                         #ccc;
 
 @btnPrimaryBackground:              @linkColor;
@@ -143,11 +143,27 @@
 
 // Commandbar
 // --------------------------------------
-@cmdBackground: #f5f5f5;
-@cmdBackgroundHighlight: #f5f5f5;
-@cmdToolbarBackground : #f5f5f5;
-@cmdToolbarBackgroundHighlight : @cmdToolbarBackground;
+@cmdBackground: darken(@white, 10%);
+@cmdBackgroundHighlight: darken(@white, 15%);
+@cmdBorder: @cmdBackgroundHighlight;
 
+@cmdPrimaryBackground:              @linkColor;
+@cmdPrimaryBackgroundHighlight:     darken(@linkColor,5%);
+
+@cmdInfoBackground:                 #5bc0de;
+@cmdInfoBackgroundHighlight:        #2f96b4;
+
+@cmdSuccessBackground:              #62c462;
+@cmdSuccessBackgroundHighlight:     #51a351;
+
+@cmdWarningBackground:              lighten(@orange, 15%);
+@cmdWarningBackgroundHighlight:     @orange;
+
+@cmdDangerBackground:               #ee5f5b;
+@cmdDangerBackgroundHighlight:      #bd362f;
+
+@cmdInverseBackground:              #444;
+@cmdInverseBackgroundHighlight:     @grayDarker;
 
 // COMPONENT VARIABLES
 // --------------------------------------------------

@@ -6,13 +6,18 @@
   background-color: @startColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
   background-image: none;
   color: @textColor;
-  &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
+    &:hover, &:focus, &.disabled, &[disabled] {
+      background-color: @startColor;
+      border:1px solid darken(@endColor,10%);
+      .border-radius(@borderRadiusSmall);
+    }
+   &:active, &.active{
     background-color: @endColor;
-    color: @textColor;
-  }
+    border:1px solid darken(@endColor,10%);
+    .border-radius(@borderRadiusSmall);
+    .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.15)");
+   }
 }
-
-
 // Base styles
 // --------------------------------------------------
 
@@ -20,67 +25,57 @@
 .cmd {
   display: inline-block;
   .ie7-inline-block();
-  padding: 4px 8px;
+  padding: 4px 12px;
   margin-bottom: 0; // For input.cmd
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  border: 1px solid transparent;
-  *border: 0;
-  color:@gray;
-  opacity: 1;
-  .transition(opacity .1s linear);
-  
-  &:hover,
-  &:focus {
-    color: @gray;
-    text-decoration: none;
-    background-position: 0 -15px;
-    border: 1px solid @btnBorder;
-    *border: 0; 
-  
-    .border-radius(@borderRadiusSmall);
-    .ie7-restore-left-whitespace(); // Give IE7 some love
-    .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.1)");
+  border:1px solid transparent;
+  .border-radius(@borderRadiusSmall);
+  .flatbuttonBackground(@cmdBackground, @cmdBackgroundHighlight);
+  // .border-radius(@baseBorderRadius);
+  .ie7-restore-left-whitespace(); // Give IE7 some love
+  // .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
 
-    // transition is only when going to hover/focus, otherwise the background
-    // behind the gradient (there for IE<=9 fallback) gets mismatched
-    .transition(background-position .1s linear);
-  }
+  // // Hover/focus state
+  // &:hover,
+  // &:focus {
+  //   color: @grayDark;
+  //   text-decoration: none;
+  //   background-position: 0 -15px;
 
-  // Focus state for keyboard and accessibility
-  &:focus {
-    .tab-focus();
-  }
+  //   // transition is only when going to hover/focus, otherwise the background
+  //   // behind the gradient (there for IE<=9 fallback) gets mismatched
+  //   .transition(background-position .1s linear);
+  // }
 
-  // Active state
-  &.active,
-  &:active {
-    background-color: darken(@cmdBackground,5%);
-    border: 1px solid @btnBorder;
-    *border: 0; 
-    .border-radius(@borderRadiusSmall);
-    outline: 0;
-    .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
-  }
+  // // Focus state for keyboard and accessibility
+  // &:focus {
+  //   .tab-focus();
+  // }
 
-  // Disabled state
-  &.disabled,
-  &[disabled] {
-    cursor: default;
-    background-image: none;
-    .opacity(65);
-    .box-shadow(none);
-  }
+  // // Active state
+  // &.active,
+  // &:active {
+  //   background-image: none;
+  //   outline: 0;
+  //   .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.15)");
+  // }
+
+  // // Disabled state
+  // &.disabled,
+  // &[disabled] {
+  //   cursor: default;
+  //   background-image: none;
+  //   .opacity(65);
+  //   .box-shadow(none);
+  // }
 
 }
 
 
-.wysihtml5-disabled .cmd {
-	opacity: 0.3;
-}
 
 // Button Sizes
 // --------------------------------------------------
@@ -162,27 +157,27 @@ input[type="button"] {
 // Set the backgrounds
 // -------------------------
 .cmd-primary {
-  .flatbuttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+  .buttonBackground(@cmdPrimaryBackground, @cmdPrimaryBackgroundHighlight);
 }
 // Warning appears are orange
 .cmd-warning {
-  .flatbuttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
+  .buttonBackground(@cmdWarningBackground, @cmdWarningBackgroundHighlight);
 }
 // Danger and error appear as red
 .cmd-danger {
-  .flatbuttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
+  .buttonBackground(@cmdDangerBackground, @cmdDangerBackgroundHighlight);
 }
 // Success appears as green
 .cmd-success {
-  .flatbuttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
+  .buttonBackground(@cmdSuccessBackground, @cmdSuccessBackgroundHighlight);
 }
 // Info appears as a neutral blue
 .cmd-info {
-  .flatbuttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight);
+  .buttonBackground(@cmdInfoBackground, @cmdInfoBackgroundHighlight);
 }
 // Inverse appears as dark gray
 .cmd-inverse {
-  .flatbuttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
+  .buttonBackground(@cmdInverseBackground, @cmdInverseBackgroundHighlight);
 }
 
 

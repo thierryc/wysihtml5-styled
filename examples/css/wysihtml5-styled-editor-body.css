@@ -734,10 +734,6 @@ address {
 body {
   background-color: #ffffff;
 }
-body.inverse {
-  color: #f6f6f6;
-  background-color: #444444;
-}
 /*
 @-moz-document url-prefix('http://'),url-prefix('https://') {
 	scrollbar {
@@ -793,15 +789,6 @@ a {
 }
 a:hover,
 a:focus {
-  color: #036690;
-  text-decoration: underline;
-}
-.inverse a {
-  color: #049cdb;
-  text-decoration: none;
-}
-.inverse a:hover,
-.inverse a:focus {
   color: #036690;
   text-decoration: underline;
 }

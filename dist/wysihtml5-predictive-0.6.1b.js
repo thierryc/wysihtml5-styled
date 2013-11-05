@@ -6876,6 +6876,22 @@ wysihtml5.dom.getAttribute = function(node, attributeName) {
     
     
 })(wysihtml5);
+(function(wysihtml5) {
+  var api = wysihtml5.dom;
+  
+  api.removeStyles = function(element) {
+    if(!element) return;
+    if (element.tagName != 'BODY' && element.nodeType == 1) element.removeAttribute("style");
+    if(element.childNodes.length > 0) {
+        for(var child in element.childNodes) {
+            /* filter element nodes only */
+            if(element.childNodes[child].nodeType == 1)
+                api.removeStyles(element.childNodes[child]);
+        }
+    }
+  };
+  
+})(wysihtml5);
 /**
  * Fix most common html formatting misbehaviors of browsers implementation when inserting
  * content via copy & paste contentEditable
@@ -8994,6 +9010,103 @@ wysihtml5.commands.bold = {
     }
   };
 })(wysihtml5);(function(wysihtml5) {
+  var NODE_NAME = "IMG";
+  
+  wysihtml5.commands.removeImageHtml5 = {
+    /**
+     * Inserts an <img>
+     * If selection is already an image link, it removes it
+     * 
+     * @example
+     *    // either ...
+     *    wysihtml5.commands.insertImage.exec(composer, "insertImage", "http://www.google.de/logo.jpg");
+     *    // ... or ...
+     *    wysihtml5.commands.insertImage.exec(composer, "insertImage", { src: "http://www.google.de/logo.jpg", title: "foo" });
+     */
+    exec: function(composer, command, value) {
+      value = typeof(value) === "object" ? value : { src: value };
+
+      var doc     = composer.doc,
+          image   = this.state(composer),
+          textNode,
+          parent;
+
+      if (image) {
+        // Image already selected, set the caret before it and delete it
+        composer.selection.setBefore(image);
+        parent = image.parentNode;
+        parent.removeChild(image);
+
+        // and it's parent <a> too if it hasn't got any other relevant child nodes
+        wysihtml5.dom.removeEmptyTextNodes(parent);
+        if (parent.nodeName === "A" && !parent.firstChild) {
+          composer.selection.setAfter(parent);
+          parent.parentNode.removeChild(parent);
+        }
+
+        // firefox and ie sometimes don't remove the image handles, even though the image got removed
+        wysihtml5.quirks.redraw(composer.element);
+        return;
+      }
+
+      image = doc.createElement(NODE_NAME);
+      
+      for (var i in value) {
+        image.setAttribute(i === "className" ? "class" : i, value[i]);
+      }
+
+      composer.selection.insertNode(image);
+      if (wysihtml5.browser.hasProblemsSettingCaretAfterImg()) {
+        textNode = doc.createTextNode(wysihtml5.INVISIBLE_SPACE);
+        composer.selection.insertNode(textNode);
+        composer.selection.setAfter(textNode);
+      } else {
+        composer.selection.setAfter(image);
+      }
+    },
+
+    state: function(composer) {
+      var doc = composer.doc,
+          selectedNode,
+          text,
+          imagesInSelection;
+
+      if (!wysihtml5.dom.hasElementWithTagName(doc, NODE_NAME)) {
+        return false;
+      }
+
+      selectedNode = composer.selection.getSelectedNode();
+      if (!selectedNode) {
+        return false;
+      }
+
+      if (selectedNode.nodeName === NODE_NAME) {
+        // This works perfectly in IE
+        return selectedNode;
+      }
+
+      if (selectedNode.nodeType !== wysihtml5.ELEMENT_NODE) {
+        return false;
+      }
+
+      text = composer.selection.getText();
+      text = wysihtml5.lang.string(text).trim();
+      if (text) {
+        return false;
+      }
+
+      imagesInSelection = composer.selection.getNodes(wysihtml5.ELEMENT_NODE, function(node) {
+        return node.nodeName === "IMG";
+      });
+
+      if (imagesInSelection.length !== 1) {
+        return false;
+      }
+
+      return imagesInSelection[0];
+    }
+  };
+})(wysihtml5);(function(wysihtml5) {
   var LINE_BREAK = "<br>" + (wysihtml5.browser.needsSpaceAfterLineBreak() ? " " : "");
     
   wysihtml5.commands.insertLineBreak = {
@@ -9178,6 +9291,45 @@ wysihtml5.commands.bold = {
   var CLASS_NAME  = "wysiwyg-text-align-center",
       REG_EXP     = /wysiwyg-text-align-[0-9a-z]+/g;
   
+  wysihtml5.commands.justify = {
+    exec: function(composer, command, value) {
+      switch ( value ) {
+      	case 'center':
+      		return wysihtml5.commands.justifyCenter.exec(composer, "justifyCenter");
+      		break;
+      	case 'full':
+      		return wysihtml5.commands.justifyFull.exec(composer, "justifyFull");
+      		break;
+      	case 'left':
+      		return wysihtml5.commands.justifyLeft.exec(composer, "justifyLeft");
+      		break;
+      	case 'right':
+      		return wysihtml5.commands.justifyRight.exec(composer, "justifyRight");
+      		break;
+      }
+    },
+
+    state: function(composer, command, value) {
+    	switch ( value ) {
+      	case 'center':
+      		return wysihtml5.commands.justifyCenter.state(composer, "justifyCenter");
+      		break;
+      	case 'full':
+      		return wysihtml5.commands.justifyFull.state(composer, "justifyFull");
+      		break;
+      	case 'left':
+      		return wysihtml5.commands.justifyLeft.state(composer, "justifyLeft");
+      		break;
+      	case 'right':
+      		return wysihtml5.commands.justifyRight.state(composer, "justifyRight");
+      		break;
+      }
+    }
+  };
+})(wysihtml5);(function(wysihtml5) {
+  var CLASS_NAME  = "wysiwyg-text-align-center",
+      REG_EXP     = /wysiwyg-text-align-[0-9a-z]+/g;
+  
   wysihtml5.commands.justifyCenter = {
     exec: function(composer, command) {
       return wysihtml5.commands.formatBlock.exec(composer, "formatBlock", null, CLASS_NAME, REG_EXP);
@@ -9251,7 +9403,113 @@ wysihtml5.commands.redo = {
   state: function(composer) {
     return false;
   }
+};wysihtml5.commands.indent = {
+  exec: function(composer, command) {
+    var doc           = composer.doc,
+        selectedNode  = composer.selection.getSelectedNode(),
+        body          = doc.getElementsByTagName('BODY')[0];
+        
+    if (composer.commands.support(command)) {
+      doc.execCommand(command, false, null);
+      composer.selection.executeAndRestore(function() {
+        wysihtml5.dom.removeStyles(body);
+      });
+      return;
+    }
+    
+  },
+  
+  state: function(composer) {
+    return false;
+  }
+};wysihtml5.commands.outdent = {
+  exec: function(composer, command) {
+    var doc           = composer.doc,
+        selectedNode  = composer.selection.getSelectedNode(),
+        body          = doc.getElementsByTagName('BODY')[0];
+        
+
+    if (composer.commands.support(command)) {
+      doc.execCommand(command, false, null);
+      composer.selection.executeAndRestore(function() {
+        wysihtml5.dom.removeStyles(body);
+      });
+      return;
+    }
+    
+  },
+  
+  state: function(composer) {
+    return false;
+  }
 };(function(wysihtml5) {
+  var undef,
+      dom       = wysihtml5.dom;
+  
+	function _fullscren(composer, element){
+		wysihtml5.dom.addClass(element, 'wysihtml5-fullscreen');
+		var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+		if (requestMethod) { // Native full screen.
+				requestMethod.call(element);
+		} else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+				var wscript = new ActiveXObject("WScript.Shell");
+				if (wscript !== null) {
+						wscript.SendKeys("{F11}");
+				}
+		}
+		//composer.parent.fire("fullscreenEnable:composer").fire("focus");
+		return true;
+	}
+
+	function _cancelFullscren(composer, element){
+		wysihtml5.dom.removeClass(element, 'wysihtml5-fullscreen');
+		var cancelRequestMethod = document.cancelFullScreen || document.webkitCancelFullScreen || document.mozCancelFullScreen || document.msCancelFullScreen;
+		if (cancelRequestMethod) { // Native full screen.
+				cancelRequestMethod.call(document);
+		} else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+			var wscript = new ActiveXObject("WScript.Shell");
+			if (wscript !== null) {
+					wscript.SendKeys("{F11}");
+			}
+		}
+		//composer.parent.fire("fullscreenDisable:composer").fire("focus");
+		return true;
+	}
+
+	function _isFullscren(){
+		return fullscreenElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
+	}
+
+	wysihtml5.commands.fullscreen = {
+		exec: function(composer) {
+	
+			var fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled;
+
+			if (composer.config.editorContainer) {
+				this.editorContainer = typeof(composer.config.editorContainer) === "string" ? document.getElementById(composer.config.editorContainer) : composer.config.editorContainer;
+			} else {
+				this.editorContainer = document.documentElement;
+			}
+		
+			if(_isFullscren()) {
+				_cancelFullscren(composer, this.editorContainer);
+			} else {
+				_fullscren(composer, this.editorContainer);
+				var that = this;
+			}
+			return true;
+		},
+
+		state: function(composer) {
+			return _isFullscren();
+		}
+	};
+
+})(wysihtml5);
+
+
+
+(function(wysihtml5) {
   var dom = wysihtml5.dom;
   
   /**

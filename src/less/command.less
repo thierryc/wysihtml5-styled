@@ -2,6 +2,16 @@
 // Buttons
 // --------------------------------------------------
 
+.flatbuttonBackground(@startColor, @endColor, @textColor: #fff) {
+  background-color: @startColor; /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  background-image: none;
+  color: @textColor;
+  &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
+    background-color: @endColor;
+    color: @textColor;
+  }
+}
+
 
 // Base styles
 // --------------------------------------------------
@@ -28,7 +38,6 @@
     color: @gray;
     text-decoration: none;
     background-position: 0 -15px;
-    .buttonBackground(@cmdBackground, @cmdBackgroundHighlight, @gray, 0 1px 1px rgba(255,255,255,.75));
     border: 1px solid @btnBorder;
     *border: 0; 
   
@@ -153,27 +162,27 @@ input[type="button"] {
 // Set the backgrounds
 // -------------------------
 .cmd-primary {
-  .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+  .flatbuttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
 }
 // Warning appears are orange
 .cmd-warning {
-  .buttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
+  .flatbuttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
 }
 // Danger and error appear as red
 .cmd-danger {
-  .buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
+  .flatbuttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
 }
 // Success appears as green
 .cmd-success {
-  .buttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
+  .flatbuttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
 }
 // Info appears as a neutral blue
 .cmd-info {
-  .buttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight);
+  .flatbuttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight);
 }
 // Inverse appears as dark gray
 .cmd-inverse {
-  .buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
+  .flatbuttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
 }
 
 

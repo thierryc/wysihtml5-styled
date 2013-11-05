@@ -41,6 +41,7 @@ JS_FILES = src/wysihtml5.js \
   src/dom/text_content.js \
   src/dom/get_attribute.js \
   src/dom/table.js \
+  src/dom/style.js \
   src/quirks/clean_pasted_html.js \
   src/quirks/ensure_proper_clearing.js \
   src/quirks/get_correct_inner_html.js \
@@ -61,11 +62,13 @@ JS_FILES = src/wysihtml5.js \
   src/commands/insertHTML.js \
   src/commands/insertImage.js \
   src/commands/insertImageHtml5.js \
+  src/commands/removeImageHtml5.js \
   src/commands/insertLineBreak.js \
   src/commands/insertRule.js \
   src/commands/insertOrderedListHtml5.js \
   src/commands/insertUnorderedListHtml5.js \
   src/commands/italic.js \
+  src/commands/justify.js \
   src/commands/justifyCenter.js \
   src/commands/justifyLeft.js \
   src/commands/justifyRight.js \
@@ -73,10 +76,13 @@ JS_FILES = src/wysihtml5.js \
   src/commands/redo.js \
   src/commands/underline.js \
   src/commands/undo.js \
-  src/commands/createTable.js\
-  src/commands/mergeTableCells.js\
-  src/commands/addTableCells.js\
-  src/commands/deleteTableCells.js\
+  src/commands/indent.js \
+  src/commands/outdent.js \
+  src/commands/fullscreen.js \
+  src/commands/createTable.js \
+  src/commands/mergeTableCells.js \
+  src/commands/addTableCells.js \
+  src/commands/deleteTableCells.js \
   src/undo_manager.js \
   src/views/view.js \
   src/views/composer.js \

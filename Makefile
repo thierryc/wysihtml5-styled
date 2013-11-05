@@ -62,6 +62,7 @@ JS_FILES = src/wysihtml5.js \
   src/commands/insertImage.js \
   src/commands/insertImageHtml5.js \
   src/commands/insertLineBreak.js \
+  src/commands/insertRule.js \
   src/commands/insertOrderedListHtml5.js \
   src/commands/insertUnorderedListHtml5.js \
   src/commands/italic.js \

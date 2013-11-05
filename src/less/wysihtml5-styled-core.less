@@ -109,11 +109,23 @@
   .cmd-group + .cmd-group {
     border-left: 1px solid @btnBorder;
   }
-    [class^="ap-small-icon-"],
+  [class^="ap-small-icon-"],
   [class*="ap-small-icon-"] {
     background-image: url("../img/sprite-ap-small-icons-white.png");
   }
   
+  .dropdown-menu{
+    .cmd{
+          [class^="ap-small-icon-"],
+      [class*="ap-small-icon-"] {
+        background-image: url("../img/sprite-ap-small-icons-white.png");
+      }
+    }
+    [class^="ap-small-icon-"],
+    [class*="ap-small-icon-"] {
+      background-image: url("../img/sprite-ap-small-icons.png");
+    }
+  }
   .dialog-wysihtml5{
     background-color: @cmdBackground;
     color: @white;

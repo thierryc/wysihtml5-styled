@@ -1,0 +1,15 @@
+# Dependencies
+markdown:         rdiscount
+pygments:         true
+
+# Permalinks
+permalink:        pretty
+
+# Server
+destination:      ./_gh_pages
+exclude:          [".gitignore", "composer.json", "Gruntfile.js", "package.json", "README.md", "README.textile", "src", "lib"]
+port:             9001
+
+# Custom vars
+current_version:  0.6.1b
+repo:             https://github.com/thierryc/wysihtml5-styled

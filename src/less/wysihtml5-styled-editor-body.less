@@ -185,16 +185,26 @@ table.wysiwyg-table {
   tbody + tbody {
     border-top: 2px solid @tableBorder;
   }
-  // Nesting
-  .table {
-    background-color: @bodyBackground;
-  }
+  
   // bootstrap table style
-  .table-bordered();
+    
   th.wysiwyg-tmp-selected-cell,
   td.wysiwyg-tmp-selected-cell {
-    background-color: #eeeeee;
+    background-color: #f0f0ff;
+    -moz-box-shadow: inset 0 0 2px 1px #ccccff;
+		-webkit-box-shadow: inset 0 0 2px 1px #ccccff;
+		-ms-box-shadow: inset 0 0 2px 1px #ccccff;
+		-o-box-shadow: inset 0 0 2px 1px #ccccff;
+		box-shadow: inset 0 0 2px 1px #ccccff;
   }
+}
+
+table.wysiwyg-table-bordered {
+	.table-bordered();
+}
+
+table.wysiwyg-table-striped {
+	.table-striped();
 }
 
 .ap-class1 {

@@ -1,22 +1,64 @@
-wysihtml5.commands.createTable = {
-  exec: function(composer, command, value) {
-      var col, row, html;
-      if (value && value.cols && value.rows && parseInt(value.cols, 10) > 0 && parseInt(value.rows, 10) > 0) {
-        html = '<table class="wysiwyg-table"><tbody>';
-        for (row = 0; row < value.rows; row ++) {
-            html += '<tr>';
-            for (col = 0; col < value.cols; col ++) {
-                html += "<td>&nbsp;</td>";
-            }
-            html += '</tr>';
-        }
-        html += "</tbody></table>";
-        composer.commands.exec("insertHTML", html);
-        //composer.selection.insertHTML(html);
-      }
-  },
-
-  state: function(composer, command) {
-      return false;
+(function(wysihtml5) {
+  var dom = wysihtml5.dom;
+  
+  /**
+   * Remove similiar classes (based on classRegExp)
+   * and add the desired class name
+   */
+  function _addClass(element, className, classRegExp) {
+    if (element.className) {
+      _removeClass(element, classRegExp);
+      element.className = wysihtml5.lang.string(element.className + " " + className).trim();
+    } else {
+      element.className = className;
+    }
   }
-};
+
+  function _removeClass(element, classRegExp) {
+    var ret = classRegExp.test(element.className);
+    element.className = element.className.replace(classRegExp, "");
+    if (wysihtml5.lang.string(element.className).trim() == '') {
+        element.removeAttribute('class');
+    }
+    return ret;
+  }
+  
+  wysihtml5.commands.createTable = {
+		exec: function(composer, command, value) {
+				var col, row, html;
+				if (value && value.cols && value.rows && parseInt(value.cols, 10) > 0 && parseInt(value.rows, 10) > 0) {
+					var html = '<table class="wysiwyg-table"><tbody>';
+					var cell = '<th>&nbsp;</th>';
+					for (row = 0; row < value.rows; row ++) {
+							html += '<tr>';
+							for (col = 0; col < value.cols; col ++) {
+									html += cell;
+							}
+							html += '</tr>';
+							cell = '<td>&nbsp;</td>';
+					}
+					html += "</tbody></table>";
+					composer.commands.exec("insertHTML", html);
+					//composer.selection.insertHTML(html);
+				}
+		},
+
+		state: function(composer, command) {
+				return false;
+		}
+	};
+
+
+	wysihtml5.commands.editTable = {
+		exec: function(composer, command, value) {
+			var selectedNode = composer.selection.getSelectedNode();
+			var tableElement = dom.getParentElement(selectedNode, { nodeName: 'TABLE' });
+			_addClass(tableElement, value, /wysiwyg-table-[0-9a-z]+/g);
+		},
+
+		state: function(composer, command) {
+				return false;
+		}
+	};
+
+})(wysihtml5);

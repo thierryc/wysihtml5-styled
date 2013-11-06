@@ -74,7 +74,7 @@ var wysihtml5ParserRules = {
         "wysiwyg-text-align-right": 1,
         
         // editor class
-        
+        'wysiwyg-table':	1,
         'wysiwyg-table-bordered':	1,
         'wysiwyg-table-striped': 1,
         

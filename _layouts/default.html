@@ -2,9 +2,37 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>default</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="{{ page.description }}">
+	<meta name="author" content="Wysihtml5 styled">
+	
+	{% if page.type == "bs2" %}
+		{% include header-bs2.html %}
+	{% elsif page.slug == "bs3" %}
+		{% include header-bs3.html %}
+	{% elsif page.slug == "bsi" %}
+		{% include header-bsi.html %}
+	{% endif %}
+
+	<title>{{ page.title }}</title>
 </head>
 <body>
+	
+	{% if page.type == "bs2" %}
+		{% include nav-bs2.html %}
+	{% elsif page.slug == "bs3" %}
+		{% include nav-bs3.html %}
+	{% elsif page.slug == "bsi" %}
+		{% include nav-bsi.html %}
+	{% endif %}
+	
+	<div class="container">
+		<section class="row-fluid">
+			{{ content }}
+		</section>
+	</div>
 
+	{% include footer.html %}
 </body>
 </html>

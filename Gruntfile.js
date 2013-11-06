@@ -163,9 +163,13 @@ module.exports = function(grunt) {
         banner: '<%= banner %>',
         report: 'min'
       },
-      bootstrap: {
-        src: ['<%= concat.bootstrap.dest %>'],
-        dest: 'dist/js/<%= pkg.name %>.min.js'
+      bs2: {
+        src: ['<%= concat.bs2.dest %>'],
+        dest: 'dist/<%= pkg.name %>-bs2/js/<%= pkg.name %>-bs2.min.js'
+      },
+      bs3: {
+        src: ['<%= concat.bs3.dest %>'],
+        dest: 'dist/<%= pkg.name %>-bs3/js/<%= pkg.name %>-bs3.min.js'
       }
     },
 
@@ -292,12 +296,12 @@ module.exports = function(grunt) {
   // grunt.registerTask('test', testSubtasks);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat']);
+  grunt.registerTask('dist-js', ['concat', 'uglify']);
 
   // CSS distribution task.
   grunt.registerTask('dist-css', ['recess']);
 
-  // Fonts distribution task.
+  // Copy distribution task.
   grunt.registerTask('dist-copy', ['copy']);
 
   // Default task.

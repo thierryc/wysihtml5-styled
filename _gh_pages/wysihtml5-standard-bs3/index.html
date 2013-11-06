@@ -106,11 +106,11 @@
 	
 	<div class="container">
 		<section class="row">
-			<div class="span12">
+			<div class="col-md-12">
 	<h2>Wysihtml5 standard bs3</h2>
 	<form>
 		<div id="wysihtml5" class="wysihtml5">
-			<div id="wysihtml5Toolbar" class="cmd-toolbar cmd-toolbar-small" style="display: none;">
+			<div id="wysihtml5Toolbar" class="btn-toolbar btn-toolbar-small" style="display: none;">
 				<div class="btn-group" data-wysihtml5-command-group="formatBlock">
 	<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 	<span class="ap-small-icon-h1"></span>
@@ -245,13 +245,15 @@
 <a class="help" href="#helpModal" role="button" data-toggle="modal"><span class="ap-small-icon-info-circle"></span></a>
 
 <!-- Modal -->
-<div id="helpModal" class="modal modal-editor hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3 id="myModalLabel">Help </h3>
-		</div>
-		<div class="modal-body">
-				<section class="row-fluid">
+<div  id="helpModal" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 id="myModalLabel">Help </h4>
+      </div>
+      <div class="modal-body">
+        <section class="row-fluid">
 						<div class="span4">
 								<h5>Speech functions</h5>
 								<p>Speak and it will magically write into the editor.</p>
@@ -261,48 +263,50 @@
 								<h5>Keybord shortcuts</h5>
 								<dl class="dl-horizontal">
 										<dt>
-												<span class="label label-inverse">Shift + Enter</span></dt>
+												<span class="label label-default">Shift + Enter</span></dt>
 										<dd>Line break using br instead of p</dd>
 										<dt>
-												<span class="label label-inverse">Tab</span></dt>
+												<span class="label label-default">Tab</span></dt>
 										<dd>Indent</dd>
 										<dt>
-												<span class="label label-inverse">Shift + Tab</span></dt>
+												<span class="label label-default">Shift + Tab</span></dt>
 										<dd>Outdent</dd>
 										<dt>
-												<span class="label label-inverse">⌘ or Ctrl + M</span></dt>
+												<span class="label label-default">⌘ or Ctrl + M</span></dt>
 										<dd>Remove Format</dd>
 										<dt>
-												<span class="label label-inverse">⌘ or Ctrl + B</span></dt>
+												<span class="label label-default">⌘ or Ctrl + B</span></dt>
 										<dd>Bold</dd>
 										<dt>
-												<span class="label label-inverse">⌘ or Ctrl + I</span></dt>
+												<span class="label label-default">⌘ or Ctrl + I</span></dt>
 										<dd>Italic</dd>
 										<dt>
-												<span class="label label-inverse">⌘ or Ctrl + U</span></dt>
+												<span class="label label-default">⌘ or Ctrl + U</span></dt>
 										<dd>Underline</dd>
 										<dt>
-												<span class="label label-inverse">⌘ or Ctrl + J</span></dt>
+												<span class="label label-default">⌘ or Ctrl + J</span></dt>
 										<dd>Unordered list</dd>
 										<dt>
-												<span class="label label-inverse">⌘ or Ctrl + K</span></dt>
+												<span class="label label-default">⌘ or Ctrl + K</span></dt>
 										<dd>Ordered list</dd>
 										<dt>
-												<span class="label label-inverse">⌘ or Ctrl + Z</span></dt>
+												<span class="label label-default">⌘ or Ctrl + Z</span></dt>
 										<dd>Undo</dd>
 										<dt>
-												<span class="label label-inverse">⌘ or Ctrl + Shift + Z</span></dt>
+												<span class="label label-default">⌘ or Ctrl + Shift + Z</span></dt>
 										<dd>Redo</dd>
 										<dt>
-												<span class="label label-inverse">⌘ or Ctrl + L</span></dt>
+												<span class="label label-default">⌘ or Ctrl + L</span></dt>
 										<dd>Sup</dd>
 								</dl>
 						</div>
 				</section>
-		</div>
-		<div class="modal-footer">
-				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
 </div>
 
 <div data-wysihtml5-dialog="createLink" class="dialog-wysihtml5" style="display: none;">
@@ -330,32 +334,39 @@
 </div>
 
 <!-- Modal createLink -->
-<div data-wysihtml5-modal="createLinkHtml5" class="modal modal-editor hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3>Insert Link</h3>
-		</div>
-		<div class="modal-body">
-				<label for="link">Link</label>
-				<input id="link" type="text" data-wysihtml5-modal-field="href" value="http://">
-		</div>
-		<div class="modal-footer">
-				<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
+<div data-wysihtml5-modal="createLinkHtml5" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Insert Link</h4>
+      </div>
+      <div class="modal-body">
+        <label for="link">Link</label>
+				<input class="form-control" id="link" type="text" data-wysihtml5-modal-field="href" value="http://">
+      </div>
+      <div class="modal-footer">
+        <button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
 				<button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
-		</div>
-</div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 <!-- Modal insertImage -->
-<div data-wysihtml5-modal="insertImageHtml5" class="modal modal-editor hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3>Insert Image</h3>
-		</div>
-		<div class="modal-body">
-				<label for="wysihtml5ModalSrc">Image Src:</label>
-				<input type="text" id="wysihtml5ModalSrc" data-wysihtml5-modal-field="src" type="text" value="http://">
+<div data-wysihtml5-modal="insertImageHtml5" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Insert Image</h4>
+      </div>
+      <div class="modal-body">
+        <label for="wysihtml5ModalSrc">Image Src:</label>
+				<input class="form-control" type="text" id="wysihtml5ModalSrc" data-wysihtml5-modal-field="src" type="text" value="http://">
 				<label class="control-label" for="wysihtml5ModalAlign">Image Align:</label>
-				<select id="wysihtml5ModalAlign" data-wysihtml5-modal-field="className">
+				<select class="form-control" id="wysihtml5ModalAlign" data-wysihtml5-modal-field="className">
 						<option value="">Default</option>
 						<option value="wysiwyg-float-left">Left</option>
 						<option value="wysiwyg-float-right">Right</option>
@@ -369,32 +380,39 @@
 						<option value="img-circle wysiwyg-float-left">Circle Left</option>
 						<option value="img-circle wysiwyg-float-right">Circle Right</option>
 				</select>
-		</div>
-		<div class="modal-footer">
-				<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
 				<button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
-		</div>
-</div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
-<!-- Modal createLink -->
-<div data-wysihtml5-modal="createTable" class="modal modal-editor hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3>Insert Table</h3>
-		</div>
-		<div class="modal-body">
-			<label for="wysihtml5ModalCreateTableCols">Cols</label>
-	<input id="wysihtml5ModalCreateTableCols" type="text" data-wysihtml5-modal-field="cols" value="3"><br/>
-			
-			<label for="wysihtml5ModalCreateTableRows">Rows</label>
-			<input id="wysihtml5ModalCreateTableRows" type="text" data-wysihtml5-modal-field="rows" value="3"><br/>
-	
-		</div>
-		<div class="modal-footer">
-				<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
+
+<!-- Modal createTable -->
+<div data-wysihtml5-modal="createTable" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Insert Table</h4>
+      </div>
+      <div class="modal-body">
+        <label for="wysihtml5ModalCreateTableCols">Cols</label>
+				<input class="form-control" id="wysihtml5ModalCreateTableCols" type="text" data-wysihtml5-modal-field="cols" value="3"><br/>
+						
+				<label for="wysihtml5ModalCreateTableRows">Rows</label>
+				<input class="form-control" id="wysihtml5ModalCreateTableRows" type="text" data-wysihtml5-modal-field="rows" value="3"><br/>
+      </div>
+      <div class="modal-footer">
+        <button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
 				<button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
-		</div>
-</div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 <!--  <div data-wysihtml5-dialog="__createTable" style="display: none;">
 	Rows: <input type="text" data-wysihtml5-dialog-field="rows"><br/>

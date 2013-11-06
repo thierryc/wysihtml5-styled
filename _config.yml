@@ -7,7 +7,7 @@ permalink:        pretty
 
 # Server
 destination:      ./_gh_pages
-exclude:          [".gitignore", "composer.json", "Gruntfile.js", "package.json", "README.md", "README.textile", "src", "lib"]
+exclude:          [".gitignore", "composer.json", "Gruntfile.js", "package.json", "README.md", "README.textile", "src", "lib", "build", "examples", "test"]
 port:             9001
 
 # Custom vars

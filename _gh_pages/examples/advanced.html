@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/pi.bootstrap3.css"/>
+<link rel="stylesheet" href="css/responsive.css"/>
+<title>wysihtml5 - Advanced Demo</title>
+
+<div class="container">
+	<section class="row">
+		<div class="span12">
+<!--			<h1>Wysihtml5 <em>Styled</em> - Fresh and Clean</h1>-->
+			<form>
+				<div id="toolbar" class="btn-toolbar inverse" style="display: none;">
+					<div class="btn-group">
+						<a class="btn btn-mini" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1"><span class="apico interface apico-h1"></span></a>
+						<a class="btn btn-mini" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2"><span class="apico interface apico-h2"></span></a>
+						<a class="btn btn-mini" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3"><span class="apico interface apico-h3"></span></a>
+					</div>
+					<div class="btn-group">
+						<a class="btn btn-mini" data-wysihtml5-command="bold" title="CTRL+B"><span class="apico interface apico-bold"></span></a>
+						<a class="btn btn-mini" data-wysihtml5-command="italic" title="CTRL+I"><span class="apico interface apico-italic"></span></a>
+					</div>
+					<div class="btn-group">
+						<a class="btn btn-mini" data-wysihtml5-command="justifyLeft"><span class="apico interface apico-align-left"></span></a>
+						<a class="btn btn-mini" data-wysihtml5-command="justifyRight"><span class="apico interface apico-align-right"></span></a>
+						<a class="btn btn-mini" data-wysihtml5-command="justifyCenter"><span class="apico interface apico-align-center"></span></a>
+					</div>
+					<div class="btn-group">
+						<a class="btn btn-mini" data-wysihtml5-command="insertUnorderedList"><span class="apico interface apico-bullet-list"></span></a>
+						<a class="btn btn-mini" data-wysihtml5-command="insertOrderedList">insertOrderedList</a>
+					</div>
+					<a class="btn btn-mini" data-wysihtml5-command="createLink"><span class="apico interface apico-link"></span></a>
+					<a class="btn btn-mini" data-wysihtml5-command="insertImage"><span class="apico interface apico-picture"></span></a>
+					<div class="btn-group">
+						<a class="btn btn-mini" data-wysihtml5-command="undo"><span class="apico media apico-previous"></span></a>
+						<a class="btn btn-mini" data-wysihtml5-command="redo"><span class="apico media apico-next"></span></a>
+					</div>
+					<!--<a class="btn btn-mini" data-wysihtml5-command="insertSpeech">Speech</a>
+					<a class="btn btn-mini" data-wysihtml5-action="change_view">HTML</a>-->
+				
+				<div data-wysihtml5-dialog="createLink" class="well" style="display: none;">
+					<label>
+					Link:
+					<input data-wysihtml5-dialog-field="href" type="text" value="http://">
+					</label>
+					<a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
+					<a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
+				</div>
+				
+				<div data-wysihtml5-dialog="insertImage" class="well" style="display: none;">
+					<label>
+						Image:
+						<input type="text" data-wysihtml5-dialog-field="src" value="http://">
+					</label>
+					<label>
+					Align:
+					<select data-wysihtml5-dialog-field="className">
+					<option value="">default</option>
+					<option value="wysiwyg-float-left">left</option>
+					<option value="wysiwyg-float-right">right</option>
+					</select>
+					</label>
+				<a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
+				<a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
+				</div>
+				
+				</div>
+			  <textarea id="textarea" placeholder="Enter text ..."></textarea>
+			</form>
+			
+
+			
+		</div>
+	</section>
+</div>
+
+
+<script src="../parser_rules/advanced.js"></script>
+<script src="../dist/wysihtml5-0.5.0.js"></script>
+<script>
+  var editor = new wysihtml5.Editor("textarea", {
+    toolbar:        "toolbar",
+    stylesheets:    "css/stylesheet.css",
+    supportTouchDevices:  true,
+    parserRules:    wysihtml5ParserRules
+  });
+</script>

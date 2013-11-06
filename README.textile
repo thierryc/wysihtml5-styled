@@ -38,7 +38,6 @@ h3. 0.6.1a
 h3. 0.6.1b
 * Soft dependences to bootstrap.
 
-
 h2. Browser Support
 
 The rich text editing interface is supported in IE8+, FF 3.5+, Safari 4+, Safari on iOS 5+, Opera 11+ and Chrome.

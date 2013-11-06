@@ -972,5 +972,6 @@ table.wysiwyg-table-striped tbody > tr:nth-child(odd) > th {
   color: blue;
 }
 .ap-class3 {
-  color: yellow;
+  color: orange;
+  background-color: yellow;
 }

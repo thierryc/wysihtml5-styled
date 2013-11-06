@@ -72,13 +72,19 @@ var wysihtml5ParserRules = {
         "wysiwyg-text-align-justify": 1,
         "wysiwyg-text-align-left": 1,
         "wysiwyg-text-align-right": 1,
+        
         // editor class
+        
+        'wysiwyg-table-bordered':	1,
+        'wysiwyg-table-striped': 1,
+        
         'img-rounded': 1,
         'img-polaroid': 1,
         'img-circle': 1,
         'ap-class1': 1,
         'ap-class2': 1,
-        'ap-class3': 1
+        'ap-class3': 1,
+        
     },
     /**
      * Tag list

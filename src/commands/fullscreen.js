@@ -34,7 +34,7 @@
 	}
 
 	function _isFullscren(){
-		return fullscreenElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
+		return document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
 	}
 
 	wysihtml5.commands.fullscreen = {

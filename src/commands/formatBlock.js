@@ -4,9 +4,12 @@
       // Following elements are grouped
       // when the caret is within a H1 and the H4 is invoked, the H1 should turn into H4
       // instead of creating a H4 within a H1 which would result in semantically invalid html
-      BLOCK_ELEMENTS_GROUP    = ["H1", "H2", "H3", "H4", "H5", "H6", "P", "PRE", "BLOCKQUOTE", "DIV"];
-      LIST_ELEMENTS_GROUP    = ["OL", "UL", "TABLE", "DL"];
-      ITEM_ELEMENTS_GROUP    = ["LI", "TD", "TH", "DT", "DD"];
+      BLOCK_ELEMENTS_GROUP    = ["H1", "H2", "H3", "H4", "H5", "H6", "P", "PRE", "BLOCKQUOTE", "DIV"],
+      LIST_ELEMENTS_GROUP    	= ["OL", "UL", "TABLE", "DL"],
+      ITEM_ELEMENTS_GROUP    	= ["LI", "TD", "TH", "DT", "DD"],
+      //
+      FLOW_CONTENT 						= ["A", "ABBR", "ADDRESS", "ARTICLE", "ASIDE", "AUDIO", "B", "BDO", "BLOCKQUOTE", "BR", "BUTTON", "CANVAS", "CITE", "CODE", "COMMAND", "DATALIST", "DEL", "DETAILS", "DFN", "DIV", "DL", "EM", "EMBED", "FIELDSET", "FIGURE", "FOOTER", "FORM", "H1", "H2", "H3", "H4", "H5", "H6", "HEADER", "HGROUP", "HR", "I", "IFRAME", "IMG", "INPUT", "INS", "KBD", "KEYGEN", "LABEL", "MAP", "MARK", "MATH", "MENU", "METER", "NAV", "NOSCRIPT", "OBJECT", "OL", "OUTPUT", "P", "PRE", "PROGRESS", "Q", "RUBY", "SAMP", "SCRIPT", "SECTION", "SELECT", "SMALL", "SPAN", "STRONG", "SUB", "SUP", "SVG", "TABLE", "TEXTAREA", "TIME", "UL", "VAR", "VIDEO", "WBR"],
+ 			PHRASING_CONTENT  			= ["ABBR", "AUDIO", "B", "BDO", "BR", "BUTTON", "CANVAS", "CITE", "CODE", "COMMAND", "DATALIST", "DFN", "EM", "EMBED", "I", "IFRAME", "IMG", "INPUT", "KBD", "KEYGEN", "LABEL", "MARK", "MATH", "METER", "NOSCRIPT", "OBJECT", "OUTPUT", "PROGRESS", "Q", "RUBY", "SAMP", "SCRIPT", "SELECT", "SMALL", "SPAN", "STRONG", "SUB", "SUP", "SVG", "TEXTAREA", "TIME", "VAR", "VIDEO", "WBR"];
   
   /**
    * Remove similiar classes (based on classRegExp)
@@ -61,7 +64,7 @@
 
   /**
    * Adds line breaks before and after the given node if the previous and next siblings
-   * aren't already causing a visual line break (block element or <br>)
+   * aren't already causing a visual line break (block element or "br")
    */
   function _addLineBreakBeforeAndAfter(node) {
     var doc             = node.ownerDocument,

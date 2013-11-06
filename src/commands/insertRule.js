@@ -1,7 +1,6 @@
 (function(wysihtml5) {
 	"use strict";
-  var RULE = "<hr>";
-    
+  var RULE = "<hr>"; 
   wysihtml5.commands.insertRule = {
     exec: function(composer, command) {
 			if (!composer.selection.getSelection().isCollapsed) return;

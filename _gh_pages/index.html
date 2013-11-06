@@ -8,14 +8,13 @@
 	<meta name="author" content="Wysihtml5 styled">
 	
 	
-		// Load CDN from Jquery and Boostrap 
+		
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 
-// Load specific for editor
-<link href="./dist/wysihtml5-styled-bs2/css/wysihtml5-styled-bs2.css" rel="stylesheet">
 
+<link href="./dist/wysihtml5-styled-bs2/css/wysihtml5-styled-bs2.css" rel="stylesheet">
 <script src="./dist/wysihtml5-styled-bs2/js/advanced.js"></script>
 <script src="./dist/wysihtml5-styled-bs2/js/wysihtml5.js"></script>
 <script src="./dist/wysihtml5-styled-bs2/js/wysihtml5-styled-bs2.js"></script>
@@ -26,88 +25,88 @@
 <body>
 	
 	
-		<header class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
+		<header class="navbar">
+	<div class="navbar-inner">
 	<div class="container">
-	   <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
-	  </a>
+		</a>
  
-	  <a class="brand" href="/">Wysihtml5 styled</a>
+		<a class="brand" href="/">Wysihtml5 styled</a>
  
-	  <div class="nav-collapse collapse">
+		<div class="nav-collapse collapse">
 		<ul class="nav">
-		  <li class="dropdown">
+			<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boostrap 2.3.2 <b class="caret"></b></a>
 			<ul class="dropdown-menu">
-			  <li>
+				<li>
 				<a href="./wysihtml5-minimal-bs2">
-				  Minimal
+					Minimal
 				</a>
-			  </li>
-			  <li>
+				</li>
+				<li>
 				<a href="./wysihtml5-standard-bs2">
-				  Standard
+					Standard
 				</a>
-			  </li>
-			  <li>
+				</li>
+				<li>
 				<a href="./wysihtml5-advanced-bs2">
-				  Advanced
+					Advanced
 				</a>
-			  </li>
+				</li>
 			</ul>
-		  </li>
-		  <li class="dropdown">
+			</li>
+			<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boostrap 3 <b class="caret"></b></a>
 			<ul class="dropdown-menu">
-			  <li>
+				<li>
 				<a href="./wysihtml5-minimal-bs3">
-				  Minimal
+					Minimal
 				</a>
-			  </li>
-			  <li>
+				</li>
+				<li>
 				<a href="./wysihtml5-standard-bs3">
-				  Standard
+					Standard
 				</a>
-			  </li>
-			  <li>
+				</li>
+				<li>
 				<a href="./wysihtml5-advanced-bs3">
-				  Advanced
+					Advanced
 				</a>
-			  </li>
+				</li>
 			</ul>
-		  </li>
-		  <li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boostrap Indepedant <b class="caret"></b></a>
-			<ul class="dropdown-menu">
-			  <li>
-				<a href="./wysihtml5-minimal-bsi">
-				  Minimal
-				</a>
-			  </li>
-			  <li>
-				<a href="./wysihtml5-standard-bsi">
-				  Standard
-				</a>
-			  </li>
-			  <li>
-				<a href="./wysihtml5-advanced-bsi">
-				  Advanced
-				</a>
-			  </li>
-			</ul>
-		  </li>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boostrap Indepedant <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li>
+					<a href="./wysihtml5-minimal-bsi">
+						Minimal
+					</a>
+					</li>
+					<li>
+					<a href="./wysihtml5-standard-bsi">
+						Standard
+					</a>
+					</li>
+					<li>
+					<a href="./wysihtml5-advanced-bsi">
+						Advanced
+					</a>
+					</li>
+				</ul>
+			</li>
 		</ul>
-	  </div>
+		</div>
 	</div>
-  </div>
+	</div>
 </header> 
 	
 	
 	<div class="container">
-		<section class="row-fluid">
+		<section class="row">
 			<section class="bgSection">
 		<div class="container">
 			<section class="row-fluid">
@@ -187,19 +186,21 @@
 		</section>
 	</div>
 
-	<script>
-    
-    var editor = new wysihtml5.Editor("wysihtml5Textarea", {
-        editorContainer:    "wysihtml5",
-        toolbar:        "wysihtml5Toolbar",
-        style:          true,
-        stylesheets:    "../dist/wysihtml5-styled-bs2/css/wysihtml5-styled-editor-body.css",
-        parserRules:    wysihtml5ParserRules,
-        credit:         false,
-        predictive:     true,
-        codeMirror:     true
-    });
-    
+	
+		<script>
+	
+	var editor = new wysihtml5.Editor("wysihtml5Textarea", {
+		editorContainer:	"wysihtml5",
+		toolbar:        "wysihtml5Toolbar",
+		style:          true,
+		stylesheets:    "../dist/wysihtml5-styled-bs2/css/wysihtml5-styled-editor-body.css",
+		parserRules:    wysihtml5ParserRules,
+		credit:         false,
+		predictive:     true,
+		codeMirror:     true
+	});
+	
 </script>
+	
 </body>
 </html>

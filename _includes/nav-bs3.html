@@ -1,0 +1,78 @@
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+	<button type="button" class="navbar-toggle">
+	  <span class="sr-only">Toggle navigation</span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	</button>
+	<a class="navbar-brand" href="#">Wysihtml5 styled</a>
+  </div>
+
+  <div class="collapse navbar-collapse">
+	<ul class="nav navbar-nav">
+	  <li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boostrap 2.3.2 <b class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<li{% if page.slug == "wysihtml5-minimal-bs2" %} class="active"{% endif %}>
+				<a href="{{ page.base_url }}wysihtml5-minimal-bs2">
+					Minimal
+				</a>
+				</li>
+				<li{% if page.slug == "wysihtml5-standard-bs2" %} class="active"{% endif %}>
+				<a href="{{ page.base_url }}wysihtml5-standard-bs2">
+					Standard
+				</a>
+				</li>
+				<li{% if page.slug == "wysihtml5-advanced-bs2" %} class="active"{% endif %}>
+				<a href="{{ page.base_url }}wysihtml5-advanced-bs2">
+					Advanced
+				</a>
+				</li>
+			</ul>
+			</li>
+			<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boostrap 3 <b class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<li{% if page.slug == "wysihtml5-minimal-bs3" %} class="active"{% endif %}>
+				<a href="{{ page.base_url }}wysihtml5-minimal-bs3">
+					Minimal
+				</a>
+				</li>
+				<li{% if page.slug == "wysihtml5-standard-bs3" %} class="active"{% endif %}>
+				<a href="{{ page.base_url }}wysihtml5-standard-bs3">
+					Standard
+				</a>
+				</li>
+				<li{% if page.slug == "wysihtml5-advanced-bs3" %} class="active"{% endif %}>
+				<a href="{{ page.base_url }}wysihtml5-advanced-bs3">
+					Advanced
+				</a>
+				</li>
+			</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boostrap Indepedant <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li{% if page.slug == "wysihtml5-minimal-bsi" %} class="active"{% endif %}>
+					<a href="{{ page.base_url }}wysihtml5-minimal-bsi">
+						Minimal
+					</a>
+					</li>
+					<li{% if page.slug == "wysihtml5-standard-bsi" %} class="active"{% endif %}>
+					<a href="{{ page.base_url }}wysihtml5-standard-bsi">
+						Standard
+					</a>
+					</li>
+					<li{% if page.slug == "wysihtml5-advanced-bsi" %} class="active"{% endif %}>
+					<a href="{{ page.base_url }}wysihtml5-advanced-bsi">
+						Advanced
+					</a>
+					</li>
+				</ul>
+			</li>
+	</ul>
+	
+  </div><!-- /.navbar-collapse -->
+</nav>

@@ -4,41 +4,41 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Wysihtml5 standard bs2">
+	<meta name="description" content="Wysihtml5 standard bs3">
 	<meta name="author" content="Wysihtml5 styled">
 	
 	
-		
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
 
+<link href="../dist/wysihtml5-styled-bs3/css/wysihtml5-styled-bs3.css" rel="stylesheet">
 
-<link href="../dist/wysihtml5-styled-bs2/css/wysihtml5-styled-bs2.css" rel="stylesheet">
-<script src="../dist/wysihtml5-styled-bs2/js/advanced.js"></script>
+<script src="../dist/wysihtml5-styled-bs3/js/advanced.js"></script>
 <script src="../dist/wysihtml5-styled-bs2/js/wysihtml5.js"></script>
-<script src="../dist/wysihtml5-styled-bs2/js/wysihtml5-styled-bs2.js"></script>
+<script src="../dist/wysihtml5-styled-bs3/js/wysihtml5-styled-bs3.js"></script> 
 	
 
-	<title>Wysihtml5 standard bs2</title>
+	<title>Wysihtml5 standard bs3</title>
 </head>
 <body>
 	
 	
-		<header class="navbar">
-	<div class="navbar-inner">
-	<div class="container">
-		 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-		</a>
- 
-		<a class="brand" href="/">Wysihtml5 styled</a>
- 
-		<div class="nav-collapse collapse">
-		<ul class="nav">
-			<li class="dropdown">
+		<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+	<button type="button" class="navbar-toggle">
+	  <span class="sr-only">Toggle navigation</span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	</button>
+	<a class="navbar-brand" href="#">Wysihtml5 styled</a>
+  </div>
+
+  <div class="collapse navbar-collapse">
+	<ul class="nav navbar-nav">
+	  <li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boostrap 2.3.2 <b class="caret"></b></a>
 			<ul class="dropdown-menu">
 				<li>
@@ -46,7 +46,7 @@
 					Minimal
 				</a>
 				</li>
-				<li class="active">
+				<li>
 				<a href="../wysihtml5-standard-bs2">
 					Standard
 				</a>
@@ -66,7 +66,7 @@
 					Minimal
 				</a>
 				</li>
-				<li>
+				<li class="active">
 				<a href="../wysihtml5-standard-bs3">
 					Standard
 				</a>
@@ -98,22 +98,21 @@
 					</li>
 				</ul>
 			</li>
-		</ul>
-		</div>
-	</div>
-	</div>
-</header> 
+	</ul>
+	
+  </div><!-- /.navbar-collapse -->
+</nav>
 	
 	
 	<div class="container">
 		<section class="row">
 			<div class="span12">
-	<h2>Wysihtml5 standard bs2</h2>
+	<h2>Wysihtml5 standard bs3</h2>
 	<form>
 		<div id="wysihtml5" class="wysihtml5">
 			<div id="wysihtml5Toolbar" class="cmd-toolbar cmd-toolbar-small" style="display: none;">
-				<div class="cmd-group" data-wysihtml5-command-group="formatBlock">
-	<a class="cmd dropdown-toggle" data-toggle="dropdown" href="#">
+				<div class="btn-group" data-wysihtml5-command-group="formatBlock">
+	<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 	<span class="ap-small-icon-h1"></span>
 	<span class="caret"></span>
 	</a>
@@ -123,12 +122,12 @@
 		<li class="format-block-h3"><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3" data-wysihtml5-command-group-class="format-block-h3"><span class="ap-small-icon-h3"></span> Header 3</a></li>
 		<li class="format-block-p"><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="p" data-wysihtml5-command-group-class="format-block-p"><span class="ap-small-icon-align-justify-left"></span> Paragraphe</a></li>
 	</ul>
-	<a class="cmd" data-wysihtml5-command="insertLineBreak"><span class="ap-small-icon-line-break"></span></a>
-	<a class="cmd" data-wysihtml5-command="insertRule"><span class="ap-small-icon-favorite"></span></a>
+	<a class="btn" data-wysihtml5-command="insertLineBreak"><span class="ap-small-icon-line-break"></span></a>
+	<a class="btn" data-wysihtml5-command="insertRule"><span class="ap-small-icon-favorite"></span></a>
 </div>
 
-<div class="cmd-group">
-		<a class="cmd dropdown-toggle" data-toggle="dropdown" href="#">
+<div class="btn-group">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 			<span class="ap-small-icon-font"></span>
 			<span class="caret"></span>
 		</a>
@@ -139,47 +138,47 @@
 		</ul>
 </div>
 
-<div class="cmd-group" data-wysihtml5-command-group="justify">
-		<a class="cmd dropdown-toggle" data-toggle="dropdown" href="#">
+<div class="btn-group" data-wysihtml5-command-group="justify">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 		<span class="ap-small-icon-align-left"></span>
 		<span class="caret"></span>
 		</a>
 		<ul class="dropdown-menu icon">
-				<li><a class="cmd" data-wysihtml5-command="justify" data-wysihtml5-command-value="left" data-wysihtml5-command-group-class="justify-left"><span class="ap-small-icon-align-left"></span></a></li>
-				<li><a class="cmd" data-wysihtml5-command="justify" data-wysihtml5-command-value="center" data-wysihtml5-command-group-class="justify-center"><span class="ap-small-icon-align-center"></span></a></li>
-				<li><a class="cmd" data-wysihtml5-command="justify" data-wysihtml5-command-value="right" data-wysihtml5-command-group-class="justify-right"><span class="ap-small-icon-align-right"></span></a></li>
-				<li><a class="cmd" data-wysihtml5-command="justify" data-wysihtml5-command-value="full" data-wysihtml5-command-group-class="justify-full"><span class="ap-small-icon-align-justify"></span></a></li>
+				<li><a class="btn" data-wysihtml5-command="justify" data-wysihtml5-command-value="left" data-wysihtml5-command-group-class="justify-left"><span class="ap-small-icon-align-left"></span></a></li>
+				<li><a class="btn" data-wysihtml5-command="justify" data-wysihtml5-command-value="center" data-wysihtml5-command-group-class="justify-center"><span class="ap-small-icon-align-center"></span></a></li>
+				<li><a class="btn" data-wysihtml5-command="justify" data-wysihtml5-command-value="right" data-wysihtml5-command-group-class="justify-right"><span class="ap-small-icon-align-right"></span></a></li>
+				<li><a class="btn" data-wysihtml5-command="justify" data-wysihtml5-command-value="full" data-wysihtml5-command-group-class="justify-full"><span class="ap-small-icon-align-justify"></span></a></li>
 		</ul>
 </div>
 
-<div class="cmd-group">
-		<a class="cmd" data-wysihtml5-command="bold" title="CTRL+B"><span class="ap-small-icon-bold"></span></a>
-		<a class="cmd" data-wysihtml5-command="italic" title="CTRL+I"><span class="ap-small-icon-italic"></span></a>
-		<a class="cmd" data-wysihtml5-command="removeFormat"><span class="ap-small-icon-erase"></span></a>
+<div class="btn-group">
+		<a class="btn" data-wysihtml5-command="bold" title="CTRL+B"><span class="ap-small-icon-bold"></span></a>
+		<a class="btn" data-wysihtml5-command="italic" title="CTRL+I"><span class="ap-small-icon-italic"></span></a>
+		<a class="btn" data-wysihtml5-command="removeFormat"><span class="ap-small-icon-erase"></span></a>
 </div>
 
 
-<div class="cmd-group">
-		<a class="cmd" data-wysihtml5-command="outdent"><span class="ap-small-icon-indent-left"></span></a>
-		<a class="cmd" data-wysihtml5-command="indent"><span class="ap-small-icon-indent-right"></span></a>
+<div class="btn-group">
+		<a class="btn" data-wysihtml5-command="outdent"><span class="ap-small-icon-indent-left"></span></a>
+		<a class="btn" data-wysihtml5-command="indent"><span class="ap-small-icon-indent-right"></span></a>
 </div>
 
-<div class="cmd-group">
-		<a class="cmd" data-wysihtml5-command="insertUnorderedList"><span class="ap-small-icon-list"></span></a>
-		<a class="cmd" data-wysihtml5-command="insertOrderedList"><span class="ap-small-icon-list-number"></span></a>
+<div class="btn-group">
+		<a class="btn" data-wysihtml5-command="insertUnorderedList"><span class="ap-small-icon-list"></span></a>
+		<a class="btn" data-wysihtml5-command="insertOrderedList"><span class="ap-small-icon-list-number"></span></a>
 </div>
 
-<div class="cmd-group">
-		<a class="cmd" data-wysihtml5-command="createLinkHtml5" data-wysihtml5-command-class="active"><span class="ap-small-icon-link"></span></a>
-		<a class="cmd" data-wysihtml5-command="removeLinkHtml5" data-wysihtml5-command-class="active"><span class="ap-small-icon-unlink"></span></a>
+<div class="btn-group">
+		<a class="btn" data-wysihtml5-command="createLinkHtml5" data-wysihtml5-command-class="active"><span class="ap-small-icon-link"></span></a>
+		<a class="btn" data-wysihtml5-command="removeLinkHtml5" data-wysihtml5-command-class="active"><span class="ap-small-icon-unlink"></span></a>
 </div>
 
-<div class="cmd-group">
-		<a class="cmd" data-wysihtml5-command="insertImageHtml5" data-wysihtml5-command-class="active"><span class="ap-small-icon-picture"></span></a>
+<div class="btn-group">
+		<a class="btn" data-wysihtml5-command="insertImageHtml5" data-wysihtml5-command-class="active"><span class="ap-small-icon-picture"></span></a>
 </div>
 
-<div class="cmd-group">
-	<a class="cmd dropdown-toggle" data-toggle="dropdown" href="#">
+<div class="btn-group">
+	<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 	<span class="ap-small-icon-table"></span>
 	<span class="caret"></span>
 	</a>
@@ -223,19 +222,19 @@
 	</ul>
 </div>
 
-<div class="cmd-group">
-		<a class="cmd" data-wysihtml5-command="undo"><span class="ap-small-icon-undo"></span></a>
-		<a class="cmd" data-wysihtml5-command="redo"><span class="ap-small-icon-redo"></span></a>
+<div class="btn-group">
+		<a class="btn" data-wysihtml5-command="undo"><span class="ap-small-icon-undo"></span></a>
+		<a class="btn" data-wysihtml5-command="redo"><span class="ap-small-icon-redo"></span></a>
 </div>
 
 
-<div class="cmd-group">
-		<a class="cmd" data-wysihtml5-command="fullscreen"><span class="ap-small-icon-fullscreen"></span></a>
+<div class="btn-group">
+		<a class="btn" data-wysihtml5-command="fullscreen"><span class="ap-small-icon-fullscreen"></span></a>
 </div>
 										
-<a class="cmd" data-wysihtml5-command="insertSpeech"><span class="ap-small-icon-mic"></span></a>
+<a class="btn" data-wysihtml5-command="insertSpeech"><span class="ap-small-icon-mic"></span></a>
 
-<div class="cmd-group">
+<div class="btn-group">
 		<a class="switchon" data-wysihtml5-action="change_view">
 				<span class="on">On</span>
 				<span class="off">Off</span>
@@ -302,16 +301,16 @@
 				</section>
 		</div>
 		<div class="modal-footer">
-				<button class="cmd" data-dismiss="modal" aria-hidden="true">Close</button>
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 		</div>
 </div>
 
 <div data-wysihtml5-dialog="createLink" class="dialog-wysihtml5" style="display: none;">
 		<label>Link : </label>
 		<input data-wysihtml5-dialog-field="href" type="text" value="http://">
-		<div class="cmd-toolbar">
-				<a class="cmd cmd-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
-				<a class="cmd cmd-primary" data-wysihtml5-dialog-action="save">OK</a>
+		<div class="btn-toolbar">
+				<a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
+				<a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
 		</div>
 </div>
 
@@ -324,9 +323,9 @@
 				<option value="wysiwyg-float-left">left</option>
 				<option value="wysiwyg-float-right">right</option>
 		</select>
-		<div class="cmd-toolbar">
-				<a class="cmd cmd-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
-				<a class="cmd cmd-primary" data-wysihtml5-dialog-action="save">OK</a>
+		<div class="btn-toolbar">
+				<a class="btn btn-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
+				<a class="btn btn-primary" data-wysihtml5-dialog-action="save">OK</a>
 		</div>
 </div>
 
@@ -341,8 +340,8 @@
 				<input id="link" type="text" data-wysihtml5-modal-field="href" value="http://">
 		</div>
 		<div class="modal-footer">
-				<button class="cmd"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
-				<button class="cmd cmd-primary" data-wysihtml5-modal-action="save">Save changes</button>
+				<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
+				<button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
 		</div>
 </div>
 
@@ -372,8 +371,8 @@
 				</select>
 		</div>
 		<div class="modal-footer">
-				<button class="cmd"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
-				<button class="cmd cmd-primary" data-wysihtml5-modal-action="save">Save changes</button>
+				<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
+				<button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
 		</div>
 </div>
 
@@ -392,16 +391,16 @@
 	
 		</div>
 		<div class="modal-footer">
-				<button class="cmd"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
-				<button class="cmd cmd-primary" data-wysihtml5-modal-action="save">Save changes</button>
+				<button class="btn"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
+				<button class="btn btn-primary" data-wysihtml5-modal-action="save">Save changes</button>
 		</div>
 </div>
 
 <!--  <div data-wysihtml5-dialog="__createTable" style="display: none;">
 	Rows: <input type="text" data-wysihtml5-dialog-field="rows"><br/>
 	Cols: <input type="text" data-wysihtml5-dialog-field="cols"><br/>
-	<button class="cmd"  data-wysihtml5-dialog-action="cancel" aria-hidden="true">Close</button>
-	<button class="cmd cmd-primary" data-wysihtml5-dialog-action="save">Save changes</button>
+	<button class="btn"  data-wysihtml5-dialog-action="cancel" aria-hidden="true">Close</button>
+	<button class="btn btn-primary" data-wysihtml5-dialog-action="save">Save changes</button>
 </div> -->
 
 </div> 
@@ -422,7 +421,7 @@
 		editorContainer:	"wysihtml5",
 		toolbar:        "wysihtml5Toolbar",
 		style:          true,
-		stylesheets:    "../dist/wysihtml5-styled-bs2/css/wysihtml5-styled-editor-body.css",
+		stylesheets:    "../dist/wysihtml5-styled-bs3/css/wysihtml5-styled-editor-body.css",
 		parserRules:    wysihtml5ParserRules,
 		credit:         false,
 		predictive:     true,

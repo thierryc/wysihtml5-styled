@@ -9,9 +9,9 @@
 	
 	{% if page.type == "bs2" %}
 		{% include header-bs2.html %}
-	{% elsif page.slug == "bs3" %}
+	{% elsif page.type == "bs3" %}
 		{% include header-bs3.html %}
-	{% elsif page.slug == "bsi" %}
+	{% elsif page.type == "bsi" %}
 		{% include header-bsi.html %}
 	{% endif %}
 
@@ -19,20 +19,24 @@
 </head>
 <body>
 	
-	{% if page.type == "bs2" %}
-		{% include nav-bs2.html %}
-	{% elsif page.slug == "bs3" %}
+	{% if page.type == "bs3" %}
 		{% include nav-bs3.html %}
-	{% elsif page.slug == "bsi" %}
-		{% include nav-bsi.html %}
+	{% else  %}
+		{% include nav-bs2.html %}
 	{% endif %}
 	
 	<div class="container">
-		<section class="row-fluid">
+		<section class="row">
 			{{ content }}
 		</section>
 	</div>
 
-	{% include footer.html %}
+	{% if page.type == "bs2" %}
+		{% include footer-bs2.html %}
+	{% elsif page.type == "bs3" %}
+		{% include footer-bs3.html %}
+	{% elsif page.type == "bsi" %}
+		{% include footer-bsi.html %}
+	{% endif %}
 </body>
 </html>

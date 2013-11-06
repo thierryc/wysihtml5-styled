@@ -166,12 +166,24 @@ module.exports = function(grunt) {
         }
       },
       bs2: {
-        src: ['src/less/wysihtml5-styled-editor-body.less'],
+        src: ['src/less/bootstrap-wysihtml5-styled.less'],
         dest: 'dist/<%= pkg.name %>-bs2/css/<%= pkg.name %>-bs2.css'
+      },
+      bs3: {
+        src: ['src/less/bootstrap-wysihtml5-styled.less'],
+        dest: 'dist/<%= pkg.name %>-bs2/css/<%= pkg.name %>-bs3.css'
       }
+
     },
 
     copy: {
+      wysihtml5: {
+        files: {
+          'dist/<%= pkg.name %>-bs2/js/wysihtml5.js': ['src/wysihtml5.js'],
+          'dist/<%= pkg.name %>-bs3/js/wysihtml5.js': ['src/wysihtml5.js'],
+          'dist/<%= pkg.name %>-bsi/js/wysihtml5.js': ['src/wysihtml5.js']
+        }
+      },
       parser_rules: {
         files: {
           'dist/<%= pkg.name %>-bs2/js/advanced.js': ['parser_rules/advanced.js'],
@@ -179,6 +191,20 @@ module.exports = function(grunt) {
           'dist/<%= pkg.name %>-bsi/js/advanced.js': ['parser_rules/advanced.js']
         }
       },
+      bs2imgs: {
+        files: {
+          'dist/<%= pkg.name %>-bs2/img/glyphicons-halflings-white.png': ['lib/bootstrap/img/glyphicons-halflings-white.png'],
+          'dist/<%= pkg.name %>-bs2/img/glyphicons-halflings.png': ['lib/bootstrap/img/glyphicons-halflings.png']
+        }
+      },
+      sprites_imgs: {
+        files: {
+          'dist/<%= pkg.name %>-bs2/img/sprite-ap-small-icons-white.png': ['lib/sprite-ap-small/img/sprite-ap-small-icons-white.png'],
+          'dist/<%= pkg.name %>-bs2/img/sprite-ap-small-icons.png': ['lib/sprite-ap-small/img/sprite-ap-small-icons.png'],
+          'dist/<%= pkg.name %>-bs3/img/sprite-ap-small-icons-white.png': ['lib/sprite-ap-small/img/sprite-ap-small-icons-white.png'],
+          'dist/<%= pkg.name %>-bs3/img/sprite-ap-small-icons.png': ['lib/sprite-ap-small/img/sprite-ap-small-icons.png']
+        }
+      }
     },
 
     // qunit: {

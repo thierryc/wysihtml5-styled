@@ -2,3 +2,4 @@
 .idea
 lib/codemirror
 lib/bootstrap
+.ruby-version

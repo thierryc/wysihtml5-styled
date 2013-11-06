@@ -3399,6 +3399,7 @@ Base = Base.extend({
  * Detect browser support for specific features
  */
 wysihtml5.browser = (function() {
+	"use strict";
   var userAgent   = navigator.userAgent,
       testElement = document.createElement("div"),
       // Browser sniffing is unfortunately needed since some behaviors are impossible to feature detect
@@ -3974,6 +3975,7 @@ wysihtml5.browser = (function() {
  *    <script>wysihtml5.dom.autoLink(document.getElementById("text-container"));</script>
  */
 (function(wysihtml5) {
+	"use strict";
   var /**
        * Don't auto-link urls that are contained in the following elements:
        */
@@ -4105,6 +4107,7 @@ wysihtml5.browser = (function() {
   // Reveal url reg exp to the outside
   wysihtml5.dom.autoLink.URL_REG_EXP = URL_REG_EXP;
 })(wysihtml5);(function(wysihtml5) {
+	"use strict";
   var api = wysihtml5.dom;
   
   api.addClass = function(element, className) {
@@ -4157,6 +4160,7 @@ wysihtml5.browser = (function() {
   
 })(wysihtml5);
 wysihtml5.dom.contains = (function() {
+	"use strict";
   var documentElement = document.documentElement;
   if (documentElement.contains) {
     return function(container, element) {
@@ -4198,6 +4202,7 @@ wysihtml5.dom.contains = (function() {
  *    </ul>
  */
 wysihtml5.dom.convertToList = (function() {
+	"use strict";
   function _createListItem(doc, list) {
     var listItem = doc.createElement("li");
     list.appendChild(listItem);
@@ -5842,6 +5847,7 @@ wysihtml5.dom.replaceWithChildNodes = function(node) {
   });
 })(wysihtml5);
 (function(wysihtml5) {
+	"use strict";
   var doc = document;  
   wysihtml5.dom.ContentEditableArea = Base.extend({
       getContentEditable: function() {
@@ -7132,6 +7138,9 @@ wysihtml5.quirks.ensureProperClearing = (function() {
  *    var selection = new wysihtml5.Selection(editor);
  */
 (function(wysihtml5) {
+	
+	"use strict";
+	
   var dom = wysihtml5.dom;
   
   function _getCumulativeOffsetTop(element) {
@@ -7605,6 +7614,9 @@ wysihtml5.quirks.ensureProperClearing = (function() {
  *    - to detect and replace similar css classes via reg exp
  */
 (function(wysihtml5, rangy) {
+	
+	"use strict";
+	
   var defaultTagName = "span";
   
   var REG_EXP_WHITE_SPACE = /\s+/g;
@@ -8129,6 +8141,8 @@ wysihtml5.Commands = Base.extend(
   }
 });
 (function(wysihtml5) {
+	"use strict";
+	
   var dom                     = wysihtml5.dom,
 		// Following elements are grouped
 		// when the caret is within a H1 and the H4 is invoked, the H1 should turn into H4
@@ -8145,22 +8159,25 @@ wysihtml5.Commands = Base.extend(
 		}
 	};
 })(wysihtml5);
-wysihtml5.commands.bold = {
-  exec: function(composer, command) {
-    return wysihtml5.commands.formatInline.exec(composer, command, "b");
-  },
-
-  state: function(composer, command) {
-    // element.ownerDocument.queryCommandState("bold") results:
-    // firefox: only <b>
-    // chrome:  <b>, <strong>, <h1>, <h2>, ...
-    // ie:      <b>, <strong>
-    // opera:   <b>, <strong>
-    return wysihtml5.commands.formatInline.state(composer, command, "b");
-  }
-};
-
 (function(wysihtml5) {
+	"use strict";
+	wysihtml5.commands.bold = {
+		exec: function(composer, command) {
+			return wysihtml5.commands.formatInline.exec(composer, command, "b");
+		},
+
+		state: function(composer, command) {
+			// element.ownerDocument.queryCommandState("bold") results:
+			// firefox: only <b>
+			// chrome:  <b>, <strong>, <h1>, <h2>, ...
+			// ie:      <b>, <strong>
+			// opera:   <b>, <strong>
+			return wysihtml5.commands.formatInline.state(composer, command, "b");
+		}
+	};
+})(wysihtml5);
+(function(wysihtml5) {
+	"use strict";
   var undef,
       NODE_NAME = "A",
       dom       = wysihtml5.dom;
@@ -8262,6 +8279,7 @@ wysihtml5.commands.bold = {
     }
   };
 })(wysihtml5);(function(wysihtml5) {
+	"use strict";
   var undef,
       NODE_NAME = "A",
       dom       = wysihtml5.dom;
@@ -8363,6 +8381,7 @@ wysihtml5.commands.bold = {
     }
   };
 })(wysihtml5);(function(wysihtml5) {
+	"use strict";
   var undef,
       NODE_NAME = "A",
       dom       = wysihtml5.dom;
@@ -8423,6 +8442,7 @@ wysihtml5.commands.bold = {
  * Instead we set a css class
  */
 (function(wysihtml5) {
+	"use strict";
   var REG_EXP = /wysiwyg-font-size-[0-9a-z\-]+/g;
   
   wysihtml5.commands.fontSize = {
@@ -8441,6 +8461,7 @@ wysihtml5.commands.bold = {
  * Instead we set a css class
  */
 (function(wysihtml5) {
+	"use strict";
   var REG_EXP = /wysiwyg-color-[0-9a-z]+/g;
   
   wysihtml5.commands.foreColor = {
@@ -8453,13 +8474,17 @@ wysihtml5.commands.bold = {
     }
   };
 })(wysihtml5);(function(wysihtml5) {
+	"use strict";
   var dom                     = wysihtml5.dom,
       // Following elements are grouped
       // when the caret is within a H1 and the H4 is invoked, the H1 should turn into H4
       // instead of creating a H4 within a H1 which would result in semantically invalid html
-      BLOCK_ELEMENTS_GROUP    = ["H1", "H2", "H3", "H4", "H5", "H6", "P", "PRE", "BLOCKQUOTE", "DIV"];
-      LIST_ELEMENTS_GROUP    = ["OL", "UL", "TABLE", "DL"];
-      ITEM_ELEMENTS_GROUP    = ["LI", "TD", "TH", "DT", "DD"];
+      BLOCK_ELEMENTS_GROUP    = ["H1", "H2", "H3", "H4", "H5", "H6", "P", "PRE", "BLOCKQUOTE", "DIV"],
+      LIST_ELEMENTS_GROUP    	= ["OL", "UL", "TABLE", "DL"],
+      ITEM_ELEMENTS_GROUP    	= ["LI", "TD", "TH", "DT", "DD"],
+      //
+      FLOW_CONTENT 						= ["A", "ABBR", "ADDRESS", "ARTICLE", "ASIDE", "AUDIO", "B", "BDO", "BLOCKQUOTE", "BR", "BUTTON", "CANVAS", "CITE", "CODE", "COMMAND", "DATALIST", "DEL", "DETAILS", "DFN", "DIV", "DL", "EM", "EMBED", "FIELDSET", "FIGURE", "FOOTER", "FORM", "H1", "H2", "H3", "H4", "H5", "H6", "HEADER", "HGROUP", "HR", "I", "IFRAME", "IMG", "INPUT", "INS", "KBD", "KEYGEN", "LABEL", "MAP", "MARK", "MATH", "MENU", "METER", "NAV", "NOSCRIPT", "OBJECT", "OL", "OUTPUT", "P", "PRE", "PROGRESS", "Q", "RUBY", "SAMP", "SCRIPT", "SECTION", "SELECT", "SMALL", "SPAN", "STRONG", "SUB", "SUP", "SVG", "TABLE", "TEXTAREA", "TIME", "UL", "VAR", "VIDEO", "WBR"],
+ 			PHRASING_CONTENT  			= ["ABBR", "AUDIO", "B", "BDO", "BR", "BUTTON", "CANVAS", "CITE", "CODE", "COMMAND", "DATALIST", "DFN", "EM", "EMBED", "I", "IFRAME", "IMG", "INPUT", "KBD", "KEYGEN", "LABEL", "MARK", "MATH", "METER", "NOSCRIPT", "OBJECT", "OUTPUT", "PROGRESS", "Q", "RUBY", "SAMP", "SCRIPT", "SELECT", "SMALL", "SPAN", "STRONG", "SUB", "SUP", "SVG", "TEXTAREA", "TIME", "VAR", "VIDEO", "WBR"];
   
   /**
    * Remove similiar classes (based on classRegExp)
@@ -8514,7 +8539,7 @@ wysihtml5.commands.bold = {
 
   /**
    * Adds line breaks before and after the given node if the previous and next siblings
-   * aren't already causing a visual line break (block element or <br>)
+   * aren't already causing a visual line break (block element or "br")
    */
   function _addLineBreakBeforeAndAfter(node) {
     var doc             = node.ownerDocument,
@@ -8743,6 +8768,7 @@ wysihtml5.commands.bold = {
  *      <span>ab|c</span> de|<b>fgh</b>
  */
 (function(wysihtml5) {
+	"use strict";
   var // Treat <b> as <strong> and vice versa
       ALIAS_MAPPING = {
         "strong": "b",
@@ -8800,22 +8826,27 @@ wysihtml5.commands.bold = {
       return _getApplier(tagName, className, classRegExp).isAppliedToRange(range);
     }
   };
-})(wysihtml5);wysihtml5.commands.insertHTML = {
-  exec: function(composer, command, html) {
-    // insert is not replace... ;-)
-    if (!composer.selection.getSelection().isCollapsed) return;
-    if (composer.commands.support(command)) {
-      composer.doc.execCommand(command, false, html);
-    } else {
-      composer.selection.insertHTML(html);
-    }
-  },
+})(wysihtml5);(function(wysihtml5) {
+	"use strict";
+	wysihtml5.commands.insertHTML = {
+		exec: function(composer, command, html) {
+			// insert is not replace... ;-)
+			if (!composer.selection.getSelection().isCollapsed) return;
+			if (composer.commands.support(command)) {
+				composer.doc.execCommand(command, false, html);
+			} else {
+				composer.selection.insertHTML(html);
+			}
+		},
 
-  state: function(composer, command) {
-    return composer.selection.getSelection().isCollapsed;
-  }
-};
+		state: function(composer, command) {
+			return composer.selection.getSelection().isCollapsed;
+		}
+	};
+})(wysihtml5);
+
 (function(wysihtml5) {
+	"use strict";
   var NODE_NAME = "IMG";
   
   wysihtml5.commands.insertImage = {
@@ -8913,6 +8944,7 @@ wysihtml5.commands.bold = {
     }
   };
 })(wysihtml5);(function(wysihtml5) {
+	"use strict";
   var NODE_NAME = "IMG";
   
   wysihtml5.commands.insertImageHtml5 = {
@@ -9010,6 +9042,7 @@ wysihtml5.commands.bold = {
     }
   };
 })(wysihtml5);(function(wysihtml5) {
+	"use strict";
   var NODE_NAME = "IMG";
   
   wysihtml5.commands.removeImageHtml5 = {
@@ -9107,6 +9140,7 @@ wysihtml5.commands.bold = {
     }
   };
 })(wysihtml5);(function(wysihtml5) {
+	"use strict";
   var LINE_BREAK = "<br>" + (wysihtml5.browser.needsSpaceAfterLineBreak() ? " " : "");
     
   wysihtml5.commands.insertLineBreak = {
@@ -9132,8 +9166,8 @@ wysihtml5.commands.bold = {
     }
   };
 })(wysihtml5);(function(wysihtml5) {
-  var RULE = "<hr>";
-    
+	"use strict";
+  var RULE = "<hr>"; 
   wysihtml5.commands.insertRule = {
     exec: function(composer, command) {
 			if (!composer.selection.getSelection().isCollapsed) return;
@@ -9156,138 +9190,153 @@ wysihtml5.commands.bold = {
       return false;
     }
   };
-})(wysihtml5);wysihtml5.commands.insertOrderedList = {
-  exec: function(composer, command, type) {
-    var doc           = composer.doc,
-        selectedNode  = composer.selection.getSelectedNode(),
-        list          = wysihtml5.dom.getParentElement(selectedNode, { nodeName: "OL" }),
-        otherList     = wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL" }),
-        tempClassName =  "_wysihtml5-temp-" + new Date().getTime(),
-        isEmpty,
-        tempElement;
-    
-    if (!otherList && composer.commands.support(command)) {
-      doc.execCommand(command, false, null);
-      
-      var selectedNode = composer.selection.getSelectedNode();
-      composer.selection.executeAndRestore(function() {
-        if (type) wysihtml5.dom.addClass(selectedNode, "wysiwyg-ol-" + type);
-      });
-      
-      return;
-    }
-    
-    if (list) {
-      // Unwrap list
-      // <ol><li>foo</li><li>bar</li></ol>
-      // becomes:
-      // foo<br>bar<br>
-      composer.selection.executeAndRestore(function() {
-        wysihtml5.dom.resolveList(list, composer.config.useLineBreaks);
-      });
-    } else if (otherList) {
-      // Turn an unordered list into an ordered list
-      // <ul><li>foo</li><li>bar</li></ul>
-      // becomes:
-      // <ol><li>foo</li><li>bar</li></ol>
-      composer.selection.executeAndRestore(function() {
-        list = wysihtml5.dom.renameElement(otherList, "ol");
-        wysihtml5.dom.removeClassByPrefix(list, "wysiwyg-ul-");
-        if (type) wysihtml5.dom.addClass(list, "wysiwyg-ol-" + type);
-      });
-    } else {
-      // Create list
-      composer.commands.exec("formatBlock", "div", tempClassName, /wysiwyg-text-align-[0-9a-z]+/g);
-      tempElement = doc.querySelector("." + tempClassName);
-			isEmpty = tempElement.innerHTML === "" || tempElement.innerHTML === wysihtml5.INVISIBLE_SPACE || tempElement.innerHTML === "<br>";
-			composer.selection.executeAndRestore(function() {
-				list = wysihtml5.dom.convertToList(tempElement, "ol");
-				if (type) wysihtml5.dom.addClass(list, "wysiwyg-ol-" + type);
-			});
-			if (isEmpty) {
-				composer.selection.selectNode(list.querySelector("li"), true);
+})(wysihtml5);(function(wysihtml5) {
+	"use strict";
+	wysihtml5.commands.insertOrderedList = {
+		exec: function(composer, command, type) {
+			var doc           = composer.doc,
+					selectedNode  = composer.selection.getSelectedNode(),
+					list          = wysihtml5.dom.getParentElement(selectedNode, { nodeName: "OL" }),
+					otherList     = wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL" }),
+					tempClassName =  "_wysihtml5-temp-" + new Date().getTime(),
+					isEmpty,
+					tempElement;
+		
+			if (!otherList && composer.commands.support(command)) {
+				doc.execCommand(command, false, null);
+			
+				var selectedNode = composer.selection.getSelectedNode();
+				composer.selection.executeAndRestore(function() {
+					if (type) wysihtml5.dom.addClass(selectedNode, "wysiwyg-ol-" + type);
+				});
+			
+				return;
 			}
-    }
-  },
-  
-  state: function(composer, command, type) {
-    var selectedNode = composer.selection.getSelectedNode();
-    if (!type)
-        return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "OL" });
-    return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "OL", className: "wysiwyg-ol-" + type });
-  }
-};wysihtml5.commands.insertUnorderedList = {
-  exec: function(composer, command, type) {
-    var doc           = composer.doc,
-        selectedNode  = composer.selection.getSelectedNode(),
-        list          = wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL" }),
-        otherList     = wysihtml5.dom.getParentElement(selectedNode, { nodeName: "OL" }),
-        tempClassName =  "_wysihtml5-temp-" + new Date().getTime(),
-        isEmpty,
-        tempElement;
-    
-    if (!otherList && composer.commands.support(command)) {
-      doc.execCommand(command, false, null);
-      var selectedNode = composer.selection.getSelectedNode();
-      composer.selection.executeAndRestore(function() {
-        if (type) wysihtml5.dom.addClass(selectedNode, "wysiwyg-ul-" + type);
-      });
-      return;
-    }
-    
-    if (list) {
-      // Unwrap list
-      // <ul><li>foo</li><li>bar</li></ul>
-      // becomes:
-      // foo<br>bar<br>
-      composer.selection.executeAndRestore(function() {
-        wysihtml5.dom.resolveList(list, composer.config.useLineBreaks);
-      });
-    } else if (otherList) {
-      // Turn an ordered list into an unordered list
-      // <ol><li>foo</li><li>bar</li></ol>
-      // becomes:
-      // <ul><li>foo</li><li>bar</li></ul>
-      composer.selection.executeAndRestore(function() {
-        list = wysihtml5.dom.renameElement(otherList, "ul");
-        wysihtml5.dom.removeClassByPrefix(list, "wysiwyg-ol-");
-        if (type) wysihtml5.dom.addClass(list, "wysiwyg-ul-" + type);
-      });
-    } else {
-      // Create list
-      composer.commands.exec("formatBlock", "div", tempClassName, /wysiwyg-text-align-[0-9a-z]+/g);
-      tempElement = doc.querySelector("." + tempClassName);
-      isEmpty = tempElement.innerHTML === "" || tempElement.innerHTML === wysihtml5.INVISIBLE_SPACE || tempElement.innerHTML === "<br>";
-      composer.selection.executeAndRestore(function() {
-        list = wysihtml5.dom.convertToList(tempElement, "ul");
-        if (type) wysihtml5.dom.addClass(list, "wysiwyg-ul-" + type);
-      });
-      if (isEmpty) {
-        composer.selection.selectNode(list.querySelector("li"), true);
-      }
-    }
-  },
-  
-  state: function(composer, command, type) {
-    var selectedNode = composer.selection.getSelectedNode();
-    if (!type)
-        return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL" });
-    return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL", className: "wysiwyg-ul-" + type });
-  }
-};wysihtml5.commands.italic = {
-  exec: function(composer, command) {
-    return wysihtml5.commands.formatInline.exec(composer, command, "i");
-  },
+		
+			if (list) {
+				// Unwrap list
+				// <ol><li>foo</li><li>bar</li></ol>
+				// becomes:
+				// foo<br>bar<br>
+				composer.selection.executeAndRestore(function() {
+					wysihtml5.dom.resolveList(list, composer.config.useLineBreaks);
+				});
+			} else if (otherList) {
+				// Turn an unordered list into an ordered list
+				// <ul><li>foo</li><li>bar</li></ul>
+				// becomes:
+				// <ol><li>foo</li><li>bar</li></ol>
+				composer.selection.executeAndRestore(function() {
+					list = wysihtml5.dom.renameElement(otherList, "ol");
+					wysihtml5.dom.removeClassByPrefix(list, "wysiwyg-ul-");
+					if (type) wysihtml5.dom.addClass(list, "wysiwyg-ol-" + type);
+				});
+			} else {
+				// Create list
+				composer.commands.exec("formatBlock", "div", tempClassName, /wysiwyg-text-align-[0-9a-z]+/g);
+				tempElement = doc.querySelector("." + tempClassName);
+				isEmpty = tempElement.innerHTML === "" || tempElement.innerHTML === wysihtml5.INVISIBLE_SPACE || tempElement.innerHTML === "<br>";
+				composer.selection.executeAndRestore(function() {
+					list = wysihtml5.dom.convertToList(tempElement, "ol");
+					if (type) wysihtml5.dom.addClass(list, "wysiwyg-ol-" + type);
+				});
+				if (isEmpty) {
+					composer.selection.selectNode(list.querySelector("li"), true);
+				}
+			}
+		},
+	
+		state: function(composer, command, type) {
+			var selectedNode = composer.selection.getSelectedNode();
+			if (!type)
+					return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "OL" });
+			return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "OL", className: "wysiwyg-ol-" + type });
+		}
+	};
+})(wysihtml5);
 
-  state: function(composer, command) {
-    // element.ownerDocument.queryCommandState("italic") results:
-    // firefox: only <i>
-    // chrome:  <i>, <em>, <blockquote>, ...
-    // ie:      <i>, <em>
-    // opera:   only <i>
-    return wysihtml5.commands.formatInline.state(composer, command, "i");
-  }
-};(function(wysihtml5) {
+(function(wysihtml5) {
+	"use strict";
+	wysihtml5.commands.insertUnorderedList = {
+		exec: function(composer, command, type) {
+			var doc           = composer.doc,
+					selectedNode  = composer.selection.getSelectedNode(),
+					list          = wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL" }),
+					otherList     = wysihtml5.dom.getParentElement(selectedNode, { nodeName: "OL" }),
+					tempClassName =  "_wysihtml5-temp-" + new Date().getTime(),
+					isEmpty,
+					tempElement;
+		
+			if (!otherList && composer.commands.support(command)) {
+				doc.execCommand(command, false, null);
+				var selectedNode = composer.selection.getSelectedNode();
+				composer.selection.executeAndRestore(function() {
+					if (type) wysihtml5.dom.addClass(selectedNode, "wysiwyg-ul-" + type);
+				});
+				return;
+			}
+		
+			if (list) {
+				// Unwrap list
+				// <ul><li>foo</li><li>bar</li></ul>
+				// becomes:
+				// foo<br>bar<br>
+				composer.selection.executeAndRestore(function() {
+					wysihtml5.dom.resolveList(list, composer.config.useLineBreaks);
+				});
+			} else if (otherList) {
+				// Turn an ordered list into an unordered list
+				// <ol><li>foo</li><li>bar</li></ol>
+				// becomes:
+				// <ul><li>foo</li><li>bar</li></ul>
+				composer.selection.executeAndRestore(function() {
+					list = wysihtml5.dom.renameElement(otherList, "ul");
+					wysihtml5.dom.removeClassByPrefix(list, "wysiwyg-ol-");
+					if (type) wysihtml5.dom.addClass(list, "wysiwyg-ul-" + type);
+				});
+			} else {
+				// Create list
+				composer.commands.exec("formatBlock", "div", tempClassName, /wysiwyg-text-align-[0-9a-z]+/g);
+				tempElement = doc.querySelector("." + tempClassName);
+				isEmpty = tempElement.innerHTML === "" || tempElement.innerHTML === wysihtml5.INVISIBLE_SPACE || tempElement.innerHTML === "<br>";
+				composer.selection.executeAndRestore(function() {
+					list = wysihtml5.dom.convertToList(tempElement, "ul");
+					if (type) wysihtml5.dom.addClass(list, "wysiwyg-ul-" + type);
+				});
+				if (isEmpty) {
+					composer.selection.selectNode(list.querySelector("li"), true);
+				}
+			}
+		},
+	
+		state: function(composer, command, type) {
+			var selectedNode = composer.selection.getSelectedNode();
+			if (!type)
+					return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL" });
+			return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "UL", className: "wysiwyg-ul-" + type });
+		}
+	};
+})(wysihtml5);
+(function(wysihtml5) {
+	"use strict";
+	wysihtml5.commands.italic = {
+		exec: function(composer, command) {
+			return wysihtml5.commands.formatInline.exec(composer, command, "i");
+		},
+
+		state: function(composer, command) {
+			// element.ownerDocument.queryCommandState("italic") results:
+			// firefox: only <i>
+			// chrome:  <i>, <em>, <blockquote>, ...
+			// ie:      <i>, <em>
+			// opera:   only <i>
+			return wysihtml5.commands.formatInline.state(composer, command, "i");
+		}
+	};
+})(wysihtml5);
+
+(function(wysihtml5) {
+	"use strict";
   var CLASS_NAME  = "wysiwyg-text-align-center",
       REG_EXP     = /wysiwyg-text-align-[0-9a-z]+/g;
   
@@ -9327,6 +9376,7 @@ wysihtml5.commands.bold = {
     }
   };
 })(wysihtml5);(function(wysihtml5) {
+	"use strict";
   var CLASS_NAME  = "wysiwyg-text-align-center",
       REG_EXP     = /wysiwyg-text-align-[0-9a-z]+/g;
   
@@ -9340,6 +9390,7 @@ wysihtml5.commands.bold = {
     }
   };
 })(wysihtml5);(function(wysihtml5) {
+	"use strict";
   var CLASS_NAME  = "wysiwyg-text-align-left",
       REG_EXP     = /wysiwyg-text-align-[0-9a-z]+/g;
   
@@ -9353,6 +9404,7 @@ wysihtml5.commands.bold = {
     }
   };
 })(wysihtml5);(function(wysihtml5) {
+	"use strict";
   var CLASS_NAME  = "wysiwyg-text-align-right",
       REG_EXP     = /wysiwyg-text-align-[0-9a-z]+/g;
   
@@ -9366,6 +9418,7 @@ wysihtml5.commands.bold = {
     }
   };
 })(wysihtml5);(function(wysihtml5) {
+	"use strict";
   var CLASS_NAME  = "wysiwyg-text-align-justify",
       REG_EXP     = /wysiwyg-text-align-[0-9a-z]+/g;
   
@@ -9379,70 +9432,96 @@ wysihtml5.commands.bold = {
     }
   };
 })(wysihtml5);
-wysihtml5.commands.redo = {
-  exec: function(composer) {
-    return composer.undoManager.redo();
-  },
+(function(wysihtml5) {
+	"use strict";
+	wysihtml5.commands.redo = {
+		exec: function(composer) {
+			return composer.undoManager.redo();
+		},
 
-  state: function(composer) {
-    return false;
-  }
-};wysihtml5.commands.underline = {
-  exec: function(composer, command) {
-    return wysihtml5.commands.formatInline.exec(composer, command, "u");
-  },
+		state: function(composer) {
+			return false;
+		}
+	};
+})(wysihtml5);
 
-  state: function(composer, command) {
-    return wysihtml5.commands.formatInline.state(composer, command, "u");
-  }
-};wysihtml5.commands.undo = {
-  exec: function(composer) {
-    return composer.undoManager.undo();
-  },
+(function(wysihtml5) {
+	"use strict";
+	wysihtml5.commands.underline = {
+		exec: function(composer, command) {
+			return wysihtml5.commands.formatInline.exec(composer, command, "u");
+		},
 
-  state: function(composer) {
-    return false;
-  }
-};wysihtml5.commands.indent = {
-  exec: function(composer, command) {
-    var doc           = composer.doc,
-        selectedNode  = composer.selection.getSelectedNode(),
-        body          = doc.getElementsByTagName('BODY')[0];
-        
-    if (composer.commands.support(command)) {
-      doc.execCommand(command, false, null);
-      composer.selection.executeAndRestore(function() {
-        wysihtml5.dom.removeStyles(body);
-      });
-      return;
-    }
-    
-  },
-  
-  state: function(composer) {
-    return false;
-  }
-};wysihtml5.commands.outdent = {
-  exec: function(composer, command) {
-    var doc           = composer.doc,
-        selectedNode  = composer.selection.getSelectedNode(),
-        body          = doc.getElementsByTagName('BODY')[0];
-        
+		state: function(composer, command) {
+			return wysihtml5.commands.formatInline.state(composer, command, "u");
+		}
+	};
+})(wysihtml5);
 
-    if (composer.commands.support(command)) {
-      doc.execCommand(command, false, null);
-      composer.selection.executeAndRestore(function() {
-        wysihtml5.dom.removeStyles(body);
-      });
-      return;
-    }
-    
-  },
-  
-  state: function(composer) {
-    return false;
-  }
-};(function(wysihtml5) {
+(function(wysihtml5) {
+	"use strict";
+	wysihtml5.commands.undo = {
+		exec: function(composer) {
+			return composer.undoManager.undo();
+		},
+
+		state: function(composer) {
+			return false;
+		}
+	};
+})(wysihtml5);
+
+(function(wysihtml5) {
+	"use strict";
+	wysihtml5.commands.indent = {
+		exec: function(composer, command) {
+			var doc           = composer.doc,
+					selectedNode  = composer.selection.getSelectedNode(),
+					body          = doc.getElementsByTagName('BODY')[0];
+				
+			if (composer.commands.support(command)) {
+				doc.execCommand(command, false, null);
+				composer.selection.executeAndRestore(function() {
+					wysihtml5.dom.removeStyles(body);
+				});
+				return;
+			}
+		
+		},
+	
+		state: function(composer) {
+			return false;
+		}
+	};
+})(wysihtml5);
+
+(function(wysihtml5) {
+	"use strict";
+	wysihtml5.commands.outdent = {
+		exec: function(composer, command) {
+			var doc           = composer.doc,
+					selectedNode  = composer.selection.getSelectedNode(),
+					body          = doc.getElementsByTagName('BODY')[0];
+				
+
+			if (composer.commands.support(command)) {
+				doc.execCommand(command, false, null);
+				composer.selection.executeAndRestore(function() {
+					wysihtml5.dom.removeStyles(body);
+				});
+				return;
+			}
+		
+		},
+	
+		state: function(composer) {
+			return false;
+		}
+	};
+})(wysihtml5);
+
+(function(wysihtml5) {
+	"use strict";
   var undef,
       dom       = wysihtml5.dom;
   
@@ -9477,7 +9556,7 @@ wysihtml5.commands.redo = {
 	}
 
 	function _isFullscren(){
-		return fullscreenElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
+		return document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
 	}
 
 	wysihtml5.commands.fullscreen = {
@@ -9510,6 +9589,7 @@ wysihtml5.commands.redo = {
 
 
 (function(wysihtml5) {
+	"use strict";
   var dom = wysihtml5.dom;
   
   /**
@@ -9572,94 +9652,108 @@ wysihtml5.commands.redo = {
 		}
 	};
 
-})(wysihtml5);wysihtml5.commands.mergeTableCells = {
-  exec: function(composer, command) {
-      if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
-          if (this.state(composer, command)) {
-              wysihtml5.dom.table.unmergeCell(composer.tableSelection.start);
-          } else {
-              wysihtml5.dom.table.mergeCellsBetween(composer.tableSelection.start, composer.tableSelection.end);
-          }
-      }
-  },
+})(wysihtml5);(function(wysihtml5) {
+	"use strict";
+	wysihtml5.commands.mergeTableCells = {
+		exec: function(composer, command) {
+				if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
+						if (this.state(composer, command)) {
+								wysihtml5.dom.table.unmergeCell(composer.tableSelection.start);
+						} else {
+								wysihtml5.dom.table.mergeCellsBetween(composer.tableSelection.start, composer.tableSelection.end);
+						}
+				}
+		},
 
-  state: function(composer, command) {
-      if (composer.tableSelection) {
-          var start = composer.tableSelection.start,
-              end = composer.tableSelection.end;
-          if (start && end && start == end &&
-              ((
-                  wysihtml5.dom.getAttribute(start, "colspan") &&
-                  parseInt(wysihtml5.dom.getAttribute(start, "colspan"), 10) > 1
-              ) || (
-                  wysihtml5.dom.getAttribute(start, "rowspan") &&
-                  parseInt(wysihtml5.dom.getAttribute(start, "rowspan"), 10) > 1
-              ))
-          ) {
-              return [start];
-          }
-      }
-      return false;
-  }
-};wysihtml5.commands.addTableCells = {
-  exec: function(composer, command, value) {
-      if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
-          // switches start and end if start is bigger than end (reverse selection)
-          var tableSelect = wysihtml5.dom.table.orderSelectionEnds(composer.tableSelection.start, composer.tableSelection.end);
-          if (value == "before" || value == "above") {
-              wysihtml5.dom.table.addCells(tableSelect.start, value);
-          } else if (value == "after" || value == "below") {
-              wysihtml5.dom.table.addCells(tableSelect.end, value);
-          }
-          setTimeout(function() {
-              composer.tableSelection.select(tableSelect.start, tableSelect.end);
-          },0);
-      }
-  },
+		state: function(composer, command) {
+				if (composer.tableSelection) {
+						var start = composer.tableSelection.start,
+								end = composer.tableSelection.end;
+						if (start && end && start == end &&
+								((
+										wysihtml5.dom.getAttribute(start, "colspan") &&
+										parseInt(wysihtml5.dom.getAttribute(start, "colspan"), 10) > 1
+								) || (
+										wysihtml5.dom.getAttribute(start, "rowspan") &&
+										parseInt(wysihtml5.dom.getAttribute(start, "rowspan"), 10) > 1
+								))
+						) {
+								return [start];
+						}
+				}
+				return false;
+		}
+	};
+})(wysihtml5);
 
-  state: function(composer, command) {
-      return false;
-  }
-};wysihtml5.commands.deleteTableCells = {
-  exec: function(composer, command, value) {
-      if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
-          var tableSelect = wysihtml5.dom.table.orderSelectionEnds(composer.tableSelection.start, composer.tableSelection.end),
-              idx = wysihtml5.dom.table.indexOf(tableSelect.start),
-              selCell,
-              table = composer.tableSelection.table;
-              
-          wysihtml5.dom.table.removeCells(tableSelect.start, value);
-          setTimeout(function() {
-              // move selection to next or previous if not present
-              selCell = wysihtml5.dom.table.findCell(table, idx);
-              
-              if (!selCell){
-                  if (value == "row") {
-                      selCell = wysihtml5.dom.table.findCell(table, {
-                          "row": idx.row - 1,
-                          "col": idx.col
-                      });
-                  }
-              
-                  if (value == "column") {
-                      selCell = wysihtml5.dom.table.findCell(table, {
-                          "row": idx.row,
-                          "col": idx.col - 1
-                      });
-                  }
-              } 
-              if (selCell) {
-                  composer.tableSelection.select(selCell, selCell);
-              }
-          }, 0);
+(function(wysihtml5) {
+	"use strict";
+	wysihtml5.commands.addTableCells = {
+		exec: function(composer, command, value) {
+			if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
+				// switches start and end if start is bigger than end (reverse selection)
+				var tableSelect = wysihtml5.dom.table.orderSelectionEnds(composer.tableSelection.start, composer.tableSelection.end);
+				if (value == "before" || value == "above") {
+						wysihtml5.dom.table.addCells(tableSelect.start, value);
+				} else if (value == "after" || value == "below") {
+						wysihtml5.dom.table.addCells(tableSelect.end, value);
+				}
+				setTimeout(function() {
+						composer.tableSelection.select(tableSelect.start, tableSelect.end);
+				},0);
+			}
+		},
+		state: function(composer, command) {
+			return false;
+		}
+	};
+})(wysihtml5);
 
-      }
-  },
 
-  state: function(composer, command) {
-      return false;
-  }
-};/**
+
+(function(wysihtml5) {
+	"use strict";
+	wysihtml5.commands.deleteTableCells = {
+		exec: function(composer, command, value) {
+				if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
+					var tableSelect = wysihtml5.dom.table.orderSelectionEnds(composer.tableSelection.start, composer.tableSelection.end),
+							idx = wysihtml5.dom.table.indexOf(tableSelect.start),
+							selCell,
+							table = composer.tableSelection.table;
+					wysihtml5.dom.table.removeCells(tableSelect.start, value);
+					setTimeout(function() {
+							// move selection to next or previous if not present
+							selCell = wysihtml5.dom.table.findCell(table, idx);
+						
+							if (!selCell){
+								if (value == "row") {
+									selCell = wysihtml5.dom.table.findCell(table, {
+											"row": idx.row - 1,
+											"col": idx.col
+									});
+								}
+					
+								if (value == "column") {
+									selCell = wysihtml5.dom.table.findCell(table, {
+											"row": idx.row,
+											"col": idx.col - 1
+									});
+								}
+							} 
+							if (selCell) {
+									composer.tableSelection.select(selCell, selCell);
+							}
+					}, 0);
+				}
+		},
+
+		state: function(composer, command) {
+				return false;
+		}
+	};
+})(wysihtml5);
+
+/**
  * Undo Manager for wysihtml5
  * slightly inspired by http://rniwa.com/editing/undomanager.html#the-undomanager-interface
  */
@@ -11123,6 +11217,9 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
  *    </script>
  */
 (function(wysihtml5) {
+	
+	"use strict";
+	
   var dom                     = wysihtml5.dom,
       CLASS_NAME_OPENED       = "wysihtml5-command-dialog-opened",
       SELECTOR_FORM_ELEMENTS  = "input, select, textarea",
@@ -11322,6 +11419,8 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
  *    </script>
  */
 (function(wysihtml5) {
+	"use strict";
+	
   var dom                     = wysihtml5.dom,
       CLASS_NAME_OPENED       = "wysihtml5-command-modal-opened",
       SELECTOR_FORM_ELEMENTS  = "input, select, textarea",
@@ -11519,6 +11618,9 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
  * http://mikepultz.com/2011/03/accessing-google-speech-api-chrome-11/
  */
 (function(wysihtml5) {
+
+	"use strict";
+
   var dom = wysihtml5.dom;
   
   var linkStyles = {
@@ -11611,6 +11713,9 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
  *    </script>
  */
 (function(wysihtml5) {
+
+	"use strict";
+
   var CLASS_NAME_COMMAND_DISABLED   = "disabled",
       CLASS_NAME_COMMANDS_DISABLED  = "wysihtml5-disabled",
       CLASS_NAME_COMMAND_ACTIVE     = "active",
@@ -11647,6 +11752,9 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
           group,
           name,
           value,
+          activeClass,
+          groupClass,
+          modal,
           dialog;
       for (; i<length; i++) {
         link        = links[i];
@@ -12047,7 +12155,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
  * @example
  *    var predictive = new wysihtml5.Predictive(editor);
  */
- 
+
 wysihtml5.Predictive = Base.extend(
   /** @scope wysihtml5.Commands.prototype */ 
   {
@@ -12085,13 +12193,14 @@ wysihtml5.Predictive = Base.extend(
   }
   
 });(function(wysihtml5) {
-    wysihtml5.toolbar.Dialog_createTable = wysihtml5.toolbar.Dialog.extend({
-        show: function(elementToChange) {
-            this.base(elementToChange);
-            
-        }
-        
-    });
+	"use strict";
+	wysihtml5.toolbar.Dialog_createTable = wysihtml5.toolbar.Dialog.extend({
+			show: function(elementToChange) {
+					this.base(elementToChange);
+				
+			}
+		
+	});
 })(wysihtml5);/**
  * WYSIHTML5 Editor
  *
@@ -12124,6 +12233,9 @@ wysihtml5.Predictive = Base.extend(
  *    change_view
  */
 (function(wysihtml5) {
+  
+  "use strict";
+  
   var undef;
   
   var defaultConfig = {

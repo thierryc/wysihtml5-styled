@@ -618,7 +618,7 @@ h5,
 h6 {
   margin: 10px 0;
   font-family: inherit;
-  font-weight: bold;
+  font-weight: 300;
   line-height: 20px;
   color: inherit;
   text-rendering: optimizelegibility;
@@ -1342,14 +1342,14 @@ address {
 .dropdown-submenu:focus > a {
   text-decoration: none;
   color: #555555;
-  background-color: #e3e3e3;
-  background-image: -moz-linear-gradient(top, #e8e8e8, #dbdbdb);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e8e8e8), to(#dbdbdb));
-  background-image: -webkit-linear-gradient(top, #e8e8e8, #dbdbdb);
-  background-image: -o-linear-gradient(top, #e8e8e8, #dbdbdb);
-  background-image: linear-gradient(to bottom, #e8e8e8, #dbdbdb);
+  background-color: #d4d4d4;
+  background-image: -moz-linear-gradient(top, #d9d9d9, #cccccc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d9d9d9), to(#cccccc));
+  background-image: -webkit-linear-gradient(top, #d9d9d9, #cccccc);
+  background-image: -o-linear-gradient(top, #d9d9d9, #cccccc);
+  background-image: linear-gradient(to bottom, #d9d9d9, #cccccc);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe8e8e8', endColorstr='#ffdbdbdb', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd9d9d9', endColorstr='#ffcccccc', GradientType=0);
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -1357,14 +1357,14 @@ address {
   color: #555555;
   text-decoration: none;
   outline: 0;
-  background-color: #e3e3e3;
-  background-image: -moz-linear-gradient(top, #e8e8e8, #dbdbdb);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e8e8e8), to(#dbdbdb));
-  background-image: -webkit-linear-gradient(top, #e8e8e8, #dbdbdb);
-  background-image: -o-linear-gradient(top, #e8e8e8, #dbdbdb);
-  background-image: linear-gradient(to bottom, #e8e8e8, #dbdbdb);
+  background-color: #d4d4d4;
+  background-image: -moz-linear-gradient(top, #d9d9d9, #cccccc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d9d9d9), to(#cccccc));
+  background-image: -webkit-linear-gradient(top, #d9d9d9, #cccccc);
+  background-image: -o-linear-gradient(top, #d9d9d9, #cccccc);
+  background-image: linear-gradient(to bottom, #d9d9d9, #cccccc);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe8e8e8', endColorstr='#ffdbdbdb', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd9d9d9', endColorstr='#ffcccccc', GradientType=0);
 }
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
@@ -1466,9 +1466,9 @@ address {
 .typeahead {
   z-index: 1051;
   margin-top: 2px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .well {
   min-height: 20px;
@@ -1476,9 +1476,9 @@ address {
   margin-bottom: 20px;
   background-color: #f5f5f5;
   border: 1px solid #e3e3e3;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -1489,15 +1489,15 @@ address {
 }
 .well-large {
   padding: 24px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .well-small {
   padding: 9px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .fade {
   opacity: 0;
@@ -1561,26 +1561,26 @@ button.close {
   cursor: pointer;
   color: #333333;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  background-color: #dbdbdb;
-  background-image: -moz-linear-gradient(top, #e6e6e6, #cccccc);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e6e6), to(#cccccc));
-  background-image: -webkit-linear-gradient(top, #e6e6e6, #cccccc);
-  background-image: -o-linear-gradient(top, #e6e6e6, #cccccc);
-  background-image: linear-gradient(to bottom, #e6e6e6, #cccccc);
+  background-color: #e0e0e0;
+  background-image: -moz-linear-gradient(top, #e6e6e6, #d9d9d9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e6e6), to(#d9d9d9));
+  background-image: -webkit-linear-gradient(top, #e6e6e6, #d9d9d9);
+  background-image: -o-linear-gradient(top, #e6e6e6, #d9d9d9);
+  background-image: linear-gradient(to bottom, #e6e6e6, #d9d9d9);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe6e6e6', endColorstr='#ffcccccc', GradientType=0);
-  border-color: #cccccc #cccccc #a6a6a6;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe6e6e6', endColorstr='#ffd9d9d9', GradientType=0);
+  border-color: #d9d9d9 #d9d9d9 #b3b3b3;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #cccccc;
+  *background-color: #d9d9d9;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   border: 1px solid #cccccc;
   *border: 0;
   border-bottom-color: #b3b3b3;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   *margin-left: .3em;
   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
@@ -1593,12 +1593,12 @@ button.close {
 .btn.disabled,
 .btn[disabled] {
   color: #333333;
-  background-color: #cccccc;
-  *background-color: #bfbfbf;
+  background-color: #d9d9d9;
+  *background-color: #cccccc;
 }
 .btn:active,
 .btn.active {
-  background-color: #b3b3b3 \9;
+  background-color: #bfbfbf \9;
 }
 .btn:first-child {
   *margin-left: 0;
@@ -1639,9 +1639,9 @@ button.close {
 .btn-large {
   padding: 11px 19px;
   font-size: 17.5px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .btn-large [class^="icon-"],
 .btn-large [class*=" icon-"] {
@@ -1650,9 +1650,9 @@ button.close {
 .btn-small {
   padding: 2px 10px;
   font-size: 11.9px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .btn-small [class^="icon-"],
 .btn-small [class*=" icon-"] {
@@ -1665,9 +1665,9 @@ button.close {
 .btn-mini {
   padding: 0 6px;
   font-size: 10.5px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .btn-block {
   display: block;
@@ -1992,39 +1992,39 @@ input[type="submit"].btn.btn-mini {
 }
 .btn-group > .btn:first-child {
   margin-left: 0;
-  -webkit-border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px;
-  border-top-left-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  border-bottom-left-radius: 4px;
+  -webkit-border-top-left-radius: 2px;
+  -moz-border-radius-topleft: 2px;
+  border-top-left-radius: 2px;
+  -webkit-border-bottom-left-radius: 2px;
+  -moz-border-radius-bottomleft: 2px;
+  border-bottom-left-radius: 2px;
 }
 .btn-group > .btn:last-child,
 .btn-group > .dropdown-toggle {
-  -webkit-border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px;
-  border-bottom-right-radius: 4px;
+  -webkit-border-top-right-radius: 2px;
+  -moz-border-radius-topright: 2px;
+  border-top-right-radius: 2px;
+  -webkit-border-bottom-right-radius: 2px;
+  -moz-border-radius-bottomright: 2px;
+  border-bottom-right-radius: 2px;
 }
 .btn-group > .btn.large:first-child {
   margin-left: 0;
-  -webkit-border-top-left-radius: 6px;
-  -moz-border-radius-topleft: 6px;
-  border-top-left-radius: 6px;
-  -webkit-border-bottom-left-radius: 6px;
-  -moz-border-radius-bottomleft: 6px;
-  border-bottom-left-radius: 6px;
+  -webkit-border-top-left-radius: 2px;
+  -moz-border-radius-topleft: 2px;
+  border-top-left-radius: 2px;
+  -webkit-border-bottom-left-radius: 2px;
+  -moz-border-radius-bottomleft: 2px;
+  border-bottom-left-radius: 2px;
 }
 .btn-group > .btn.large:last-child,
 .btn-group > .large.dropdown-toggle {
-  -webkit-border-top-right-radius: 6px;
-  -moz-border-radius-topright: 6px;
-  border-top-right-radius: 6px;
-  -webkit-border-bottom-right-radius: 6px;
-  -moz-border-radius-bottomright: 6px;
-  border-bottom-right-radius: 6px;
+  -webkit-border-top-right-radius: 2px;
+  -moz-border-radius-topright: 2px;
+  border-top-right-radius: 2px;
+  -webkit-border-bottom-right-radius: 2px;
+  -moz-border-radius-bottomright: 2px;
+  border-bottom-right-radius: 2px;
 }
 .btn-group > .btn:hover,
 .btn-group > .btn:focus,
@@ -2068,7 +2068,7 @@ input[type="submit"].btn.btn-mini {
   box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
 }
 .btn-group.open .btn.dropdown-toggle {
-  background-color: #cccccc;
+  background-color: #d9d9d9;
 }
 .btn-group.open .btn-primary.dropdown-toggle {
   background-color: #048ac2;
@@ -2136,24 +2136,24 @@ input[type="submit"].btn.btn-mini {
   margin-top: -1px;
 }
 .btn-group-vertical > .btn:first-child {
-  -webkit-border-radius: 4px 4px 0 0;
-  -moz-border-radius: 4px 4px 0 0;
-  border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 2px 2px 0 0;
+  -moz-border-radius: 2px 2px 0 0;
+  border-radius: 2px 2px 0 0;
 }
 .btn-group-vertical > .btn:last-child {
-  -webkit-border-radius: 0 0 4px 4px;
-  -moz-border-radius: 0 0 4px 4px;
-  border-radius: 0 0 4px 4px;
+  -webkit-border-radius: 0 0 2px 2px;
+  -moz-border-radius: 0 0 2px 2px;
+  border-radius: 0 0 2px 2px;
 }
 .btn-group-vertical > .btn-large:first-child {
-  -webkit-border-radius: 6px 6px 0 0;
-  -moz-border-radius: 6px 6px 0 0;
-  border-radius: 6px 6px 0 0;
+  -webkit-border-radius: 2px 2px 0 0;
+  -moz-border-radius: 2px 2px 0 0;
+  border-radius: 2px 2px 0 0;
 }
 .btn-group-vertical > .btn-large:last-child {
-  -webkit-border-radius: 0 0 6px 6px;
-  -moz-border-radius: 0 0 6px 6px;
-  border-radius: 0 0 6px 6px;
+  -webkit-border-radius: 0 0 2px 2px;
+  -moz-border-radius: 0 0 2px 2px;
+  border-radius: 0 0 2px 2px;
 }
 .alert {
   padding: 8px 35px 8px 14px;
@@ -2161,9 +2161,9 @@ input[type="submit"].btn.btn-mini {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   background-color: #fcf8e3;
   border: 1px solid #fbeed5;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .alert,
 .alert h4 {
@@ -2580,9 +2580,9 @@ input[type="submit"].btn.btn-mini {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
   border: 1px solid #d4d4d4;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
@@ -3209,9 +3209,9 @@ input[type="submit"].btn.btn-mini {
   text-align: center;
   text-decoration: none;
   background-color: #000000;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 .tooltip-arrow {
   position: absolute;
@@ -3391,193 +3391,12 @@ input[type="submit"].btn.btn-mini {
 .affix {
   position: fixed;
 }
-.cmd-toolbar {
-  font-size: 14px;
-}
-.cmd-toolbar.inverse {
-  background: #444444;
-}
-.cmd-toolbar.inverse .cmd {
-  background-color: #444444;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd:hover,
-.cmd-toolbar.inverse .cmd:focus,
-.cmd-toolbar.inverse .cmd:active,
-.cmd-toolbar.inverse .cmd.active,
-.cmd-toolbar.inverse .cmd.disabled,
-.cmd-toolbar.inverse .cmd[disabled] {
-  background-color: #444444;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd:hover {
-  color: #ffffff;
-  border: 1px solid #2b2b2b;
-}
-.cmd-toolbar.inverse .cmd.active {
-  background-color: #6a6a6a;
-  background-position: 0 -30px;
-}
-.cmd-toolbar.inverse .cmd-group + .cmd-group {
-  border-left: 1px solid #2b2b2b;
-}
-.cmd-toolbar.inverse [class^="ap-small-icon-"],
-.cmd-toolbar.inverse [class*="ap-small-icon-"] {
-  background-image: url("../img/sprite-ap-small-icons-white.png");
-}
-.cmd-toolbar.inverse .cmd-primary {
-  background-color: #049cdb;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-primary:hover,
-.cmd-toolbar.inverse .cmd-primary:focus,
-.cmd-toolbar.inverse .cmd-primary:active,
-.cmd-toolbar.inverse .cmd-primary.active,
-.cmd-toolbar.inverse .cmd-primary.disabled,
-.cmd-toolbar.inverse .cmd-primary[disabled] {
-  background-color: #048ac2;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-warning {
-  background-color: #fbb450;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-warning:hover,
-.cmd-toolbar.inverse .cmd-warning:focus,
-.cmd-toolbar.inverse .cmd-warning:active,
-.cmd-toolbar.inverse .cmd-warning.active,
-.cmd-toolbar.inverse .cmd-warning.disabled,
-.cmd-toolbar.inverse .cmd-warning[disabled] {
-  background-color: #f89406;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-danger {
-  background-color: #ee5f5b;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-danger:hover,
-.cmd-toolbar.inverse .cmd-danger:focus,
-.cmd-toolbar.inverse .cmd-danger:active,
-.cmd-toolbar.inverse .cmd-danger.active,
-.cmd-toolbar.inverse .cmd-danger.disabled,
-.cmd-toolbar.inverse .cmd-danger[disabled] {
-  background-color: #bd362f;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-success {
-  background-color: #62c462;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-success:hover,
-.cmd-toolbar.inverse .cmd-success:focus,
-.cmd-toolbar.inverse .cmd-success:active,
-.cmd-toolbar.inverse .cmd-success.active,
-.cmd-toolbar.inverse .cmd-success.disabled,
-.cmd-toolbar.inverse .cmd-success[disabled] {
-  background-color: #51a351;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-info {
-  background-color: #5bc0de;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-info:hover,
-.cmd-toolbar.inverse .cmd-info:focus,
-.cmd-toolbar.inverse .cmd-info:active,
-.cmd-toolbar.inverse .cmd-info.active,
-.cmd-toolbar.inverse .cmd-info.disabled,
-.cmd-toolbar.inverse .cmd-info[disabled] {
-  background-color: #2f96b4;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-inverse {
-  background-color: #444444;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .cmd-inverse:hover,
-.cmd-toolbar.inverse .cmd-inverse:focus,
-.cmd-toolbar.inverse .cmd-inverse:active,
-.cmd-toolbar.inverse .cmd-inverse.active,
-.cmd-toolbar.inverse .cmd-inverse.disabled,
-.cmd-toolbar.inverse .cmd-inverse[disabled] {
-  background-color: #222222;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .dialog-wysihtml5 {
-  background-color: #444444;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .switchon {
-  border: 1px solid #2b2b2b;
-}
-.cmd-toolbar.inverse .switchon .slide {
-  background-color: #444444;
-  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-
-  background-image: none;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .switchon .slide:hover,
-.cmd-toolbar.inverse .switchon .slide:focus,
-.cmd-toolbar.inverse .switchon .slide:active,
-.cmd-toolbar.inverse .switchon .slide.active,
-.cmd-toolbar.inverse .switchon .slide.disabled,
-.cmd-toolbar.inverse .switchon .slide[disabled] {
-  background-color: #444444;
-  color: #ffffff;
-}
-.cmd-toolbar.inverse .switchon.active {
-  background-color: #6a6a6a;
-  text-shadow: 0px 1px 1px #555555;
-}
-.cmd-toolbar.inverse .modal {
-  color: #333333;
-}
-.cmd-toolbar-small .btn {
-  padding: 4px 8px;
-}
-.cmd-toolbar-small .btn span {
-  -webkit-transition: opacity 0.7s ease-in;
-  -moz-transition: opacity 0.7s ease-in;
-  -o-transition: opacity 0.7s ease-in;
-  transition: opacity 0.7s ease-in;
-  opacity: 1;
-}
-.wysihtml5-disabled .cmd span {
-  -webkit-transition: background 0.7s ease-in;
-  -moz-transition: background 0.7s ease-in;
-  -o-transition: background 0.7s ease-in;
-  transition: background 0.7s ease-in;
-  opacity: 0.5;
-}
 .switchon {
   -webkit-transition: background 0.7s ease-in;
   -moz-transition: background 0.7s ease-in;
   -o-transition: background 0.7s ease-in;
   transition: background 0.7s ease-in;
   color: #333333;
-  text-shadow: 0px 1px 2px #ffffff;
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
@@ -3587,12 +3406,12 @@ input[type="submit"].btn.btn-mini {
   font-size: 14px;
   cursor: pointer;
   background-color: #62c462;
-  border: 1px solid #cccccc;
+  border: 1px solid #d9d9d9;
   *border: 0;
-  border-bottom-color: #b3b3b3;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-bottom-color: #bfbfbf;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   *margin-left: .3em;
   -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
   -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
@@ -3615,16 +3434,15 @@ input[type="submit"].btn.btn-mini {
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   background-image: none;
-  color: #ffffff;
   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   top: 0;
   left: 50%;
   height: 100%;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   *display: inline;
   /* IE7 inline-block hack */
 
@@ -3633,15 +3451,6 @@ input[type="submit"].btn.btn-mini {
   -moz-transition: left 0.3s ease-in;
   -o-transition: left 0.3s ease-in;
   transition: left 0.3s ease-in;
-}
-.switchon .slide:hover,
-.switchon .slide:focus,
-.switchon .slide:active,
-.switchon .slide.active,
-.switchon .slide.disabled,
-.switchon .slide[disabled] {
-  background-color: #cccccc;
-  color: #ffffff;
 }
 .switchon .on,
 .switchon .off {
@@ -3665,7 +3474,7 @@ input[type="submit"].btn.btn-mini {
   color: #999999;
 }
 .switchon.active {
-  background-color: #cccccc;
+  background-color: #d9d9d9;
 }
 .switchon.active .slide {
   -webkit-transition: left 0.3s ease-in;
@@ -3673,6 +3482,95 @@ input[type="submit"].btn.btn-mini {
   -o-transition: left 0.3s ease-in;
   transition: left 0.3s ease-in;
   left: 0;
+}
+.cmd-toolbar {
+  font-size: 14px;
+}
+.cmd-toolbar.inverse {
+  background: #444444;
+}
+.cmd-toolbar.inverse .cmd {
+  background-color: #444444;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  background-image: none;
+  color: #ffffff;
+}
+.cmd-toolbar.inverse .cmd:hover,
+.cmd-toolbar.inverse .cmd:focus,
+.cmd-toolbar.inverse .cmd.disabled,
+.cmd-toolbar.inverse .cmd[disabled] {
+  background-color: #444444;
+  border: 1px solid #1e1e1e;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.cmd-toolbar.inverse .cmd:active,
+.cmd-toolbar.inverse .cmd.active {
+  background-color: #373737;
+  border: 1px solid #1e1e1e;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+}
+.cmd-toolbar.inverse .format-block-h1 .dropdown-toggle,
+.cmd-toolbar.inverse .format-block-h2 .dropdown-toggle,
+.cmd-toolbar.inverse .format-block-h3 .dropdown-toggle,
+.cmd-toolbar.inverse .format-block-p .dropdown-toggle,
+.cmd-toolbar.inverse .justify-left .dropdown-toggle,
+.cmd-toolbar.inverse .justify-right .dropdown-toggle,
+.cmd-toolbar.inverse .justify-center .dropdown-toggle,
+.cmd-toolbar.inverse .justify-full .dropdown-toggle {
+  border-color: #373737;
+}
+.cmd-toolbar.inverse .cmd-group + .cmd-group {
+  border-left: 1px solid #373737;
+}
+.cmd-toolbar.inverse [class^="ap-small-icon-"],
+.cmd-toolbar.inverse [class*="ap-small-icon-"] {
+  background-image: url("../img/sprite-ap-small-icons-white.png");
+}
+.cmd-toolbar.inverse .dropdown-menu .cmd [class^="ap-small-icon-"],
+.cmd-toolbar.inverse .dropdown-menu .cmd [class*="ap-small-icon-"] {
+  background-image: url("../img/sprite-ap-small-icons-white.png");
+}
+.cmd-toolbar.inverse .dropdown-menu [class^="ap-small-icon-"],
+.cmd-toolbar.inverse .dropdown-menu [class*="ap-small-icon-"] {
+  background-image: url("../img/sprite-ap-small-icons.png");
+}
+.cmd-toolbar.inverse .dialog-wysihtml5 {
+  background-color: #444444;
+  color: #ffffff;
+}
+.cmd-toolbar.inverse .switchon {
+  border: 1px solid #373737;
+}
+.cmd-toolbar.inverse .switchon .slide {
+  background-color: #373737;
+}
+.cmd-toolbar.inverse .modal {
+  color: #333333;
+}
+.cmd-toolbar-small .btn {
+  padding: 4px 8px;
+}
+.cmd-toolbar-small .btn span {
+  -webkit-transition: opacity 0.7s ease-in;
+  -moz-transition: opacity 0.7s ease-in;
+  -o-transition: opacity 0.7s ease-in;
+  transition: opacity 0.7s ease-in;
+  opacity: 1;
+}
+.wysihtml5-disabled .cmd span {
+  -webkit-transition: background 0.7s ease-in;
+  -moz-transition: background 0.7s ease-in;
+  -o-transition: background 0.7s ease-in;
+  transition: background 0.7s ease-in;
+  opacity: 0.5;
 }
 textarea.wysihtml5-textarea {
   line-height: auto;
@@ -3683,13 +3581,43 @@ textarea.wysihtml5-textarea {
   /* font-family: monospace; */
 
 }
+.modal-editor .modal-header {
+  background-color: transparent;
+}
+.modal-editor select,
+.modal-editor textarea,
+.modal-editor input[type="text"],
+.modal-editor input[type="password"],
+.modal-editor input[type="datetime"],
+.modal-editor input[type="datetime-local"],
+.modal-editor input[type="date"],
+.modal-editor input[type="month"],
+.modal-editor input[type="time"],
+.modal-editor input[type="week"],
+.modal-editor input[type="number"],
+.modal-editor input[type="email"],
+.modal-editor input[type="url"],
+.modal-editor input[type="search"],
+.modal-editor input[type="tel"],
+.modal-editor input[type="color"],
+.modal-editor .uneditable-input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 38px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.modal-editor .modal-footer {
+  background-color: transparent;
+}
 .dialog-wysihtml5 {
   width: 99%;
-  background-color: #cccccc;
+  background-color: #d9d9d9;
   color: #333333;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
   padding: 4px 12px;
   margin-top: 9px;
 }

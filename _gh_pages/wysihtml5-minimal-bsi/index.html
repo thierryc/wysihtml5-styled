@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Wysihtml5 standard bsi">
+	<meta name="description" content="Wysihtml5 minimal bsi">
 	<meta name="author" content="Wysihtml5 styled">
 	
 	
@@ -19,7 +19,7 @@
 
 	
 
-	<title>Wysihtml5 standard bsi</title>
+	<title>Wysihtml5 minimal bsi</title>
 </head>
 <body>
 	
@@ -80,12 +80,12 @@
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Boostrap Indepedant <b class="caret"></b></a>
 				<ul class="dropdown-menu">
-					<li>
+					<li class="active">
 					<a href="../wysihtml5-minimal-bsi">
 						Minimal
 					</a>
 					</li>
-					<li class="active">
+					<li>
 					<a href="../wysihtml5-standard-bsi">
 						Standard
 					</a>
@@ -107,25 +107,11 @@
 	<div class="container">
 		<section class="row">
 			<div class="span12">
-	<h2>Wysihtml5 standard bsi</h2>
+	<h2>Wysihtml5 minimal bsi</h2>
 	<form>
 		<div id="wysihtml5" class="wysihtml5">
 			<div id="wysihtml5Toolbar" class="cmd-toolbar cmd-toolbar-small" style="display: none;">
-				<div class="cmd-group" data-wysihtml5-command-group="formatBlock">
-	<a class="cmd dropdown-toggle" data-toggle="dropdown" href="#">
-	<span class="ap-small-icon-h1"></span>
-	<span class="caret"></span>
-	</a>
-	<ul class="dropdown-menu">
-		<li class="format-block-h1"><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1" data-wysihtml5-command-group-class="format-block-h1"><span class="ap-small-icon-h1"></span> Header 1</a></li>
-		<li class="format-block-h2"><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2" data-wysihtml5-command-group-class="format-block-h2"><span class="ap-small-icon-h2"></span> Header 2</a></li>
-		<li class="format-block-h3"><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3" data-wysihtml5-command-group-class="format-block-h3"><span class="ap-small-icon-h3"></span> Header 3</a></li>
-		<li class="format-block-p"><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="p" data-wysihtml5-command-group-class="format-block-p"><span class="ap-small-icon-align-justify-left"></span> Paragraphe</a></li>
-	</ul>
-	<a class="cmd" data-wysihtml5-command="insertLineBreak"><span class="ap-small-icon-line-break"></span></a>
-</div>
-
-<div class="cmd-group">
+				<div class="cmd-group">
 		<a class="cmd" data-wysihtml5-command="bold" title="CTRL+B"><span class="ap-small-icon-bold"></span></a>
 		<a class="cmd" data-wysihtml5-command="italic" title="CTRL+I"><span class="ap-small-icon-italic"></span></a>
 		<a class="cmd" data-wysihtml5-command="removeFormat"><span class="ap-small-icon-erase"></span></a>
@@ -138,22 +124,10 @@
 	<a class="cmd" data-wysihtml5-command="justify" data-wysihtml5-command-value="full" data-wysihtml5-command-group-class="justify-full"><span class="ap-small-icon-align-justify"></span></a>
 </div>
 
-
-<div class="cmd-group">
-		<a class="cmd" data-wysihtml5-command="outdent"><span class="ap-small-icon-indent-left"></span></a>
-		<a class="cmd" data-wysihtml5-command="indent"><span class="ap-small-icon-indent-right"></span></a>
-</div>
-
-<div class="cmd-group">
-		<a class="cmd" data-wysihtml5-command="insertUnorderedList"><span class="ap-small-icon-list"></span></a>
-		<a class="cmd" data-wysihtml5-command="insertOrderedList"><span class="ap-small-icon-list-number"></span></a>
-</div>
-
 <div class="cmd-group">
 		<a class="cmd" data-wysihtml5-command="undo"><span class="ap-small-icon-undo"></span></a>
 		<a class="cmd" data-wysihtml5-command="redo"><span class="ap-small-icon-redo"></span></a>
 </div>
-
 
 <div class="cmd-group">
 		<a class="cmd" data-wysihtml5-command="fullscreen"><span class="ap-small-icon-fullscreen"></span></a>
@@ -224,21 +198,6 @@
 		</div>
 </div>
 
-<!-- Modal createLink -->
-<div data-wysihtml5-modal="createLinkHtml5" class="modal modal-editor hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3>Insert Link</h3>
-		</div>
-		<div class="modal-body">
-				<label for="link">Link</label>
-				<input id="link" type="text" data-wysihtml5-modal-field="href" value="http://">
-		</div>
-		<div class="modal-footer">
-				<button class="cmd"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
-				<button class="cmd cmd-primary" data-wysihtml5-modal-action="save">Save changes</button>
-		</div>
-</div>
 
 </div> 
 				<textarea id="wysihtml5Textarea" data-wysihtml5-editor-container="wysihtml5" data-wysihtml5-toolbar="toolbar" lang='fr' placeholder="Enter text...">

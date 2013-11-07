@@ -13,6 +13,8 @@ module.exports = function(grunt) {
               ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
               ' * Licensed under <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
               ' *\n' +
+              ' * Contributors <%= pkg.contributors %>\n' +
+              ' *\n' +
               ' * Designed and built with all the love in the world by @pikock and @autreplanete.\n' +
               ' */\n\n',
     jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Wysihtml5 requires jQuery") }\n\n',
@@ -24,17 +26,9 @@ module.exports = function(grunt) {
 
     jshint: {
       options: {
-        jshintrc: 'js/.jshintrc'
+        jshintrc: 'src/.jshintrc'
       },
-      gruntfile: {
-        src: 'Gruntfile.js'
-      },
-      src: {
-        src: ['js/*.js']
-      },
-      test: {
-        src: ['js/tests/unit/*.js']
-      }
+      src: [ 'Gruntfile.js', 'src/**/*.js']
     },
 
     concat: {
@@ -237,38 +231,37 @@ module.exports = function(grunt) {
       docs: {}
     },
 
-    // validation: {
-    //   options: {
-    //     reset: true,
-    //     relaxerror: [
-    //         "Bad value X-UA-Compatible for attribute http-equiv on element meta.",
-    //         "Element img is missing required attribute src."
-    //     ]
-    //   },
-    //   files: {
-    //     src: ["_gh_pages/**/*.html"]
-    //   }
-    // },
+    validation: {
+      options: {
+        reset: true,
+        relaxerror: [
+            "Bad value X-UA-Compatible for attribute http-equiv on element meta.",
+            "Element img is missing required attribute src."
+        ]
+      },
+      files: {
+        src: ["_gh_pages/**/*.html"]
+      }
+    },
 
-    // watch: {
-    //   src: {
-    //     files: '<%= jshint.src.src %>',
-    //     tasks: ['jshint:src', 'qunit']
-    //   },
-    //   test: {
-    //     files: '<%= jshint.test.src %>',
-    //     tasks: ['jshint:test', 'qunit']
-    //   },
-    //   recess: {
-    //     files: 'less/*.less',
-    //     tasks: ['recess']
-    //   }
-    // }
+    watch: {
+      src: {
+        files: '<%= jshint.src.src %>',
+        tasks: ['jshint:src']
+      },
+      // test: {
+      //   files: '<%= jshint.test.src %>',
+      //   tasks: ['jshint:test', 'qunit']
+      // },
+      recess: {
+        files: 'src/less/*.less',
+        tasks: ['recess']
+      }
+    }
   });
 
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('browserstack-runner');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
@@ -282,7 +275,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-recess');
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll']);
+  grunt.registerTask('validate-html', ['jekyll', 'validation']);
+
+  // Docs HTML validation task
+  grunt.registerTask('validate-js', ['jshint']);
 
   // // Test task.
   // var testSubtasks = ['dist-css', 'jshint', 'qunit', 'validate-html'];
@@ -295,6 +291,9 @@ module.exports = function(grunt) {
   // }
   // grunt.registerTask('test', testSubtasks);
 
+  // Test distribution task.
+  grunt.registerTask('test', ['validate-html']);
+
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat', 'uglify']);
 
@@ -305,7 +304,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dist-copy', ['copy']);
 
   // Default task.
-  grunt.registerTask('default', ['clean', 'dist-css', 'dist-js', 'dist-copy']);
+  grunt.registerTask('default', ['clean', 'test', 'dist-css', 'dist-js', 'dist-copy']);
 
 
 };

@@ -509,6 +509,7 @@
                     this.rectify();
                 } else {
                     if (window.console) {
+                      // todo add message into the editor
                       console.log('Do not know how to merge allready merged cells.');
                     }
                 }

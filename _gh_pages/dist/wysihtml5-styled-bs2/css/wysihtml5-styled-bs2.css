@@ -1,7 +1,7 @@
 /*!
  * Wysihtml5 v0.6.1b by @pikock and @autreplanete
  * Copyright 2013 Pikock, Autreplanète
- * Licensed under 
+ * Licensed under http://opensource.org/licenses/MIT
  *
  * Contributors @tiff, @ingochao, @uwe, @Edicy
  *

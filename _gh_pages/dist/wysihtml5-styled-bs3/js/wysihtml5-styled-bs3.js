@@ -1,7 +1,7 @@
 /*!
  * Wysihtml5 v0.6.1b by @pikock and @autreplanete
  * Copyright 2013 Pikock, Autreplanète
- * Licensed under 
+ * Licensed under http://opensource.org/licenses/MIT
  *
  * Contributors @tiff, @ingochao, @uwe, @Edicy
  *
@@ -5868,7 +5868,6 @@ wysihtml5.dom.replaceWithChildNodes = function(node) {
       }
 
       this.loaded = true;
-
       // Trigger the callback
       setTimeout(function() { that.callback(that); }, 0);
     },
@@ -10289,7 +10288,6 @@ wysihtml5.views.View = Base.extend(
 
     _create: function() {
       var that = this;
-      
       this.doc                = this.sandbox.getDocument();
       this.element            = (this.config.contentEditableMode) ? this.sandbox.getContentEditable() : this.doc.body;
       if (!this.config.noTextarea) {
@@ -10306,6 +10304,7 @@ wysihtml5.views.View = Base.extend(
       this.commands  = new wysihtml5.Commands(this.parent);
       
       // Make sure predictive dispatcher is ready
+      
       this.predictive  = new wysihtml5.Predictive(this.parent);
       
       // Make sure predictive dispatcher is ready

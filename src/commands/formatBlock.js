@@ -200,26 +200,23 @@
       if (nodeName === null || wysihtml5.lang.array(BLOCK_ELEMENTS_GROUP).contains(nodeName)) {
         selectedNode = composer.selection.getSelectedNode();
         
-        itemElement = dom.getParentElement(selectedNode, {
+        var itemElementGroup = dom.getParentElement(selectedNode, {
           nodeName: ITEM_ELEMENTS_GROUP
         });
-        if (itemElement) {
+        if (itemElementGroup) {
         	if (className) {
-						_addClass(itemElement, className, classRegExp);
+						_addClass(itemElementGroup, className, classRegExp);
 					}
           return;
         }
         
-        listElement = dom.getParentElement(selectedNode, {
+        var listElementGroup = dom.getParentElement(selectedNode, {
           nodeName: LIST_ELEMENTS_GROUP
         });
-        if (listElement) {
+        if (listElementGroup) {
           return;
         }
         
-        blockElement = dom.getParentElement(selectedNode, {
-          nodeName: BLOCK_ELEMENTS_GROUP
-        });
         if (blockElement == composer.element) {
             blockElement = null;
         }

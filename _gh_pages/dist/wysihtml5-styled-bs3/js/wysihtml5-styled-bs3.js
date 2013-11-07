@@ -11,6 +11,42 @@
 if (typeof jQuery === "undefined") { throw new Error("Wysihtml5 requires jQuery") }
 
 /**
+ * @license wysihtml5 v@VERSION
+ * https://github.com/xing/wysihtml5
+ *
+ * Author: Christopher Blum (https://github.com/tiff)
+ *
+ * Copyright (C) 2012 XING AG
+ * Licensed under the MIT license (MIT)
+ *
+ */
+var wysihtml5 = {
+  version: "@VERSION",
+  
+  // namespaces
+  commands:             {},
+  dom:                  {},
+  quirks:               {},
+  toolbar:              {},
+  lang:                 {},
+  selection:            {},
+  views:                {},
+  KeyboardShortcut:     {},
+  
+  INVISIBLE_SPACE: "\uFEFF",
+  
+  EMPTY_FUNCTION: function() {},
+  
+  ELEMENT_NODE: 1,
+  TEXT_NODE:    3,
+  
+  BACKSPACE_KEY:  8,
+  ENTER_KEY:      13,
+  ESCAPE_KEY:     27,
+  SPACE_KEY:      32,
+  DELETE_KEY:     46
+};
+/**
  * @license Rangy, a cross-browser JavaScript range and selection library
  * http://code.google.com/p/rangy/
  *
@@ -6850,6 +6886,18 @@ wysihtml5.dom.setStyles = function(styles) {
     
 })(wysihtml5);
 
+(function(wysihtml5) {
+  var api = wysihtml5.dom;
+  
+  api.removeEmptyTags = function(node) {
+		
+	};
+
+  
+  
+  
+})(wysihtml5);
+
 (function(dom) {
   var documentElement = document.documentElement;
   if ("textContent" in documentElement) {
@@ -8478,10 +8526,7 @@ wysihtml5.Commands = Base.extend(
       // instead of creating a H4 within a H1 which would result in semantically invalid html
       BLOCK_ELEMENTS_GROUP    = ["H1", "H2", "H3", "H4", "H5", "H6", "P", "PRE", "BLOCKQUOTE", "DIV"],
       LIST_ELEMENTS_GROUP    	= ["OL", "UL", "TABLE", "DL"],
-      ITEM_ELEMENTS_GROUP    	= ["LI", "TD", "TH", "DT", "DD"],
-      //
-      FLOW_CONTENT 						= ["A", "ABBR", "ADDRESS", "ARTICLE", "ASIDE", "AUDIO", "B", "BDO", "BLOCKQUOTE", "BR", "BUTTON", "CANVAS", "CITE", "CODE", "COMMAND", "DATALIST", "DEL", "DETAILS", "DFN", "DIV", "DL", "EM", "EMBED", "FIELDSET", "FIGURE", "FOOTER", "FORM", "H1", "H2", "H3", "H4", "H5", "H6", "HEADER", "HGROUP", "HR", "I", "IFRAME", "IMG", "INPUT", "INS", "KBD", "KEYGEN", "LABEL", "MAP", "MARK", "MATH", "MENU", "METER", "NAV", "NOSCRIPT", "OBJECT", "OL", "OUTPUT", "P", "PRE", "PROGRESS", "Q", "RUBY", "SAMP", "SCRIPT", "SECTION", "SELECT", "SMALL", "SPAN", "STRONG", "SUB", "SUP", "SVG", "TABLE", "TEXTAREA", "TIME", "UL", "VAR", "VIDEO", "WBR"],
- 			PHRASING_CONTENT  			= ["ABBR", "AUDIO", "B", "BDO", "BR", "BUTTON", "CANVAS", "CITE", "CODE", "COMMAND", "DATALIST", "DFN", "EM", "EMBED", "I", "IFRAME", "IMG", "INPUT", "KBD", "KEYGEN", "LABEL", "MARK", "MATH", "METER", "NOSCRIPT", "OBJECT", "OUTPUT", "PROGRESS", "Q", "RUBY", "SAMP", "SCRIPT", "SELECT", "SMALL", "SPAN", "STRONG", "SUB", "SUP", "SVG", "TEXTAREA", "TIME", "VAR", "VIDEO", "WBR"];
+      ITEM_ELEMENTS_GROUP    	= ["LI", "TD", "TH", "DT", "DD"];
   
   /**
    * Remove similiar classes (based on classRegExp)
@@ -8536,7 +8581,7 @@ wysihtml5.Commands = Base.extend(
 
   /**
    * Adds line breaks before and after the given node if the previous and next siblings
-   * aren't already causing a visual line break (block element or "br")
+   * aren't already causing a visual line break (block element or <br>)
    */
   function _addLineBreakBeforeAndAfter(node) {
     var doc             = node.ownerDocument,
@@ -8637,9 +8682,12 @@ wysihtml5.Commands = Base.extend(
     exec: function(composer, command, nodeName, className, classRegExp) {
       var doc             = composer.doc,
           blockElement    = this.state(composer, command, nodeName, className, classRegExp),
+          itemElement,
+          listElement,
           useLineBreaks   = composer.config.useLineBreaks,
           defaultNodeName = useLineBreaks ? "DIV" : "P",
-          selectedNode, classRemoveAction;
+          selectedNode, 
+          classRemoveAction;
 
       nodeName = typeof(nodeName) === "string" ? nodeName.toUpperCase() : nodeName;
       
@@ -8672,22 +8720,26 @@ wysihtml5.Commands = Base.extend(
       if (nodeName === null || wysihtml5.lang.array(BLOCK_ELEMENTS_GROUP).contains(nodeName)) {
         selectedNode = composer.selection.getSelectedNode();
         
-        var itemElementGroup = dom.getParentElement(selectedNode, {
+        itemElement = dom.getParentElement(selectedNode, {
           nodeName: ITEM_ELEMENTS_GROUP
         });
-        if (itemElementGroup) {
+        if (itemElement) {
         	if (className) {
-						_addClass(itemElementGroup, className, classRegExp);
+						_addClass(itemElement, className, classRegExp);
 					}
           return;
         }
         
-        var listElementGroup = dom.getParentElement(selectedNode, {
+        listElement = dom.getParentElement(selectedNode, {
           nodeName: LIST_ELEMENTS_GROUP
         });
-        if (listElementGroup) {
+        if (listElement) {
           return;
         }
+        
+        blockElement = dom.getParentElement(selectedNode, {
+        	nodeName: BLOCK_ELEMENTS_GROUP
+        });
         
         if (blockElement == composer.element) {
             blockElement = null;
@@ -10594,6 +10646,18 @@ wysihtml5.views.View = Base.extend(
       doc             = document,
       win             = window,
       HOST_TEMPLATE   = doc.createElement("div"),
+      
+      /**
+       * Styles to copy from textarea to the composer element
+       */
+      TEXT_FORMATTING_LIGHT = [
+        "color",
+        "font-family",
+        "letter-spacing",
+        "text-rendering",
+        "word-break", "word-wrap", "word-spacing"
+      ],
+      
       /**
        * Styles to copy from textarea to the composer element
        */
@@ -10615,7 +10679,7 @@ wysihtml5.views.View = Base.extend(
         "border-left-color", "border-left-style", "border-left-width",
         "border-right-color", "border-right-style", "border-right-width",
         "border-top-color", "border-top-style", "border-top-width",
-        "clear", "display", "float",
+        "clear", "cursor", "display", "float",
         "margin-bottom", "margin-left", "margin-right", "margin-top",
         "outline-color", "outline-offset", "outline-width", "outline-style",
         "padding-left", "padding-right", "padding-top", "padding-bottom",
@@ -10687,7 +10751,6 @@ wysihtml5.views.View = Base.extend(
     }
   };
   
-  
   wysihtml5.views.Composer.prototype.style = function() {
     var that                  = this,
         originalActiveElement = doc.querySelector(":focus"),
@@ -10729,7 +10792,11 @@ wysihtml5.views.View = Base.extend(
     dom.copyStyles(BOX_FORMATTING).from(textareaElement).to(this.editableArea).andTo(this.blurStylesHost);
     
     // --------- editor styles ---------
-    dom.copyStyles(TEXT_FORMATTING).from(textareaElement).to(this.element).andTo(this.blurStylesHost);
+    //dom.copyStyles(TEXT_FORMATTING).from(textareaElement).to(this.element).andTo(this.blurStylesHost); 
+   
+    // --------- editor styles ---------
+    dom.copyStyles(TEXT_FORMATTING_LIGHT).from(textareaElement).to(this.element).andTo(this.blurStylesHost); 
+    
     
     // --------- apply standard rules ---------
     dom.insertCSS(ADDITIONAL_CSS_RULES).into(this.element.ownerDocument);
@@ -10746,7 +10813,8 @@ wysihtml5.views.View = Base.extend(
     textareaElement.style.display = displayValueForCopying;
     
     dom.copyStyles(BOX_FORMATTING).from(textareaElement).to(this.focusStylesHost);
-    dom.copyStyles(TEXT_FORMATTING).from(textareaElement).to(this.focusStylesHost);
+    //dom.copyStyles(TEXT_FORMATTING).from(textareaElement).to(this.focusStylesHost);
+    dom.copyStyles(TEXT_FORMATTING_LIGHT).from(textareaElement).to(this.focusStylesHost);
     
     // reset textarea
     textareaElement.style.display = originalDisplayValue;
@@ -10973,18 +11041,30 @@ wysihtml5.views.View = Base.extend(
       var target  = that.selection.getSelectedNode(true),
           keyCode = event.keyCode,
           parent;
-      if (target && target.nodeName === "IMG" && (keyCode === wysihtml5.BACKSPACE_KEY || keyCode === wysihtml5.DELETE_KEY)) { // 8 => backspace, 46 => delete
-        parent = target.parentNode;
-        // delete the <img>
-        parent.removeChild(target);
-        // and it's parent <a> too if it hasn't got any other child nodes
-        if (parent.nodeName === "A" && !parent.firstChild) {
-          parent.parentNode.removeChild(parent);
-        }
+      if(target && (keyCode === wysihtml5.BACKSPACE_KEY || keyCode === wysihtml5.DELETE_KEY)) {
+				parent = target.parentNode;
+				if (target.nodeName === "IMG") { // 8 => backspace, 46 => delete
+					
+					// delete the <img>
+					parent.removeChild(target);
+					// and it's parent <a> too if it hasn't got any other child nodes
+					if (parent.nodeName === "A" && !parent.firstChild) {
+						parent.parentNode.removeChild(parent);
+					}
 
-        setTimeout(function() { wysihtml5.quirks.redraw(element); }, 0);
-        event.preventDefault();
-      }
+					setTimeout(function() { wysihtml5.quirks.redraw(element); }, 0);
+					event.preventDefault();
+				} else {
+					setTimeout(function() {
+          	that.selection.executeAndRestore(function() {
+							dom.removeStyles(that.doc.getElementsByTagName('BODY')[0]);
+							// todo remove empty tag.
+							//dom.removeEmptyTags(parent);
+						});
+          	
+        	}, 0);
+				}
+			}
     });
     
     // --------- IE 8+9 focus the editor when the iframe is clicked (without actually firing the 'focus' event on the <body>) ---------
@@ -11129,7 +11209,6 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
   
   constructor: function(parent, textareaElement, config) {
     this.base(parent, textareaElement, config);
-    
     this._observe();
   },
   

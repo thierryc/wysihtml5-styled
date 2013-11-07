@@ -38,6 +38,7 @@ module.exports = function(grunt) {
       },
       bs2: {
         src: [
+          'src/wysihtml5.js',
           'lib/rangy/rangy-core.js',
           'lib/base/base.js',
           'src/browser.js',
@@ -95,6 +96,7 @@ module.exports = function(grunt) {
       },
       bs3: {
         src: [
+          'src/wysihtml5.js',
           'lib/rangy/rangy-core.js',
           'lib/base/base.js',
           'src/browser.js',
@@ -190,13 +192,6 @@ module.exports = function(grunt) {
     },
 
     copy: {
-      wysihtml5: {
-        files: {
-          'dist/<%= pkg.name %>-bs2/js/wysihtml5.js': ['src/wysihtml5.js'],
-          'dist/<%= pkg.name %>-bs3/js/wysihtml5.js': ['src/wysihtml5.js'],
-          'dist/<%= pkg.name %>-bsi/js/wysihtml5.js': ['src/wysihtml5.js']
-        }
-      },
       parser_rules: {
         files: {
           'dist/<%= pkg.name %>-bs2/js/advanced.js': ['parser_rules/advanced.js'],
@@ -245,10 +240,10 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      src: {
-        files: '<%= jshint.src.src %>',
-        tasks: ['jshint:src']
-      },
+      // src: {
+      //   files: '<%= jshint.src.src %>',
+      //   tasks: ['jshint:src']
+      // },
       // test: {
       //   files: '<%= jshint.test.src %>',
       //   tasks: ['jshint:test', 'qunit']
@@ -304,7 +299,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dist-copy', ['copy']);
 
   // Default task.
-  grunt.registerTask('default', ['clean', 'test', 'dist-css', 'dist-js', 'dist-copy']);
+  grunt.registerTask('default', ['clean', 'dist-css', 'dist-js', 'dist-copy']);
 
 
 };

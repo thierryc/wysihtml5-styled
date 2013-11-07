@@ -122,10 +122,9 @@
 		<li class="format-block-h3"><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3" data-wysihtml5-command-group-class="format-block-h3"><span class="ap-small-icon-h3"></span> Header 3</a></li>
 		<li class="format-block-p"><a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="p" data-wysihtml5-command-group-class="format-block-p"><span class="ap-small-icon-align-justify-left"></span> Paragraphe</a></li>
 	</ul>
+	<a class="cmd" data-wysihtml5-command="insertLineBreak"><span class="ap-small-icon-line-break"></span></a>
+	<a class="cmd" data-wysihtml5-command="insertRule"><span class="ap-small-icon-favorite"></span></a>
 </div>
-
-<a class="cmd" data-wysihtml5-command="insertLineBreak"><span class="ap-small-icon-line-break"></span></a>
-<a class="cmd" data-wysihtml5-command="insertRule"><span class="ap-small-icon-favorite"></span></a>
 
 <div class="cmd-group">
 		<a class="cmd dropdown-toggle" data-toggle="dropdown" href="#">
@@ -306,30 +305,6 @@
 		</div>
 </div>
 
-<div data-wysihtml5-dialog="createLink" class="dialog-wysihtml5" style="display: none;">
-		<label>Link : </label>
-		<input data-wysihtml5-dialog-field="href" type="text" value="http://">
-		<div class="cmd-toolbar">
-				<a class="cmd cmd-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
-				<a class="cmd cmd-primary" data-wysihtml5-dialog-action="save">OK</a>
-		</div>
-</div>
-
-<div data-wysihtml5-dialog="insertImage" class="dialog-wysihtml5" style="display: none;">
-		<label>Image:</label>
-		<input type="text" data-wysihtml5-dialog-field="src" value="http://">
-		<label>Align:</label>
-		<select data-wysihtml5-dialog-field="className">
-				<option value="">default</option>
-				<option value="wysiwyg-float-left">left</option>
-				<option value="wysiwyg-float-right">right</option>
-		</select>
-		<div class="cmd-toolbar">
-				<a class="cmd cmd-warning" data-wysihtml5-dialog-action="cancel">Cancel</a>
-				<a class="cmd cmd-primary" data-wysihtml5-dialog-action="save">OK</a>
-		</div>
-</div>
-
 <!-- Modal createLink -->
 <div data-wysihtml5-modal="createLinkHtml5" class="modal modal-editor hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-header">
@@ -396,13 +371,6 @@
 				<button class="cmd cmd-primary" data-wysihtml5-modal-action="save">Save changes</button>
 		</div>
 </div>
-
-<!--  <div data-wysihtml5-dialog="__createTable" style="display: none;">
-	Rows: <input type="text" data-wysihtml5-dialog-field="rows"><br/>
-	Cols: <input type="text" data-wysihtml5-dialog-field="cols"><br/>
-	<button class="cmd"  data-wysihtml5-dialog-action="cancel" aria-hidden="true">Close</button>
-	<button class="cmd cmd-primary" data-wysihtml5-dialog-action="save">Save changes</button>
-</div> -->
 
 </div> 
 				<textarea id="wysihtml5Textarea" data-wysihtml5-editor-container="wysihtml5" data-wysihtml5-toolbar="toolbar" lang='fr' placeholder="Enter text...">

@@ -33,12 +33,14 @@
 				// Create list
 				composer.commands.exec("formatBlock", "div", tempClassName);
 				tempElement = doc.querySelector("." + tempClassName);
-				isEmpty = tempElement.innerHTML === "" || tempElement.innerHTML === wysihtml5.INVISIBLE_SPACE || tempElement.innerHTML === "<br>";
-				composer.selection.executeAndRestore(function() {
-					list = wysihtml5.dom.convertToList(tempElement, "ol");
-				});
-				if (isEmpty) {
-					composer.selection.selectNode(list.querySelector("li"), true);
+				if(tempElement){
+					isEmpty = tempElement.innerHTML === "" || tempElement.innerHTML === wysihtml5.INVISIBLE_SPACE || tempElement.innerHTML === "<br>";
+					composer.selection.executeAndRestore(function() {
+						list = wysihtml5.dom.convertToList(tempElement, "ol");
+					});
+					if (isEmpty) {
+						composer.selection.selectNode(list.querySelector("li"), true);
+					}
 				}
 			}
 		},

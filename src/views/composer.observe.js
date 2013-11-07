@@ -171,6 +171,22 @@
       }
     });
     
+    // --------- Make sure that when pressing backspace/delete on Hedaing remove span styl---------
+    /*
+    dom.observe(element, "keydown", function(event) {
+      var target  = that.selection.getSelectedNode(true),
+      		keyCode  = event.keyCode;
+      		parent = target.parentNode;
+      	if (keyCode === wysihtml5.BACKSPACE_KEY || keyCode === wysihtml5.DELETE_KEY) {
+      		setTimeout(function() {
+          	if(target) console.log(parent.nodeName);
+          	// todo remove inline style.
+        	}, 0);
+				}
+				//event.preventDefault();
+    });
+    */
+    
     // --------- IE 8+9 focus the editor when the iframe is clicked (without actually firing the 'focus' event on the <body>) ---------
     if (!this.config.contentEditableMode && browser.hasIframeFocusIssue()) {
       dom.observe(this.iframe, "focus", function() {

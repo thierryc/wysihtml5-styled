@@ -157,35 +157,31 @@
       var target  = that.selection.getSelectedNode(true),
           keyCode = event.keyCode,
           parent;
-      if (target && target.nodeName === "IMG" && (keyCode === wysihtml5.BACKSPACE_KEY || keyCode === wysihtml5.DELETE_KEY)) { // 8 => backspace, 46 => delete
-        parent = target.parentNode;
-        // delete the <img>
-        parent.removeChild(target);
-        // and it's parent <a> too if it hasn't got any other child nodes
-        if (parent.nodeName === "A" && !parent.firstChild) {
-          parent.parentNode.removeChild(parent);
-        }
+      if(target && (keyCode === wysihtml5.BACKSPACE_KEY || keyCode === wysihtml5.DELETE_KEY)) {
+				parent = target.parentNode;
+				if (target.nodeName === "IMG") { // 8 => backspace, 46 => delete
+					
+					// delete the <img>
+					parent.removeChild(target);
+					// and it's parent <a> too if it hasn't got any other child nodes
+					if (parent.nodeName === "A" && !parent.firstChild) {
+						parent.parentNode.removeChild(parent);
+					}
 
-        setTimeout(function() { wysihtml5.quirks.redraw(element); }, 0);
-        event.preventDefault();
-      }
-    });
-    
-    // --------- Make sure that when pressing backspace/delete on Hedaing remove span styl---------
-    /*
-    dom.observe(element, "keydown", function(event) {
-      var target  = that.selection.getSelectedNode(true),
-      		keyCode  = event.keyCode;
-      		parent = target.parentNode;
-      	if (keyCode === wysihtml5.BACKSPACE_KEY || keyCode === wysihtml5.DELETE_KEY) {
-      		setTimeout(function() {
-          	if(target) console.log(parent.nodeName);
-          	// todo remove inline style.
+					setTimeout(function() { wysihtml5.quirks.redraw(element); }, 0);
+					event.preventDefault();
+				} else {
+					setTimeout(function() {
+          	that.selection.executeAndRestore(function() {
+							dom.removeStyles(that.doc.getElementsByTagName('BODY')[0]);
+							// todo remove empty tag.
+							//dom.removeEmptyTags(parent);
+						});
+          	
         	}, 0);
 				}
-				//event.preventDefault();
+			}
     });
-    */
     
     // --------- IE 8+9 focus the editor when the iframe is clicked (without actually firing the 'focus' event on the <body>) ---------
     if (!this.config.contentEditableMode && browser.hasIframeFocusIssue()) {

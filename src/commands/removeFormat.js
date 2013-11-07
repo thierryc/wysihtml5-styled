@@ -8,11 +8,11 @@
 				
 			if (composer.commands.support(command)) {
 				doc.execCommand(command, false, null);
-				composer.selection.executeAndRestore(function() {
-					wysihtml5.dom.removeStyles(body);
-				});
-				return;
 			}
+			composer.selection.executeAndRestore(function() {
+					wysihtml5.dom.removeStyles(body);
+			});
+			return;
 		},
 	
 		state: function(composer) {

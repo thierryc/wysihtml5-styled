@@ -4,7 +4,6 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
   
   constructor: function(parent, textareaElement, config) {
     this.base(parent, textareaElement, config);
-    
     this._observe();
   },
   

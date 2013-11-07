@@ -193,7 +193,6 @@
 
     _create: function() {
       var that = this;
-      
       this.doc                = this.sandbox.getDocument();
       this.element            = (this.config.contentEditableMode) ? this.sandbox.getContentEditable() : this.doc.body;
       if (!this.config.noTextarea) {
@@ -210,6 +209,7 @@
       this.commands  = new wysihtml5.Commands(this.parent);
       
       // Make sure predictive dispatcher is ready
+      
       this.predictive  = new wysihtml5.Predictive(this.parent);
       
       // Make sure predictive dispatcher is ready

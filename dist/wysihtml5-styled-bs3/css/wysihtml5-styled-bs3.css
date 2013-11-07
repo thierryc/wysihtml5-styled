@@ -1360,39 +1360,6 @@ textarea.wysihtml5-textarea {
   background-color: transparent;
 }
 
-.dialog-wysihtml5 {
-  width: 99%;
-  padding: 4px 12px;
-  margin-top: 9px;
-  color: #333333;
-  background-color: #d9d9d9;
-  -webkit-border-radius: 2px;
-     -moz-border-radius: 2px;
-          border-radius: 2px;
-}
-
-.dialog-wysihtml5 label {
-  display: inline-block;
-  padding-top: 5px;
-  margin-right: 5px;
-  text-align: right;
-  vertical-align: middle;
-}
-
-.dialog-wysihtml5 input {
-  display: inline-block;
-  margin: 0 5px 0 0;
-  vertical-align: middle;
-}
-
-.dialog-wysihtml5 select {
-  margin: 0 5px 0 0;
-}
-
-.dialog-wysihtml5 .btn-toolbar {
-  display: inline-block;
-}
-
 .help {
   margin-left: 5px;
 }

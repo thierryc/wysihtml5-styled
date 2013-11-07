@@ -81,9 +81,11 @@ var wysihtml5ParserRules = {
         'img-rounded': 1,
         'img-polaroid': 1,
         'img-circle': 1,
-        'ap-class1': 1,
-        'ap-class2': 1,
-        'ap-class3': 1,
+
+        'hightlight-red': 1,
+        'hightlight-blue': 1,
+        'hightlight-green': 1,
+        'back-hightlight-yellow': 1,
         
     },
     /**

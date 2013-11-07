@@ -3,6 +3,7 @@
       doc             = document,
       win             = window,
       HOST_TEMPLATE   = doc.createElement("div"),
+      
       /**
        * Styles to copy from textarea to the composer element
        */
@@ -138,7 +139,9 @@
     dom.copyStyles(BOX_FORMATTING).from(textareaElement).to(this.editableArea).andTo(this.blurStylesHost);
     
     // --------- editor styles ---------
-    dom.copyStyles(TEXT_FORMATTING).from(textareaElement).to(this.element).andTo(this.blurStylesHost);
+    if (this.config.textFormatting) { 
+    	dom.copyStyles(TEXT_FORMATTING).from(textareaElement).to(this.element).andTo(this.blurStylesHost); 
+    }
     
     // --------- apply standard rules ---------
     dom.insertCSS(ADDITIONAL_CSS_RULES).into(this.element.ownerDocument);
@@ -155,7 +158,12 @@
     textareaElement.style.display = displayValueForCopying;
     
     dom.copyStyles(BOX_FORMATTING).from(textareaElement).to(this.focusStylesHost);
-    dom.copyStyles(TEXT_FORMATTING).from(textareaElement).to(this.focusStylesHost);
+    
+    if (this.config.textFormatting) { dom.copyStyles(TEXT_FORMATTING).from(textareaElement).to(this.focusStylesHost); }
+    
+    if (this.config.textFormatting) { 
+    	dom.copyStyles(TEXT_FORMATTING).from(textareaElement).to(this.focusStylesHost);
+    }
     
     // reset textarea
     textareaElement.style.display = originalDisplayValue;

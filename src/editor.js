@@ -79,7 +79,10 @@
     // enable predictive heading 
     predictive:                 true,
     // customClassRegExp
-    customClassRegExp: 					/ap-[-0-9a-z]+/g
+    customClassRegExp: 					/ap-[-0-9a-z]+/g,
+    // format editor from textarea style. (idela for very simple editor) default is false.
+    // for advenced editor set your style in loaded CSS file into the editor.
+    textFormatting: 						false
   };
   
   wysihtml5.Editor = wysihtml5.lang.Dispatcher.extend(

@@ -196,7 +196,6 @@
       }
 
       this.loaded = true;
-
       // Trigger the callback
       setTimeout(function() { that.callback(that); }, 0);
     },

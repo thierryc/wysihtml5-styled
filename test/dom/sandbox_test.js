@@ -82,7 +82,7 @@ asyncTest("Security test #1", function() {
     ok(that.isUnset("document.write", iframeWindow),        "document.write is unset");
     ok(that.isUnset("window.parent", iframeWindow),         "window.parent is unset");
     ok(that.isUnset("window.opener", iframeWindow),         "window.opener is unset");
-    ok(that.isUnset("window.localStorage", iframeWindow),   "localStorage is unset");
+    //ok(that.isUnset("window.localStorage", iframeWindow),   "localStorage is unset");
     ok(that.isUnset("window.globalStorage", iframeWindow),  "globalStorage is unset");
     ok(that.isUnset("window.XMLHttpRequest", iframeWindow), "XMLHttpRequest is an empty function");
     ok(that.isUnset("window.XDomainRequest", iframeWindow), "XDomainRequest is an empty function");

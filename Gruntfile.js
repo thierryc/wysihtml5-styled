@@ -151,6 +151,71 @@ module.exports = function(grunt) {
           'src/editor.js'
         ],
         dest: 'dist/<%= pkg.name %>-bs3/js/<%= pkg.name %>-bs3.js'
+      },
+      bsi: {
+        src: [
+          'src/wysihtml5.js',
+          'lib/rangy/rangy-core.js',
+          'lib/base/base.js',
+          'src/browser.js',
+          'src/lang/*.js',
+          'src/dom/*.js',
+          'src/quirks/*.js',
+          'src/selection/*.js',
+          'src/commands.js',
+          'src/commands/addClass.js',
+          'src/commands/bold.js',
+          'src/commands/createLink.js',
+          'src/commands/createLinkHtml5.js',
+          'src/commands/removeLinkHtml5.js',
+          'src/commands/fontSize.js',
+          'src/commands/foreColor.js',
+          'src/commands/formatBlock.js',
+          'src/commands/formatInline.js',
+          'src/commands/insertHTML.js',
+          'src/commands/insertImage.js',
+          'src/commands/insertImageHtml5.js',
+          'src/commands/removeImageHtml5.js',
+          'src/commands/insertLineBreak.js',
+          'src/commands/insertRule.js',
+          'src/commands/insertOrderedListHtml5.js',
+          'src/commands/insertUnorderedListHtml5.js',
+          'src/commands/italic.js',
+          'src/commands/justify.js',
+          'src/commands/justifyCenter.js',
+          'src/commands/justifyLeft.js',
+          'src/commands/justifyRight.js',
+          'src/commands/justifyFull.js',
+          'src/commands/redo.js',
+          'src/commands/underline.js',
+          'src/commands/undo.js',
+          'src/commands/indent.js',
+          'src/commands/outdent.js',
+          'src/commands/fullscreen.js',
+          'src/commands/createTable.js',
+          'src/commands/mergeTableCells.js',
+          'src/commands/addTableCells.js',
+          'src/commands/deleteTableCells.js',
+          'src/undo_manager.js',
+          'src/views/view.js',
+          'src/views/composer.js',
+          'src/views/composer.style.js',
+          'src/views/composer.observe.js',
+          'src/views/synchronizer.js',
+          'src/views/textarea.js',
+          'src/toolbar/*.js',
+          'src/keyboardShortcut.js',
+          'src/predictive.js',
+          'src/editor.js'
+        ],
+        dest: 'dist/<%= pkg.name %>-bsi/js/<%= pkg.name %>-bsi.js'
+      },
+      nobootstrap: {
+        src: [
+          'lib/bootstrap/js/bootstrap-modal.js',
+          'lib/bootstrap/js/bootstrap-dropdown.js'
+        ],
+        dest: 'dist/<%= pkg.name %>-bsi/js/<%= pkg.name %>-nobootstrap.js'
       }
     },
 
@@ -176,9 +241,9 @@ module.exports = function(grunt) {
       },
       editor: {
         files: {
-          'dist/<%= pkg.name %>-bs2/css/wysihtml5-styled-editor-body.css': ['src/less/bootstrap-wysihtml5-styled.less'],
-          'dist/<%= pkg.name %>-bs3/css/wysihtml5-styled-editor-body.css': ['src/less/bootstrap-wysihtml5-styled.less'],
-          'dist/<%= pkg.name %>-bsi/css/wysihtml5-styled-editor-body.css': ['src/less/bootstrap-wysihtml5-styled.less']
+          'dist/<%= pkg.name %>-bs2/css/wysihtml5-styled-editor-body.css': ['src/less/wysihtml5-styled-editor-body.less'],
+          'dist/<%= pkg.name %>-bs3/css/wysihtml5-styled-editor-body.css': ['src/less/wysihtml5-styled-editor-body.less'],
+          'dist/<%= pkg.name %>-bsi/css/wysihtml5-styled-editor-body.css': ['src/less/wysihtml5-styled-editor-body.less']
         }
       },
       bs2: {
@@ -188,6 +253,13 @@ module.exports = function(grunt) {
       bs3: {
         src: ['src/less/bootstrap-wysihtml5-styled.less'],
         dest: 'dist/<%= pkg.name %>-bs3/css/<%= pkg.name %>-bs3.css'
+      },
+      bsi: {
+        src: [
+          'src/less/wysihtml5-styled.less', 
+          'src/less/bootstrap-wysihtml5-styled.less'
+        ],
+        dest: 'dist/<%= pkg.name %>-bsi/css/<%= pkg.name %>-bsi.css'
       }
     },
 
@@ -210,7 +282,9 @@ module.exports = function(grunt) {
           'dist/<%= pkg.name %>-bs2/img/sprite-ap-small-icons-white.png': ['lib/sprite-ap-small/img/sprite-ap-small-icons-white.png'],
           'dist/<%= pkg.name %>-bs2/img/sprite-ap-small-icons.png': ['lib/sprite-ap-small/img/sprite-ap-small-icons.png'],
           'dist/<%= pkg.name %>-bs3/img/sprite-ap-small-icons-white.png': ['lib/sprite-ap-small/img/sprite-ap-small-icons-white.png'],
-          'dist/<%= pkg.name %>-bs3/img/sprite-ap-small-icons.png': ['lib/sprite-ap-small/img/sprite-ap-small-icons.png']
+          'dist/<%= pkg.name %>-bs3/img/sprite-ap-small-icons.png': ['lib/sprite-ap-small/img/sprite-ap-small-icons.png'],
+          'dist/<%= pkg.name %>-bsi/img/sprite-ap-small-icons-white.png': ['lib/sprite-ap-small/img/sprite-ap-small-icons-white.png'],
+          'dist/<%= pkg.name %>-bsi/img/sprite-ap-small-icons.png': ['lib/sprite-ap-small/img/sprite-ap-small-icons.png']
         }
       }
     },

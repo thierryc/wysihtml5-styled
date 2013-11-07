@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v2.3.1
+ * Bootstrap v2.3.2
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -23,18 +23,17 @@
 
 // Base CSS
 @import "../../lib/bootstrap/less/type.less";
+@import "../../lib/bootstrap/less/forms.less";
+@import "../../lib/bootstrap/less/tables.less";
 
 // Components: common
-@import "../../lib/bootstrap/less/sprites.less";
 @import "../../lib/bootstrap/less/dropdowns.less";
-@import "../../lib/bootstrap/less/wells.less";
 @import "../../lib/bootstrap/less/component-animations.less";
 @import "../../lib/bootstrap/less/close.less";
 
 // Components: Buttons & Alerts
 @import "../../lib/bootstrap/less/buttons.less";
 @import "../../lib/bootstrap/less/button-groups.less";
-@import "../../lib/bootstrap/less/alerts.less"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
 
 // Components: Nav
 @import "../../lib/bootstrap/less/navs.less";
@@ -42,12 +41,8 @@
 
 // Components: Popovers
 @import "../../lib/bootstrap/less/modals.less";
-@import "../../lib/bootstrap/less/tooltip.less";
-@import "../../lib/bootstrap/less/popovers.less";
 
 // Utility classes
 @import "../../lib/bootstrap/less/utilities.less"; // Has to be last to override when necessary
 
-// Utility classes
-@import "wysihtml5-styled-core.less"; // Has to be last to override when necessary
-@import "../../lib/sprite-ap-small/less/ap-small-icon.less";
+@import "../../lib/bootstrap/less/responsive.less";

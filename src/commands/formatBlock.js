@@ -172,19 +172,19 @@
 
       nodeName = typeof(nodeName) === "string" ? nodeName.toUpperCase() : nodeName;
       
+      // add class to many tag in range.
       if(!nodeName && className) {
       	var range = composer.selection.getRange();
 				if (range) {
-					//_addClass(blockElement, className, classRegExp);
-					composer.selection.getSelection().removeAllRanges();
       		var elementNodes = range.getNodes([wysihtml5.ELEMENT_NODE]);
 					if (elementNodes.length) {
-						console.log(elementNodes);
-						for (var i = 0, i < elementNodes.length; i++) {
-							console.log(elementNodes[i]);
+						composer.selection.getSelection().removeAllRanges();
+						for (var i = 0; i < elementNodes.length; i++) {
+							_addClass(elementNodes[i], className, classRegExp);
 						}
+						composer.selection.setSelection(range);
+						return;
 					}
-      		composer.selection.setSelection(range);
 				}
       }
       

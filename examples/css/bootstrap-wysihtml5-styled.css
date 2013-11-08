@@ -250,20 +250,20 @@
 .cmd:hover,
 .cmd:focus,
 .cmd.disabled,
-.cmd[disabled] {
+.cmd[disabled],
+.cmd:active,
+.cmd.active {
   background-color: #e6e6e6;
   border: 1px solid #bfbfbf;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  text-decoration: none;
 }
 .cmd:active,
 .cmd.active {
   background-color: #d9d9d9;
   border: 1px solid #bfbfbf;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -360,20 +360,20 @@ input[type="button"].cmd-block {
 .cmd-primary:hover,
 .cmd-primary:focus,
 .cmd-primary.disabled,
-.cmd-primary[disabled] {
+.cmd-primary[disabled],
+.cmd-primary:active,
+.cmd-primary.active {
   background-color: #049cdb;
   border: 1px solid #036690;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  text-decoration: none;
 }
 .cmd-primary:active,
 .cmd-primary.active {
   background-color: #048ac2;
   border: 1px solid #036690;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -409,20 +409,20 @@ input[type="button"].cmd-block {
 .cmd-warning:hover,
 .cmd-warning:focus,
 .cmd-warning.disabled,
-.cmd-warning[disabled] {
+.cmd-warning[disabled],
+.cmd-warning:active,
+.cmd-warning.active {
   background-color: #fbb450;
   border: 1px solid #c67605;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  text-decoration: none;
 }
 .cmd-warning:active,
 .cmd-warning.active {
   background-color: #f89406;
   border: 1px solid #c67605;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -458,20 +458,20 @@ input[type="button"].cmd-block {
 .cmd-danger:hover,
 .cmd-danger:focus,
 .cmd-danger.disabled,
-.cmd-danger[disabled] {
+.cmd-danger[disabled],
+.cmd-danger:active,
+.cmd-danger.active {
   background-color: #ee5f5b;
   border: 1px solid #942a25;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  text-decoration: none;
 }
 .cmd-danger:active,
 .cmd-danger.active {
   background-color: #bd362f;
   border: 1px solid #942a25;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -507,20 +507,20 @@ input[type="button"].cmd-block {
 .cmd-success:hover,
 .cmd-success:focus,
 .cmd-success.disabled,
-.cmd-success[disabled] {
+.cmd-success[disabled],
+.cmd-success:active,
+.cmd-success.active {
   background-color: #62c462;
   border: 1px solid #408140;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  text-decoration: none;
 }
 .cmd-success:active,
 .cmd-success.active {
   background-color: #51a351;
   border: 1px solid #408140;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -556,20 +556,20 @@ input[type="button"].cmd-block {
 .cmd-info:hover,
 .cmd-info:focus,
 .cmd-info.disabled,
-.cmd-info[disabled] {
+.cmd-info[disabled],
+.cmd-info:active,
+.cmd-info.active {
   background-color: #5bc0de;
   border: 1px solid #24748c;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  text-decoration: none;
 }
 .cmd-info:active,
 .cmd-info.active {
   background-color: #2f96b4;
   border: 1px solid #24748c;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -605,20 +605,20 @@ input[type="button"].cmd-block {
 .cmd-inverse:hover,
 .cmd-inverse:focus,
 .cmd-inverse.disabled,
-.cmd-inverse[disabled] {
+.cmd-inverse[disabled],
+.cmd-inverse:active,
+.cmd-inverse.active {
   background-color: #444444;
   border: 1px solid #080808;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  text-decoration: none;
 }
 .cmd-inverse:active,
 .cmd-inverse.active {
   background-color: #222222;
   border: 1px solid #080808;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -710,6 +710,9 @@ input[type="submit"].cmd.cmd-mini {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
 }
 .cmd-toolbar .caret {
   display: inline-block;
@@ -1071,20 +1074,20 @@ input[type="submit"].cmd.cmd-mini {
 .cmd-toolbar.inverse .cmd:hover,
 .cmd-toolbar.inverse .cmd:focus,
 .cmd-toolbar.inverse .cmd.disabled,
-.cmd-toolbar.inverse .cmd[disabled] {
+.cmd-toolbar.inverse .cmd[disabled],
+.cmd-toolbar.inverse .cmd:active,
+.cmd-toolbar.inverse .cmd.active {
   background-color: #444444;
   border: 1px solid #1e1e1e;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  text-decoration: none;
 }
 .cmd-toolbar.inverse .cmd:active,
 .cmd-toolbar.inverse .cmd.active {
   background-color: #373737;
   border: 1px solid #1e1e1e;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.15);
@@ -1203,34 +1206,6 @@ textarea.wysihtml5-textarea {
 }
 .modal-editor .modal-footer {
   background-color: transparent;
-}
-.dialog-wysihtml5 {
-  width: 99%;
-  background-color: #d9d9d9;
-  color: #333333;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  padding: 4px 12px;
-  margin-top: 9px;
-}
-.dialog-wysihtml5 label {
-  margin-right: 5px;
-  display: inline-block;
-  padding-top: 5px;
-  vertical-align: middle;
-  text-align: right;
-}
-.dialog-wysihtml5 input {
-  display: inline-block;
-  margin: 0 5px 0 0;
-  vertical-align: middle;
-}
-.dialog-wysihtml5 select {
-  margin: 0 5px 0 0;
-}
-.dialog-wysihtml5 .btn-toolbar {
-  display: inline-block;
 }
 .help {
   margin-left: 5px;

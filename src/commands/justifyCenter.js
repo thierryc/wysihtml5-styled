@@ -1,11 +1,19 @@
 (function(wysihtml5) {
 	"use strict";
-  var CLASS_NAME  = "wysiwyg-text-align-center",
+  var dom 				= wysihtml5.dom,
+  		CLASS_NAME  = "wysiwyg-text-align-center",
       REG_EXP     = /wysiwyg-text-align-[0-9a-z]+/g;
-  
+      
   wysihtml5.commands.justifyCenter = {
     exec: function(composer, command) {
-      return wysihtml5.commands.formatBlock.exec(composer, "formatBlock", null, CLASS_NAME, REG_EXP);
+    	if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
+				var elementNodes = dom.table.getCellsBetween(composer.tableSelection.start, composer.tableSelection.end);
+				for (var i = 0; i < elementNodes.length; i++) {
+					dom.replaceClass(elementNodes[i], CLASS_NAME, REG_EXP);
+				}
+			} else {
+      	return wysihtml5.commands.formatBlock.exec(composer, "formatBlock", null, CLASS_NAME, REG_EXP);
+      }
     },
 
     state: function(composer, command) {
@@ -13,3 +21,4 @@
     }
   };
 })(wysihtml5);
+

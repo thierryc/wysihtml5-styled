@@ -8,27 +8,6 @@
       LIST_ELEMENTS_GROUP    	= ["OL", "UL", "TABLE", "DL"],
       ITEM_ELEMENTS_GROUP    	= ["LI", "TD", "TH", "DT", "DD"];
   
-  /**
-   * Remove similiar classes (based on classRegExp)
-   * and add the desired class name
-   */
-  function _addClass(element, className, classRegExp) {
-    if (element.className) {
-      _removeClass(element, classRegExp);
-      element.className = wysihtml5.lang.string(element.className + " " + className).trim();
-    } else {
-      element.className = className;
-    }
-  }
-
-  function _removeClass(element, classRegExp) {
-    var ret = classRegExp.test(element.className);
-    element.className = element.className.replace(classRegExp, "");
-    if (wysihtml5.lang.string(element.className).trim() == '') {
-        element.removeAttribute('class');
-    }
-    return ret;
-  }
 
   /**
    * Check whether given node is a text node and whether it's empty
@@ -176,11 +155,13 @@
       if(!nodeName && className) {
       	var range = composer.selection.getRange();
 				if (range) {
-      		var elementNodes = range.getNodes([wysihtml5.ELEMENT_NODE]);
+      		var elementNodes = range.getNodes([wysihtml5.ELEMENT_NODE], function(node) {
+        		return wysihtml5.lang.array(BLOCK_ELEMENTS_GROUP).contains(node.nodeName) || wysihtml5.lang.array(ITEM_ELEMENTS_GROUP).contains(node.nodeName);
+      		});
 					if (elementNodes.length) {
 						composer.selection.getSelection().removeAllRanges();
 						for (var i = 0; i < elementNodes.length; i++) {
-							_addClass(elementNodes[i], className, classRegExp);
+							dom.replaceClass(elementNodes[i], className, classRegExp);
 						}
 						composer.selection.setSelection(range);
 						return;
@@ -191,7 +172,7 @@
       if (blockElement) {
         composer.selection.executeAndRestoreSimple(function() {
           if (classRegExp) {
-            classRemoveAction = _removeClass(blockElement, classRegExp);
+            classRemoveAction = dom.removeClassByRegExp(blockElement, classRegExp);
           }
           if (classRemoveAction && nodeName === null && blockElement.nodeName != defaultNodeName) {
             // dont rename or remove element when just setting block formating class
@@ -219,7 +200,7 @@
         });
         if (itemElement) {
         	if (className) {
-						_addClass(itemElement, className, classRegExp);
+						dom.replaceClass(itemElement, className, classRegExp);
 					}
           return;
         }
@@ -248,7 +229,7 @@
               blockElement = dom.renameElement(blockElement, nodeName);
             }
             if (className) {
-            	_addClass(blockElement, className, classRegExp);
+            	dom.replaceClass(blockElement, className, classRegExp);
             }
           });
           return;

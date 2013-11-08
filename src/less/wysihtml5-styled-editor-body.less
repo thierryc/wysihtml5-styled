@@ -140,7 +140,28 @@ table.wysiwyg-table {
 		-o-box-shadow: inset 0 0 2px 1px #ccccff;
 		box-shadow: inset 0 0 2px 1px #ccccff;
   }
+  
+  ::selection {
+		background:rgba(0,0,256,0);
+		color:rgba(25,25,25,.9);
+	}
+	::-moz-selection {
+		background:rgba(0,0,256,0);
+		color:rgba(25,25,25,.9);
+	}
+  
+  
 }
+
+::selection {
+	background:rgba(0,0,256,.1);
+	color:rgba(25,25,25,.9);
+}
+::-moz-selection {
+	background:rgba(0,0,256,.1);
+	color:rgba(25,25,25,.9);
+}
+
 
 table.wysiwyg-table-bordered {
 	.table-bordered();

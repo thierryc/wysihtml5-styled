@@ -1,6 +1,27 @@
 (function(wysihtml5) {
 	"use strict";
   var api = wysihtml5.dom;
+
+  /**
+   * Remove similiar classes (based on classRegExp)
+   * and add the desired class name
+   */  
+  api.replaceClass = function(element, className, classRegExp) {
+    if (element.className) {
+      api.removeClassByRegExp(element, classRegExp);
+      element.className = wysihtml5.lang.string(element.className + " " + className).trim();
+    } else {
+      element.className = className;
+    }
+  };
+  
+  api.removeClassByRegExp = function(element, classRegExp) {
+    var result = classRegExp.test(element.className);
+    element.className = element.className.replace(classRegExp, "");
+    if (wysihtml5.lang.string(element.className).trim() == '') {
+        element.removeAttribute('class');
+    }
+  };
   
   api.addClass = function(element, className) {
     var classList = element.classList;

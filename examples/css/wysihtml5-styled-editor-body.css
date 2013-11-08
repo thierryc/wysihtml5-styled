@@ -766,32 +766,6 @@ body {
 ::-webkit-scrollbar-thumb:horizontal:hover {
   background: rgba(0, 0, 0, 0.3);
 }
-/*
-h1 :before {
-	 content: "";
-	 display: block;
-	 width: 100px;
-	 height: 3px;
-	 background-color: @linkColorHover;
-}
-
-p :before {
-	 content: "";
-	 display: block;
-	 width: 30px;
-	 height: 1px;
-	 background-color: @linkColorHover;
-}
-*/
-a {
-  color: #049cdb;
-  text-decoration: none;
-}
-a:hover,
-a:focus {
-  color: #036690;
-  text-decoration: underline;
-}
 .img-rounded {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -879,6 +853,22 @@ table.wysiwyg-table td.wysiwyg-tmp-selected-cell {
   -o-box-shadow: inset 0 0 2px 1px #ccccff;
   box-shadow: inset 0 0 2px 1px #ccccff;
 }
+table.wysiwyg-table ::selection {
+  background: rgba(0, 0, 256, 0);
+  color: rgba(25, 25, 25, 0.9);
+}
+table.wysiwyg-table ::-moz-selection {
+  background: rgba(0, 0, 256, 0);
+  color: rgba(25, 25, 25, 0.9);
+}
+::selection {
+  background: rgba(0, 0, 256, 0.1);
+  color: rgba(25, 25, 25, 0.9);
+}
+::-moz-selection {
+  background: rgba(0, 0, 256, 0.1);
+  color: rgba(25, 25, 25, 0.9);
+}
 table.wysiwyg-table-bordered {
   border: 1px solid #dddddd;
   border-collapse: separate;
@@ -965,13 +955,15 @@ table.wysiwyg-table-striped tbody > tr:nth-child(odd) > td,
 table.wysiwyg-table-striped tbody > tr:nth-child(odd) > th {
   background-color: #f9f9f9;
 }
-.ap-class1 {
-  color: red;
+.hightlight-red {
+  color: #e74c3c;
 }
-.ap-class2 {
-  color: blue;
+.hightlight-blue {
+  color: #409edd;
 }
-.ap-class3 {
-  color: orange;
-  background-color: yellow;
+.hightlight-green {
+  color: #2ecc71;
+}
+.back-hightlight-yellow {
+  background-color: #f1c40f;
 }

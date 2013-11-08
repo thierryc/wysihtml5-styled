@@ -1,8 +1,15 @@
 (function(wysihtml5) {
 	"use strict";
+	var dom 				= wysihtml5.dom;
+	
 	wysihtml5.commands.bold = {
 		exec: function(composer, command) {
-			return wysihtml5.commands.formatInline.exec(composer, command, "b");
+			if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
+				var elementNodes = dom.table.getCellsBetween(composer.tableSelection.start, composer.tableSelection.end);
+				wysihtml5.commands.formatInline.exec(composer, command, "b");
+			} else {
+      	return wysihtml5.commands.formatInline.exec(composer, command, "b");
+      }
 		},
 
 		state: function(composer, command) {

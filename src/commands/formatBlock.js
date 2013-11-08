@@ -162,6 +162,7 @@
     exec: function(composer, command, nodeName, className, classRegExp) {
       var doc             = composer.doc,
           blockElement    = this.state(composer, command, nodeName, className, classRegExp),
+          blockElementGroup,
           itemElement,
           listElement,
           useLineBreaks   = composer.config.useLineBreaks,
@@ -171,17 +172,31 @@
 
       nodeName = typeof(nodeName) === "string" ? nodeName.toUpperCase() : nodeName;
       
+      if(!nodeName && className) {
+      	var range = composer.selection.getRange();
+				if (range) {
+					//_addClass(blockElement, className, classRegExp);
+					composer.selection.getSelection().removeAllRanges();
+      		var elementNodes = range.getNodes([wysihtml5.ELEMENT_NODE]);
+					if (elementNodes.length) {
+						console.log(elementNodes);
+						for (var i = 0, i < elementNodes.length; i++) {
+							console.log(elementNodes[i]);
+						}
+					}
+      		composer.selection.setSelection(range);
+				}
+      }
+      
       if (blockElement) {
         composer.selection.executeAndRestoreSimple(function() {
           if (classRegExp) {
             classRemoveAction = _removeClass(blockElement, classRegExp);
           }
-          
           if (classRemoveAction && nodeName === null && blockElement.nodeName != defaultNodeName) {
             // dont rename or remove element when just setting block formating class
             return;
           }
-          
           var hasClasses = _hasClasses(blockElement);
           if (!hasClasses && (useLineBreaks || nodeName === "P")) {
             // Insert a line break afterwards and beforewards when there are siblings
@@ -199,7 +214,6 @@
       // Find similiar block element and rename it (<h2 class="foo"></h2>  =>  <h1 class="foo"></h1>)
       if (nodeName === null || wysihtml5.lang.array(BLOCK_ELEMENTS_GROUP).contains(nodeName)) {
         selectedNode = composer.selection.getSelectedNode();
-        
         itemElement = dom.getParentElement(selectedNode, {
           nodeName: ITEM_ELEMENTS_GROUP
         });
@@ -217,13 +231,15 @@
           return;
         }
         
-        blockElement = dom.getParentElement(selectedNode, {
+        blockElementGroup = dom.getParentElement(selectedNode, {
         	nodeName: BLOCK_ELEMENTS_GROUP
         });
         
-        if (blockElement == composer.element) {
-            blockElement = null;
+        if (blockElementGroup == composer.element) {
+            blockElementGroup = null;
         }
+        
+        if(blockElementGroup) blockElement = blockElementGroup;
 
         if (blockElement) {
           composer.selection.executeAndRestore(function() {
@@ -232,7 +248,7 @@
               blockElement = dom.renameElement(blockElement, nodeName);
             }
             if (className) {
-              _addClass(blockElement, className, classRegExp);
+            	_addClass(blockElement, className, classRegExp);
             }
           });
           return;

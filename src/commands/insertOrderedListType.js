@@ -10,8 +10,6 @@
 					isEmpty,
 					tempElement;
 		
-		
-		
 			if (list) {
 				// Unwrap list
 				// <ol><li>foo</li><li>bar</li></ol>

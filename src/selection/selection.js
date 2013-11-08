@@ -132,7 +132,7 @@
     getSelectedNode: function(controlRange) {
       var selection,
           range;
-
+          
       if (controlRange && this.doc.selection && this.doc.selection.type === "Control") {
         range = this.doc.selection.createRange();
         if (range && range.length) {

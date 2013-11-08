@@ -3,3 +3,4 @@
 lib/codemirror
 lib/bootstrap
 .ruby-version
+node_modules

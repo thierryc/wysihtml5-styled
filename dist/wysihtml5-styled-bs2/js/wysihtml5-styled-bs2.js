@@ -4130,6 +4130,27 @@ wysihtml5.lang.object = function(obj) {
 (function(wysihtml5) {
 	"use strict";
   var api = wysihtml5.dom;
+
+  /**
+   * Remove similiar classes (based on classRegExp)
+   * and add the desired class name
+   */  
+  api.replaceClass = function(element, className, classRegExp) {
+    if (element.className) {
+      api.removeClassByRegExp(element, classRegExp);
+      element.className = wysihtml5.lang.string(element.className + " " + className).trim();
+    } else {
+      element.className = className;
+    }
+  };
+  
+  api.removeClassByRegExp = function(element, classRegExp) {
+    var result = classRegExp.test(element.className);
+    element.className = element.className.replace(classRegExp, "");
+    if (wysihtml5.lang.string(element.className).trim() == '') {
+        element.removeAttribute('class');
+    }
+  };
   
   api.addClass = function(element, className) {
     var classList = element.classList;
@@ -5153,6 +5174,12 @@ wysihtml5.dom.parse = (function() {
   
   function _testTypes(oldNode, rules, types) {
     var definition, type;
+    
+    // do not interfere with placeholder span or pasting caret position is not maintained
+    if (oldNode.nodeName === "SPAN" && oldNode.className === "_wysihtml5-temp-placeholder") {
+       return true;
+    }
+    
     for (type in types) {
       if (types.hasOwnProperty(type) && rules.type_definitions && rules.type_definitions[type]) {
         definition = rules.type_definitions[type];
@@ -6563,6 +6590,7 @@ wysihtml5.dom.setStyles = function(styles) {
                     this.rectify();
                 } else {
                     if (window.console) {
+                      // todo add message into the editor
                       console.log('Do not know how to merge allready merged cells.');
                     }
                 }
@@ -7736,7 +7764,7 @@ wysihtml5.quirks.tableCellsSelection = (function() {
     getSelectedNode: function(controlRange) {
       var selection,
           range;
-
+          
       if (controlRange && this.doc.selection && this.doc.selection.type === "Control") {
         range = this.doc.selection.createRange();
         if (range && range.length) {
@@ -8200,9 +8228,16 @@ wysihtml5.Commands = Base.extend(
 
 (function(wysihtml5) {
 	"use strict";
+	var dom 				= wysihtml5.dom;
+	
 	wysihtml5.commands.bold = {
 		exec: function(composer, command) {
-			return wysihtml5.commands.formatInline.exec(composer, command, "b");
+			if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
+				var elementNodes = dom.table.getCellsBetween(composer.tableSelection.start, composer.tableSelection.end);
+				wysihtml5.commands.formatInline.exec(composer, command, "b");
+			} else {
+      	return wysihtml5.commands.formatInline.exec(composer, command, "b");
+      }
 		},
 
 		state: function(composer, command) {
@@ -8528,27 +8563,6 @@ wysihtml5.Commands = Base.extend(
       LIST_ELEMENTS_GROUP    	= ["OL", "UL", "TABLE", "DL"],
       ITEM_ELEMENTS_GROUP    	= ["LI", "TD", "TH", "DT", "DD"];
   
-  /**
-   * Remove similiar classes (based on classRegExp)
-   * and add the desired class name
-   */
-  function _addClass(element, className, classRegExp) {
-    if (element.className) {
-      _removeClass(element, classRegExp);
-      element.className = wysihtml5.lang.string(element.className + " " + className).trim();
-    } else {
-      element.className = className;
-    }
-  }
-
-  function _removeClass(element, classRegExp) {
-    var ret = classRegExp.test(element.className);
-    element.className = element.className.replace(classRegExp, "");
-    if (wysihtml5.lang.string(element.className).trim() == '') {
-        element.removeAttribute('class');
-    }
-    return ret;
-  }
 
   /**
    * Check whether given node is a text node and whether it's empty
@@ -8682,6 +8696,7 @@ wysihtml5.Commands = Base.extend(
     exec: function(composer, command, nodeName, className, classRegExp) {
       var doc             = composer.doc,
           blockElement    = this.state(composer, command, nodeName, className, classRegExp),
+          blockElementGroup,
           itemElement,
           listElement,
           useLineBreaks   = composer.config.useLineBreaks,
@@ -8691,17 +8706,33 @@ wysihtml5.Commands = Base.extend(
 
       nodeName = typeof(nodeName) === "string" ? nodeName.toUpperCase() : nodeName;
       
+      // add class to many tag in range.
+      if(!nodeName && className) {
+      	var range = composer.selection.getRange();
+				if (range) {
+      		var elementNodes = range.getNodes([wysihtml5.ELEMENT_NODE], function(node) {
+        		return wysihtml5.lang.array(BLOCK_ELEMENTS_GROUP).contains(node.nodeName) || wysihtml5.lang.array(ITEM_ELEMENTS_GROUP).contains(node.nodeName);
+      		});
+					if (elementNodes.length) {
+						composer.selection.getSelection().removeAllRanges();
+						for (var i = 0; i < elementNodes.length; i++) {
+							dom.replaceClass(elementNodes[i], className, classRegExp);
+						}
+						composer.selection.setSelection(range);
+						return;
+					}
+				}
+      }
+      
       if (blockElement) {
         composer.selection.executeAndRestoreSimple(function() {
           if (classRegExp) {
-            classRemoveAction = _removeClass(blockElement, classRegExp);
+            classRemoveAction = dom.removeClassByRegExp(blockElement, classRegExp);
           }
-          
           if (classRemoveAction && nodeName === null && blockElement.nodeName != defaultNodeName) {
             // dont rename or remove element when just setting block formating class
             return;
           }
-          
           var hasClasses = _hasClasses(blockElement);
           if (!hasClasses && (useLineBreaks || nodeName === "P")) {
             // Insert a line break afterwards and beforewards when there are siblings
@@ -8719,13 +8750,12 @@ wysihtml5.Commands = Base.extend(
       // Find similiar block element and rename it (<h2 class="foo"></h2>  =>  <h1 class="foo"></h1>)
       if (nodeName === null || wysihtml5.lang.array(BLOCK_ELEMENTS_GROUP).contains(nodeName)) {
         selectedNode = composer.selection.getSelectedNode();
-        
         itemElement = dom.getParentElement(selectedNode, {
           nodeName: ITEM_ELEMENTS_GROUP
         });
         if (itemElement) {
         	if (className) {
-						_addClass(itemElement, className, classRegExp);
+						dom.replaceClass(itemElement, className, classRegExp);
 					}
           return;
         }
@@ -8737,13 +8767,15 @@ wysihtml5.Commands = Base.extend(
           return;
         }
         
-        blockElement = dom.getParentElement(selectedNode, {
+        blockElementGroup = dom.getParentElement(selectedNode, {
         	nodeName: BLOCK_ELEMENTS_GROUP
         });
         
-        if (blockElement == composer.element) {
-            blockElement = null;
+        if (blockElementGroup == composer.element) {
+            blockElementGroup = null;
         }
+        
+        if(blockElementGroup) blockElement = blockElementGroup;
 
         if (blockElement) {
           composer.selection.executeAndRestore(function() {
@@ -8752,7 +8784,7 @@ wysihtml5.Commands = Base.extend(
               blockElement = dom.renameElement(blockElement, nodeName);
             }
             if (className) {
-              _addClass(blockElement, className, classRegExp);
+            	dom.replaceClass(blockElement, className, classRegExp);
             }
           });
           return;
@@ -9289,13 +9321,15 @@ wysihtml5.Commands = Base.extend(
 				// Create list
 				composer.commands.exec("formatBlock", "div", tempClassName, /wysiwyg-text-align-[0-9a-z]+/g);
 				tempElement = doc.querySelector("." + tempClassName);
-				isEmpty = tempElement.innerHTML === "" || tempElement.innerHTML === wysihtml5.INVISIBLE_SPACE || tempElement.innerHTML === "<br>";
-				composer.selection.executeAndRestore(function() {
-					list = wysihtml5.dom.convertToList(tempElement, "ol");
-					if (type) wysihtml5.dom.addClass(list, "wysiwyg-ol-" + type);
-				});
-				if (isEmpty) {
-					composer.selection.selectNode(list.querySelector("li"), true);
+				if(tempElement){
+					isEmpty = tempElement.innerHTML === "" || tempElement.innerHTML === wysihtml5.INVISIBLE_SPACE || tempElement.innerHTML === "<br>";
+					composer.selection.executeAndRestore(function() {
+						list = wysihtml5.dom.convertToList(tempElement, "ol");
+						if (type) wysihtml5.dom.addClass(list, "wysiwyg-ol-" + type);
+					});
+					if (isEmpty) {
+						composer.selection.selectNode(list.querySelector("li"), true);
+					}
 				}
 			}
 		},
@@ -9435,12 +9469,20 @@ wysihtml5.Commands = Base.extend(
 })(wysihtml5);
 (function(wysihtml5) {
 	"use strict";
-  var CLASS_NAME  = "wysiwyg-text-align-center",
+  var dom 				= wysihtml5.dom,
+  		CLASS_NAME  = "wysiwyg-text-align-center",
       REG_EXP     = /wysiwyg-text-align-[0-9a-z]+/g;
-  
+      
   wysihtml5.commands.justifyCenter = {
     exec: function(composer, command) {
-      return wysihtml5.commands.formatBlock.exec(composer, "formatBlock", null, CLASS_NAME, REG_EXP);
+    	if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
+				var elementNodes = dom.table.getCellsBetween(composer.tableSelection.start, composer.tableSelection.end);
+				for (var i = 0; i < elementNodes.length; i++) {
+					dom.replaceClass(elementNodes[i], CLASS_NAME, REG_EXP);
+				}
+			} else {
+      	return wysihtml5.commands.formatBlock.exec(composer, "formatBlock", null, CLASS_NAME, REG_EXP);
+      }
     },
 
     state: function(composer, command) {
@@ -9448,14 +9490,24 @@ wysihtml5.Commands = Base.extend(
     }
   };
 })(wysihtml5);
+
+
 (function(wysihtml5) {
 	"use strict";
-  var CLASS_NAME  = "wysiwyg-text-align-left",
+  var dom 				= wysihtml5.dom,
+    	CLASS_NAME  = "wysiwyg-text-align-left",
       REG_EXP     = /wysiwyg-text-align-[0-9a-z]+/g;
   
   wysihtml5.commands.justifyLeft = {
     exec: function(composer, command) {
-      return wysihtml5.commands.formatBlock.exec(composer, "formatBlock", null, CLASS_NAME, REG_EXP);
+      if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
+				var elementNodes = dom.table.getCellsBetween(composer.tableSelection.start, composer.tableSelection.end);
+				for (var i = 0; i < elementNodes.length; i++) {
+					dom.replaceClass(elementNodes[i], CLASS_NAME, REG_EXP);
+				}
+			} else {
+      	return wysihtml5.commands.formatBlock.exec(composer, "formatBlock", null, CLASS_NAME, REG_EXP);
+      }
     },
 
     state: function(composer, command) {
@@ -9463,14 +9515,24 @@ wysihtml5.Commands = Base.extend(
     }
   };
 })(wysihtml5);
+
+
 (function(wysihtml5) {
 	"use strict";
-  var CLASS_NAME  = "wysiwyg-text-align-right",
+  var dom 				= wysihtml5.dom,
+    	CLASS_NAME  = "wysiwyg-text-align-right",
       REG_EXP     = /wysiwyg-text-align-[0-9a-z]+/g;
   
   wysihtml5.commands.justifyRight = {
     exec: function(composer, command) {
-      return wysihtml5.commands.formatBlock.exec(composer, "formatBlock", null, CLASS_NAME, REG_EXP);
+      if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
+				var elementNodes = dom.table.getCellsBetween(composer.tableSelection.start, composer.tableSelection.end);
+				for (var i = 0; i < elementNodes.length; i++) {
+					dom.replaceClass(elementNodes[i], CLASS_NAME, REG_EXP);
+				}
+			} else {
+      	return wysihtml5.commands.formatBlock.exec(composer, "formatBlock", null, CLASS_NAME, REG_EXP);
+      }
     },
 
     state: function(composer, command) {
@@ -9480,12 +9542,20 @@ wysihtml5.Commands = Base.extend(
 })(wysihtml5);
 (function(wysihtml5) {
 	"use strict";
-  var CLASS_NAME  = "wysiwyg-text-align-justify",
+  var dom 				= wysihtml5.dom,
+      CLASS_NAME  = "wysiwyg-text-align-justify",
       REG_EXP     = /wysiwyg-text-align-[0-9a-z]+/g;
   
   wysihtml5.commands.justifyFull = {
     exec: function(composer, command) {
-      return wysihtml5.commands.formatBlock.exec(composer, "formatBlock", null, CLASS_NAME, REG_EXP);
+      if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
+				var elementNodes = dom.table.getCellsBetween(composer.tableSelection.start, composer.tableSelection.end);
+				for (var i = 0; i < elementNodes.length; i++) {
+					dom.replaceClass(elementNodes[i], CLASS_NAME, REG_EXP);
+				}
+			} else {
+				return wysihtml5.commands.formatBlock.exec(composer, "formatBlock", null, CLASS_NAME, REG_EXP);
+			}
     },
 
     state: function(composer, command) {
@@ -9493,7 +9563,6 @@ wysihtml5.Commands = Base.extend(
     }
   };
 })(wysihtml5);
-
 (function(wysihtml5) {
 	"use strict";
 	wysihtml5.commands.redo = {
@@ -9786,36 +9855,36 @@ wysihtml5.Commands = Base.extend(
 	"use strict";
 	wysihtml5.commands.deleteTableCells = {
 		exec: function(composer, command, value) {
-				if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
-					var tableSelect = wysihtml5.dom.table.orderSelectionEnds(composer.tableSelection.start, composer.tableSelection.end),
-							idx = wysihtml5.dom.table.indexOf(tableSelect.start),
-							selCell,
-							table = composer.tableSelection.table;
-					wysihtml5.dom.table.removeCells(tableSelect.start, value);
-					setTimeout(function() {
-							// move selection to next or previous if not present
-							selCell = wysihtml5.dom.table.findCell(table, idx);
-						
-							if (!selCell){
-								if (value == "row") {
-									selCell = wysihtml5.dom.table.findCell(table, {
-											"row": idx.row - 1,
-											"col": idx.col
-									});
-								}
+			if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
+				var tableSelect = wysihtml5.dom.table.orderSelectionEnds(composer.tableSelection.start, composer.tableSelection.end),
+						idx = wysihtml5.dom.table.indexOf(tableSelect.start),
+						selCell,
+						table = composer.tableSelection.table;
+				wysihtml5.dom.table.removeCells(tableSelect.start, value);
+				setTimeout(function() {
+						// move selection to next or previous if not present
+						selCell = wysihtml5.dom.table.findCell(table, idx);
 					
-								if (value == "column") {
-									selCell = wysihtml5.dom.table.findCell(table, {
-											"row": idx.row,
-											"col": idx.col - 1
-									});
-								}
-							} 
-							if (selCell) {
-									composer.tableSelection.select(selCell, selCell);
+						if (!selCell){
+							if (value == "row") {
+								selCell = wysihtml5.dom.table.findCell(table, {
+										"row": idx.row - 1,
+										"col": idx.col
+								});
 							}
-					}, 0);
-				}
+				
+							if (value == "column") {
+								selCell = wysihtml5.dom.table.findCell(table, {
+										"row": idx.row,
+										"col": idx.col - 1
+								});
+							}
+						} 
+						if (selCell) {
+								composer.tableSelection.select(selCell, selCell);
+						}
+				}, 0);
+			}
 		},
 
 		state: function(composer, command) {
@@ -12360,7 +12429,7 @@ wysihtml5.Predictive = Base.extend(
     style:                      true,
     // Id of the toolbar element, pass falsey value if you don't want any toolbar logic
     toolbar:                    undef,
-    // Wether toolbar is displayed after init by script automatically.
+    // Whether toolbar is displayed after init by script automatically.
     // Can be set to false if toolobar is set to display only on editable area focus
     showToolbarAfterInit:       true,
     // Whether urls, entered by the user should automatically become clickable-links

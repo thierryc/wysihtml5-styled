@@ -610,10 +610,18 @@
             }
         },
         
+        removeTable: function() {
+            this.setTableMap();
+            removeElement(this.table);
+        },
+        
         // removes row or column by selected cell element
         remove: function(what) {
             if (this.rectify()) {
                 switch (what) {
+                    case 'table':
+                        this.removeTable();
+                    break;
                     case 'row':
                         this.removeRow();
                     break;

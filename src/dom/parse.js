@@ -133,7 +133,7 @@ wysihtml5.dom.parse = (function() {
           ]).contains(oldNode.nodeName.toLowerCase()) && oldNode.parentNode.firstChild !== oldNode) {
               
               // add space as first when unwraping non-textflow elements
-              fragment.appendChild(oldNode.ownerDocument.createTextNode(" "));
+              fragment.appendChild(oldNode.ownerDocument.createTextNode(' '));
           }
           for (i=0; i<oldChildsLength; i++) {
             newChild = _convert(oldChilds[i], cleanUp);

@@ -153,6 +153,7 @@
 								</ul>
 								<a class="cmd" data-wysihtml5-command="insertLineBreak"><span class="ap-small-icon-line-break"></span></a>
 								<a class="cmd" data-wysihtml5-command="insertRule"><span class="ap-small-icon-favorite"></span></a>
+								<a class="cmd" data-wysihtml5-command="insertHTML"><span class="ap-small-icon-favorite"></span></a>
 							</div>
 							
 							<div class="cmd-group">
@@ -369,7 +370,7 @@
 											<input id="link" type="text" data-wysihtml5-modal-field="href" value="http://">
 									</div>
 									<div class="modal-footer">
-											<button class="cmd"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
+											<button class="cmd" data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
 											<button class="cmd cmd-primary" data-wysihtml5-modal-action="save">Save changes</button>
 									</div>
 							</div>
@@ -405,7 +406,7 @@
 									</div>
 							</div>
 							
-							<!-- Modal createLink -->
+							<!-- Modal createTable -->
 							<div data-wysihtml5-modal="createTable" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 									<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -425,11 +426,21 @@
 									</div>
 							</div>
 							
-							<div data-wysihtml5-dialog="__createTable" style="display: none;">
-								Rows: <input type="text" data-wysihtml5-dialog-field="rows"><br/>
-								Cols: <input type="text" data-wysihtml5-dialog-field="cols"><br/>
-								<button class="cmd"  data-wysihtml5-dialog-action="cancel" aria-hidden="true">Close</button>
-								<button class="cmd cmd-primary" data-wysihtml5-dialog-action="save">Save changes</button>
+							<!-- Modal insertMedia (iframe) -->
+							<div data-wysihtml5-modal="insertHTML" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+											<h3>Insert Media</h3>
+									</div>
+									<div class="modal-body">
+										<label for="wysihtml5ModalInsertMedia">Past url or code</label>
+										<textarea id="wysihtml5ModalInsertMedia" type="text" data-wysihtml5-modal-field="html" ></textarea>
+										
+									</div>
+									<div class="modal-footer">
+											<button class="cmd"  data-wysihtml5-modal-action="cancel" aria-hidden="true">Close</button>
+											<button class="cmd cmd-primary" data-wysihtml5-modal-action="save">Save changes</button>
+									</div>
 							</div>
 							
 					</div>

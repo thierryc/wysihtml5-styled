@@ -11,7 +11,7 @@
 if (typeof jQuery === "undefined") { throw new Error("Wysihtml5 requires jQuery") }
 
 /* =========================================================
- * bootstrap-modal.js v2.3.2
+ * bootstrap-modal.js v2.3.1
  * http://twitter.github.com/bootstrap/javascript.html#modals
  * =========================================================
  * Copyright 2012 Twitter, Inc.
@@ -259,7 +259,7 @@ if (typeof jQuery === "undefined") { throw new Error("Wysihtml5 requires jQuery"
 }(window.jQuery);
 
 /* ============================================================
- * bootstrap-dropdown.js v2.3.2
+ * bootstrap-dropdown.js v2.3.1
  * http://twitter.github.com/bootstrap/javascript.html#dropdowns
  * ============================================================
  * Copyright 2012 Twitter, Inc.
@@ -312,10 +312,6 @@ if (typeof jQuery === "undefined") { throw new Error("Wysihtml5 requires jQuery"
       clearMenus()
 
       if (!isActive) {
-        if ('ontouchstart' in document.documentElement) {
-          // if mobile we we use a backdrop because click events don't delegate
-          $('<div class="dropdown-backdrop"/>').insertBefore($(this)).on('click', clearMenus)
-        }
         $parent.toggleClass('open')
       }
 
@@ -368,7 +364,6 @@ if (typeof jQuery === "undefined") { throw new Error("Wysihtml5 requires jQuery"
   }
 
   function clearMenus() {
-    $('.dropdown-backdrop').remove()
     $(toggle).each(function () {
       getParent($(this)).removeClass('open')
     })
@@ -423,6 +418,7 @@ if (typeof jQuery === "undefined") { throw new Error("Wysihtml5 requires jQuery"
   $(document)
     .on('click.dropdown.data-api', clearMenus)
     .on('click.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.dropdown-menu', function (e) { e.stopPropagation() })
     .on('click.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
     .on('keydown.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
 

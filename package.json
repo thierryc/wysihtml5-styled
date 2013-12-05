@@ -1,7 +1,7 @@
 {
     "name": "wysihtml5-styled"
   , "type": "-bs2"
-  , "description": ""
+  , "description": "h1. wysihtml5-styled 0.6.0"
   , "version": "0.6.1b"
   , "keywords": ["bootstrap", "Wysihtml5"]
   , "homepage": ""
@@ -9,7 +9,7 @@
   , "scripts": { "test": "grunt test" }
   , "repository": {
       "type": "git"
-    , "url": ""
+    , "url": "https://github.com/thierryc/wysihtml5-styled"
   }
   , "licenses": [
     {

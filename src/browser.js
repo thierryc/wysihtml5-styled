@@ -362,5 +362,6 @@ wysihtml5.browser = (function() {
     hasMutationEventSupport: function() {
       return window.hasOwnProperty("MutationEvent");
     }
+    
   };
 })();

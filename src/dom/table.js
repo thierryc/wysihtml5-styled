@@ -611,8 +611,8 @@
         },
         
         removeTable: function() {
-            this.setTableMap();
-            removeElement(this.table);
+            var table = api.getParentElement(this.cell, { nodeName: ['TABLE'] });
+            removeElement(table);
         },
         
         // removes row or column by selected cell element

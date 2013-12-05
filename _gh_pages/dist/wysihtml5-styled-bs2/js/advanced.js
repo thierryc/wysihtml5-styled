@@ -87,6 +87,16 @@ var wysihtml5ParserRules = {
         'hightlight-green': 1,
         'back-hightlight-yellow': 1,
         
+        // iframe Class 
+        'wysiwyg-iframe-scrolling-no': 1,
+        'wysiwyg-iframe-scrolling-yes': 1,
+        'wysiwyg-iframe-scrolling-auto': 1,
+        
+        'wysiwyg-iframe-border-no': 1,
+        'wysiwyg-iframe-border-yes': 1,
+        'wysiwyg-iframe-border-auto': 1
+        
+        
     },
     /**
      * Tag list
@@ -187,8 +197,16 @@ var wysihtml5ParserRules = {
         "dfn": {
             "rename_tag": "span"
         },
-        "iframe": {
-            "remove": 1
+        "iframe": { //  "remove": 1
+            "check_attributes": {
+                "width": "size",
+                "src": "src", // if you compiled master manually then change this from 'url' to 'src'
+                "height": "numbers"
+            },
+            "add_class": {
+                "frameborder": "iframe_border",
+                "scrolling": "iframe_scrolling"
+            }
         },
         "figcaption": {
             "rename_tag": "div"

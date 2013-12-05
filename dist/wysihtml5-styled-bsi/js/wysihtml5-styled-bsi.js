@@ -3774,6 +3774,7 @@ wysihtml5.browser = (function() {
     hasMutationEventSupport: function() {
       return window.hasOwnProperty("MutationEvent");
     }
+    
   };
 })();
 wysihtml5.lang.array = function(arr) {
@@ -6922,8 +6923,9 @@ wysihtml5.dom.setStyles = function(styles) {
         },
         
         removeTable: function() {
-            this.setTableMap();
-            removeElement(this.table);
+            var table = api.getParentElement(this.cell, { nodeName: ['TABLE'] });
+            console.log(table);
+            removeElement(table);
         },
         
         // removes row or column by selected cell element
@@ -10111,6 +10113,7 @@ wysihtml5.Commands = Base.extend(
 						selCell = wysihtml5.dom.table.findCell(table, idx);
 					
 						if (!selCell){
+						
 							if (value == "row") {
 								selCell = wysihtml5.dom.table.findCell(table, {
 										"row": idx.row - 1,
@@ -10886,7 +10889,8 @@ wysihtml5.views.View = Base.extend(
             that.element.appendChild(paragraph);
             if (!browser.displaysCaretInEmptyContentEditableCorrectly()) {
               paragraph.innerHTML = "<br>";
-              that.selection.setBefore(paragraph.firstChild);
+              // firefox prevent error
+              setTimeout(function() { that.selection.setBefore(paragraph.firstChild); }, 0);
             } else {
               that.selection.selectNode(paragraph, true);
             }

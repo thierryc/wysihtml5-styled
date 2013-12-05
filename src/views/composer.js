@@ -425,7 +425,8 @@
             that.element.appendChild(paragraph);
             if (!browser.displaysCaretInEmptyContentEditableCorrectly()) {
               paragraph.innerHTML = "<br>";
-              that.selection.setBefore(paragraph.firstChild);
+              // firefox prevent error
+              setTimeout(function() { that.selection.setBefore(paragraph.firstChild); }, 0);
             } else {
               that.selection.selectNode(paragraph, true);
             }

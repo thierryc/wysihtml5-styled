@@ -13,6 +13,7 @@
 						selCell = wysihtml5.dom.table.findCell(table, idx);
 					
 						if (!selCell){
+						
 							if (value == "row") {
 								selCell = wysihtml5.dom.table.findCell(table, {
 										"row": idx.row - 1,

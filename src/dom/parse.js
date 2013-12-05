@@ -133,7 +133,7 @@ wysihtml5.dom.parse = (function() {
           ]).contains(oldNode.nodeName.toLowerCase()) && oldNode.parentNode.firstChild !== oldNode) {
               
               // add space as first when unwraping non-textflow elements
-              fragment.appendChild(oldNode.ownerDocument.createTextNode(" "));
+              fragment.appendChild(oldNode.ownerDocument.createTextNode(' '));
           }
           for (i=0; i<oldChildsLength; i++) {
             newChild = _convert(oldChilds[i], cleanUp);
@@ -560,7 +560,19 @@ wysihtml5.dom.parse = (function() {
         attributeValue = (attributeValue || "").replace(REG_EXP, "");
         return attributeValue || null;
       };
+    })(),
+    
+    //  like numbers but keep precent
+    size: (function() {
+      var REG_EXP = /\D/g;
+      return function(attributeValue) {
+      	attributeValue = (attributeValue || "");
+      	var percent = (attributeValue.slice(-1) == '%') ? '%' : false;
+        attributeValue = attributeValue.replace(REG_EXP, "");
+        return (percent) ? Math.min(100, attributeValue) + percent : attributeValue || null;
+      };
     })()
+    
   };
   
   // ------------ class converter (converts an html attribute to a class name) ------------ \\
@@ -614,7 +626,29 @@ wysihtml5.dom.parse = (function() {
       return function(attributeValue) {
         return mapping[String(attributeValue).charAt(0)];
       };
-    })()
+    })(),
+    
+    iframe_scrolling: (function() {
+      var mapping = {
+        no:     "wysiwyg-iframe-scrolling-no",
+        yes:    "wysiwyg-iframe-scrolling-yes",
+        auto:   "wysiwyg-iframe-scrolling-auto"
+      };
+      return function(attributeValue) {
+        return mapping[String(attributeValue).toLowerCase()];
+      };
+    })(),
+    
+    iframe_border: (function() {
+      var mapping = {
+        no:     "wysiwyg-iframe-border-no",
+        0:    "wysiwyg-iframe-border-no"
+      };
+      return function(attributeValue) {
+        return mapping[String(attributeValue).toLowerCase()];
+      };
+    })(),
+    
   };
   
   return parse;

@@ -15,6 +15,8 @@ wysihtml5.quirks.cleanPastedHTML = (function() {
     rules   = rules || defaultRules;
     context = context || elementOrHtml.ownerDocument || document;
     
+    console.log('cleanPastedHTML');
+    
     var element,
         isString = typeof(elementOrHtml) === "string",
         method,

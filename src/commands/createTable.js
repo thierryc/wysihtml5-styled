@@ -26,26 +26,38 @@
   
   wysihtml5.commands.createTable = {
 		exec: function(composer, command, value) {
-				var col, row, html;
-				if (value && value.cols && value.rows && parseInt(value.cols, 10) > 0 && parseInt(value.rows, 10) > 0) {
-					var html = '<table class="wysiwyg-table"><tbody>';
-					var cell = '<th>&nbsp;</th>';
-					for (row = 0; row < value.rows; row ++) {
-							html += '<tr>';
-							for (col = 0; col < value.cols; col ++) {
-									html += cell;
-							}
-							html += '</tr>';
-							cell = '<td>&nbsp;</td>';
-					}
-					html += "</tbody></table>";
-					composer.commands.exec("insertHTML", html);
-					//composer.selection.insertHTML(html);
+			// prevent add table in table !
+			// var selectedNode = composer.selection.getSelectedNode();
+			// var tableElement = dom.getParentElement(selectedNode, { nodeName: 'TABLE' });
+			// console.log('toto');
+			// console.log('tableElement', tableElement);
+			if (!composer.selection.getSelection().isCollapsed) return;
+			
+			var col, row, html;
+			if (value && value.cols && value.rows && parseInt(value.cols, 10) > 0 && parseInt(value.rows, 10) > 0) {
+				var html = '<table class="wysiwyg-table"><tbody>';
+				var cell = '<th>&nbsp;</th>';
+				for (row = 0; row < value.rows; row ++) {
+						html += '<tr>';
+						for (col = 0; col < value.cols; col ++) {
+								html += cell;
+						}
+						html += '</tr>';
+						cell = '<td>&nbsp;</td>';
 				}
+				html += "</tbody></table>";
+				
+				composer.commands.exec("insertHTML", html);
+				//composer.selection.insertHTML(html);
+			}
 		},
 
-		state: function(composer, command) {
+		state: function(composer, command, value) {
+			if(composer.config.handleTables === true) {
 				return false;
+			} else {
+    		return false;
+    	}
 		}
 	};
 
@@ -57,8 +69,21 @@
 			_addClass(tableElement, value, /wysiwyg-table-[0-9a-z]+/g);
 		},
 
-		state: function(composer, command) {
-				return false;
+		state: function(composer, command, value) {
+			//console.log(composer.config.handleTables);
+    	//console.log(composer, command, value);
+    	return false;
+    	/* MOVE  to state */
+      /*
+      if (this.editor.config.handleTables) {
+				editor.on("tableselect:composer", function() {
+						that.container.querySelectorAll('[data-wysihtml5-hiddentools="table"]')[0].style.display = "";
+				});
+				editor.on("tableunselect:composer", function() {
+						that.container.querySelectorAll('[data-wysihtml5-hiddentools="table"]')[0].style.display = "none";
+				});
+      }
+      */	
 		}
 	};
 

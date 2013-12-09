@@ -21,7 +21,7 @@ wysihtml5.quirks.tableCellsSelection = (function() {
         var target   = event.target,
             nodeName = target.nodeName;
         if (nodeName == "TD" || nodeName == "TH") {
-            handleSelectionMousedown(target);
+            handleSelectionMousedown(event, target);
         }    
         
       });
@@ -29,16 +29,19 @@ wysihtml5.quirks.tableCellsSelection = (function() {
       return select;
   }
   
-  function handleSelectionMousedown(target) {
+  function handleSelectionMousedown(event, target) {
     select.start = target;
     select.end = target;
     select.table = dom.getParentElement(select.start, { nodeName: ["TABLE"] });
     
     if (select.table) {
       removeCellSelections();
-      dom.addClass(target, selection_class);
-      moveHandler = dom.observe(editable, "mousemove", handleMouseMove);
-      upHandler = dom.observe(editable, "mouseup", handleMouseUp);
+      if (event.shiftKey === true) {
+				dom.addClass(target, selection_class);
+				moveHandler = dom.observe(editable, "mousemove", handleMouseMove);
+				upHandler = dom.observe(editable, "mouseup", handleMouseUp);
+				event.preventDefault();
+      }
     }
   }
   
@@ -61,19 +64,21 @@ wysihtml5.quirks.tableCellsSelection = (function() {
   }
   
   function handleMouseMove (event) {
-    var curTable = null,
-        cell = dom.getParentElement(event.target, { nodeName: ["TD","TH"] }),
-        selectedCells;
-        
-    if (cell && select.table && select.start) {
-      curTable =  dom.getParentElement(cell, { nodeName: ["TABLE"] });
-      if (curTable && curTable === select.table) {
-        removeCellSelections();
-        select.end = cell;
-        selectedCells = dom.table.getCellsBetween(select.start, cell);
-        addSelections(selectedCells);
-      }
-    }
+    if (event.shiftKey === true) {
+			var curTable = null,
+					cell = dom.getParentElement(event.target, { nodeName: ["TD","TH"] }),
+					selectedCells;
+				
+			if (cell && select.table && select.start) {
+				curTable =  dom.getParentElement(cell, { nodeName: ["TABLE"] });
+				if (curTable && curTable === select.table) {
+					removeCellSelections();
+					select.end = cell;
+					selectedCells = dom.table.getCellsBetween(select.start, cell);
+					addSelections(selectedCells);
+				}
+			}
+		}
   }
   
   function handleMouseUp (event) {

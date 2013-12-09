@@ -76,12 +76,14 @@
     });
 
     dom.observe(element, pasteEvents, function() {
+      console.log('paste0');
       setTimeout(function() {
-        that.parent.fire("paste").fire("paste:composer");
+        that.parent.fire('paste').fire('paste:composer');
+        console.log('paste1');
       }, 0);
     });
 
-    // --------- neword event ---------
+    // --------- newword event ---------
     dom.observe(element, "keyup", function(event) {
       var keyCode = event.keyCode;
       if (keyCode === wysihtml5.SPACE_KEY || keyCode === wysihtml5.ENTER_KEY) {
@@ -159,8 +161,10 @@
           parent;
       if(target && (keyCode === wysihtml5.BACKSPACE_KEY || keyCode === wysihtml5.DELETE_KEY)) {
 				parent = target.parentNode;
-				if (target.nodeName === "IMG") { // 8 => backspace, 46 => delete
-					
+				// todo prevent remove table tag
+				
+				if (target.nodeName === "IMG") { 
+					// 8 => backspace, 46 => delete
 					// delete the <img>
 					parent.removeChild(target);
 					// and it's parent <a> too if it hasn't got any other child nodes

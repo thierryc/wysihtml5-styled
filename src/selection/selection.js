@@ -426,31 +426,75 @@
       }
     },
     
+    
+    
     fixRangeOverflow: function(range) {
-        
-        if (this.contain && range) {
-            var containment = range.compareNode(this.contain);
-            
-            if (containment !== 2) {
-                if (containment === 1) {
-                    range.setStartBefore(this.contain.firstChild);
-                }
-                if (containment === 0) {
-                    range.setEndAfter(this.contain.lastChild);
-                }
-                if (containment === 3) {
-                    range.setStartBefore(this.contain.firstChild);
-                    range.setEndAfter(this.contain.lastChild);
-                }
-                
-            }
-        }
-        
+			if (this.contain && range) {
+				var containment = range.compareNode(this.contain);
+				if (containment !== 2) {
+					if (containment === 1) {
+						range.setStartBefore(this.contain.firstChild);
+					}
+					if (containment === 0) {
+						range.setEndAfter(this.contain.lastChild);
+					}
+					if (containment === 3) {
+						range.setStartBefore(this.contain.firstChild);
+						range.setEndAfter(this.contain.lastChild);
+					}
+				}
+			}  
+    },
+    
+    /*
+    
+				NODE_BEFORE (0)
+				Node starts before the Range
+				NODE_AFTER (1)
+				Node ends after the Range
+				NODE_BEFORE_AND_AFTER (2)
+				Node starts before and ends after the Range
+				NODE_INSIDE (3)
+				Node starts after and ends before the Range, i.e. the Node is completely selected by the Range.
+    
+    */
+    
+    fixRangeOverTable: function(range) {
+			
+			if (range) {
+				var tables = [];
+				range.getNodes([1], function(node){
+					if (node.nodeName === "TABLE") { 
+						tables.push(node); 
+						return true;
+					}
+				});
+				if (tables.length > 0) {
+					var containment = range.compareNode(tables[0]);
+					if (containment === 1) {
+						range.setStartBefore(tables[0]);
+						this.getSelection().setSingleRange(range);
+						return;
+					}
+					if (containment === 0) {
+						range.setStartAfter(tables[0]);
+						this.getSelection().setSingleRange(range);
+						return;
+					}
+					if (containment === 3) {
+						range.setStartBefore(tables[0]);
+						range.setEndAfter(tables[0]);
+						this.getSelection().setSingleRange(range);
+						return;
+					}
+				}
+			}  
     },
     
     getRange: function() {
       var selection = this.getSelection(),
           range = selection && selection.rangeCount && selection.getRangeAt(0);
+      this.fixRangeOverTable(range);
       this.fixRangeOverflow(range);
       return range;
     },
@@ -466,7 +510,7 @@
     },
     
     isCollapsed: function() {
-        return this.getSelection().isCollapsed;
+      return this.getSelection().isCollapsed;
     }
     
   });

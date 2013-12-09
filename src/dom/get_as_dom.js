@@ -45,7 +45,7 @@ wysihtml5.dom.getAsDom = (function() {
     "figure", "footer", "header", "hgroup", "keygen", "mark", "meter", "nav", "output", "progress",
     "rp", "rt", "ruby", "svg", "section", "source", "summary", "time", "track", "video", "wbr"
   ];
-  
+    
   return function(html, context) {
     context = context || document;
     var tempElement;

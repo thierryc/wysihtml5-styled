@@ -76,10 +76,8 @@
     });
 
     dom.observe(element, pasteEvents, function() {
-      console.log('paste0');
       setTimeout(function() {
         that.parent.fire('paste').fire('paste:composer');
-        console.log('paste1');
       }, 0);
     });
 

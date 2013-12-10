@@ -4,6 +4,9 @@
 	
 	wysihtml5.commands.bold = {
 		exec: function(composer, command) {
+			if (composer.selection.getSelection().isCollapsed) {
+				return false;
+			}
 			if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
 				var elementNodes = dom.table.getCellsBetween(composer.tableSelection.start, composer.tableSelection.end);
 				wysihtml5.commands.formatInline.exec(composer, command, "b");

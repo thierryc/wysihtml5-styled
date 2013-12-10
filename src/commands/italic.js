@@ -2,6 +2,9 @@
 	"use strict";
 	wysihtml5.commands.italic = {
 		exec: function(composer, command) {
+			if (composer.selection.getSelection().isCollapsed) {
+				return false;
+			}
 			return wysihtml5.commands.formatInline.exec(composer, command, "i");
 		},
 

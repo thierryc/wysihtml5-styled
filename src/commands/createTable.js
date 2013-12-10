@@ -7,7 +7,7 @@
    * and add the desired class name
    */
   function _addClass(element, className, classRegExp) {
-    if (element.className) {
+    if (element && element.className) {
       _removeClass(element, classRegExp);
       element.className = wysihtml5.lang.string(element.className + " " + className).trim();
     } else {

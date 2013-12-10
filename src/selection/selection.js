@@ -518,7 +518,9 @@
     getRange: function() {
       var selection = this.getSelection(),
           range = selection && selection.rangeCount && selection.getRangeAt(0);
-      this.fixRangeOverTable(selection, range);
+      if(this.editor.config.handleTables === true) {
+      	this.fixRangeOverTable(selection, range);
+      }
       this.fixRangeOverflow(range);
       return range;
     },

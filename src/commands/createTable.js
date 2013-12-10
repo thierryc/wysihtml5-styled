@@ -26,14 +26,12 @@
   
   wysihtml5.commands.createTable = {
 		exec: function(composer, command, value) {
-			// prevent add table in table !
-			// var selectedNode = composer.selection.getSelectedNode();
-			// var tableElement = dom.getParentElement(selectedNode, { nodeName: 'TABLE' });
-			// console.log('toto');
-			// console.log('tableElement', tableElement);
-			if (!composer.selection.getSelection().isCollapsed) return;
-			
 			var col, row, html;
+			var selection = composer.selection.getSelection();
+			if (!selection.isCollapsed) {
+				selection.collapseToEnd();
+			}
+			
 			if (value && value.cols && value.rows && parseInt(value.cols, 10) > 0 && parseInt(value.rows, 10) > 0) {
 				var html = '<table class="wysiwyg-table"><tbody>';
 				var cell = '<th>&nbsp;</th>';
@@ -48,12 +46,23 @@
 				html += "</tbody></table>";
 				
 				composer.commands.exec("insertHTML", html);
-				//composer.selection.insertHTML(html);
 			}
 		},
 
 		state: function(composer, command, value) {
 			if(composer.config.handleTables === true) {
+				/*
+				var selection = composer.selection.getSelection(),
+          range = selection && selection.rangeCount && selection.getRangeAt(0);
+        var tables = [];
+				range.getNodes([1], function(node){
+					if (node.nodeName === "TABLE") { 
+						tables.push(node); 
+						return true;
+					}
+				});
+				return tables.length;
+				*/
 				return false;
 			} else {
     		return false;

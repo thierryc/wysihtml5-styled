@@ -13,9 +13,9 @@
         },
         'ctrl': {
             //90: { command: 'undo', value: false }, // Ctrl + z
-            77: { command: 'removeFormat', value: false }, // Ctrl + m
-            66: { command: 'bold', value: false }, // Ctrl + b
-            73: { command: 'italic', value: false }, // Ctrl + i
+            //77: { command: 'removeFormat', value: false }, // Ctrl + m
+            //66: { command: 'bold', value: false }, // Ctrl + b
+            //73: { command: 'italic', value: false }, // Ctrl + i
             74: { command: 'insertUnorderedList', value: false }, // Ctrl + j
             75: { command: 'insertOrderedList', value: false }, // Ctrl + k
             76: { command: 'superscript', value: false }, // Ctrl + l

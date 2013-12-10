@@ -426,42 +426,48 @@
       }
     },
     
-    
-    
+
     fixRangeOverflow: function(range) {
 			if (this.contain && range) {
-				var containment = range.compareNode(this.contain);
-				if (containment !== 2) {
-					if (containment === 1) {
-						range.setStartBefore(this.contain.firstChild);
-					}
-					if (containment === 0) {
+				switch ( range.compareNode(this.contain) ) {
+					case 0:
+						/*
+						* NODE_BEFORE (0)
+						* Node starts before the Range
+						*/
 						range.setEndAfter(this.contain.lastChild);
-					}
-					if (containment === 3) {
+						break;
+					
+					case 1:
+						/*
+						* NODE_AFTER (1)
+						* Node ends after the Range
+						*/
+						range.setStartBefore(this.contain.firstChild);
+						break;
+						
+					case 2:
+						/*
+						* NODE_BEFORE_AND_AFTER (2)
+						* Node starts before and ends after the Range
+						*/
+						return false;
+						break;
+						
+					case 3:
+						/*
+						* NODE_INSIDE (3)
+						* Node starts after and ends before the Range, i.e. the Node is completely selected by the Range.
+						*/
 						range.setStartBefore(this.contain.firstChild);
 						range.setEndAfter(this.contain.lastChild);
-					}
+						break;
 				}
 			}  
     },
     
-    /*
-    
-				NODE_BEFORE (0)
-				Node starts before the Range
-				NODE_AFTER (1)
-				Node ends after the Range
-				NODE_BEFORE_AND_AFTER (2)
-				Node starts before and ends after the Range
-				NODE_INSIDE (3)
-				Node starts after and ends before the Range, i.e. the Node is completely selected by the Range.
-    
-    */
-    
-    fixRangeOverTable: function(range) {
-			
-			if (range) {
+    fixRangeOverTable: function(selection, range) {
+			if (selection && range) {
 				var tables = [];
 				range.getNodes([1], function(node){
 					if (node.nodeName === "TABLE") { 
@@ -470,31 +476,49 @@
 					}
 				});
 				if (tables.length > 0) {
-					var containment = range.compareNode(tables[0]);
-					if (containment === 1) {
-						range.setStartBefore(tables[0]);
-						this.getSelection().setSingleRange(range);
-						return;
+					switch ( range.compareNode(tables[0]) ) {
+						case 0:
+							/*
+							* NODE_BEFORE (0)
+							* Node starts before the Range
+							*/
+							range.setStartAfter(tables[0]);
+							break;
+						
+						case 1:
+							/*
+							* NODE_AFTER (1)
+							* Node ends after the Range
+							*/
+							range.setStartBefore(tables[0]);
+							break;
+							
+						case 2:
+							/*
+							* NODE_BEFORE_AND_AFTER (2)
+							* Node starts before and ends after the Range
+							*/
+							return false;
+							break;
+							
+						case 3:
+							/*
+							* NODE_INSIDE (3)
+							* Node starts after and ends before the Range, i.e. the Node is completely selected by the Range.
+							*/
+							range.setStartBefore(tables[0]);
+							range.setEndAfter(tables[0]);
+							break;
 					}
-					if (containment === 0) {
-						range.setStartAfter(tables[0]);
-						this.getSelection().setSingleRange(range);
-						return;
-					}
-					if (containment === 3) {
-						range.setStartBefore(tables[0]);
-						range.setEndAfter(tables[0]);
-						this.getSelection().setSingleRange(range);
-						return;
-					}
+					return selection.setSingleRange(range); // rangy
 				}
-			}  
+			}
     },
     
     getRange: function() {
       var selection = this.getSelection(),
           range = selection && selection.rangeCount && selection.getRangeAt(0);
-      this.fixRangeOverTable(range);
+      this.fixRangeOverTable(selection, range);
       this.fixRangeOverflow(range);
       return range;
     },

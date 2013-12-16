@@ -31,7 +31,6 @@
 			if (!selection.isCollapsed) {
 				selection.collapseToEnd();
 			}
-			
 			if (value && value.cols && value.rows && parseInt(value.cols, 10) > 0 && parseInt(value.rows, 10) > 0) {
 				var html = '<table class="wysiwyg-table"><tbody>';
 				var cell = '<th>&nbsp;</th>';
@@ -44,7 +43,6 @@
 						cell = '<td>&nbsp;</td>';
 				}
 				html += "</tbody></table>";
-				
 				composer.commands.exec("insertHTML", html);
 			}
 		},

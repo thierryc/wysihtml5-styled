@@ -50,6 +50,7 @@
     });
     */
 
+		// --------- Focus & blur logic ---------
     if (this.config.handleTables) {
         this.tableSelection = wysihtml5.quirks.tableCellsSelection(element, that.parent);
     }

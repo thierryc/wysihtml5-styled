@@ -18,30 +18,35 @@ wysihtml5.quirks.tableCellsSelection = (function() {
       editor = edit;
       
       dom.observe(editable, "mousedown", function(event) {
-        var target   = event.target,
-            nodeName = target.nodeName;
-        if (nodeName == "TD" || nodeName == "TH") {
-            handleSelectionMousedown(event, target);
-        }    
-        
+				var target   = event.target,
+						nodeName = target.nodeName;
+				if (nodeName == "TD" || nodeName == "TH") {
+						handleSelectionMousedown(event, target);
+				}
       });
       
       return select;
   }
   
   function handleSelectionMousedown(event, target) {
-    select.start = target;
-    select.end = target;
-    select.table = dom.getParentElement(select.start, { nodeName: ["TABLE"] });
-    
-    if (select.table) {
-      removeCellSelections();
-      if (event.shiftKey === true) {
+    if (event.shiftKey === true) {
+			select.start = target;
+			select.end = target;
+			select.table = dom.getParentElement(select.start, { nodeName: ["TABLE"] });
+		
+			if (select.table) {
+				removeCellSelections();
 				dom.addClass(target, selection_class);
 				moveHandler = dom.observe(editable, "mousemove", handleMouseMove);
 				upHandler = dom.observe(editable, "mouseup", handleMouseUp);
 				event.preventDefault();
-      }
+			}
+    } else {
+			removeCellSelections();
+			select.table = null;
+			select.start = null;
+			select.end = null;
+			editor.fire("tableunselect").fire("tableunselect:composer");
     }
   }
   

@@ -4774,7 +4774,7 @@ wysihtml5.dom.getAsDom = (function() {
     "figure", "footer", "header", "hgroup", "keygen", "mark", "meter", "nav", "output", "progress",
     "rp", "rt", "ruby", "svg", "section", "source", "summary", "time", "track", "video", "wbr"
   ];
-  
+    
   return function(html, context) {
     context = context || document;
     var tempElement;
@@ -7018,7 +7018,7 @@ wysihtml5.dom.setStyles = function(styles) {
                     doAdd = (!cell.isColspan || cell.firstCol);
                 break;
                 case "after":
-                    doAdd = (!cell.isColspan || cell.lastCol || (cell.isColspan && c.el == this.cell));
+                    doAdd = (!cell.isColspan || cell.lastCol || (cell.isColspan && cell.el == this.cell));
                 break;
             }
             
@@ -7338,27 +7338,35 @@ wysihtml5.quirks.tableCellsSelection = (function() {
       editor = edit;
       
       dom.observe(editable, "mousedown", function(event) {
-        var target   = event.target,
-            nodeName = target.nodeName;
-        if (nodeName == "TD" || nodeName == "TH") {
-            handleSelectionMousedown(target);
-        }    
-        
+				var target   = event.target,
+						nodeName = target.nodeName;
+				if (nodeName == "TD" || nodeName == "TH") {
+						handleSelectionMousedown(event, target);
+				}
       });
       
       return select;
   }
   
-  function handleSelectionMousedown(target) {
-    select.start = target;
-    select.end = target;
-    select.table = dom.getParentElement(select.start, { nodeName: ["TABLE"] });
-    
-    if (select.table) {
-      removeCellSelections();
-      dom.addClass(target, selection_class);
-      moveHandler = dom.observe(editable, "mousemove", handleMouseMove);
-      upHandler = dom.observe(editable, "mouseup", handleMouseUp);
+  function handleSelectionMousedown(event, target) {
+    if (event.shiftKey === true) {
+			select.start = target;
+			select.end = target;
+			select.table = dom.getParentElement(select.start, { nodeName: ["TABLE"] });
+		
+			if (select.table) {
+				removeCellSelections();
+				dom.addClass(target, selection_class);
+				moveHandler = dom.observe(editable, "mousemove", handleMouseMove);
+				upHandler = dom.observe(editable, "mouseup", handleMouseUp);
+				event.preventDefault();
+			}
+    } else {
+			removeCellSelections();
+			select.table = null;
+			select.start = null;
+			select.end = null;
+			editor.fire("tableunselect").fire("tableunselect:composer");
     }
   }
   
@@ -7381,19 +7389,21 @@ wysihtml5.quirks.tableCellsSelection = (function() {
   }
   
   function handleMouseMove (event) {
-    var curTable = null,
-        cell = dom.getParentElement(event.target, { nodeName: ["TD","TH"] }),
-        selectedCells;
-        
-    if (cell && select.table && select.start) {
-      curTable =  dom.getParentElement(cell, { nodeName: ["TABLE"] });
-      if (curTable && curTable === select.table) {
-        removeCellSelections();
-        select.end = cell;
-        selectedCells = dom.table.getCellsBetween(select.start, cell);
-        addSelections(selectedCells);
-      }
-    }
+    if (event.shiftKey === true) {
+			var curTable = null,
+					cell = dom.getParentElement(event.target, { nodeName: ["TD","TH"] }),
+					selectedCells;
+				
+			if (cell && select.table && select.start) {
+				curTable =  dom.getParentElement(cell, { nodeName: ["TABLE"] });
+				if (curTable && curTable === select.table) {
+					removeCellSelections();
+					select.end = cell;
+					selectedCells = dom.table.getCellsBetween(select.start, cell);
+					addSelections(selectedCells);
+				}
+			}
+		}
   }
   
   function handleMouseUp (event) {
@@ -8297,31 +8307,101 @@ wysihtml5.quirks.tableCellsSelection = (function() {
       }
     },
     
+
     fixRangeOverflow: function(range) {
-        
-        if (this.contain && range) {
-            var containment = range.compareNode(this.contain);
-            
-            if (containment !== 2) {
-                if (containment === 1) {
-                    range.setStartBefore(this.contain.firstChild);
-                }
-                if (containment === 0) {
-                    range.setEndAfter(this.contain.lastChild);
-                }
-                if (containment === 3) {
-                    range.setStartBefore(this.contain.firstChild);
-                    range.setEndAfter(this.contain.lastChild);
-                }
-                
-            }
-        }
-        
+			if (this.contain && range) {
+				switch ( range.compareNode(this.contain) ) {
+					case 0:
+						/*
+						* NODE_BEFORE (0)
+						* Node starts before the Range
+						*/
+						range.setEndAfter(this.contain.lastChild);
+						break;
+					
+					case 1:
+						/*
+						* NODE_AFTER (1)
+						* Node ends after the Range
+						*/
+						range.setStartBefore(this.contain.firstChild);
+						break;
+						
+					case 2:
+						/*
+						* NODE_BEFORE_AND_AFTER (2)
+						* Node starts before and ends after the Range
+						*/
+						return false;
+						break;
+						
+					case 3:
+						/*
+						* NODE_INSIDE (3)
+						* Node starts after and ends before the Range, i.e. the Node is completely selected by the Range.
+						*/
+						range.setStartBefore(this.contain.firstChild);
+						range.setEndAfter(this.contain.lastChild);
+						break;
+				}
+			}  
+    },
+    
+    fixRangeOverTable: function(selection, range) {
+			if (selection && range) {
+				var tables = [];
+				range.getNodes([1], function(node){
+					if (node.nodeName === "TABLE") { 
+						tables.push(node); 
+						return true;
+					}
+				});
+				if (tables.length > 0) {
+					switch ( range.compareNode(tables[0]) ) {
+						case 0:
+							/*
+							* NODE_BEFORE (0)
+							* Node starts before the Range
+							*/
+							range.setStartAfter(tables[0]);
+							break;
+						
+						case 1:
+							/*
+							* NODE_AFTER (1)
+							* Node ends after the Range
+							*/
+							range.setStartBefore(tables[0]);
+							break;
+							
+						case 2:
+							/*
+							* NODE_BEFORE_AND_AFTER (2)
+							* Node starts before and ends after the Range
+							*/
+							return false;
+							break;
+							
+						case 3:
+							/*
+							* NODE_INSIDE (3)
+							* Node starts after and ends before the Range, i.e. the Node is completely selected by the Range.
+							*/
+							range.setStartBefore(tables[0]);
+							range.setEndAfter(tables[0]);
+							break;
+					}
+					return selection.setSingleRange(range); // rangy
+				}
+			}
     },
     
     getRange: function() {
       var selection = this.getSelection(),
           range = selection && selection.rangeCount && selection.getRangeAt(0);
+      if(this.editor.config.handleTables === true) {
+      	this.fixRangeOverTable(selection, range);
+      }
       this.fixRangeOverflow(range);
       return range;
     },
@@ -8337,7 +8417,7 @@ wysihtml5.quirks.tableCellsSelection = (function() {
     },
     
     isCollapsed: function() {
-        return this.getSelection().isCollapsed;
+      return this.getSelection().isCollapsed;
     }
     
   });
@@ -8471,6 +8551,9 @@ wysihtml5.Commands = Base.extend(
 	
 	wysihtml5.commands.bold = {
 		exec: function(composer, command) {
+			if (composer.selection.getSelection().isCollapsed) {
+				return false;
+			}
 			if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
 				var elementNodes = dom.table.getCellsBetween(composer.tableSelection.start, composer.tableSelection.end);
 				wysihtml5.commands.formatInline.exec(composer, command, "b");
@@ -9657,6 +9740,9 @@ wysihtml5.Commands = Base.extend(
 	"use strict";
 	wysihtml5.commands.italic = {
 		exec: function(composer, command) {
+			if (composer.selection.getSelection().isCollapsed) {
+				return false;
+			}
 			return wysihtml5.commands.formatInline.exec(composer, command, "i");
 		},
 
@@ -9980,7 +10066,7 @@ wysihtml5.Commands = Base.extend(
    * and add the desired class name
    */
   function _addClass(element, className, classRegExp) {
-    if (element.className) {
+    if (element && element.className) {
       _removeClass(element, classRegExp);
       element.className = wysihtml5.lang.string(element.className + " " + className).trim();
     } else {
@@ -9999,26 +10085,45 @@ wysihtml5.Commands = Base.extend(
   
   wysihtml5.commands.createTable = {
 		exec: function(composer, command, value) {
-				var col, row, html;
-				if (value && value.cols && value.rows && parseInt(value.cols, 10) > 0 && parseInt(value.rows, 10) > 0) {
-					var html = '<table class="wysiwyg-table"><tbody>';
-					var cell = '<th>&nbsp;</th>';
-					for (row = 0; row < value.rows; row ++) {
-							html += '<tr>';
-							for (col = 0; col < value.cols; col ++) {
-									html += cell;
-							}
-							html += '</tr>';
-							cell = '<td>&nbsp;</td>';
-					}
-					html += "</tbody></table>";
-					composer.commands.exec("insertHTML", html);
-					//composer.selection.insertHTML(html);
+			var col, row, html;
+			var selection = composer.selection.getSelection();
+			if (!selection.isCollapsed) {
+				selection.collapseToEnd();
+			}
+			if (value && value.cols && value.rows && parseInt(value.cols, 10) > 0 && parseInt(value.rows, 10) > 0) {
+				var html = '<table class="wysiwyg-table"><tbody>';
+				var cell = '<th>&nbsp;</th>';
+				for (row = 0; row < value.rows; row ++) {
+						html += '<tr>';
+						for (col = 0; col < value.cols; col ++) {
+								html += cell;
+						}
+						html += '</tr>';
+						cell = '<td>&nbsp;</td>';
 				}
+				html += "</tbody></table>";
+				composer.commands.exec("insertHTML", html);
+			}
 		},
 
-		state: function(composer, command) {
+		state: function(composer, command, value) {
+			if(composer.config.handleTables === true) {
+				/*
+				var selection = composer.selection.getSelection(),
+          range = selection && selection.rangeCount && selection.getRangeAt(0);
+        var tables = [];
+				range.getNodes([1], function(node){
+					if (node.nodeName === "TABLE") { 
+						tables.push(node); 
+						return true;
+					}
+				});
+				return tables.length;
+				*/
 				return false;
+			} else {
+    		return false;
+    	}
 		}
 	};
 
@@ -10030,8 +10135,21 @@ wysihtml5.Commands = Base.extend(
 			_addClass(tableElement, value, /wysiwyg-table-[0-9a-z]+/g);
 		},
 
-		state: function(composer, command) {
-				return false;
+		state: function(composer, command, value) {
+			//console.log(composer.config.handleTables);
+    	//console.log(composer, command, value);
+    	return false;
+    	/* MOVE  to state */
+      /*
+      if (this.editor.config.handleTables) {
+				editor.on("tableselect:composer", function() {
+						that.container.querySelectorAll('[data-wysihtml5-hiddentools="table"]')[0].style.display = "";
+				});
+				editor.on("tableunselect:composer", function() {
+						that.container.querySelectorAll('[data-wysihtml5-hiddentools="table"]')[0].style.display = "none";
+				});
+      }
+      */	
 		}
 	};
 
@@ -10078,15 +10196,26 @@ wysihtml5.Commands = Base.extend(
 			if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
 				// switches start and end if start is bigger than end (reverse selection)
 				var tableSelect = wysihtml5.dom.table.orderSelectionEnds(composer.tableSelection.start, composer.tableSelection.end);
-				if (value == "before" || value == "above") {
-						wysihtml5.dom.table.addCells(tableSelect.start, value);
-				} else if (value == "after" || value == "below") {
-						wysihtml5.dom.table.addCells(tableSelect.end, value);
-				}
-				setTimeout(function() {
-						composer.tableSelection.select(tableSelect.start, tableSelect.end);
-				},0);
+				var start = tableSelect.start;
+				var end = tableSelect.end;
+			} else if (composer.tableSelection && composer.tableSelection.table == null && composer.selection.getSelection().isCollapsed) {
+				var cell = wysihtml5.dom.getParentElement(composer.selection.getSelectedNode(), { nodeName: ['TH','TD'] });
+				var start = cell;
+				var end = cell;
+			} else {
+				return false;
 			}
+			
+			if (value == "before" || value == "above") {
+					wysihtml5.dom.table.addCells(start, value);
+			} else if (value == "after" || value == "below") {
+					wysihtml5.dom.table.addCells(end, value);
+			}
+			
+			setTimeout(function() {
+				composer.tableSelection.select(start, end);
+			},0);
+			
 		},
 		state: function(composer, command) {
 			return false;
@@ -10102,36 +10231,49 @@ wysihtml5.Commands = Base.extend(
 	wysihtml5.commands.deleteTableCells = {
 		exec: function(composer, command, value) {
 			if (composer.tableSelection && composer.tableSelection.start && composer.tableSelection.end) {
-				var tableSelect = wysihtml5.dom.table.orderSelectionEnds(composer.tableSelection.start, composer.tableSelection.end),
-						idx = wysihtml5.dom.table.indexOf(tableSelect.start),
-						selCell,
-						table = composer.tableSelection.table;
-				wysihtml5.dom.table.removeCells(tableSelect.start, value);
-				setTimeout(function() {
-						// move selection to next or previous if not present
-						selCell = wysihtml5.dom.table.findCell(table, idx);
-					
-						if (!selCell){
-						
-							if (value == "row") {
-								selCell = wysihtml5.dom.table.findCell(table, {
-										"row": idx.row - 1,
-										"col": idx.col
-								});
-							}
-				
-							if (value == "column") {
-								selCell = wysihtml5.dom.table.findCell(table, {
-										"row": idx.row,
-										"col": idx.col - 1
-								});
-							}
-						} 
-						if (selCell) {
-								composer.tableSelection.select(selCell, selCell);
-						}
-				}, 0);
+				// switches start and end if start is bigger than end (reverse selection)
+				var tableSelect = wysihtml5.dom.table.orderSelectionEnds(composer.tableSelection.start, composer.tableSelection.end);
+				var start = tableSelect.start;
+				var end = tableSelect.end;
+			} else if (composer.tableSelection && composer.tableSelection.table == null && composer.selection.getSelection().isCollapsed) {
+				var cell = wysihtml5.dom.getParentElement(composer.selection.getSelectedNode(), { nodeName: ['TH','TD'] });
+				var start = cell;
+				var end = cell;
+			} else {
+				return false;
 			}
+			
+			var idx = wysihtml5.dom.table.indexOf(start),
+					selCell,
+					table = composer.tableSelection.table;
+					
+			// todo delete the complete selection not only the first one.
+			wysihtml5.dom.table.removeCells(start, value);
+			setTimeout(function() {
+				// move selection to next or previous if not present
+				selCell = wysihtml5.dom.table.findCell(table, idx);
+			
+				if (!selCell){
+				
+					if (value == "row") {
+						selCell = wysihtml5.dom.table.findCell(table, {
+								"row": idx.row - 1,
+								"col": idx.col
+						});
+					}
+		
+					if (value == "column") {
+						selCell = wysihtml5.dom.table.findCell(table, {
+								"row": idx.row,
+								"col": idx.col - 1
+						});
+					}
+				} 
+				if (selCell) {
+					composer.tableSelection.select(selCell, selCell);
+				}
+			}, 0);
+			
 		},
 
 		state: function(composer, command) {
@@ -11251,6 +11393,7 @@ wysihtml5.views.View = Base.extend(
     });
     */
 
+		// --------- Focus & blur logic ---------
     if (this.config.handleTables) {
         this.tableSelection = wysihtml5.quirks.tableCellsSelection(element, that.parent);
     }
@@ -11278,11 +11421,11 @@ wysihtml5.views.View = Base.extend(
 
     dom.observe(element, pasteEvents, function() {
       setTimeout(function() {
-        that.parent.fire("paste").fire("paste:composer");
+        that.parent.fire('paste').fire('paste:composer');
       }, 0);
     });
 
-    // --------- neword event ---------
+    // --------- newword event ---------
     dom.observe(element, "keyup", function(event) {
       var keyCode = event.keyCode;
       if (keyCode === wysihtml5.SPACE_KEY || keyCode === wysihtml5.ENTER_KEY) {
@@ -11360,8 +11503,10 @@ wysihtml5.views.View = Base.extend(
           parent;
       if(target && (keyCode === wysihtml5.BACKSPACE_KEY || keyCode === wysihtml5.DELETE_KEY)) {
 				parent = target.parentNode;
-				if (target.nodeName === "IMG") { // 8 => backspace, 46 => delete
-					
+				// todo prevent remove table tag
+				
+				if (target.nodeName === "IMG") { 
+					// 8 => backspace, 46 => delete
 					// delete the <img>
 					parent.removeChild(target);
 					// and it's parent <a> too if it hasn't got any other child nodes
@@ -12534,7 +12679,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
         },
         'ctrl': {
             //90: { command: 'undo', value: false }, // Ctrl + z
-            77: { command: 'removeFormat', value: false }, // Ctrl + m
+            //77: { command: 'removeFormat', value: false }, // Ctrl + m
             //66: { command: 'bold', value: false }, // Ctrl + b
             //73: { command: 'italic', value: false }, // Ctrl + i
             74: { command: 'insertUnorderedList', value: false }, // Ctrl + j

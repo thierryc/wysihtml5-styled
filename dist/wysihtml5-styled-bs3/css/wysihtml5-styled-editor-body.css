@@ -986,11 +986,11 @@ table.wysiwyg-table tbody + tbody {
 
 table.wysiwyg-table th,
 table.wysiwyg-table td {
-  -webkit-user-select: none;
-   -khtml-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -webkit-user-select: text;
+   -khtml-user-select: text;
+     -moz-user-select: text;
+      -ms-user-select: text;
+          user-select: text;
 }
 
 table.wysiwyg-table th.wysiwyg-tmp-selected-cell,
@@ -1001,11 +1001,11 @@ table.wysiwyg-table td.wysiwyg-tmp-selected-cell {
       -ms-box-shadow: inset 0 0 2px 1px #ccccff;
        -o-box-shadow: inset 0 0 2px 1px #ccccff;
           box-shadow: inset 0 0 2px 1px #ccccff;
-  -webkit-user-select: text;
-   -khtml-user-select: text;
-     -moz-user-select: text;
-      -ms-user-select: text;
-          user-select: text;
+  -webkit-user-select: none;
+   -khtml-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 table.wysiwyg-table-bordered {

@@ -1008,26 +1008,6 @@ table.wysiwyg-table td.wysiwyg-tmp-selected-cell {
           user-select: text;
 }
 
-table.wysiwyg-table ::selection {
-  color: rgba(25, 25, 150, 0.9);
-  background: rgba(0, 0, 256, 0.01);
-}
-
-table.wysiwyg-table ::-moz-selection {
-  color: rgba(25, 25, 150, 0.9);
-  background: rgba(0, 0, 256, 0.01);
-}
-
-::selection {
-  color: rgba(25, 25, 25, 0.9);
-  background: rgba(0, 0, 256, 0.1);
-}
-
-::-moz-selection {
-  color: rgba(25, 25, 25, 0.9);
-  background: rgba(0, 0, 256, 0.1);
-}
-
 table.wysiwyg-table-bordered {
   border: 1px solid #dddddd;
   border-collapse: separate;

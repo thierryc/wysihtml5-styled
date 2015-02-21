@@ -6924,7 +6924,6 @@ wysihtml5.dom.setStyles = function(styles) {
         
         removeTable: function() {
             var table = api.getParentElement(this.cell, { nodeName: ['TABLE'] });
-            console.log(table);
             removeElement(table);
         },
         
